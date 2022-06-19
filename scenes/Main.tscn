@@ -1,4 +1,7 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://objects/characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [node name="Main" type="Node"]
 
@@ -7,3 +10,13 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Node2D" type="Node2D" parent="."]
+
+[node name="Icon" type="Sprite" parent="Node2D"]
+position = Vector2( 544, 242 )
+scale = Vector2( 26.8906, 16.8281 )
+texture = ExtResource( 2 )
+
+[node name="Player" parent="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 494, 268 )
+friction = 0.053
+acceleration = 0.3
