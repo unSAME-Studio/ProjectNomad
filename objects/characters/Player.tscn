@@ -16,6 +16,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+rotating = true
 current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

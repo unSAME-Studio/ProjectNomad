@@ -6,8 +6,11 @@ export var speed = 200
 export var friction = 0.01
 export var acceleration = 0.1
 
-var velocity = Vector2()
+var controlling = true
+var base = null
 
+var velocity = Vector2()
+var onboard = false
 
 func get_input():
 	var input = Vector2()
@@ -28,4 +31,8 @@ func _physics_process(delta):
 		velocity = lerp(velocity, direction.normalized() * speed, acceleration)
 	else:
 		velocity = lerp(velocity, Vector2.ZERO, friction)
-	velocity = move_and_slide(velocity)
+	if(controlling):
+		velocity = move_and_slide(velocity)
+	else:
+		#position = base.position
+		pass
