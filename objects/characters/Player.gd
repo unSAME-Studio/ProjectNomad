@@ -12,6 +12,9 @@ var base = null
 var velocity = Vector2()
 var onboard = false
 
+onready var camera = get_node("Camera2D")
+
+
 func get_input():
 	var input = Vector2()
 	if Input.is_action_pressed('right'):
