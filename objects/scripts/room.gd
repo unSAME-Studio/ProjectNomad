@@ -12,6 +12,12 @@ var user = null
 var leave = false
 
 
+func _ready():
+	# [TEMP DELETE]
+	$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon
+	#$objects/Walls/LightOccluder2D.get_occluder_polygon().polygon = $objects/Walls.polygon
+
+
 func get_input():
 	var input = Vector2()
 	if Input.is_action_pressed('right'):
