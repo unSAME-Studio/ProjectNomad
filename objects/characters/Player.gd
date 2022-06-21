@@ -25,6 +25,7 @@ func get_input():
 		input.y += 1
 	if Input.is_action_pressed('up'):
 		input.y -= 1
+		
 	return input
 
 

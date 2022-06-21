@@ -11,6 +11,7 @@ var controlling = false
 var user = null
 var leave = false
 
+
 func get_input():
 	var input = Vector2()
 	if Input.is_action_pressed('right'):
