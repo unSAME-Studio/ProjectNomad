@@ -33,30 +33,30 @@ target = NodePath("../Player")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Node2D"]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+[node name="Ground" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
 motion_scale = Vector2( 0.1, 0.1 )
 motion_mirroring = Vector2( 1920, 1080 )
 
-[node name="Bg" type="Sprite" parent="Node2D/ParallaxBackground/ParallaxLayer"]
+[node name="Bg" type="Sprite" parent="Node2D/ParallaxBackground/Ground"]
 modulate = Color( 0.239216, 0.321569, 0.427451, 1 )
 texture = ExtResource( 5 )
 centered = false
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+[node name="Cloud1" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
 motion_scale = Vector2( 0.5, 0.5 )
 motion_mirroring = Vector2( 1920, 1080 )
 
-[node name="Bg" type="Sprite" parent="Node2D/ParallaxBackground/ParallaxLayer2"]
+[node name="Bg" type="Sprite" parent="Node2D/ParallaxBackground/Cloud1"]
 modulate = Color( 1, 1, 1, 0.317647 )
 texture = ExtResource( 6 )
 centered = false
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+[node name="Cloud2" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
 motion_scale = Vector2( 0.7, 0.7 )
 motion_offset = Vector2( 500, 300 )
 motion_mirroring = Vector2( 1920, 1080 )
 
-[node name="Bg" type="Sprite" parent="Node2D/ParallaxBackground/ParallaxLayer3"]
+[node name="Bg" type="Sprite" parent="Node2D/ParallaxBackground/Cloud2"]
 modulate = Color( 1, 1, 1, 0.317647 )
 texture = ExtResource( 6 )
 centered = false
