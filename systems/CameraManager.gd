@@ -3,10 +3,8 @@ extends Node2D
 
 onready var camera = get_node("Camera2D")
 
-export(NodePath) var target
-
-func _ready():
-	target = get_node(target)
+export(NodePath) var target_node_path
+onready var target = get_node(target_node_path)
 
 func _input(event):
 	# camera control
