@@ -3,8 +3,8 @@ extends Node2D
 
 onready var camera = get_node("Camera2D")
 
-export(NodePath) var target
-
+export(NodePath) var target_node_path
+onready var target = get_node(target_node_path)
 
 
 func _input(event):
@@ -22,4 +22,4 @@ func _input(event):
 
 
 func _process(delta):
-	set_global_position(get_node(target).get_global_position())
+	set_global_position(target.get_global_position())

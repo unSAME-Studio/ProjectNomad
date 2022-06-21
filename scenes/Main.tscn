@@ -16,6 +16,7 @@ margin_bottom = 40.0
 
 [node name="room" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 509, -25 )
+speed = 400
 
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 494, 268 )
@@ -23,7 +24,7 @@ friction = 0.053
 acceleration = 0.3
 
 [node name="CameraManager" parent="Node2D" instance=ExtResource( 4 )]
-target = NodePath("../Player")
+target_node_path = NodePath("../Player")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Node2D"]
 

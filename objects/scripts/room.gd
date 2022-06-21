@@ -38,15 +38,6 @@ func _physics_process(delta):
 			velocity = lerp(velocity, Vector2.ZERO, friction)
 		
 		velocity = move_and_slide(velocity)
-		
-		if Input.is_action_pressed("ui_cancel"):
-			controlling = false
-			if(user):
-				user.controlling = true
-				user.base = null
-			user = null
-			leave = false
-			
 
 
 func _on_baseshape_body_entered(body):
