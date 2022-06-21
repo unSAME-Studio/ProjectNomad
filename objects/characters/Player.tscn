@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://objects/characters/Player.gd" type="Script" id=2]
 [ext_resource path="res://arts/ui/theme.tres" type="Theme" id=3]
+[ext_resource path="res://arts/light.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 31.0161
@@ -28,6 +29,11 @@ smoothing_enabled = true
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+texture_scale = 0.3
+shadow_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
