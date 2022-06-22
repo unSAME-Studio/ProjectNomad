@@ -7,10 +7,14 @@ export var speed = 200
 export var acceleration = 0.1
 
 var velocity = Vector2()
-var controlling = false
+var controlling = true
+
 var user = null
 var leave = false
 
+var steerforce = 1
+var forwardforce = 1
+var brakeforce = 1
 
 func _ready():
 	# [TEMP DELETE]
@@ -18,14 +22,14 @@ func _ready():
 	#$objects/Walls/LightOccluder2D.get_occluder_polygon().polygon = $objects/Walls.polygon
 
 func handle_movement(direction):
-		rotation_degrees += direction.x
-		#var direction_vector = Vector2.UP.rotated(deg2rad(rotation_degrees)).normalized()
-		direction = Vector2(0,direction.y).rotated(deg2rad(rotation_degrees)).normalized()
-		if direction.length() > 0:
-			velocity = lerp(velocity, direction * speed, acceleration)
-		else:
-			velocity = lerp(velocity, Vector2.ZERO, 0.01)
-		
+		set_applied_torque(direction.x * 20000)		
+		set_applied_force(Vector2(direction.x*50,direction.y * 300).rotated(get_rotation()))
+		var currvelocity = get_linear_velocity()
+		var currrangular = get_angular_velocity()
+		if currvelocity.length() > 300:
+			set_linear_velocity(lerp(currvelocity, currvelocity.normalized()*300, 0.05))
+		if abs(currrangular) > 0.5:
+			set_angular_velocity(lerp(currrangular,0.5, 0.05))
 		#velocity = move_and_slide(velocity)
 
 func get_input():
@@ -42,13 +46,14 @@ func get_input():
 
 
 func _physics_process(delta):
+	pass
+			
+			
+func _integrate_forces(state):
 	if(controlling):
 		var direction = get_input()
-		set_applied_torque(direction.x * 20000)		
-		set_applied_force(Vector2(0,direction.y * 300).rotated(get_rotation()))
-
-func _integrate_forces(state):
-	pass
+		handle_movement(direction)
+			
 		
 
 func _on_baseshape_body_entered(body):
