@@ -9,6 +9,7 @@ var min_move_speed = 0.005
 
 var direction = Vector2.ZERO
 
+var controlling = false
 
 func get_class(): 
 	return "WalkState"
@@ -17,11 +18,16 @@ func get_class():
 func _ready():
 	pass
 
+func check_state_change():
+	if controlling:
+		persistent_state.velocity = Vector2.ZERO
+		change_state.call_func("control")
+		
+	elif abs(persistent_state.velocity.length()) < min_move_speed:
+		change_state.call_func("idle")
 
 func _physics_process(_delta):
 	# change to idle state if velocity reach zero
-	if abs(persistent_state.velocity.length()) < min_move_speed:
-		 change_state.call_func("idle")
 	
 	# else deal with the velocity
 	if direction.length() > 0:
@@ -30,6 +36,7 @@ func _physics_process(_delta):
 		persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
 	
 	direction = Vector2.ZERO
+	check_state_change()
 
 
 func move_up():
@@ -50,4 +57,5 @@ func move_right():
 
 func interact():
 	if persistent_state.selected_culpit:
-		change_state.call_func("control")
+		controlling = true
+
