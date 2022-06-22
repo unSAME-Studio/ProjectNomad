@@ -19,6 +19,9 @@ func initial_control(body):
 	base.controlling = true
 	base.user = body
 	
+	body.camera.camera.rotating = true
+	body.camera.camera.set_zoom(Vector2(2,2))
+	
 	print(name + " is being controller")
 
 

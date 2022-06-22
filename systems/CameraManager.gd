@@ -6,6 +6,8 @@ onready var camera = get_node("Camera2D")
 export(NodePath) var target_node_path
 onready var target = get_node(target_node_path)
 
+func _ready():
+	target.camera = self
 
 func _input(event):
 	# camera control
