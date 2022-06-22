@@ -11,6 +11,11 @@ var controlling = true
 var base = null
 var culpit = null
 
+# An enum allows us to keep track of valid states.
+# With a variable that keeps track of the current state, we don't need to add more booleans.
+enum STATES {IDLE, WALKING, IN_AIR, CONTROLLING, BUILDING}
+var _state : int = STATES.IDLE
+
 var velocity = Vector2()
 var onboard = false
 
@@ -19,7 +24,7 @@ var camera
 
 func _input(event):
 	if Input.is_action_just_pressed("build_menu"):
-		$CanvasLayer/Control/BuildMenu.set_visible(!$CanvasLayer/Control/BuildMenu.is_visible())
+		$CanvasLayer/Control/VBoxContainer2/BuildMenu.set_visible(!$CanvasLayer/Control/VBoxContainer2/BuildMenu.is_visible())
 	
 	if Input.is_action_just_pressed("control"):
 		# check if player already controlling something
