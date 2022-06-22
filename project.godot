@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "State",
+"class": "BuildState",
+"language": "GDScript",
+"path": "res://systems/statemachine/player_states/build_state.gd"
+}, {
+"base": "State",
 "class": "ControlState",
 "language": "GDScript",
 "path": "res://systems/statemachine/player_states/control_state.gd"
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://systems/statemachine/player_states/walk_state.gd"
 } ]
 _global_script_class_icons={
+"BuildState": "",
 "ControlState": "",
 "IdleState": "",
 "PersistentState": "",

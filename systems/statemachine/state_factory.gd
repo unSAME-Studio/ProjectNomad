@@ -7,7 +7,8 @@ func _init():
 	states = {
 		"idle": IdleState,
 		"walk": WalkState,
-		"control": ControlState
+		"control": ControlState,
+		"build": BuildState
 }
 
 
