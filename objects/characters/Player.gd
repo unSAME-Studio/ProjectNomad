@@ -17,6 +17,8 @@ var onboard = false
 onready var camera = get_node("Camera2D")
 
 
+
+
 func _input(event):
 	if Input.is_action_just_pressed("build_menu"):
 		$CanvasLayer/Control/BuildMenu.set_visible(!$CanvasLayer/Control/BuildMenu.is_visible())
