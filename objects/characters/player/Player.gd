@@ -28,6 +28,7 @@ func _ready():
 
 
 func change_state(new_state_name):
+	print(new_state_name)
 	if state != null:
 		state.queue_free()
 	state = state_factory.get_state(new_state_name).new()
