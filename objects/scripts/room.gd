@@ -59,7 +59,6 @@ func _on_baseshape_body_entered(body):
 		body.get_parent().remove_child(body)
 		self.add_child(body)
 		body.set_global_position(temppos)
-		body.camera.camera.rotating = true
 		
 		
 func _on_baseshape_body_exited(body):

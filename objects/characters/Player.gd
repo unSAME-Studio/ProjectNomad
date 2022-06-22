@@ -14,9 +14,7 @@ var culpit = null
 var velocity = Vector2()
 var onboard = false
 
-onready var camera = get_node("Camera2D")
-
-
+var camera
 
 
 func _input(event):
