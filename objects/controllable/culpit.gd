@@ -13,7 +13,6 @@ func get_hint_text():
 
 
 func initial_control(body):
-	body.controlling = false
 	body.base = base
 	
 	# snap the target to position
@@ -31,11 +30,9 @@ func initial_control(body):
 func stop_control(body):
 	print("stopping " + name + " from controlling")
 	
-	base.controlling = false
 	base.user = null
 	base.leave = false
 	
-	body.controlling = true
 	body.base = null
 	
 	body.camera.camera.set_zoom(Vector2(1,1))
