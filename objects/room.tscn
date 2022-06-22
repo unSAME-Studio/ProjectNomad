@@ -14,7 +14,7 @@ collision_layer = 2
 collision_mask = 0
 input_pickable = true
 linear_damp = 0.2
-angular_damp = 0.5
+angular_damp = 0.2
 script = ExtResource( 2 )
 
 [node name="Basecollision" type="CollisionShape2D" parent="."]
