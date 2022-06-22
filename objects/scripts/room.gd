@@ -19,7 +19,7 @@ var brakeforce = 1
 func _ready():
 	# [TEMP DELETE]
 	$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon
-	#$objects/Walls/LightOccluder2D.get_occluder_polygon().polygon = $objects/Walls.polygon
+	$objects/Wall/LightOccluder2D.occluder.set_polygon($objects/Wall/Polygon2D.polygon)
 
 func handle_movement(direction):
 		set_applied_torque(direction.x * 20000)		
@@ -64,7 +64,6 @@ func _on_baseshape_body_entered(body):
 		body.get_parent().remove_child(body)
 		self.add_child(body)
 		body.set_global_position(temppos)
-		body.camera.camera.rotating = true
 		
 		
 func _on_baseshape_body_exited(body):

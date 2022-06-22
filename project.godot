@@ -8,6 +8,52 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "State",
+"class": "BuildState",
+"language": "GDScript",
+"path": "res://systems/statemachine/player_states/build_state.gd"
+}, {
+"base": "State",
+"class": "ControlState",
+"language": "GDScript",
+"path": "res://systems/statemachine/player_states/control_state.gd"
+}, {
+"base": "State",
+"class": "IdleState",
+"language": "GDScript",
+"path": "res://systems/statemachine/player_states/idle_state.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PersistentState",
+"language": "GDScript",
+"path": "res://objects/characters/player/Player.gd"
+}, {
+"base": "Node2D",
+"class": "State",
+"language": "GDScript",
+"path": "res://systems/statemachine/state.gd"
+}, {
+"base": "Reference",
+"class": "StateFactory",
+"language": "GDScript",
+"path": "res://systems/statemachine/state_factory.gd"
+}, {
+"base": "State",
+"class": "WalkState",
+"language": "GDScript",
+"path": "res://systems/statemachine/player_states/walk_state.gd"
+} ]
+_global_script_class_icons={
+"BuildState": "",
+"ControlState": "",
+"IdleState": "",
+"PersistentState": "",
+"State": "",
+"StateFactory": "",
+"WalkState": ""
+}
+
 [application]
 
 config/name="ProjectNomad"
