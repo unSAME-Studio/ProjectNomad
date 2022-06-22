@@ -10,6 +10,10 @@ var min_move_speed = 0.005
 var direction = Vector2.ZERO
 
 
+func get_class(): 
+	return "WalkState"
+
+
 func _ready():
 	pass
 

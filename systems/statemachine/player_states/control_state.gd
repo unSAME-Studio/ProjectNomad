@@ -3,6 +3,10 @@ extends State
 class_name ControlState
 
 
+func get_class(): 
+	return "ControlState"
+
+
 func _ready():
 	persistent_state.velocity = Vector2.ZERO
 	

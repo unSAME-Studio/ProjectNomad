@@ -3,6 +3,10 @@ extends State
 class_name BuildState
 
 
+func get_class(): 
+	return "BuildState"
+
+
 func _ready():
 	pass
 

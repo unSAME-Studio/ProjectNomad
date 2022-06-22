@@ -14,6 +14,8 @@ class_name PersistentState
 var state
 var state_factory
 
+var last_state	#temp print var
+
 var velocity = Vector2.ZERO
 var onboard = false
 
@@ -43,6 +45,11 @@ func _input(event):
 
 
 func _process(delta):
+	if last_state != state.get_class():
+		last_state = state.get_class()
+		print(last_state)
+	
+	
 	# find the cloest controllables
 	if controllables.size() > 0:
 		selected_culpit = controllables.values()[0]

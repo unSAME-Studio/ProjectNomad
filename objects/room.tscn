@@ -5,7 +5,7 @@
 [ext_resource path="res://objects/controllable/Culpit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 211.63, 245.91 )
+extents = Vector2( 188.783, 245.91 )
 
 [sub_resource type="OccluderPolygon2D" id=2]
 
@@ -18,7 +18,7 @@ angular_damp = 0.5
 script = ExtResource( 2 )
 
 [node name="Basecollision" type="CollisionShape2D" parent="."]
-position = Vector2( 2.5, 4.5 )
+position = Vector2( 4.7825, 0 )
 shape = SubResource( 1 )
 
 [node name="Icon" type="Sprite" parent="."]
@@ -43,6 +43,7 @@ collision_mask = 29
 occluder = SubResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="objects/Wall"]
+color = Color( 0.560784, 0.52549, 0.454902, 1 )
 antialiased = true
 polygon = PoolVector2Array( -191, 239, -191, -260, 184, -259, 187, 234, 143, 240, 146, -230, -161, -230, -160, 234 )
 
@@ -51,7 +52,6 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="Basecollision2" type="CollisionShape2D" parent="baseshape"]
-position = Vector2( 2.5, 4.5 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="baseshape" to="." method="_on_baseshape_body_entered"]
