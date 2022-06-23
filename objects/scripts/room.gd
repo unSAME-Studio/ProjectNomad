@@ -42,6 +42,8 @@ func disable_control():
 	captain.base = null
 	captain = null
 	controlling = false
+	set_applied_force(Vector2(0,0))
+	set_applied_torque(0)		
 	
 
 func get_input():

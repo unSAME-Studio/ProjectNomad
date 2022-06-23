@@ -73,6 +73,8 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	state.update()
+	
 	if Input.is_action_pressed('up'):
 		state.move_up()
 	
