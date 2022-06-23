@@ -53,6 +53,7 @@ shadow_filter_smooth = 25.1
 [node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 theme = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control"]
@@ -78,6 +79,7 @@ margin_top = 12.0
 margin_right = 1920.0
 margin_bottom = 157.0
 rect_clip_content = false
+mouse_filter = 2
 theme = ExtResource( 5 )
 scroll_vertical_enabled = false
 
