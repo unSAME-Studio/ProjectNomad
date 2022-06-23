@@ -31,6 +31,7 @@ target_node_path = NodePath("../Player")
 scroll_ignore_camera_zoom = true
 
 [node name="Ground" type="ParallaxLayer" parent="Node2D/ParallaxBackground"]
+visible = false
 motion_scale = Vector2( 0.1, 0.1 )
 motion_mirroring = Vector2( 1920, 1080 )
 
@@ -59,3 +60,5 @@ motion_mirroring = Vector2( 1920, 1080 )
 modulate = Color( 1, 1, 1, 0.317647 )
 texture = ExtResource( 6 )
 centered = false
+
+[node name="Parallax" type="Node2D" parent="Node2D"]

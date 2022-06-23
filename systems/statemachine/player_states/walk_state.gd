@@ -31,7 +31,7 @@ func _physics_process(_delta):
 	
 	# else deal with the velocity
 	if direction.length() > 0:
-		persistent_state.velocity = lerp(persistent_state.velocity, direction.normalized() * speed, acceleration)
+		persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * speed, acceleration)
 	else:
 		persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
 	
