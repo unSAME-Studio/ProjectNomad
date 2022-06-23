@@ -15,6 +15,7 @@ var state
 var state_factory
 
 var last_state	#temp print var
+var building_mode = false #temp
 
 var velocity = Vector2.ZERO
 var onboard = false
@@ -42,10 +43,26 @@ func change_state(new_state_name):
 
 func _input(event):	
 	if Input.is_action_just_pressed("build_menu"):
-		$CanvasLayer/Control/VBoxContainer2/BuildMenu.set_visible(!$CanvasLayer/Control/VBoxContainer2/BuildMenu.is_visible())
+		building_mode = !building_mode
+		$CanvasLayer/Control/VBoxContainer2/BuildMenu.set_visible(building_mode)
 	
 	if Input.is_action_just_pressed("control"):
 		state.interact()
+
+
+func _unhandled_input(event):
+	if building_mode:
+		if event is InputEventMouseButton:
+			if event.get_button_index() == 1 and event.is_pressed():
+				
+				# check if in range
+				if get_global_mouse_position().distance_to(get_global_position()) < 300:
+					print(get_global_mouse_position())
+					
+					var c = load("res://objects/controllable/Culpit.tscn").instance()
+					get_parent().add_child(c)
+					c.set_global_position(get_global_mouse_position())
+					
 
 
 func _process(delta):
