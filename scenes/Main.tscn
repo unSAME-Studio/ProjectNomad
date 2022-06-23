@@ -62,3 +62,9 @@ texture = ExtResource( 6 )
 centered = false
 
 [node name="Parallax" type="Node2D" parent="Node2D"]
+z_index = -100
+
+[node name="Sprite" type="Sprite" parent="Node2D/Parallax"]
+modulate = Color( 0.239216, 0.286275, 0.337255, 1 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 5 )
