@@ -29,6 +29,5 @@ func move_right():
 
 
 func interact():
-	print("initialing idle c")
 	if persistent_state.selected_culpit:
 		change_state.call_func("control")

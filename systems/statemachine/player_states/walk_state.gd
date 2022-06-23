@@ -22,9 +22,9 @@ func check_state_change():
 	if controlling:
 		persistent_state.velocity = Vector2.ZERO
 		change_state.call_func("control")
-		
 	elif abs(persistent_state.velocity.length()) < min_move_speed:
 		change_state.call_func("idle")
+
 
 func _physics_process(_delta):
 	# change to idle state if velocity reach zero
@@ -36,6 +36,7 @@ func _physics_process(_delta):
 		persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
 	
 	direction = Vector2.ZERO
+	
 	check_state_change()
 
 

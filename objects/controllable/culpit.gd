@@ -15,8 +15,6 @@ func get_hint_text():
 func initial_control(body):
 	body.set_global_position($ControlPos.get_global_position())
 	base.enable_control(body)
-
-	#body.camera.camera.rotating = true
 	body.camera.camera.set_zoom(Vector2(2,2))
 	
 	print(name + " is being controller")
