@@ -13,14 +13,9 @@ func get_hint_text():
 
 
 func initial_control(body):
-	body.base = base
-	
-	# snap the target to position
 	body.set_global_position($ControlPos.get_global_position())
-	
-	base.controlling = true
-	base.user = body
-	
+	base.enable_control(body)
+
 	#body.camera.camera.rotating = true
 	body.camera.camera.set_zoom(Vector2(2,2))
 	
@@ -30,9 +25,5 @@ func initial_control(body):
 func stop_control(body):
 	print("stopping " + name + " from controlling")
 	
-	base.user = null
-	base.leave = false
-	
-	body.base = null
-	
+	base.disable_control()
 	body.camera.camera.set_zoom(Vector2(1,1))

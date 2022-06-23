@@ -7,9 +7,9 @@ export var speed = 200
 export var acceleration = 0.1
 
 var velocity = Vector2()
-var controlling = true
+var controlling = false
+var captain = null
 
-var user = null
 var leave = false
 
 var steerforce = 1
@@ -31,6 +31,18 @@ func handle_movement(direction):
 		if abs(currrangular) > 0.5:
 			set_angular_velocity(lerp(currrangular,0.5, 0.05))
 		#velocity = move_and_slide(velocity)
+		
+func enable_control(user):
+	#sleeping = false
+	controlling = true
+	captain = user
+	user.base = self
+
+func disable_control():
+	captain.base = null
+	captain = null
+	controlling = false
+	
 
 func get_input():
 	var input = Vector2()
@@ -46,13 +58,13 @@ func get_input():
 
 
 func _physics_process(delta):
-	pass
-			
-			
-func _integrate_forces(state):
 	if(controlling):
 		var direction = get_input()
 		handle_movement(direction)
+			
+			
+func _integrate_forces(state):
+	pass
 			
 		
 
@@ -73,4 +85,22 @@ func _on_baseshape_body_exited(body):
 		self.remove_child(body)
 		self.get_parent().add_child(body)
 		body.set_global_position(temppos)
+
 		
+func _o1n_baseshape_body_entered(body):
+	if(body.name == 'Player' and body.onboard == false):
+		body.onboard = true
+		leave = true
+		var temppos = body.get_global_position()
+		body.get_parent().remove_child(body)
+		self.add_child(body)
+		body.set_global_position(temppos)
+		
+		
+func _o1n_baseshape_body_exited(body):
+	if(body.name == 'Player' and body.get_parent() == self and leave == false):
+		var temppos = body.get_global_position()
+		body.onboard = false
+		self.remove_child(body)
+		self.get_parent().add_child(body)
+		body.set_global_position(temppos)

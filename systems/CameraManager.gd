@@ -9,7 +9,11 @@ onready var target = get_node(target_node_path)
 
 func _ready():
 	target.camera = self
+	#camera.rotating = true
 
+func align_camera():
+	#camera.rotation = target.get_global_rotation()
+	pass
 
 func _input(event):
 	# camera control
