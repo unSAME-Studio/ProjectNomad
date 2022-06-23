@@ -31,4 +31,7 @@ func _input(event):
 
 func _process(delta):
 	set_global_position(target.get_global_position())
-	set_global_rotation(target.get_global_rotation())
+	
+	# rotate camera toward player when not 
+	if Global.player.state.get_class() != "ControlState":
+		set_global_rotation(lerp(get_global_rotation(), target.get_global_rotation(), 0.2))

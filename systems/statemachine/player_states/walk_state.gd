@@ -11,6 +11,7 @@ var direction = Vector2.ZERO
 
 var controlling = false
 
+
 func get_class(): 
 	return "WalkState"
 
@@ -18,24 +19,27 @@ func get_class():
 func _ready():
 	pass
 
+
 func check_state_change():
 	if controlling:
 		persistent_state.velocity = Vector2.ZERO
 		change_state.call_func("control")
+		
+	# change to idle state if velocity reach zero
 	elif abs(persistent_state.velocity.length()) < min_move_speed:
 		change_state.call_func("idle")
 
 
 func _physics_process(_delta):
-	# change to idle state if velocity reach zero
 	
 	# else deal with the velocity
 	if direction.length() > 0:
-		persistent_state.velocity = lerp(persistent_state.velocity, direction.normalized() * speed, acceleration)
+		persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * speed, acceleration)
 	else:
 		persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
 	
 	direction = Vector2.ZERO
+	persistent_state.move_and_slide(persistent_state.velocity)
 	
 	check_state_change()
 

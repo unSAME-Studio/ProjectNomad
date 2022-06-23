@@ -23,6 +23,9 @@ var camera
 
 
 func _ready():
+	Global.player = self
+	
+	# set up state machine
 	state_factory = StateFactory.new()
 	change_state("idle")
 
@@ -63,8 +66,8 @@ func _process(delta):
 	
 	# set hint text 
 	if selected_culpit:
-		$CanvasLayer/Control/VBoxContainer/Controllable.set_text(selected_culpit.get_hint_text())
 		$CanvasLayer/Control/VBoxContainer/Controllable.set_position(selected_culpit.get_global_transform_with_canvas().get_origin())
+		$CanvasLayer/Control/VBoxContainer/Controllable.set_text(selected_culpit.get_hint_text())
 	else:
 		$CanvasLayer/Control/VBoxContainer/Controllable.set_text("")
 

@@ -10,11 +10,6 @@ var persistent_state
 var velocity = Vector2.ZERO
 
 
-# Writing _delta instead of delta here prevents the unused variable warning.
-func _physics_process(_delta):
-	persistent_state.move_and_slide(persistent_state.velocity)
-	
-
 func setup(change_state, animated_sprite, persistent_state):
 	self.change_state = change_state
 	self.animated_sprite = animated_sprite

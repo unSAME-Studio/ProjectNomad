@@ -12,6 +12,10 @@ func _ready():
 	pass
 
 
+func _physics_process(delta):
+	persistent_state.move_and_slide(persistent_state.velocity)
+
+
 func move_up():
 	change_state.call_func("walk")
 
