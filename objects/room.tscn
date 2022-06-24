@@ -29,9 +29,6 @@ polygon = PoolVector2Array( -185, -241, 169, -244, 170, 236, -182, 238 )
 [node name="Culpit" parent="objects" instance=ExtResource( 3 )]
 position = Vector2( 0, -85 )
 
-[node name="Culpit2" parent="objects" instance=ExtResource( 3 )]
-position = Vector2( -32, 91 )
-
 [node name="Wall" type="StaticBody2D" parent="objects"]
 collision_mask = 29
 

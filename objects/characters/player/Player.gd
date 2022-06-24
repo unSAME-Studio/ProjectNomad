@@ -32,7 +32,6 @@ func _ready():
 
 
 func change_state(new_state_name):
-	print(new_state_name)
 	if state != null:
 		state.queue_free()
 	state = state_factory.get_state(new_state_name).new()
@@ -54,14 +53,16 @@ func _unhandled_input(event):
 	if building_mode:
 		if event is InputEventMouseButton:
 			if event.get_button_index() == 1 and event.is_pressed():
-				
+	
 				# check if in range
 				if get_global_mouse_position().distance_to(get_global_position()) < 300:
 					print(get_global_mouse_position())
-					
+	
 					var c = load("res://objects/controllable/Culpit.tscn").instance()
 					get_parent().add_child(c)
 					c.set_global_position(get_global_mouse_position())
+					c.base = base
+					
 					
 
 
