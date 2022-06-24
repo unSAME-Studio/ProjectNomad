@@ -36,12 +36,13 @@ func enable_control(user):
 	#sleeping = false
 	controlling = true
 	captain = user
-	user.base = self
+
 
 func disable_control():
-	captain.base = null
+
 	captain = null
 	controlling = false
+	leave = false
 	set_applied_force(Vector2(0,0))
 	set_applied_torque(0)		
 	
@@ -72,6 +73,7 @@ func _integrate_forces(state):
 
 func _on_baseshape_body_entered(body):
 	if(body.name == 'Player' and body.onboard == false):
+		body.base = self
 		body.onboard = true
 		leave = true
 		var temppos = body.get_global_position()
@@ -82,6 +84,7 @@ func _on_baseshape_body_entered(body):
 		
 func _on_baseshape_body_exited(body):
 	if(body.name == 'Player' and body.get_parent() == self and leave == false):
+		body.base = null
 		var temppos = body.get_global_position()
 		body.onboard = false
 		self.remove_child(body)
