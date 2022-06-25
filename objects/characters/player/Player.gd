@@ -62,7 +62,14 @@ func _unhandled_input(event):
 					get_parent().add_child(c)
 					c.set_global_position(get_global_mouse_position())
 					c.base = base
-					
+	
+				# check if in range
+			elif event.get_button_index() == 2 and event.is_pressed():
+				if get_global_mouse_position().distance_to(get_global_position()) < 300:
+					var c = load("res://objects/buildings/box.tscn").instance()
+					get_parent().add_child(c)
+					c.set_global_position(get_global_mouse_position())
+
 					
 
 
