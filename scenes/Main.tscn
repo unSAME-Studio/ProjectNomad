@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/polygonshape.gd" type="Script" id=2]
 [ext_resource path="res://objects/room.tscn" type="PackedScene" id=3]
 [ext_resource path="res://systems/CameraManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://arts/enviroment/BG.png" type="Texture" id=5]
 [ext_resource path="res://arts/enviroment/cloud.png" type="Texture" id=6]
+[ext_resource path="res://objects/buildings/box.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node"]
 
@@ -69,3 +71,23 @@ z_index = -100
 modulate = Color( 0.239216, 0.286275, 0.337255, 1 )
 scale = Vector2( 10, 10 )
 texture = ExtResource( 5 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Node2D"]
+position = Vector2( -385, -1698 )
+collision_layer = 2
+collision_mask = 2
+mode = 1
+mass = 30.0
+script = ExtResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D/RigidBody2D"]
+polygon = PoolVector2Array( -239, -302, -657, 102, 6.99997, 602, 333, 114, 763, -190, 135, -490 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/RigidBody2D"]
+
+[node name="Box" parent="Node2D/RigidBody2D" instance=ExtResource( 7 )]
+position = Vector2( 275, -199 )
+rotation = 0.625962
+
+[node name="Box2" parent="Node2D/RigidBody2D" instance=ExtResource( 7 )]
+position = Vector2( -218, 6.99988 )
