@@ -21,7 +21,7 @@ position = Vector2( 4.7825, 0 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color( 0.588235, 0.517647, 0.352941, 1 )
+color = Color( 0.584314, 0.639216, 0.74902, 1 )
 polygon = PoolVector2Array( -185, -241, 169, -244, 170, 236, -182, 238 )
 
 [node name="objects" type="Node2D" parent="."]
@@ -38,7 +38,7 @@ collision_mask = 29
 occluder = SubResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="objects/Wall"]
-color = Color( 0.333333, 0.298039, 0.227451, 1 )
+color = Color( 0.392157, 0.431373, 0.54902, 1 )
 antialiased = true
 polygon = PoolVector2Array( -191, 239, -191, -260, 184, -259, 187, 234, 143, 240, 146, -230, -161, -230, -160, 234 )
 

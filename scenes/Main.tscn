@@ -85,9 +85,11 @@ polygon = PoolVector2Array( -239, -302, -657, 102, 6.99997, 602, 333, 114, 763, 
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/RigidBody2D"]
 
-[node name="Box" parent="Node2D/RigidBody2D" instance=ExtResource( 7 )]
+[node name="objects" type="Node2D" parent="Node2D/RigidBody2D"]
+
+[node name="Box" parent="Node2D/RigidBody2D/objects" instance=ExtResource( 7 )]
 position = Vector2( 275, -199 )
 rotation = 0.625962
 
-[node name="Box2" parent="Node2D/RigidBody2D" instance=ExtResource( 7 )]
+[node name="Box2" parent="Node2D/RigidBody2D/objects" instance=ExtResource( 7 )]
 position = Vector2( -218, 6.99988 )

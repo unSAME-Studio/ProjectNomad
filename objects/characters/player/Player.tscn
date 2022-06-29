@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
 [ext_resource path="res://objects/ui/BuildCard.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/characters/player/Player.gd" type="Script" id=4]
@@ -15,7 +15,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 31.0161
+radius = 32.0624
 
 [sub_resource type="ButtonGroup" id=3]
 
@@ -34,6 +34,7 @@ collision_mask = 9
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
 
@@ -95,19 +96,18 @@ group = SubResource( 3 )
 margin_left = 108.0
 margin_right = 212.0
 group = SubResource( 4 )
-build_type = 3
 
 [node name="BuildCard3" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/HBoxContainer" instance=ExtResource( 3 )]
 margin_left = 216.0
 margin_right = 320.0
 group = SubResource( 5 )
-build_type = 1
+build_type = "locker"
 
 [node name="BuildCard4" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/HBoxContainer" instance=ExtResource( 3 )]
 margin_left = 324.0
 margin_right = 428.0
 group = SubResource( 6 )
-build_type = 2
+build_type = "locker"
 
 [node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
 margin_top = 161.0
