@@ -12,7 +12,7 @@ func _ready():
 
 
 func _on_BuildCard_mouse_entered():
-	set_scale(Vector2(1.1, 1.1))
+	set_scale(Vector2(1, 1.1))
 	set_position(Vector2(get_position().x, -20))
 
 
@@ -28,5 +28,5 @@ func _on_BuildCard_pressed():
 	var p = prebuild.instance()
 	p.card = self
 	p.type = build_type
-	Global.player.get_parent().add_child(p)
+	get_tree().get_current_scene().get_node("Node2D").add_child(p)
 	
