@@ -113,15 +113,8 @@ func add_build_card(type):
 # edit culpit
 func edit_culpit(c):
 	# if click on different culpit
-	if $CanvasLayer/Control/CulpitMenu.culpit != c:		
-		$CanvasLayer/Control/CulpitMenu.disconnect_culpit()
-		
-		$CanvasLayer/Control/CulpitMenu.culpit = c
-		
-		$CanvasLayer/Control/CulpitMenu/MarginContainer/HBoxContainer/Move.connect("pressed", c, "_on_moved")
-		$CanvasLayer/Control/CulpitMenu/MarginContainer/HBoxContainer/Destroy.connect("pressed", c, "_on_destroy")
-		
-		$CanvasLayer/Control/CulpitMenu.show()
+	if $CanvasLayer/Control/CulpitMenu.culpit != c:
+		$CanvasLayer/Control/CulpitMenu.connect_culpit(c)
 	
 	# else hide
 	else:

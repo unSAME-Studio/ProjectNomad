@@ -19,6 +19,17 @@ func _process(delta):
 		
 
 
+func connect_culpit(c):
+	disconnect_culpit()
+	
+	culpit = c
+	
+	$MarginContainer/HBoxContainer/Move.connect("pressed", culpit, "_on_moved")
+	$MarginContainer/HBoxContainer/Destroy.connect("pressed", culpit, "_on_destroy")
+	
+	show()
+
+
 func disconnect_culpit():
 	$MarginContainer/HBoxContainer/Move.disconnect("pressed", culpit, "_on_moved")
 	$MarginContainer/HBoxContainer/Destroy.disconnect("pressed", culpit, "_on_destroy")
