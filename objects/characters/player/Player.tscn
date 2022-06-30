@@ -111,7 +111,7 @@ custom_constants/margin_left = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer"]
 margin_left = 100.0
-margin_right = 528.0
+margin_right = 744.0
 margin_bottom = 145.0
 theme = ExtResource( 5 )
 alignment = 1
@@ -135,6 +135,30 @@ margin_left = 324.0
 margin_right = 428.0
 group = SubResource( 6 )
 build_type = "locker"
+
+[node name="BuildCard5" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 324.0
+margin_right = 428.0
+group = SubResource( 6 )
+build_type = "light"
+
+[node name="BuildCard7" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 324.0
+margin_right = 428.0
+group = SubResource( 6 )
+build_type = "light"
+
+[node name="BuildCard8" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 324.0
+margin_right = 428.0
+group = SubResource( 6 )
+build_type = "light"
+
+[node name="BuildCard6" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 324.0
+margin_right = 428.0
+group = SubResource( 6 )
+build_type = "printer"
 
 [node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
 margin_top = 161.0
