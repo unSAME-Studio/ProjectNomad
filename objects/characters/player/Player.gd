@@ -22,6 +22,8 @@ var onboard = false
 
 var camera
 
+var build_card = preload("res://objects/ui/BuildCard.tscn")
+
 
 func _ready():
 	Global.player = self
@@ -98,3 +100,11 @@ func _on_ControllableDetection_body_entered(body):
 
 func _on_ControllableDetection_body_exited(body):
 	controllables.erase(body.name)
+
+
+# add cards
+func add_build_card(type):
+	# add a random card to player
+	var c = build_card.instance()
+	c.build_type = type
+	$CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer.add_child(c)

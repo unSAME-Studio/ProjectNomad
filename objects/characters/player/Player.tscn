@@ -87,23 +87,23 @@ margin_top = -193.0
 alignment = 2
 
 [node name="BuildMenu" type="ScrollContainer" parent="CanvasLayer/Control/VBoxContainer2"]
-visible = false
 margin_top = 12.0
 margin_right = 1920.0
 margin_bottom = 157.0
 rect_clip_content = false
-mouse_filter = 2
 theme = ExtResource( 5 )
+follow_focus = true
 scroll_vertical_enabled = false
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu"]
-margin_left = 960.0
-margin_right = 960.0
+margin_left = 430.0
+margin_right = 1490.0
+margin_bottom = 145.0
 size_flags_horizontal = 6
 theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer"]
-margin_right = 628.0
+margin_right = 1060.0
 margin_bottom = 145.0
 custom_constants/margin_right = 100
 custom_constants/margin_left = 100
@@ -136,26 +136,26 @@ group = SubResource( 6 )
 build_type = "locker"
 
 [node name="BuildCard5" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 324.0
-margin_right = 428.0
+margin_left = 432.0
+margin_right = 536.0
 group = SubResource( 6 )
 build_type = "light"
 
 [node name="BuildCard7" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 324.0
-margin_right = 428.0
+margin_left = 540.0
+margin_right = 644.0
 group = SubResource( 6 )
 build_type = "light"
 
 [node name="BuildCard8" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 324.0
-margin_right = 428.0
+margin_left = 648.0
+margin_right = 752.0
 group = SubResource( 6 )
 build_type = "light"
 
 [node name="BuildCard6" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 324.0
-margin_right = 428.0
+margin_left = 756.0
+margin_right = 860.0
 group = SubResource( 6 )
 build_type = "printer"
 

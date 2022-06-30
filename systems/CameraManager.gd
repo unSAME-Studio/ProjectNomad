@@ -15,7 +15,7 @@ func align_camera():
 	#camera.rotation = target.get_global_rotation()
 	pass
 
-func _input(event):
+func _unhandled_input(event):
 	# camera control
 	if Input.is_action_just_pressed("zoom_in"):
 		var new_zoom = clamp(camera.get_zoom().x * 0.9, 0.5, 3)
