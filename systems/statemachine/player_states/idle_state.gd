@@ -8,8 +8,7 @@ func get_class():
 
 
 func _ready():
-	#animated_sprite.play("idle")
-	pass
+	animated_sprite.play("idle")
 
 
 func _physics_process(delta):

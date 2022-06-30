@@ -8,11 +8,17 @@ func get_class():
 
 
 func _ready():
+	animated_sprite.play("idle")
+	
 	persistent_state.velocity = Vector2.ZERO
 	
 	# connect the player
 	persistent_state.culpit = persistent_state.selected_culpit
 	persistent_state.culpit.initial_control(persistent_state)
+	
+	# if culpit is action type, disconnect immediately
+	if persistent_state.selected_culpit.action == true:
+		interact()
 
 
 func move_up():
