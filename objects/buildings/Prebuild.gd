@@ -74,8 +74,10 @@ func _unhandled_input(event):
 
 func finish_build():
 	var c = load("res://objects/controllable/Culpit.tscn").instance()
+	c.script = load("res://objects/controllable/%s_culpit.gd" % type)
 	c.base = base
 	c.type = type
+	print("add script" + "res://objects/controllable/%s_culpit.gd" % type)
 	
 	base.get_node("objects").add_child(c)
 	c.set_global_position(get_global_mouse_position())

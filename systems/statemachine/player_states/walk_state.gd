@@ -17,7 +17,7 @@ func get_class():
 
 
 func _ready():
-	pass
+	animated_sprite.play("walk")
 
 
 func check_state_change():
@@ -31,6 +31,11 @@ func check_state_change():
 
 
 func _physics_process(_delta):
+	# change animation sprite speed
+	animated_sprite.set_speed_scale(persistent_state.velocity.length() / speed)
+	
+	# change eyes position
+	animated_sprite.get_node("Eyes").set_position(lerp(animated_sprite.get_node("Eyes").get_position(), direction * 15, 0.2))
 	
 	# else deal with the velocity
 	if direction.length() > 0:
