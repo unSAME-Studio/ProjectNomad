@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://objects/scripts/room.gd" type="Script" id=2]
+[ext_resource path="res://objects/scripts/ship.gd" type="Script" id=2]
 [ext_resource path="res://objects/controllable/Culpit.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -8,7 +8,7 @@ extents = Vector2( 188.783, 245.91 )
 
 [sub_resource type="OccluderPolygon2D" id=2]
 
-[node name="room" type="RigidBody2D"]
+[node name="Base" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 0
 input_pickable = true
@@ -48,6 +48,8 @@ collision_mask = 4
 
 [node name="Basecollision2" type="CollisionShape2D" parent="baseshape"]
 shape = SubResource( 1 )
+
+[node name="rooms" type="Node" parent="."]
 
 [connection signal="body_entered" from="baseshape" to="." method="_on_baseshape_body_entered"]
 [connection signal="body_exited" from="baseshape" to="." method="_on_baseshape_body_exited"]
