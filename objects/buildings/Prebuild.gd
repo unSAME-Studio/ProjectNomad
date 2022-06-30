@@ -12,7 +12,7 @@ var base = null
 
 
 func _ready():
-	$Sprite.set_texture(load(Global.culpits_data[type]["icon"]))
+	$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
 
 
 func check_build_condition() -> bool:
@@ -67,15 +67,13 @@ func _unhandled_input(event):
 		
 		# right click cancel
 		elif event.get_button_index() == 2 and event.is_pressed():
-			card.set_disabled(false)
-			card.set_modulate(Color.white)
+			card.canceled_build()
 			queue_free()
 
 
 func finish_build():
 	var c = load("res://objects/controllable/Culpit.tscn").instance()
 	c.script = load("res://objects/controllable/%s_culpit.gd" % type)
-	c.base = base
 	c.type = type
 	print("add script" + "res://objects/controllable/%s_culpit.gd" % type)
 	

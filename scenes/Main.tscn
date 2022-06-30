@@ -18,7 +18,7 @@ mouse_filter = 2
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
-color = Color( 0.647059, 0.647059, 0.647059, 1 )
+color = Color( 0.231373, 0.231373, 0.231373, 1 )
 
 [node name="ship" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 509, -25 )
