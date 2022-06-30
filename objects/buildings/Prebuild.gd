@@ -17,7 +17,7 @@ func _ready():
 
 func check_build_condition() -> bool:
 	if get_global_position().distance_to(Global.player.get_global_position()) > 300:
-		$Hint.set_text("Too far!")
+		Global.player.set_prebuild_hint("Too far!", self)
 		return false
 	
 	var on_floor = false
@@ -25,7 +25,7 @@ func check_build_condition() -> bool:
 	# overlapping check
 	for i in get_overlapping_bodies():
 		if i.get_collision_layer() in [1, 8]:
-			$Hint.set_text("Blocked!")
+			Global.player.set_prebuild_hint("Blocked!", self)
 			return false
 		
 		elif on_floor == false and i.get_collision_layer() == 2:
@@ -34,10 +34,10 @@ func check_build_condition() -> bool:
 	
 	# floor check
 	if not on_floor:
-		$Hint.set_text("Not on floor!")
+		Global.player.set_prebuild_hint("Not on floor!", self)
 		return false
 	
-	$Hint.set_text("")
+	Global.player.set_prebuild_hint("", self)
 	return true
 
 
@@ -71,7 +71,7 @@ func _unhandled_input(event):
 			queue_free()
 	
 	if Input.is_action_just_pressed("rotate"):
-		print("R")
+		rotate(PI / 2)
 
 
 func finish_build():
@@ -82,6 +82,8 @@ func finish_build():
 	
 	base.get_node("objects").add_child(c)
 	c.set_global_position(get_global_mouse_position())
+	
+	c.set_rotation(get_rotation())
 	
 	card.queue_free()
 	queue_free()

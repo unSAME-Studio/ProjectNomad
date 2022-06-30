@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://arts/ui/btn_move.png" type="Texture" id=9]
 [ext_resource path="res://arts/ui/btn_destroy.png" type="Texture" id=10]
 [ext_resource path="res://objects/ui/CulpitMenu.gd" type="Script" id=11]
+[ext_resource path="res://objects/ui/PrebuildHint.gd" type="Script" id=12]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -49,7 +50,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -219,6 +219,18 @@ theme = ExtResource( 5 )
 text = "Destroy"
 icon = ExtResource( 10 )
 expand_icon = true
+
+[node name="PrebuildHint" type="Label" parent="CanvasLayer/Control"]
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 1, 0.254902, 0.254902, 1 )
+text = "Too Far"
+align = 1
+valign = 1
+script = ExtResource( 12 )
 
 [node name="ControllableDetection" type="Area2D" parent="."]
 collision_layer = 0

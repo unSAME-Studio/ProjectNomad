@@ -34,4 +34,4 @@ func _process(delta):
 	
 	# rotate camera toward player when not 
 	if Global.player.state.get_class() != "ControlState":
-		set_global_rotation(lerp(get_global_rotation(), target.get_global_rotation(), 0.2))
+		set_global_rotation(lerp_angle(get_global_rotation(), target.get_global_rotation(), 10 * delta))

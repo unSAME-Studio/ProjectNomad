@@ -69,7 +69,10 @@ func _process(delta):
 	
 	# set hint text 
 	if selected_culpit:
-		$CanvasLayer/Control/CulpitHint.set_position(selected_culpit.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/CulpitHint.get_size() / 2)
+		var target_pos = selected_culpit.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/CulpitHint.get_size() / 2
+		target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/CulpitHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/CulpitHint.get_size().y))
+		$CanvasLayer/Control/CulpitHint.set_position($CanvasLayer/Control/CulpitHint.get_position().linear_interpolate(target_pos, 20 * delta))
+		
 		$CanvasLayer/Control/CulpitHint/Label.set_text(selected_culpit.get_hint_text())
 	else:
 		$CanvasLayer/Control/CulpitHint/Label.set_text("")
@@ -100,6 +103,16 @@ func _on_ControllableDetection_body_entered(body):
 
 func _on_ControllableDetection_body_exited(body):
 	controllables.erase(body.name)
+
+
+func set_prebuild_hint(text, prebuild):
+	if text == "":
+		$CanvasLayer/Control/PrebuildHint.prebuild = null
+		$CanvasLayer/Control/PrebuildHint.hide()
+	else:
+		$CanvasLayer/Control/PrebuildHint.prebuild = prebuild
+		$CanvasLayer/Control/PrebuildHint.set_text(text)
+		$CanvasLayer/Control/PrebuildHint.show()
 
 
 # add cards
