@@ -15,7 +15,7 @@ func align_camera():
 	#camera.rotation = target.get_global_rotation()
 	pass
 
-func _input(event):
+func _unhandled_input(event):
 	# camera control
 	if Input.is_action_just_pressed("zoom_in"):
 		var new_zoom = clamp(camera.get_zoom().x * 0.9, 0.5, 3)
@@ -34,4 +34,4 @@ func _process(delta):
 	
 	# rotate camera toward player when not 
 	if Global.player.state.get_class() != "ControlState":
-		set_global_rotation(lerp(get_global_rotation(), target.get_global_rotation(), 0.2))
+		set_global_rotation(lerp_angle(get_global_rotation(), target.get_global_rotation(), 10 * delta))

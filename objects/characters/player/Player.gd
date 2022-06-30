@@ -22,6 +22,8 @@ var onboard = false
 
 var camera
 
+var build_card = preload("res://objects/ui/BuildCard.tscn")
+
 
 func _ready():
 	Global.player = self
@@ -67,10 +69,13 @@ func _process(delta):
 	
 	# set hint text 
 	if selected_culpit:
-		$CanvasLayer/Control/VBoxContainer/Controllable.set_position(selected_culpit.get_global_transform_with_canvas().get_origin())
-		$CanvasLayer/Control/VBoxContainer/Controllable.set_text(selected_culpit.get_hint_text())
+		var target_pos = selected_culpit.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/CulpitHint.get_size() / 2
+		target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/CulpitHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/CulpitHint.get_size().y))
+		$CanvasLayer/Control/CulpitHint.set_position($CanvasLayer/Control/CulpitHint.get_position().linear_interpolate(target_pos, 20 * delta))
+		
+		$CanvasLayer/Control/CulpitHint/Label.set_text(selected_culpit.get_hint_text())
 	else:
-		$CanvasLayer/Control/VBoxContainer/Controllable.set_text("")
+		$CanvasLayer/Control/CulpitHint/Label.set_text("")
 
 
 func _physics_process(delta):
@@ -98,3 +103,32 @@ func _on_ControllableDetection_body_entered(body):
 
 func _on_ControllableDetection_body_exited(body):
 	controllables.erase(body.name)
+
+
+func set_prebuild_hint(text, prebuild):
+	if text == "":
+		$CanvasLayer/Control/PrebuildHint.prebuild = null
+		$CanvasLayer/Control/PrebuildHint.hide()
+	else:
+		$CanvasLayer/Control/PrebuildHint.prebuild = prebuild
+		$CanvasLayer/Control/PrebuildHint.set_text(text)
+		$CanvasLayer/Control/PrebuildHint.show()
+
+
+# add cards
+func add_build_card(type):
+	# add a random card to player
+	var c = build_card.instance()
+	c.build_type = type
+	$CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer.add_child(c)
+
+
+# edit culpit
+func edit_culpit(c):
+	# if click on different culpit
+	if $CanvasLayer/Control/CulpitMenu.culpit != c:
+		$CanvasLayer/Control/CulpitMenu.connect_culpit(c)
+	
+	# else hide
+	else:
+		$CanvasLayer/Control/CulpitMenu.close()

@@ -17,10 +17,6 @@ func _ready():
 	base = get_parent().get_parent()
 	
 	connect("input_event", self, "_on_Culpit_input_event")
-	connect("mouse_exited", self, "_on_Culpit_mouse_exited")
-	
-	$Control/PanelContainer/MarginContainer/HBoxContainer/Move.connect("pressed", self, "_on_moved")
-	$Control/PanelContainer/MarginContainer/HBoxContainer/Destroy.connect("pressed", self, "_on_destroy")
 
 
 func get_hint_text():
@@ -40,19 +36,16 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 		if event.get_button_index() == 1 and event.is_pressed():
 			print("player clicked on %s" % type)
 			
-			$Control.set_visible(!$Control.is_visible())
-
-
-func _on_Culpit_mouse_exited():
-	return 
-	$Control.set_visible(false)
+			Global.player.edit_culpit(self)
 
 
 func _on_moved():
 	print(type + "is being moved")
 	
 	modulate.a = 0.5
-	$Control.set_visible(false)
+	Global.player.edit_culpit(self)
+	
+	$CollisionShape2D.set_deferred("disabled", true)
 	
 	var p = prebuild.instance()
 	p.card = self
@@ -62,7 +55,9 @@ func _on_moved():
 
 func canceled_build():
 	modulate.a = 1
-	$Control.set_visible(true)
+	Global.player.edit_culpit(self)
+	
+	$CollisionShape2D.set_deferred("disabled", false)
 
 
 func _on_destroy():

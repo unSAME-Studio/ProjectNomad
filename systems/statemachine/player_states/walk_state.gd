@@ -30,12 +30,12 @@ func check_state_change():
 		change_state.call_func("idle")
 
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	# change animation sprite speed
 	animated_sprite.set_speed_scale(persistent_state.velocity.length() / speed)
 	
 	# change eyes position
-	animated_sprite.get_node("Eyes").set_position(lerp(animated_sprite.get_node("Eyes").get_position(), direction * 15, 0.2))
+	animated_sprite.get_node("Eyes").set_position(lerp(animated_sprite.get_node("Eyes").get_position(), direction * 15, 10 * delta))
 	
 	# else deal with the velocity
 	if direction.length() > 0:
