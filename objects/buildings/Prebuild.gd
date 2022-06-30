@@ -69,6 +69,9 @@ func _unhandled_input(event):
 		elif event.get_button_index() == 2 and event.is_pressed():
 			card.canceled_build()
 			queue_free()
+	
+	if Input.is_action_just_pressed("rotate"):
+		print("R")
 
 
 func finish_build():
