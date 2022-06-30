@@ -13,12 +13,13 @@ func _process(delta):
 
 
 func initial_control(body):
-	controlling = true
 	
 	# snap body to predefined point
 	body.set_global_position($ControlPos.get_global_position())
 	
-	base.enable_control(body)
+	if base.has_method("enable_control"):
+		base.enable_control(body)
+		controlling = true
 	
 	body.camera.camera.set_zoom(Vector2(2,2))
 	
@@ -28,7 +29,8 @@ func initial_control(body):
 func stop_control(body):
 	print("stopping " + name + " from controlling")
 	
-	base.disable_control()
+	if base.has_method("enable_control"):
+		base.disable_control()
 	
 	body.camera.camera.set_zoom(Vector2(1,1))
 	
