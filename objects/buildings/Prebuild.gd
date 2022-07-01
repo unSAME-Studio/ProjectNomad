@@ -60,9 +60,9 @@ func check_build_condition() -> bool:
 	
 	# overlapping check
 	for i in get_overlapping_bodies():
-		#print(i.get_collision_layer())
+		print(i.get_collision_layer())
 		if i.get_collision_layer() in [1, 8]:
-			
+			#print(i.get_collision_layer())
 			Global.player.set_prebuild_hint("Blocked!", self)
 			return false
 		
@@ -81,19 +81,20 @@ func check_build_condition() -> bool:
 
 func _process(delta):
 	# check if in build_point range
-	for i in build_points:
-		var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
-		if dist < 30:
-			if target == i:
-				point_mode = true
-			elif target != i:
-				if target == null:
-					target = i
+	if build_points:
+		for i in build_points:
+			var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
+			if dist < 30:
+				if target == i:
 					point_mode = true
-				elif dist < get_global_mouse_position().distance_to(target.get_global_position()):
-					target = i
-					point_mode = true
-	
+				elif target != i:
+					if target == null:
+						target = i
+						point_mode = true
+					elif dist < get_global_mouse_position().distance_to(target.get_global_position()):
+						target = i
+						point_mode = true
+		
 	if not point_mode:
 		target = null
 		hovering = true
@@ -148,7 +149,6 @@ func _unhandled_input(event):
 			if (not result.empty()):
 				room = result[0].collider
 				base = room.get_build()
-
 				if can_build:
 					hovering = false
 					finish_build(base)
@@ -158,6 +158,9 @@ func _unhandled_input(event):
 					base = room.get_build()
 					finish_build(room)
 					target.finish_build()
+			else:
+				hovering = false
+				finish_build(base)
 		
 		# right click cancel
 		elif event.get_button_index() == 2 and event.is_pressed():

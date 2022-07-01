@@ -13,8 +13,6 @@ func _ready():
 		set_modulate(Color('48ffffff'))
 
 func active(_base):
-	$structures/Wall/CollisionPolygon2D.polygon = $structures/Wall/Polygon2D.polygon
-	$structures/Wall/LightOccluder2D.occluder.set_polygon($structures/Wall/Polygon2D.polygon)
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
 	set_modulate(Color('ffffffff'))
 	base = _base
