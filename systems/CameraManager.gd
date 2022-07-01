@@ -35,3 +35,10 @@ func _process(delta):
 	# rotate camera toward player when not 
 	if Global.player.state.get_class() != "ControlState":
 		set_global_rotation(lerp_angle(get_global_rotation(), target.get_global_rotation(), 10 * delta))
+	
+	# move the parallax layers
+	for i in $Parallax/Control.get_children():
+		i.get_material().set_shader_param("offset", $Camera2D.get_camera_position())
+		i.get_material().set_shader_param("rot_offset", get_global_rotation())
+		i.get_material().set_shader_param("zoom", $Camera2D.get_zoom().x)
+		#print($Camera2D.get_camera_position())

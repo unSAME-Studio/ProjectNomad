@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud.png-1562c900b9d9b5c132cc7568c3d9232b.stex"
+path="res://.import/island.png-265f2fcd2b0b66e9650133790ed97e88.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/enviroment/cloud.png"
-dest_files=[ "res://.import/cloud.png-1562c900b9d9b5c132cc7568c3d9232b.stex" ]
+source_file="res://arts/enviroment/island.png"
+dest_files=[ "res://.import/island.png-265f2fcd2b0b66e9650133790ed97e88.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
