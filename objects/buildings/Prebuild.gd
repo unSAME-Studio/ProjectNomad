@@ -2,6 +2,7 @@ extends Area2D
 
 const INT_MAX = 2147483647
 const SNAP_THRESHOLD = 30
+const SNAP_RANGE = 200
 
 signal built
 
@@ -87,8 +88,9 @@ func _process(delta):
 		var x_edge = []
 		var y_edge = []
 		for i in get_tree().get_nodes_in_group("culpit"):
-			x_edge.append(i.get_global_position().x)
-			y_edge.append(i.get_global_position().y)
+			if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
+				x_edge.append(i.get_global_position().x)
+				y_edge.append(i.get_global_position().y)
 		
 		var target_snap = get_global_mouse_position()
 		var target_x = find_closest(target_snap.x, x_edge)
