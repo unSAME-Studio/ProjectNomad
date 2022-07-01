@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "StaticBody2D",
 "class": "Culpit",
 "language": "GDScript",
-"path": "res://objects/controllable/culpit.gd"
+"path": "res://objects/culpits/culpit.gd"
 }, {
 "base": "State",
 "class": "IdleState",

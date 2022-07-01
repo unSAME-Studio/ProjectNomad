@@ -115,6 +115,14 @@ func enter_building_mode() -> bool:
 	return false
 
 
+func end_building_mode() -> bool:
+	if building_mode:
+		building_mode = false
+		return true
+	
+	return false
+
+
 func set_prebuild_hint(text, prebuild):
 	if text == "":
 		$CanvasLayer/Control/PrebuildHint.prebuild = null
