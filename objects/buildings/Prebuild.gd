@@ -80,6 +80,7 @@ func check_build_condition() -> bool:
 
 func _process(delta):
 	#check if in build_point range
+	
 	for i in build_points:
 		var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
 		if dist < 30:
@@ -147,7 +148,10 @@ func _unhandled_input(event):
 			var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
 			if (not result.empty()):
 				room = result[0].collider
-				base = room.get_build()
+				if room.has_method('get_build'):
+					base = room.get_build()
+				else:
+					base = null
 
 				if can_build:
 					hovering = false
