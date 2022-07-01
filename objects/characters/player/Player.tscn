@@ -50,6 +50,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -184,26 +185,26 @@ theme = ExtResource( 5 )
 
 [node name="CulpitMenu" type="PanelContainer" parent="CanvasLayer/Control"]
 visible = false
-margin_right = 340.0
-margin_bottom = 53.0
+margin_right = 310.0
+margin_bottom = 45.0
 theme = ExtResource( 5 )
 script = ExtResource( 11 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CulpitMenu"]
-margin_right = 340.0
-margin_bottom = 53.0
+margin_right = 310.0
+margin_bottom = 45.0
 custom_constants/margin_right = 30
 custom_constants/margin_left = 30
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CulpitMenu/MarginContainer"]
 margin_left = 30.0
-margin_right = 310.0
-margin_bottom = 53.0
+margin_right = 280.0
+margin_bottom = 45.0
 theme = ExtResource( 5 )
 
 [node name="Move" type="Button" parent="CanvasLayer/Control/CulpitMenu/MarginContainer/HBoxContainer"]
-margin_right = 138.0
-margin_bottom = 53.0
+margin_right = 123.0
+margin_bottom = 45.0
 size_flags_horizontal = 3
 theme = ExtResource( 5 )
 text = "Move"
@@ -211,9 +212,9 @@ icon = ExtResource( 9 )
 expand_icon = true
 
 [node name="Destroy" type="Button" parent="CanvasLayer/Control/CulpitMenu/MarginContainer/HBoxContainer"]
-margin_left = 142.0
-margin_right = 280.0
-margin_bottom = 53.0
+margin_left = 127.0
+margin_right = 250.0
+margin_bottom = 45.0
 size_flags_horizontal = 3
 theme = ExtResource( 5 )
 text = "Destroy"
@@ -221,6 +222,7 @@ icon = ExtResource( 10 )
 expand_icon = true
 
 [node name="PrebuildHint" type="Label" parent="CanvasLayer/Control"]
+visible = false
 margin_left = -100.0
 margin_top = -100.0
 margin_right = 100.0

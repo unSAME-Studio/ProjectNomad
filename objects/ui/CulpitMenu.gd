@@ -18,7 +18,7 @@ func _process(delta):
 		
 		# check mouse position
 		#print(get_local_mouse_position().length())
-		if get_local_mouse_position().length() > 300:
+		if culpit.get_local_mouse_position().length() > 300:
 			close()
 		
 
