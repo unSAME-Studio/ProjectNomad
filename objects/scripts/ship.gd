@@ -16,8 +16,9 @@ var brakeforce = 1
 
 func _ready():
 	# [TEMP DELETE]
-	$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon
-	$objects/Wall/LightOccluder2D.occluder.set_polygon($objects/Wall/Polygon2D.polygon)
+	#$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon
+	#$objects/Wall/LightOccluder2D.occluder.set_polygon($objects/Wall/Polygon2D.polygon)
+	pass
 
 func handle_movement(direction):
 		set_applied_torque(direction.x * 20000)		
