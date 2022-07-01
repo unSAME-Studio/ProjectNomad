@@ -6,7 +6,7 @@
 [ext_resource path="res://systems/CameraManager.tscn" type="PackedScene" id=4]
 [ext_resource path="res://arts/enviroment/BG.png" type="Texture" id=5]
 [ext_resource path="res://arts/enviroment/cloud.png" type="Texture" id=6]
-[ext_resource path="res://objects/buildings/box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://arts/enviroment/island.png" type="Texture" id=8]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
@@ -80,15 +80,26 @@ script = ExtResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="Node2D/RigidBody2D"]
 color = Color( 0.894118, 1, 0.913725, 1 )
+texture = ExtResource( 8 )
 polygon = PoolVector2Array( -239, -302, -657, 102, 6.99997, 602, 333, 114, 763, -190, 135, -490 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/RigidBody2D"]
 
 [node name="objects" type="Node2D" parent="Node2D/RigidBody2D"]
 
-[node name="Box" parent="Node2D/RigidBody2D/objects" instance=ExtResource( 7 )]
-position = Vector2( 275, -199 )
-rotation = 0.625962
+[node name="RigidBody2D2" type="RigidBody2D" parent="Node2D"]
+position = Vector2( 1755, 177 )
+collision_layer = 2
+collision_mask = 2
+mode = 1
+mass = 30.0
+script = ExtResource( 2 )
 
-[node name="Box2" parent="Node2D/RigidBody2D/objects" instance=ExtResource( 7 )]
-position = Vector2( -218, 6.99988 )
+[node name="Polygon2D" type="Polygon2D" parent="Node2D/RigidBody2D2"]
+color = Color( 0.894118, 1, 0.913725, 1 )
+texture = ExtResource( 8 )
+polygon = PoolVector2Array( -143, -146, -657, 102, -63, 942, 1209, 342, 801, -810, -167, -978 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/RigidBody2D2"]
+
+[node name="objects" type="Node2D" parent="Node2D/RigidBody2D2"]
