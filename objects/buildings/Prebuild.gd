@@ -2,6 +2,7 @@ extends Area2D
 
 const INT_MAX = 2147483647
 const SNAP_THRESHOLD = 30
+const SNAP_RANGE = 200
 
 signal built
 
@@ -79,8 +80,7 @@ func check_build_condition() -> bool:
 
 
 func _process(delta):
-	#check if in build_point range
-	
+	# check if in build_point range
 	for i in build_points:
 		var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
 		if dist < 30:
@@ -93,9 +93,11 @@ func _process(delta):
 				elif dist < get_global_mouse_position().distance_to(target.get_global_position()):
 					target = i
 					point_mode = true
+	
 	if not point_mode:
 		target = null
 		hovering = true
+		
 		# check if player can build here
 		if check_build_condition():
 			can_build = true
@@ -103,9 +105,29 @@ func _process(delta):
 		else:
 			can_build = false
 			set_modulate(Color.red)
+		
 		if hovering:
-			set_global_position(get_global_mouse_position())
+			# snapping by checking nearby edges
+			var x_edge = []
+			var y_edge = []
+			for i in get_tree().get_nodes_in_group("culpit"):
+				if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
+					x_edge.append(i.get_global_position().x)
+					y_edge.append(i.get_global_position().y)
+			
+			var target_snap = get_global_mouse_position()
+			var target_x = find_closest(target_snap.x, x_edge)
+			var target_y = find_closest(target_snap.y, y_edge)
+			
+			if target_x:
+				target_snap.x = target_x
+			
+			if target_y:
+				target_snap.y = target_y
+			
+			set_global_position(get_global_position().linear_interpolate(target_snap, 20 * delta))
 			set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
+	
 	else:
 		if target:
 			hovering = false
@@ -114,31 +136,8 @@ func _process(delta):
 			set_modulate(Color.white)
 			set_global_position(target.get_global_position())
 			set_rotation(target.get_rotation())
-	# move to mouse when hovering
-	if hovering:
-		
-		# snapping by checking nearby edges
-		var x_edge = []
-		var y_edge = []
-		for i in get_tree().get_nodes_in_group("culpit"):
-			x_edge.append(i.get_global_position().x)
-			y_edge.append(i.get_global_position().y)
-		
-		var target_snap = get_global_mouse_position()
-		var target_x = find_closest(target_snap.x, x_edge)
-		var target_y = find_closest(target_snap.y, y_edge)
-		
-		if target_x:
-			target_snap.x = target_x
-		
-		if target_y:
-			target_snap.y = target_y
-		
-		set_global_position(get_global_position().linear_interpolate(target_snap, 20 * delta))
-		set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
-
+	
 	point_mode = false
-
 
 
 func _unhandled_input(event):
@@ -148,10 +147,7 @@ func _unhandled_input(event):
 			var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
 			if (not result.empty()):
 				room = result[0].collider
-				if room.has_method('get_build'):
-					base = room.get_build()
-				else:
-					base = null
+				base = room.get_build()
 
 				if can_build:
 					hovering = false
