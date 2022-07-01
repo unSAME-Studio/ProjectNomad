@@ -3,7 +3,7 @@ extends TextureButton
 export(String) var build_type = "wheel"
 
 var prebuild = preload("res://objects/buildings/Prebuild.tscn")
-
+var structure_prebuild = preload("res://objects/rooms/struc_prebuild.tscn")
 
 func _ready():
 	var card = load("res://arts/cards/C_%s.png" % build_type)
@@ -25,8 +25,11 @@ func _on_BuildCard_mouse_exited():
 func _on_BuildCard_pressed():
 	set_disabled(true)
 	set_modulate(Color("7d737373"))
-	
-	var p = prebuild.instance()
+	var p
+	if build_type == 'room' or build_type == 'wall':
+		p = structure_prebuild.instance()
+	else:
+		p = prebuild.instance()
 	p.card = self
 	p.type = build_type
 	get_tree().get_current_scene().get_node("Node2D").add_child(p)
