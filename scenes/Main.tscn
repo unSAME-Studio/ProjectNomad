@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/polygonshape.gd" type="Script" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://arts/enviroment/BG.png" type="Texture" id=5]
 [ext_resource path="res://arts/enviroment/cloud.png" type="Texture" id=6]
 [ext_resource path="res://objects/buildings/box.tscn" type="PackedScene" id=7]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.5
+bounce = 0.33
 
 [node name="Main" type="Node"]
 
@@ -22,6 +26,8 @@ color = Color( 0.231373, 0.231373, 0.231373, 1 )
 
 [node name="ship" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 509, -25 )
+physics_material_override = SubResource( 1 )
+gravity_scale = 0.0
 speed = 400
 
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]

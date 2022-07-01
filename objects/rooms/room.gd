@@ -1,15 +1,19 @@
-extends RigidBody2D
+extends Area2D
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var base = null
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	$structures/Wall/CollisionPolygon2D.polygon = $structures/Wall/Polygon2D.polygon
+	$structures/Wall/LightOccluder2D.occluder.set_polygon($structures/Wall/Polygon2D.polygon)
+	$CollisionPolygon2D.polygon = $Polygon2D.polygon
+	base = get_parent().get_parent()
+	
+	#pass
+#will return the base
+func get_build():
+	return base
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
