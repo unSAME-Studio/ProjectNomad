@@ -15,7 +15,7 @@ var state
 var state_factory
 
 var last_state	#temp print var
-var building_mode = false #temp
+var building_mode = false
 
 var velocity = Vector2.ZERO
 var onboard = false
@@ -44,8 +44,7 @@ func change_state(new_state_name):
 
 func _input(event):	
 	if Input.is_action_just_pressed("build_menu"):
-		building_mode = !building_mode
-		$CanvasLayer/Control/VBoxContainer2/BuildMenu.set_visible(building_mode)
+		$CanvasLayer/Control/VBoxContainer2/BuildMenu.set_visible(not $CanvasLayer/Control/VBoxContainer2/BuildMenu.is_visible())
 	
 	if Input.is_action_just_pressed("control"):
 		state.interact()
@@ -103,6 +102,25 @@ func _on_ControllableDetection_body_entered(body):
 
 func _on_ControllableDetection_body_exited(body):
 	controllables.erase(body.name)
+
+
+# entering building mode
+# if player in control then they can't
+# else entering stop other building
+func enter_building_mode() -> bool:
+	if not building_mode and state.get_class() != "ControlState":
+		building_mode = true
+		return true
+	
+	return false
+
+
+func end_building_mode() -> bool:
+	if building_mode:
+		building_mode = false
+		return true
+	
+	return false
 
 
 func set_prebuild_hint(text, prebuild):

@@ -124,15 +124,17 @@ func _unhandled_input(event):
 
 
 func finish_build(room):
-	var c = load("res://objects/controllable/Culpit.tscn").instance()
-	c.script = load("res://objects/controllable/%s_culpit.gd" % type)
+	var c = load("res://objects/culpits/Culpit.tscn").instance()
+	c.script = load("res://objects/culpits/%s_culpit.gd" % type)
 	c.type = type
-	print("add script" + "res://objects/controllable/%s_culpit.gd" % type)
+	print("add script" + "res://objects/culpits/%s_culpit.gd" % type)
 	
 	room.get_node("objects").add_child(c)
 	c.set_global_position(get_global_position())
 	
 	c.set_global_rotation(get_global_rotation())
+	
+	Global.player.end_building_mode()
 	
 	card.queue_free()
 	queue_free()

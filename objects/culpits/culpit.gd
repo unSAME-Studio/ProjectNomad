@@ -40,6 +40,9 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 
 
 func _on_moved():
+	if not Global.player.enter_building_mode():
+		return
+	
 	print(type + "is being moved")
 	
 	modulate.a = 0.5
@@ -60,7 +63,7 @@ func canceled_build():
 	$CollisionShape2D.set_deferred("disabled", false)
 
 
-func _on_destroy():
+func _on_destroy():	
 	print(type + "have been destroyed")
 	
 	queue_free()
