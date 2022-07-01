@@ -133,6 +133,12 @@ func set_prebuild_hint(text, prebuild):
 		$CanvasLayer/Control/PrebuildHint.show()
 
 
+func get_build_points(type):
+
+	if base and base.has_method('get_build_points'):
+
+		return base.get_build_points(type)
+
 # add cards
 func add_build_card(type):
 	# add a random card to player

@@ -14,6 +14,8 @@ var steerforce = 1
 var forwardforce = 1
 var brakeforce = 1
 
+var rooms = []
+
 func _ready():
 	# [TEMP DELETE]
 	#$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon
@@ -69,6 +71,13 @@ func _integrate_forces(state):
 	pass
 			
 		
+func get_build_points(type):
+	var points = []
+
+	if not rooms.empty():
+		for i in rooms:
+			points.append_array(i.get_build_points(type))
+	return points
 
 func _on_baseshape_body_entered(body):
 	if(body.name == 'Player' and body.onboard == false):
