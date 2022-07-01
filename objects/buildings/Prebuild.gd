@@ -1,5 +1,7 @@
 extends Area2D
 
+const INT_MAX = 2147483647
+const SNAP_THRESHOLD = 30
 
 signal built
 
@@ -25,6 +27,27 @@ func _ready():
 	#var space_state = get_world_2d().direct_space_state
 	build_points = Global.player.get_build_points(point_type)
 
+
+
+# https://godotengine.org/qa/20263/find-the-closest-number-in-array
+func find_closest(value, array):
+
+	var best_match = null
+	var least_diff = INT_MAX
+
+	for number in array:
+
+		var diff = abs(value - number)
+		
+		# ignore if diff is bigger than this threshold
+		if diff > SNAP_THRESHOLD:
+			continue
+		
+		if diff < least_diff:
+			best_match = number
+			least_diff = diff
+
+	return best_match
 
 
 func check_build_condition() -> bool:
@@ -91,7 +114,30 @@ func _process(delta):
 			set_global_position(target.get_global_position())
 			set_rotation(target.get_rotation())
 	# move to mouse when hovering
+	if hovering:
+		
+		# snapping by checking nearby edges
+		var x_edge = []
+		var y_edge = []
+		for i in get_tree().get_nodes_in_group("culpit"):
+			x_edge.append(i.get_global_position().x)
+			y_edge.append(i.get_global_position().y)
+		
+		var target_snap = get_global_mouse_position()
+		var target_x = find_closest(target_snap.x, x_edge)
+		var target_y = find_closest(target_snap.y, y_edge)
+		
+		if target_x:
+			target_snap.x = target_x
+		
+		if target_y:
+			target_snap.y = target_y
+		
+		set_global_position(get_global_position().linear_interpolate(target_snap, 20 * delta))
+		set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
+
 	point_mode = false
+
 
 
 func _unhandled_input(event):

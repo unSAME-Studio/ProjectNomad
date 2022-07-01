@@ -45,7 +45,7 @@ func _on_moved():
 	
 	print(type + "is being moved")
 	
-	modulate.a = 0.5
+	modulate.a = 0.3
 	Global.player.edit_culpit(self)
 	
 	$CollisionShape2D.set_deferred("disabled", true)
