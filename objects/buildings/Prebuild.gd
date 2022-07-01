@@ -9,8 +9,11 @@ var type = ""
 var hovering = true
 var can_build = true
 
+
 var base = null
 var room
+var direction = 0
+
 
 func _ready():
 	$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
@@ -57,6 +60,7 @@ func _process(delta):
 	# move to mouse when hovering
 	if hovering:
 		set_global_position(get_global_mouse_position())
+		set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 
 
 func _unhandled_input(event):
@@ -78,7 +82,8 @@ func _unhandled_input(event):
 			queue_free()
 	
 	if Input.is_action_just_pressed("rotate"):
-		rotate(PI / 2)
+		direction = wrapi(direction + 1, 0, 4)
+		print("rotate facing %d" % direction)
 
 
 func finish_build(room):
@@ -90,7 +95,7 @@ func finish_build(room):
 	room.get_node("objects").add_child(c)
 	c.set_global_position(get_global_mouse_position())
 	
-	c.set_rotation(get_rotation())
+	c.set_global_rotation(get_global_rotation())
 	
 	card.queue_free()
 	queue_free()
