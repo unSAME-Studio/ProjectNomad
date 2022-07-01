@@ -121,6 +121,7 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("rotate"):
 		direction = wrapi(direction + 1, 0, 4)
 		print("rotate facing %d" % direction)
+		
 
 
 func finish_build(room):
