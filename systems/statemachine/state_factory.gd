@@ -8,7 +8,6 @@ func _init():
 		"idle": IdleState,
 		"walk": WalkState,
 		"control": ControlState,
-		"build": BuildState
 }
 
 

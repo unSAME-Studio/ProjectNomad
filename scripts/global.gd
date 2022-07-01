@@ -27,8 +27,8 @@ var culpits_data = {
 	},
 	"turret": {
 		"controllable": true,
-		"action": true,
-		"hint": "press E to disable",
+		"action": false,
+		"hint": "press E to control",
 	},
 	"auto_turret": {
 		"controllable": true,

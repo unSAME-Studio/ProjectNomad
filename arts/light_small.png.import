@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/printer.png-782decc6210b153dbb298cfbe4dd4607.stex"
+path="res://.import/light_small.png-1553a9b00933375ac0c344741cf40875.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/culpits/printer.png"
-dest_files=[ "res://.import/printer.png-782decc6210b153dbb298cfbe4dd4607.stex" ]
+source_file="res://arts/light_small.png"
+dest_files=[ "res://.import/light_small.png-1553a9b00933375ac0c344741cf40875.stex" ]
 
 [params]
 
