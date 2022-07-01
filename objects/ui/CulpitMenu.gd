@@ -11,6 +11,9 @@ func _process(delta):
 			close()
 			return
 		
+		# draw a line
+		#draw_line(get_global_position())
+		
 		var target_pos = culpit.get_global_transform_with_canvas().get_origin() - get_size() / 2 + Vector2(0, -100)
 		target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - get_size().y))
 		#set_position(get_position().linear_interpolate(target_pos, 0.2))
@@ -20,7 +23,7 @@ func _process(delta):
 		#print(get_local_mouse_position().length())
 		if culpit.get_local_mouse_position().length() > 300:
 			close()
-		
+
 
 
 func connect_culpit(c):
