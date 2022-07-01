@@ -70,14 +70,6 @@ modulate = Color( 1, 1, 1, 0.317647 )
 texture = ExtResource( 6 )
 centered = false
 
-[node name="Parallax" type="Node2D" parent="Node2D"]
-z_index = -100
-
-[node name="Sprite" type="Sprite" parent="Node2D/Parallax"]
-modulate = Color( 0.239216, 0.286275, 0.337255, 1 )
-scale = Vector2( 10, 10 )
-texture = ExtResource( 5 )
-
 [node name="RigidBody2D" type="RigidBody2D" parent="Node2D"]
 position = Vector2( -385, -1698 )
 collision_layer = 2
