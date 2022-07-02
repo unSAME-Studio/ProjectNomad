@@ -67,14 +67,17 @@ func _process(delta):
 		selected_culpit = null
 	
 	# set hint text 
-	if selected_culpit:
+	if selected_culpit and last_state != "ControlState":
 		var target_pos = selected_culpit.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/CulpitHint.get_size() / 2
 		target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/CulpitHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/CulpitHint.get_size().y))
 		$CanvasLayer/Control/CulpitHint.set_position($CanvasLayer/Control/CulpitHint.get_position().linear_interpolate(target_pos, 20 * delta))
+	
+		$CanvasLayer/Control/CulpitHint/HBoxContainer/Label.set_text(selected_culpit.get_hint_text())
+			
+		$CanvasLayer/Control/CulpitHint.show()
 		
-		$CanvasLayer/Control/CulpitHint/Label.set_text(selected_culpit.get_hint_text())
 	else:
-		$CanvasLayer/Control/CulpitHint/Label.set_text("")
+		$CanvasLayer/Control/CulpitHint.hide()
 
 
 func _physics_process(delta):
