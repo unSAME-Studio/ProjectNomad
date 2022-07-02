@@ -16,7 +16,7 @@ var direction = 0
 
 var target = null
 
-var point_type = "Room"
+var point_type = "room"
 var point_mode = false
 var build_points = []
 
@@ -29,10 +29,11 @@ func _ready():
 		structure = load("res://objects/rooms/room.tscn").instance()
 		structure.active = false
 		add_child(structure)
+		print(build_points)
 	else:
 		#var space_state = get_world_2d().direct_space_state
 		build_points = Global.player.get_build_points('Wall')
-		print(build_points)
+		
 	
 
 func check_build_condition() -> bool:
@@ -140,7 +141,7 @@ func finish_build(room):
 	
 	if structure:
 		print("add room")
-		var temp_pos = structure.get_global_position()
+		var temp_pos = structure.get_global_position()#-structure.get_position()
 		var temp_rot = structure.get_global_rotation()
 		structure.set_position(Vector2.ZERO)
 		structure.set_rotation(0)

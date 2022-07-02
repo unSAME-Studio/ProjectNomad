@@ -17,6 +17,8 @@ func active(_base):
 	set_modulate(Color('ffffffff'))
 	base = _base
 	base.rooms.append(self)
+	base.update_polygon($Polygon2D.polygon)
+	#print($Polygon2D.polygon)
 	build_points = $structures/points.get_children()
 	for i in build_points:
 		i.room = self
@@ -30,7 +32,8 @@ func get_build_points(type):
 	var out_points = []
 	for i in $structures/points.get_children():
 		if i.type == type:
-			out_points.append(i)
+			if i.active == true:
+				out_points.append(i)
 	if type == 'Wall':
 		for i in $structures.get_children():
 			if i.name != 'points':

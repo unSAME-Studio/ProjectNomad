@@ -22,6 +22,13 @@ func _ready():
 	#$objects/Wall/LightOccluder2D.occluder.set_polygon($objects/Wall/Polygon2D.polygon)
 	pass
 
+func update_polygon(input):
+	print(input)
+	$Basecollision.polygon = Geometry.merge_polygons_2d(input,$Basecollision.polygon)[0]
+	print(Geometry.merge_polygons_2d(input,$Basecollision.polygon)[0])
+	$baseshape/Basecollision2.polygon = $Basecollision.polygon
+
+
 func handle_movement(direction):
 		set_applied_torque(direction.x * 20000)		
 		set_applied_force(Vector2(direction.x*50,direction.y * 300).rotated(get_rotation()))

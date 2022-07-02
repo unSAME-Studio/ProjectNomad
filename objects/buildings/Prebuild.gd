@@ -19,7 +19,7 @@ var direction = 0
 
 var target = null
 
-export var point_type = "Utility"
+export var point_type = "utility"
 var point_mode = false
 var build_points = []
 
@@ -27,6 +27,7 @@ func _ready():
 	$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
 	#var space_state = get_world_2d().direct_space_state
 	build_points = Global.player.get_build_points(point_type)
+
 
 
 
@@ -60,7 +61,7 @@ func check_build_condition() -> bool:
 	
 	# overlapping check
 	for i in get_overlapping_bodies():
-		print(i.get_collision_layer())
+		#print(i.get_collision_layer())
 		if i.get_collision_layer() in [1, 8]:
 			#print(i.get_collision_layer())
 			Global.player.set_prebuild_hint("Blocked!", self)
