@@ -4,13 +4,15 @@ var base = null
 var build_points = []
 var active = true
 var snappoint
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	snappoint = $snappoint
 	if active == true:
 		active(get_parent().get_parent())
 	else:
 		set_modulate(Color('48ffffff'))
+
 
 func active(_base):
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
@@ -21,7 +23,7 @@ func active(_base):
 	for i in build_points:
 		i.room = self
 
-#will return the base
+# will return the base
 func get_build():
 	print(base)
 	return base
