@@ -71,9 +71,29 @@ polygon = PoolVector2Array( -16, -264, -16, 240, 16, 240, 16, -264 )
 [node name="buildpoint" type="Position2D" parent="structures/points"]
 position = Vector2( 0, -248 )
 script = ExtResource( 3 )
-type = "Room"
+type = "room"
 
 [node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint"]
+position = Vector2( 0, 240 )
+rotation = 3.14159
+polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
+
+[node name="buildpoint6" type="Position2D" parent="structures/points"]
+position = Vector2( -160, -280 )
+script = ExtResource( 3 )
+type = "utility"
+
+[node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint6"]
+position = Vector2( 0, 240 )
+rotation = 3.14159
+polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
+
+[node name="buildpoint7" type="Position2D" parent="structures/points"]
+position = Vector2( 168, -280 )
+script = ExtResource( 3 )
+type = "utility"
+
+[node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint7"]
 position = Vector2( 0, 240 )
 rotation = 3.14159
 polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
@@ -82,7 +102,7 @@ polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05
 position = Vector2( 0, 240 )
 rotation = 3.14159
 script = ExtResource( 3 )
-type = "Room"
+type = "room"
 
 [node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint5"]
 position = Vector2( 0, 240 )
@@ -112,7 +132,7 @@ polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05
 [node name="buildpoint4" type="Position2D" parent="structures/points"]
 position = Vector2( 208, 0 )
 script = ExtResource( 3 )
-type = "Utility"
+type = "utility"
 
 [node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint4"]
 position = Vector2( 0, 240 )
