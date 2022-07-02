@@ -100,10 +100,11 @@ func _process(delta):
 				Global.player.set_prebuild_hint("", self)
 				set_modulate(Color.white)
 				set_global_position(target.get_global_position())
+				set_global_rotation(target.get_global_rotation())
 				if structure:
 					
 					structure.set_global_rotation(target.get_global_rotation() + structure.snappoint.get_rotation())
-					structure.set_position(structure.snappoint.get_position().rotated(3.14159-target.get_rotation()))
+					structure.set_position(-structure.snappoint.get_position())#.rotated(3.14159-target.get_rotation()))
 		# move to mouse when hovering
 		
 	else:
@@ -141,10 +142,8 @@ func finish_build(room):
 	
 	if structure:
 		print("add room")
-		var temp_pos = structure.get_global_position()#-structure.get_position()
+		var temp_pos = structure.get_global_position()
 		var temp_rot = structure.get_global_rotation()
-		structure.set_position(Vector2.ZERO)
-		structure.set_rotation(0)
 		remove_child(structure)
 		base.get_node("rooms").add_child(structure)
 		structure.set_global_position(temp_pos)
