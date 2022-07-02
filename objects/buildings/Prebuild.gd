@@ -134,8 +134,10 @@ func _process(delta):
 		if target:
 			hovering = false
 			can_build = true
+			
 			Global.player.set_prebuild_hint("", self)
 			set_modulate(Color.white)
+			
 			set_global_position(target.get_global_position())
 			set_rotation(target.get_rotation())
 	

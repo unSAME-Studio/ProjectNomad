@@ -8,31 +8,31 @@ var culpits_data = {
 	"wheel": {
 		"controllable": true,
 		"action": false,
-		"hint": "press E to steer",
+		"hint": "Steer",
 	},
 	"locker": {
 		"controllable": true,
 		"action": true,
-		"hint": "press E to lock",
+		"hint": "Lock / Unlock",
 	},
 	"light": {
 		"controllable": true,
 		"action": true,
-		"hint": "press E to turn on/off",
+		"hint": "Turn On / Off",
 	},
 	"printer": {
 		"controllable": true,
 		"action": true,
-		"hint": "press E to print",
+		"hint": "Print Card",
 	},
 	"turret": {
 		"controllable": true,
 		"action": false,
-		"hint": "press E to control",
+		"hint": "Control",
 	},
 	"auto_turret": {
 		"controllable": true,
 		"action": true,
-		"hint": "press E to disable",
+		"hint": "Disable",
 	},
 }
