@@ -20,7 +20,7 @@ func active(_base):
 	set_modulate(Color('ffffffff'))
 	base = _base
 	base.rooms.append(self)
-	base.update_polygon($Polygon2D.polygon)
+	base.update_polygon($Polygon2D)
 	#print($Polygon2D.polygon)
 	build_points = $structures/points.get_children()
 	for i in build_points:
