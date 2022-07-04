@@ -54,6 +54,7 @@ func check_build_condition(target_mode = false) -> bool:
 						return false
 		
 		Global.player.set_prebuild_hint("", self)
+		hovering = false
 		return true
 	else:
 		return false
@@ -61,8 +62,7 @@ func check_build_condition(target_mode = false) -> bool:
 
 func _process(delta):
 	#check if in build_point range
-	if not build_points.empty():
-		
+	if build_points:
 		#check if on build point
 		for i in build_points:
 			var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
@@ -85,7 +85,7 @@ func _process(delta):
 		else:
 			can_build = false
 			set_modulate(Color.red)
-		if not target:
+		if hovering:
 			set_global_position(get_global_mouse_position())
 			set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 		else:
@@ -138,6 +138,7 @@ func finish_build(room):
 		structure.set_global_position(temp_pos)
 		structure.set_global_rotation(temp_rot)
 		structure.active(base)
+		build_points = []
 	else:
 		if target:
 			target.queue_free()

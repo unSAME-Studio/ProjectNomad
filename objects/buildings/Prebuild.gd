@@ -52,7 +52,10 @@ func find_closest(value, array):
 	return best_match
 
 
-func check_build_condition() -> bool:
+func check_build_condition(target_mode = false) -> bool:
+	if target_mode:
+		hovering = false
+		return true
 	if get_global_position().distance_to(Global.player.get_global_position()) > 300:
 		Global.player.set_prebuild_hint("Too far!", self)
 		return false
@@ -96,48 +99,37 @@ func _process(delta):
 						target = i
 						point_mode = true
 		
-	if not point_mode:
-		target = null
-		hovering = true
-		
-		# check if player can build here
-		if check_build_condition():
-			can_build = true
-			set_modulate(Color.white)
-		else:
-			can_build = false
-			set_modulate(Color.red)
-		
-		if hovering:
-			# snapping by checking nearby edges
-			var x_edge = []
-			var y_edge = []
-			for i in get_tree().get_nodes_in_group("culpit"):
-				if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
-					x_edge.append(i.get_global_position().x)
-					y_edge.append(i.get_global_position().y)
-			
-			var target_snap = get_global_mouse_position()
-			var target_x = find_closest(target_snap.x, x_edge)
-			var target_y = find_closest(target_snap.y, y_edge)
-			
-			if target_x:
-				target_snap.x = target_x
-			
-			if target_y:
-				target_snap.y = target_y
-			
-			set_global_position(get_global_position().linear_interpolate(target_snap, 20 * delta))
-			set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
+	# check if player can build here
+	if check_build_condition(point_mode):
+		can_build = true
+		set_modulate(Color.white)
+	else:
+		can_build = false
+		set_modulate(Color.red)
 	
+	if hovering:
+		# snapping by checking nearby edges
+		var x_edge = []
+		var y_edge = []
+		for i in get_tree().get_nodes_in_group("culpit"):
+			if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
+				x_edge.append(i.get_global_position().x)
+				y_edge.append(i.get_global_position().y)
+		
+		var target_snap = get_global_mouse_position()
+		var target_x = find_closest(target_snap.x, x_edge)
+		var target_y = find_closest(target_snap.y, y_edge)
+		
+		if target_x:
+			target_snap.x = target_x
+		
+		if target_y:
+			target_snap.y = target_y
+		
+		set_global_position(get_global_position().linear_interpolate(target_snap, 20 * delta))
+		set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 	else:
 		if target:
-			hovering = false
-			can_build = true
-			
-			Global.player.set_prebuild_hint("", self)
-			set_modulate(Color.white)
-			
 			set_global_position(target.get_global_position())
 			set_rotation(target.get_rotation())
 	
@@ -155,11 +147,13 @@ func _unhandled_input(event):
 				if can_build:
 					hovering = false
 					finish_build(base)
+					
 			elif target:
 				if can_build:
 					room = target.room
 					base = room.get_build()
 					finish_build(room)
+					build_points = []
 					target.finish_build()
 			else:
 				hovering = false
