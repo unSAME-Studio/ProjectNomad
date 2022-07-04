@@ -17,6 +17,7 @@ var brakeforce = 1
 var rooms = []
 
 func _ready():
+	$RigidBody2D/PinJoint2D.connect_bodies(self,$RigidBody2D)
 	# [TEMP DELETE]
 	#$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon
 	#$objects/Wall/LightOccluder2D.occluder.set_polygon($objects/Wall/Polygon2D.polygon)

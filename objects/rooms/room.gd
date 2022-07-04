@@ -8,6 +8,7 @@ var snappoint
 
 func _ready():
 	snappoint = $snappoint
+	$CollisionPolygon2D.polygon = $Polygon2D.polygon
 	if active == true:
 		active(get_parent().get_parent())
 	else:
@@ -15,7 +16,7 @@ func _ready():
 
 
 func active(_base):
-	$CollisionPolygon2D.polygon = $Polygon2D.polygon
+	
 	set_modulate(Color('ffffffff'))
 	base = _base
 	base.rooms.append(self)
