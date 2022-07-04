@@ -17,16 +17,22 @@ var brakeforce = 1
 var rooms = []
 
 func _ready():
-	$RigidBody2D/PinJoint2D.connect_bodies(self,$RigidBody2D)
+	#$RigidBody2D/PinJoint2D.connect_bodies(self,$RigidBody2D)
 	# [TEMP DELETE]
 	#$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon
 	#$objects/Wall/LightOccluder2D.occluder.set_polygon($objects/Wall/Polygon2D.polygon)
 	pass
 
 func update_polygon(input):
-	print(input)
-	$Basecollision.polygon = Geometry.merge_polygons_2d(input,$Basecollision.polygon)[0]
-	print(Geometry.merge_polygons_2d(input,$Basecollision.polygon)[0])
+	print(input.polygon)
+	var in_polygon = []
+	var offset = input.get_global_position() - get_global_position()
+	offset = Vector2(int(round(offset.x)),int(round(offset.y)))
+	for i in input.polygon:
+		in_polygon.append(i+offset)
+	print(in_polygon)
+	$Basecollision.polygon = Geometry.merge_polygons_2d(in_polygon,$Basecollision.polygon)[0]
+	print(Geometry.merge_polygons_2d(in_polygon,$Basecollision.polygon)[0])
 	$baseshape/Basecollision2.polygon = $Basecollision.polygon
 
 
