@@ -36,38 +36,34 @@ func _ready():
 		
 	
 
-func check_build_condition() -> bool:
-	pass
-	if get_global_position().distance_to(Global.player.get_global_position()) > 300:
-		Global.player.set_prebuild_hint("Too far!", self)
+func check_build_condition(target_mode = false) -> bool:
+	if target_mode == false:
+		target = null
+		hovering = true
 		return false
-	
-	var on_floor = false
-	
-	# overlapping check
-	for i in get_overlapping_bodies():
-		#print(i.get_collision_layer())
-		if i.get_collision_layer() in [1, 8]:
-			
-			Global.player.set_prebuild_hint("Blocked!", self)
-			return false
+	if target:
+		# overlapping check
+		for i in structure.get_overlapping_bodies():
+			if i.get_collision_layer() in [1, 2]:
+				if i.get_collision_layer() == 2:
+					if target == null:
+						Global.player.set_prebuild_hint("Blocked!", self)
+						return false
+					elif i != target.room.get_build():
+						Global.player.set_prebuild_hint("Blocked!", self)
+						return false
 		
-		elif on_floor == false and i.get_collision_layer() == 2:
-			on_floor = true
-			base = i
-	
-	# floor check
-	if not on_floor:
-		Global.player.set_prebuild_hint("Not on floor!", self)
+		Global.player.set_prebuild_hint("", self)
+		return true
+	else:
 		return false
-	
-	Global.player.set_prebuild_hint("", self)
-	return true
 
 
 func _process(delta):
 	#check if in build_point range
 	if not build_points.empty():
+		
+		#check if on build point
 		for i in build_points:
 			var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
 			if dist < 500:
@@ -80,35 +76,28 @@ func _process(delta):
 					elif dist < get_global_mouse_position().distance_to(target.get_global_position()):
 						target = i
 						point_mode = true
-		if not point_mode:
-			target = null
-			hovering = true
-			# check if player can build here
-			if check_build_condition():
-				can_build = true
-				set_modulate(Color.white)
-			else:
-				can_build = false
-				set_modulate(Color.red)
-			if hovering:
-				set_global_position(get_global_mouse_position())
-				set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
+						
+
+		# check if player can build now
+		if check_build_condition(point_mode):
+			can_build = true
+			set_modulate(Color.white)
 		else:
-			if target:
-				hovering = false
-				can_build = true
-				Global.player.set_prebuild_hint("", self)
-				set_modulate(Color.white)
-				set_global_position(target.get_global_position())
-				set_global_rotation(target.get_global_rotation())
-				if structure:
-					
-					structure.set_global_rotation(target.get_global_rotation() + structure.snappoint.get_rotation())
-					structure.set_position(-structure.snappoint.get_position())#.rotated(3.14159-target.get_rotation()))
-		# move to mouse when hovering
+			can_build = false
+			set_modulate(Color.red)
+		if not target:
+			set_global_position(get_global_mouse_position())
+			set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
+		else:
+			set_global_position(target.get_global_position())
+			set_global_rotation(target.get_global_rotation())
+			if structure:
+				structure.set_global_rotation(target.get_global_rotation() + structure.snappoint.get_rotation())
+				structure.set_position(-structure.snappoint.get_position())#.rotated(3.14159-target.get_rotation()))
 		
 	else:
 		Global.player.set_prebuild_hint("Not avaliable", self)
+	
 	point_mode = false
 
 
