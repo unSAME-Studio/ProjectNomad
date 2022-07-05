@@ -142,6 +142,15 @@ func get_build_points(type):
 
 		return base.get_build_points(type)
 
+
+func is_in_air():
+	print("in air: " + String(base == null))
+	
+	return false
+	
+	return base == null
+
+
 # add cards
 func add_build_card(type):
 	# add a random card to player

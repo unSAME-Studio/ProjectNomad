@@ -5,6 +5,11 @@ class_name WalkState
 export var speed = 200
 export var friction = 0.1
 export var acceleration = 0.3
+
+export var air_speed = 200
+export var air_friction = 0.001
+export var air_acceleration = 0.25
+
 var min_move_speed = 0.005
 
 var direction = Vector2.ZERO
@@ -37,11 +42,19 @@ func _physics_process(delta):
 	# change eyes position
 	animated_sprite.get_node("Eyes").set_position(lerp(animated_sprite.get_node("Eyes").get_position(), direction * 15, 10 * delta))
 	
-	# else deal with the velocity
-	if direction.length() > 0:
-		persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * speed, acceleration)
+	# else deal with the velocity in air
+	if persistent_state.is_in_air():
+		if direction.length() > 0:
+			persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * air_speed, air_acceleration)
+		else:
+			persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, air_friction)
+	
+	# or for on the floor
 	else:
-		persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
+		if direction.length() > 0:
+			persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * speed, acceleration)
+		else:
+			persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
 	
 	direction = Vector2.ZERO
 	persistent_state.move_and_slide(persistent_state.velocity)
