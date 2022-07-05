@@ -43,15 +43,16 @@ func check_build_condition(target_mode = false) -> bool:
 		return false
 	if target:
 		# overlapping check
-		for i in structure.get_overlapping_bodies():
-			if i.get_collision_layer() in [1, 2]:
-				if i.get_collision_layer() == 2:
-					if target == null:
-						Global.player.set_prebuild_hint("Blocked!", self)
-						return false
-					elif i != target.room.get_build():
-						Global.player.set_prebuild_hint("Blocked!", self)
-						return false
+		if structure:
+			for i in structure.get_overlapping_bodies():
+				if i.get_collision_layer() in [1, 2]:
+					if i.get_collision_layer() == 2:
+						if target == null:
+							Global.player.set_prebuild_hint("Blocked!", self)
+							return false
+						elif i != target.room.get_build():
+							Global.player.set_prebuild_hint("Blocked!", self)
+							return false
 		
 		Global.player.set_prebuild_hint("", self)
 		hovering = false
