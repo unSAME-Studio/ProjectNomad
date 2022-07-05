@@ -8,26 +8,28 @@ var room = null
 var indi
 
 func _ready():
+	#hide()
 	room = find_parent("room")
 	if room:
+		if type == 'room':
+			room.snappoint.append(self)
 		room.build_points.append(self)
+		self.connect("tree_exiting", self, "disconnect_point")
 
 
 func activate_build():
 	active = true
-	show()
 	
 func ready_build():
-	indi = Sprite.new()
-	indi.set_texture(load("res://arts/VFX/Circle.png"))
-	indi.set_scale(Vector2(0.8,0.8))
-	add_child(indi)
-
+	show()
 	
 func end_build():
-	indi.queue_free()
+	hide()
 
 func finish_build():
 	active = false
-	hide()
+	end_build()
 
+func disconnect_point():
+	if room:
+		room.disconnect_point(self)
