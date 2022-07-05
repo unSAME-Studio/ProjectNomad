@@ -20,6 +20,15 @@ var building_mode = false
 var velocity = Vector2.ZERO
 var onboard = false
 
+var health = 100.0
+var storage = {
+	1: null,
+	2: null,
+	3: null,
+	4: null,
+	5: null,
+}
+
 var camera
 
 var build_card = preload("res://objects/ui/BuildCard.tscn")
@@ -66,18 +75,19 @@ func _process(delta):
 	else:
 		selected_culpit = null
 	
-	# set hint text 
-	if selected_culpit and last_state != "ControlState":
-		var target_pos = selected_culpit.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/CulpitHint.get_size() / 2
-		target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/CulpitHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/CulpitHint.get_size().y))
-		$CanvasLayer/Control/CulpitHint.set_position($CanvasLayer/Control/CulpitHint.get_position().linear_interpolate(target_pos, 20 * delta))
-	
-		$CanvasLayer/Control/CulpitHint/HBoxContainer/Label.set_text(selected_culpit.get_hint_text())
-			
-		$CanvasLayer/Control/CulpitHint.show()
+	if last_state != "ControlState":
+		# set hint text 
+		if selected_culpit:
+			var target_pos = selected_culpit.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/CulpitHint.get_size() / 2
+			target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/CulpitHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/CulpitHint.get_size().y))
+			$CanvasLayer/Control/CulpitHint.set_position($CanvasLayer/Control/CulpitHint.get_position().linear_interpolate(target_pos, 20 * delta))
 		
-	else:
-		$CanvasLayer/Control/CulpitHint.hide()
+			$CanvasLayer/Control/CulpitHint/HBoxContainer/Label.set_text(selected_culpit.get_hint_text())
+				
+			$CanvasLayer/Control/CulpitHint.show()
+			
+		else:
+			$CanvasLayer/Control/CulpitHint.hide()
 
 
 func _physics_process(delta):
@@ -141,6 +151,15 @@ func get_build_points(type):
 	if base and base.has_method('get_build_points'):
 
 		return base.get_build_points(type)
+
+
+func is_in_air():
+	#print("in air: " + String(base == null))
+	
+	return false
+	
+	return base == null
+
 
 # add cards
 func add_build_card(type):
