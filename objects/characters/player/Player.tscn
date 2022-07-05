@@ -275,6 +275,7 @@ margin_top = -231.0
 alignment = 2
 
 [node name="BuildMenu" type="ScrollContainer" parent="CanvasLayer/Control/VBoxContainer2"]
+visible = false
 margin_top = 38.0
 margin_right = 1446.0
 margin_bottom = 195.0
@@ -283,8 +284,8 @@ follow_focus = true
 scroll_vertical_enabled = false
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu"]
-margin_right = 1492.0
-margin_bottom = 145.0
+margin_left = 723.0
+margin_right = 723.0
 size_flags_horizontal = 6
 theme = ExtResource( 5 )
 

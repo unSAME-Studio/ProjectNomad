@@ -108,27 +108,34 @@ func _process(delta):
 		set_modulate(Color.red)
 	
 	if hovering:
-		# snapping by checking nearby edges
-		var x_edge = []
-		var y_edge = []
-		for i in get_tree().get_nodes_in_group("culpit"):
-			if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
-				x_edge.append(i.get_global_transform_with_canvas().origin.x)
-				y_edge.append(i.get_global_transform_with_canvas().origin.y)
+		var target_snap = get_global_mouse_position()
 		
-		var target_snap = get_viewport().get_mouse_position()
-		var target_x = find_closest(target_snap.x, x_edge)
-		var target_y = find_closest(target_snap.y, y_edge)
+		var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
+		if not result.empty():
+			var parent = result[0].collider.get_build()
+			
+			# snapping by checking nearby edges
+			var x_edge = []
+			var y_edge = []
+			for i in parent.get_node("objects").get_children():
+				if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
+					x_edge.append(i.get_position().x)
+					y_edge.append(i.get_position().y)
 		
-		if target_x:
-			target_snap.x = target_x
+			target_snap = parent.get_local_mouse_position()
+				
+			var target_x = find_closest(target_snap.x, x_edge)
+			var target_y = find_closest(target_snap.y, y_edge)
 		
-		if target_y:
-			target_snap.y = target_y
+			if target_x != null:
+				target_snap.x = target_x
+			
+			if target_y != null:
+				target_snap.y = target_y
+			
+			target_snap = parent.get_global_position() + target_snap.rotated(parent.get_global_rotation())
 		
-		print(target_snap)
-		var global_snap = Global.player.camera.camera.get_camera_position() + (target_snap - get_viewport().size / 2).rotated(Global.player.camera.get_global_rotation())
-		set_global_position(get_global_position().linear_interpolate(global_snap, 20 * delta))
+		set_global_position(get_global_position().linear_interpolate(target_snap, 20 * delta))
 		set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 	else:
 		if target:
@@ -141,7 +148,7 @@ func _process(delta):
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
-			#print(get_global_position().distance_to(Global.player.get_global_position()))
+			# [TEMP] Repeated function please delete
 			var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
 			if (not result.empty()):
 				room = result[0].collider

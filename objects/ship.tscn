@@ -21,7 +21,6 @@ script = ExtResource( 2 )
 [node name="objects" type="Node2D" parent="."]
 
 [node name="Culpit" parent="objects" instance=ExtResource( 3 )]
-position = Vector2( 0, -85 )
 
 [node name="baseshape" type="Area2D" parent="."]
 collision_layer = 4
