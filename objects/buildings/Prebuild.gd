@@ -113,10 +113,10 @@ func _process(delta):
 		var y_edge = []
 		for i in get_tree().get_nodes_in_group("culpit"):
 			if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
-				x_edge.append(i.get_global_position().x)
-				y_edge.append(i.get_global_position().y)
+				x_edge.append(i.get_global_transform_with_canvas().origin.x)
+				y_edge.append(i.get_global_transform_with_canvas().origin.y)
 		
-		var target_snap = get_global_mouse_position()
+		var target_snap = get_viewport().get_mouse_position()
 		var target_x = find_closest(target_snap.x, x_edge)
 		var target_y = find_closest(target_snap.y, y_edge)
 		
@@ -126,7 +126,9 @@ func _process(delta):
 		if target_y:
 			target_snap.y = target_y
 		
-		set_global_position(get_global_position().linear_interpolate(target_snap, 20 * delta))
+		print(target_snap)
+		var global_snap = Global.player.camera.camera.get_camera_position() + (target_snap - get_viewport().size / 2).rotated(Global.player.camera.get_global_rotation())
+		set_global_position(get_global_position().linear_interpolate(global_snap, 20 * delta))
 		set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 	else:
 		if target:

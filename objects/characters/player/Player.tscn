@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -12,6 +12,11 @@
 [ext_resource path="res://arts/ui/btn_destroy.png" type="Texture" id=10]
 [ext_resource path="res://objects/ui/CulpitMenu.gd" type="Script" id=11]
 [ext_resource path="res://objects/ui/PrebuildHint.gd" type="Script" id=12]
+[ext_resource path="res://arts/ui/quick_access_hover.png" type="Texture" id=13]
+[ext_resource path="res://arts/ui/quick_access.png" type="Texture" id=14]
+[ext_resource path="res://arts/ui/quick_access_pressed.png" type="Texture" id=15]
+[ext_resource path="res://objects/ui/StorageGroup.tres" type="ButtonGroup" id=16]
+[ext_resource path="res://arts/font/BarlowCondensed-SemiBold.ttf" type="DynamicFontData" id=17]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -28,6 +33,45 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 32.0624
+
+[sub_resource type="InputEventAction" id=8]
+action = "storage_1"
+pressed = true
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 18
+font_data = ExtResource( 17 )
+
+[sub_resource type="InputEventAction" id=10]
+action = "storage_2"
+pressed = true
+
+[sub_resource type="ShortCut" id=11]
+shortcut = SubResource( 10 )
+
+[sub_resource type="InputEventAction" id=12]
+action = "storage_3"
+pressed = true
+
+[sub_resource type="ShortCut" id=13]
+shortcut = SubResource( 12 )
+
+[sub_resource type="InputEventAction" id=14]
+action = "storage_4"
+pressed = true
+
+[sub_resource type="ShortCut" id=15]
+shortcut = SubResource( 14 )
+
+[sub_resource type="InputEventAction" id=16]
+action = "storage_5"
+pressed = true
+
+[sub_resource type="ShortCut" id=17]
+shortcut = SubResource( 16 )
 
 [sub_resource type="ButtonGroup" id=3]
 
@@ -74,41 +118,178 @@ anchor_bottom = 1.0
 mouse_filter = 2
 theme = ExtResource( 5 )
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-anchor_left = 1.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -206.0
+margin_top = -117.0
+margin_right = 426.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+margin_right = 426.0
+margin_bottom = 81.0
+alignment = 1
+
+[node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_right = 82.0
+margin_bottom = 81.0
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+shortcut = SubResource( 9 )
+group = ExtResource( 16 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage"]
+modulate = Color( 1, 1, 1, 0.537255 )
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_top = -32.0
+margin_right = 40.0
+custom_fonts/font = SubResource( 18 )
+text = "1"
+valign = 2
+
+[node name="Storage2" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 86.0
+margin_right = 168.0
+margin_bottom = 81.0
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+shortcut = SubResource( 11 )
+group = ExtResource( 16 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage2"]
+modulate = Color( 1, 1, 1, 0.537255 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_right = 40.0
+custom_fonts/font = SubResource( 18 )
+text = "2"
+valign = 2
+
+[node name="Storage3" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 172.0
+margin_right = 254.0
+margin_bottom = 81.0
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+shortcut = SubResource( 13 )
+group = ExtResource( 16 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage3"]
+modulate = Color( 1, 1, 1, 0.537255 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_right = 40.0
+custom_fonts/font = SubResource( 18 )
+text = "3"
+valign = 2
+
+[node name="Storage4" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 258.0
+margin_right = 340.0
+margin_bottom = 81.0
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+shortcut = SubResource( 15 )
+group = ExtResource( 16 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage4"]
+modulate = Color( 1, 1, 1, 0.537255 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_right = 40.0
+custom_fonts/font = SubResource( 18 )
+text = "4"
+valign = 2
+
+[node name="Storage5" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+margin_left = 344.0
+margin_right = 426.0
+margin_bottom = 81.0
+focus_mode = 0
+toggle_mode = true
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+shortcut = SubResource( 17 )
+group = ExtResource( 16 )
+texture_normal = ExtResource( 14 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage5"]
+modulate = Color( 1, 1, 1, 0.537255 )
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_right = 40.0
+custom_fonts/font = SubResource( 18 )
+text = "5"
+valign = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+margin_top = 85.0
+margin_right = 426.0
+margin_bottom = 117.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+margin_right = 23.0
+margin_bottom = 32.0
 theme = ExtResource( 5 )
-text = "Project Nomad Preview"
+text = "HP"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+margin_left = 27.0
+margin_right = 426.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+theme = ExtResource( 5 )
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -193.0
+margin_left = 474.0
+margin_top = -231.0
 alignment = 2
 
 [node name="BuildMenu" type="ScrollContainer" parent="CanvasLayer/Control/VBoxContainer2"]
-visible = false
-margin_top = 12.0
-margin_right = 1920.0
-margin_bottom = 157.0
-rect_clip_content = false
+margin_top = 38.0
+margin_right = 1446.0
+margin_bottom = 195.0
 theme = ExtResource( 5 )
 follow_focus = true
 scroll_vertical_enabled = false
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu"]
-margin_left = 960.0
-margin_right = 960.0
+margin_right = 1492.0
+margin_bottom = 145.0
 size_flags_horizontal = 6
 theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer"]
-margin_right = 1060.0
+margin_right = 1492.0
 margin_bottom = 145.0
 custom_constants/margin_right = 100
 custom_constants/margin_left = 100
@@ -165,36 +346,36 @@ group = SubResource( 6 )
 build_type = "printer"
 
 [node name="BuildCard9" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 756.0
-margin_right = 860.0
+margin_left = 864.0
+margin_right = 968.0
 group = SubResource( 6 )
 build_type = "turret"
 
 [node name="BuildCard10" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 756.0
-margin_right = 860.0
+margin_left = 972.0
+margin_right = 1076.0
 group = SubResource( 6 )
 build_type = "turret"
 
 [node name="BuildCard11" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 1512.0
-margin_right = 1616.0
+margin_left = 1080.0
+margin_right = 1184.0
 group = SubResource( 6 )
 build_type = "room"
 
 [node name="BuildCard12" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
-margin_left = 3024.0
-margin_right = 3128.0
+margin_left = 1188.0
+margin_right = 1292.0
 group = SubResource( 6 )
 build_type = "wall"
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
-margin_top = 161.0
-margin_right = 1920.0
-margin_bottom = 193.0
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
+margin_top = 199.0
+margin_right = 1446.0
+margin_bottom = 231.0
 theme = ExtResource( 5 )
-text = "Q - Toggle Build Menu"
-align = 1
+text = "Q - Building Blueprints"
+align = 2
 
 [node name="CulpitHint" type="VBoxContainer" parent="CanvasLayer/Control"]
 margin_bottom = 32.0
@@ -205,11 +386,13 @@ alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CulpitHint"]
 margin_right = 189.0
 margin_bottom = 45.0
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/CulpitHint/HBoxContainer"]
 margin_right = 52.89
 margin_bottom = 45.0
 rect_min_size = Vector2( 52.89, 45 )
+mouse_filter = 2
 
 [node name="Key" type="Label" parent="CanvasLayer/Control/CulpitHint/HBoxContainer/PanelContainer"]
 margin_top = 6.0
@@ -223,6 +406,7 @@ align = 1
 margin_left = 56.0
 margin_right = 66.0
 margin_bottom = 45.0
+mouse_filter = 2
 custom_constants/margin_right = 10
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/CulpitHint/HBoxContainer"]
@@ -257,8 +441,10 @@ theme = ExtResource( 5 )
 [node name="Move" type="Button" parent="CanvasLayer/Control/CulpitMenu/MarginContainer/HBoxContainer"]
 margin_right = 123.0
 margin_bottom = 45.0
+focus_mode = 0
 size_flags_horizontal = 3
 theme = ExtResource( 5 )
+enabled_focus_mode = 0
 text = "Move"
 icon = ExtResource( 9 )
 expand_icon = true
@@ -267,8 +453,10 @@ expand_icon = true
 margin_left = 127.0
 margin_right = 250.0
 margin_bottom = 45.0
+focus_mode = 0
 size_flags_horizontal = 3
 theme = ExtResource( 5 )
+enabled_focus_mode = 0
 text = "Destroy"
 icon = ExtResource( 10 )
 expand_icon = true
