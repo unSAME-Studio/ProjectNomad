@@ -12,6 +12,7 @@ light_mode = 1
 
 [sub_resource type="DynamicFont" id=1]
 size = 22
+extra_spacing_top = -9
 font_data = ExtResource( 4 )
 
 [sub_resource type="CanvasItemMaterial" id=3]
@@ -33,11 +34,14 @@ material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 6.0
-margin_bottom = -4.0
+margin_right = -7.0
+margin_bottom = -5.0
 custom_colors/font_color = Color( 1, 1, 1, 0.32549 )
 custom_fonts/font = SubResource( 1 )
-text = "CARD CARD"
+text = "Auto Turret"
+align = 1
 valign = 2
+autowrap = true
 uppercase = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
