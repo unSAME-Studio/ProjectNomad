@@ -22,18 +22,14 @@ func active(_base):
 	base.rooms.append(self)
 	base.update_polygon($Polygon2D)
 	#print($Polygon2D.polygon)
-	build_points = $structures/points.get_children()
-	for i in build_points:
-		i.room = self
 
 # will return the base
 func get_build():
-	print(base)
 	return base
 	
 func get_build_points(type):
 	var out_points = []
-	for i in $structures/points.get_children():
+	for i in build_points:
 		if i.type == type:
 			if i.active == true:
 				out_points.append(i)
