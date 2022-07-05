@@ -13,11 +13,11 @@ func _ready():
 	persistent_state.velocity = Vector2.ZERO
 	
 	# connect the player
-	persistent_state.culpit = persistent_state.selected_culpit
+	persistent_state.culpit = persistent_state.selected_object
 	persistent_state.culpit.initial_control(persistent_state)
 	
 	# if culpit is action type, disconnect immediately
-	if bool(persistent_state.selected_culpit.action) == true:
+	if bool(persistent_state.selected_object.action) == true:
 		interact()
 
 

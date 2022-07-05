@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/polygonshape.gd" type="Script" id=2]
 [ext_resource path="res://objects/ship.tscn" type="PackedScene" id=3]
 [ext_resource path="res://systems/CameraManager.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/enviorments/Entity.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/entities/Entity.tscn" type="PackedScene" id=5]
 [ext_resource path="res://arts/enviroment/island.png" type="Texture" id=8]
 
 [sub_resource type="PhysicsMaterial" id=1]

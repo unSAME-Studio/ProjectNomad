@@ -79,6 +79,6 @@ func move_right():
 
 
 func interact():
-	if persistent_state.selected_culpit:
+	if persistent_state.selected_object:
 		controlling = true
 
