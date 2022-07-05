@@ -32,5 +32,5 @@ func move_right():
 
 
 func interact():
-	if persistent_state.selected_culpit:
+	if persistent_state.selected_object:
 		change_state.call_func("control")
