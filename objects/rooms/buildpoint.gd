@@ -8,7 +8,7 @@ var room = null
 var indi
 
 func _ready():
-	#hide()
+	hide()
 	room = find_parent("room")
 	if room:
 		if type == 'room':
