@@ -3,36 +3,21 @@ extends Node
 
 var player
 
+# card type = [Controller, Machine, Decoration, Weapons]
+var culpits_data = []
 
-var culpits_data = {
-	"wheel": {
-		"controllable": true,
-		"action": false,
-		"hint": "Steer",
-	},
-	"locker": {
-		"controllable": true,
-		"action": true,
-		"hint": "Lock / Unlock",
-	},
-	"light": {
-		"controllable": true,
-		"action": true,
-		"hint": "Turn On / Off",
-	},
-	"printer": {
-		"controllable": true,
-		"action": true,
-		"hint": "Print Card",
-	},
-	"turret": {
-		"controllable": true,
-		"action": false,
-		"hint": "Control",
-	},
-	"auto_turret": {
-		"controllable": true,
-		"action": true,
-		"hint": "Disable",
-	},
-}
+
+func load_database(file_name: String):
+	var data_file = File.new()
+	data_file.open("res://%s.json" % file_name, File.READ)
+	
+	var database = parse_json(data_file.get_as_text())
+	
+	data_file.close()
+	
+	return database
+
+
+func _ready():
+	culpits_data = load_database("data")
+

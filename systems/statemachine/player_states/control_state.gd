@@ -17,7 +17,7 @@ func _ready():
 	persistent_state.culpit.initial_control(persistent_state)
 	
 	# if culpit is action type, disconnect immediately
-	if persistent_state.selected_culpit.action == true:
+	if bool(persistent_state.selected_culpit.action) == true:
 		interact()
 
 
