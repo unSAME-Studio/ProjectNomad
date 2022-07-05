@@ -5,6 +5,7 @@ export(String) var build_type = "wheel"
 var prebuild = preload("res://objects/buildings/Prebuild.tscn")
 var structure_prebuild = preload("res://objects/rooms/struc_prebuild.tscn")
 
+var hovering = false
 var current_prebuild = null
 
 onready var initial_position = get_position()
@@ -23,13 +24,17 @@ func _ready():
 
 
 func _on_BuildCard_mouse_entered():
-	set_scale(Vector2(1, 1.1))
-	set_position(Vector2(get_position().x, -20))
+	hovering = true
 	
+	#set_scale(Vector2(1, 1.1))
+	#set_position(Vector2(get_position().x, -20))
+
 
 func _on_BuildCard_mouse_exited():
-	set_scale(Vector2(1, 1))
-	set_position(Vector2(get_position().x, 0))
+	hovering = false
+	
+	#set_scale(Vector2(1, 1))
+	#set_position(Vector2(get_position().x, 0))
 
 
 func _on_BuildCard_pressed():
@@ -50,11 +55,16 @@ func _on_BuildCard_pressed():
 
 
 func _process(delta):
+	#if hovering:
+	#	$Label.set_position(get_position().linear_interpolate(get_local_mouse_position(), 20 * delta))
+	#else:
+	#	$Label.set_position(Vector2(6, 0))
+	
 	return
 	
 	# [TEMP] WIP card follow mouse
 	if current_prebuild:
-		set_position(get_global_position().linear_interpolate(current_prebuild.get_global_transform_with_canvas().get_origin(), 20 * delta))
+		set_position(get_position().linear_interpolate(current_prebuild.get_global_transform_with_canvas().get_origin(), 20 * delta))
 	else:
 		set_position(initial_position)
 
