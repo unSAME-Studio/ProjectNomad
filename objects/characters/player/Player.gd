@@ -5,7 +5,7 @@ extends KinematicBody2D
 var controllables = {}
 var controlling = true
 var base = null
-var selected_culpit = null
+var selected_object = null
 var culpit = null
 
 # An enum allows us to keep track of valid states.
@@ -21,7 +21,8 @@ var velocity = Vector2.ZERO
 var onboard = false
 
 var health = 100.0
-var storage = {}
+var storage = []
+onready var storage_ui = $CanvasLayer/Control/VBoxContainer/StorageBox.get_children()
 
 var camera
 
@@ -59,29 +60,32 @@ func _process(delta):
 		print(last_state)
 	
 	
+	# update health
+	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
+	
 	# find the cloest controllables
 	if controllables.size() > 0:
-		selected_culpit = controllables.values()[0]
+		selected_object = controllables.values()[0]
 		for i in controllables.values():
-			if i.get_global_position().distance_to(get_global_position()) < selected_culpit.get_global_position().distance_to(get_global_position()):
-				selected_culpit = i
+			if i.get_global_position().distance_to(get_global_position()) < selected_object.get_global_position().distance_to(get_global_position()):
+				selected_object = i
 		
 	else:
-		selected_culpit = null
+		selected_object = null
 	
 	if last_state != "ControlState":
 		# set hint text 
-		if selected_culpit:
-			var target_pos = selected_culpit.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/CulpitHint.get_size() / 2
-			target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/CulpitHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/CulpitHint.get_size().y))
-			$CanvasLayer/Control/CulpitHint.set_position($CanvasLayer/Control/CulpitHint.get_position().linear_interpolate(target_pos, 20 * delta))
+		if selected_object:
+			var target_pos = selected_object.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/ControlHint.get_size() / 2
+			target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/ControlHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/ControlHint.get_size().y))
+			$CanvasLayer/Control/ControlHint.set_position($CanvasLayer/Control/ControlHint.get_position().linear_interpolate(target_pos, 20 * delta))
 		
-			$CanvasLayer/Control/CulpitHint/HBoxContainer/Label.set_text(selected_culpit.get_hint_text())
+			$CanvasLayer/Control/ControlHint/HBoxContainer/Label.set_text(selected_object.get_hint_text())
 				
-			$CanvasLayer/Control/CulpitHint.show()
+			$CanvasLayer/Control/ControlHint.show()
 			
 		else:
-			$CanvasLayer/Control/CulpitHint.hide()
+			$CanvasLayer/Control/ControlHint.hide()
 
 
 func _physics_process(delta):

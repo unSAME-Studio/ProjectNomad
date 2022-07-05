@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://arts/ui/quick_access_pressed.png" type="Texture" id=15]
 [ext_resource path="res://objects/ui/StorageGroup.tres" type="ButtonGroup" id=16]
 [ext_resource path="res://arts/font/BarlowCondensed-SemiBold.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://objects/ui/StorageUI.gd" type="Script" id=21]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -111,6 +112,9 @@ shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 25.1
 
+[node name="WearSlot" type="Position2D" parent="."]
+position = Vector2( 0, -31 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -125,12 +129,12 @@ anchor_bottom = 1.0
 margin_top = -117.0
 margin_right = 426.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
 margin_right = 426.0
 margin_bottom = 81.0
 alignment = 1
 
-[node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
 margin_right = 82.0
 margin_bottom = 81.0
 focus_mode = 0
@@ -142,8 +146,9 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+script = ExtResource( 21 )
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage"]
 modulate = Color( 1, 1, 1, 0.537255 )
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -153,7 +158,20 @@ custom_fonts/font = SubResource( 18 )
 text = "1"
 valign = 2
 
-[node name="Storage2" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.5
+margin_right = 25.0
+margin_bottom = 24.5
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+
+[node name="Storage2" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
 margin_left = 86.0
 margin_right = 168.0
 margin_bottom = 81.0
@@ -166,8 +184,9 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+script = ExtResource( 21 )
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage2"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage2"]
 modulate = Color( 1, 1, 1, 0.537255 )
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -177,7 +196,20 @@ custom_fonts/font = SubResource( 18 )
 text = "2"
 valign = 2
 
-[node name="Storage3" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.5
+margin_right = 25.0
+margin_bottom = 24.5
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+
+[node name="Storage3" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
 margin_left = 172.0
 margin_right = 254.0
 margin_bottom = 81.0
@@ -190,8 +222,9 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+script = ExtResource( 21 )
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage3"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage3"]
 modulate = Color( 1, 1, 1, 0.537255 )
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -201,7 +234,20 @@ custom_fonts/font = SubResource( 18 )
 text = "3"
 valign = 2
 
-[node name="Storage4" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.5
+margin_right = 25.0
+margin_bottom = 24.5
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+
+[node name="Storage4" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
 margin_left = 258.0
 margin_right = 340.0
 margin_bottom = 81.0
@@ -214,8 +260,9 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+script = ExtResource( 21 )
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage4"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage4"]
 modulate = Color( 1, 1, 1, 0.537255 )
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -225,7 +272,20 @@ custom_fonts/font = SubResource( 18 )
 text = "4"
 valign = 2
 
-[node name="Storage5" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage4"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.5
+margin_right = 25.0
+margin_bottom = 24.5
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
+
+[node name="Storage5" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
 margin_left = 344.0
 margin_right = 426.0
 margin_bottom = 81.0
@@ -238,8 +298,9 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+script = ExtResource( 21 )
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer/Storage5"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage5"]
 modulate = Color( 1, 1, 1, 0.537255 )
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -248,6 +309,19 @@ margin_right = 40.0
 custom_fonts/font = SubResource( 18 )
 text = "5"
 valign = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage5"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -25.0
+margin_top = -25.5
+margin_right = 25.0
+margin_bottom = 24.5
+rect_min_size = Vector2( 50, 50 )
+expand = true
+stretch_mode = 6
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
 margin_top = 85.0
@@ -260,7 +334,7 @@ margin_bottom = 32.0
 theme = ExtResource( 5 )
 text = "HP"
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
 margin_left = 27.0
 margin_right = 426.0
 margin_bottom = 32.0
@@ -379,25 +453,25 @@ theme = ExtResource( 5 )
 text = "Q - Building Blueprints"
 align = 2
 
-[node name="CulpitHint" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="ControlHint" type="VBoxContainer" parent="CanvasLayer/Control"]
 visible = false
 margin_bottom = 32.0
 mouse_filter = 2
 theme = ExtResource( 5 )
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/CulpitHint"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/ControlHint"]
 margin_right = 189.0
 margin_bottom = 45.0
 mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/CulpitHint/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/ControlHint/HBoxContainer"]
 margin_right = 52.89
 margin_bottom = 45.0
 rect_min_size = Vector2( 52.89, 45 )
 mouse_filter = 2
 
-[node name="Key" type="Label" parent="CanvasLayer/Control/CulpitHint/HBoxContainer/PanelContainer"]
+[node name="Key" type="Label" parent="CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer"]
 margin_top = 6.0
 margin_right = 52.89
 margin_bottom = 38.0
@@ -405,14 +479,14 @@ theme = ExtResource( 5 )
 text = "E"
 align = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/CulpitHint/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/ControlHint/HBoxContainer"]
 margin_left = 56.0
 margin_right = 66.0
 margin_bottom = 45.0
 mouse_filter = 2
 custom_constants/margin_right = 10
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/CulpitHint/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Control/ControlHint/HBoxContainer"]
 margin_left = 70.0
 margin_top = 6.0
 margin_right = 189.0
@@ -479,7 +553,7 @@ script = ExtResource( 12 )
 
 [node name="ControllableDetection" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 72
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ControllableDetection"]
 shape = SubResource( 2 )
