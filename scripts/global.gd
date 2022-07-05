@@ -6,6 +6,10 @@ var player
 # card type = [Controller, Machine, Decoration, Weapons]
 var culpits_data = []
 
+var resources_data = [
+	
+]
+
 
 func load_database(file_name: String):
 	var data_file = File.new()
