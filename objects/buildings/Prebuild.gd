@@ -88,7 +88,7 @@ func _process(delta):
 	if build_points:
 		for i in build_points:
 			var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
-			if dist < 30:
+			if dist < SNAP_THRESHOLD:
 				if target == i:
 					point_mode = true
 				elif target != i:
