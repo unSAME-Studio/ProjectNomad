@@ -139,7 +139,7 @@ func _process(delta):
 		set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 	else:
 		if target:
-			set_global_position(target.get_global_position())
+			set_global_position(get_global_position().linear_interpolate(target.get_global_position(), 20 * delta))
 			set_rotation(target.get_rotation())
 	
 	point_mode = false
