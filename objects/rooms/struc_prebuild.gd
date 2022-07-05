@@ -64,7 +64,7 @@ func check_build_condition(target_mode = false) -> bool:
 func _process(delta):
 	#check if in build_point range
 	if build_points:
-		#check if on build point
+		#check if on build point, output a buildpoint to target, and set point_mode to true if =\ 
 		for i in build_points:
 			var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
 			if dist < 500:
