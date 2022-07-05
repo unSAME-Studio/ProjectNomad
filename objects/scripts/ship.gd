@@ -24,6 +24,7 @@ func _ready():
 	pass
 
 func update_polygon(input):
+	print(rooms)
 	print(input.polygon)
 	var in_polygon = []
 	var offset = input.get_global_position() - get_global_position()

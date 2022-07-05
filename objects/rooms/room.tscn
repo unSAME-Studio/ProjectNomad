@@ -2,7 +2,7 @@
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/SetPolygonCollider.gd" type="Script" id=2]
-[ext_resource path="res://objects/rooms/buildpoint.gd" type="Script" id=3]
+[ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=3]
 
@@ -40,6 +40,10 @@ polygon = PoolVector2Array( -160, -12, -160, 12, 144, 12, 144, -12 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="structures/Wall"]
 occluder = SubResource( 3 )
 
+[node name="buildpoint" parent="structures/Wall" instance=ExtResource( 3 )]
+position = Vector2( 0, -248 )
+type = "Wall"
+
 [node name="Wall2" type="StaticBody2D" parent="structures"]
 position = Vector2( -160, 0 )
 collision_mask = 29
@@ -72,76 +76,24 @@ polygon = PoolVector2Array( -16, -264, -16, 240, 16, 240, 16, -264 )
 
 [node name="points" type="Node2D" parent="structures"]
 
-[node name="buildpoint" type="Position2D" parent="structures/points"]
+[node name="buildpoint" parent="structures/points" instance=ExtResource( 3 )]
 position = Vector2( 0, -248 )
-script = ExtResource( 3 )
-type = "room"
 
-[node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint"]
-position = Vector2( 0, 240 )
-rotation = 3.14159
-polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
-
-[node name="buildpoint6" type="Position2D" parent="structures/points"]
-position = Vector2( -160, -280 )
-script = ExtResource( 3 )
+[node name="buildpoint2" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( 0, -144 )
 type = "utility"
 
-[node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint6"]
-position = Vector2( 0, 240 )
-rotation = 3.14159
-polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
-
-[node name="buildpoint7" type="Position2D" parent="structures/points"]
-position = Vector2( 168, -280 )
-script = ExtResource( 3 )
+[node name="buildpoint3" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( 192, 0 )
 type = "utility"
 
-[node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint7"]
-position = Vector2( 0, 240 )
-rotation = 3.14159
-polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
-
-[node name="buildpoint5" type="Position2D" parent="structures/points"]
-position = Vector2( 0, 240 )
-rotation = 3.14159
-script = ExtResource( 3 )
-type = "room"
-
-[node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint5"]
-position = Vector2( 0, 240 )
-rotation = 3.14159
-polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
-
-[node name="buildpoint2" type="Position2D" parent="structures/points"]
-position = Vector2( 0, -192 )
-script = ExtResource( 3 )
-type = "Weapon"
-
-[node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint2"]
-position = Vector2( 0, 240 )
-rotation = 3.14159
-polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
-
-[node name="buildpoint3" type="Position2D" parent="structures/points"]
-position = Vector2( -216, 0 )
-script = ExtResource( 3 )
-type = "Utility"
-
-[node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint3"]
-position = Vector2( 0, 240 )
-rotation = 3.14159
-polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
-
-[node name="buildpoint4" type="Position2D" parent="structures/points"]
-position = Vector2( 208, 0 )
-script = ExtResource( 3 )
+[node name="buildpoint4" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( -192, 0 )
 type = "utility"
 
-[node name="Polygon2D" type="Polygon2D" parent="structures/points/buildpoint4"]
+[node name="buildpoint5" parent="structures/points" instance=ExtResource( 3 )]
 position = Vector2( 0, 240 )
-rotation = 3.14159
-polygon = PoolVector2Array( 1.95827e-05, 224, 16, 240, 8.00002, 248, 2.51778e-05, 288, -7.99998, 248, -16, 240 )
+rotation = -3.14159
 
 [node name="objects" type="Node2D" parent="."]
 
