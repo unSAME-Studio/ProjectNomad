@@ -20,21 +20,26 @@ var point_type = "room"
 var point_mode = false
 var build_points = []
 
+var snapindex = 0
+
 var structure
 func _ready():
 	$Sprite.set_texture(load("res://arts/VFX/Circle.png"))
+	update_points()
 	if type == 'room':
-		#var space_state = get_world_2d().direct_space_state
-		build_points = Global.player.get_build_points(point_type)
+		#build_points = Global.player.get_build_points(point_type)
 		structure = load("res://objects/rooms/room.tscn").instance()
 		structure.active = false
 		add_child(structure)
-		print(build_points)
-	else:
-		#var space_state = get_world_2d().direct_space_state
-		build_points = Global.player.get_build_points('Wall')
+
 		
-	
+func update_points():
+	var new_build_points = Global.player.get_build_points(type)
+	for i in build_points:
+		i.end_build()
+	build_points = new_build_points
+	for i in build_points:
+		i.ready_build()
 
 func check_build_condition(target_mode = false) -> bool:
 	if target_mode == false:
@@ -93,8 +98,8 @@ func _process(delta):
 			set_global_position(target.get_global_position())
 			set_global_rotation(target.get_global_rotation())
 			if structure:
-				structure.set_global_rotation(target.get_global_rotation() + structure.snappoint.get_rotation())
-				structure.set_position(-structure.snappoint.get_position())#.rotated(3.14159-target.get_rotation()))
+				structure.set_global_rotation(target.get_global_rotation() +(3.14159 - structure.snappoint[snapindex].get_rotation()))
+				structure.set_position(structure.snappoint[snapindex].get_position().rotated(-structure.snappoint[snapindex].get_rotation()))
 		
 	else:
 		Global.player.set_prebuild_hint("Not avaliable", self)
@@ -123,8 +128,8 @@ func _unhandled_input(event):
 			queue_free()
 	
 	if Input.is_action_just_pressed("rotate"):
-		direction = wrapi(direction + 1, 0, 4)
-		print("rotate facing %d" % direction)
+		if structure:
+			snapindex = (snapindex + 1)%structure.snappoint.size()
 		
 
 
@@ -140,10 +145,14 @@ func finish_build(room):
 		structure.set_global_rotation(temp_rot)
 		structure.active(base)
 		build_points = []
+		
 	else:
 		if target:
-			target.queue_free()
+			target.get_parent().queue_free()
+			Global.player.build_point_flag = true
+			card.canceled_build()
 	Global.player.end_building_mode()
-	
 	card.queue_free()
 	queue_free()
+	
+
