@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export(String,"utility","room","weapon","Wall","snap","core","connector") var type = "Snap"
+export(String,"utility","room","weapon","wall","snap","core","connector") var type = "Snap"
 var active = true
 var object = null
 var room = null
@@ -9,7 +9,8 @@ var indi
 
 func _ready():
 	room = find_parent("room")
-	room.build_points.append(self)
+	if room:
+		room.build_points.append(self)
 
 
 func activate_build():

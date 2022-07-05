@@ -23,17 +23,14 @@ func _ready():
 	#$objects/Wall/LightOccluder2D.occluder.set_polygon($objects/Wall/Polygon2D.polygon)
 	pass
 
+#input is a Polygon2D instance
 func update_polygon(input):
-	print(rooms)
-	print(input.polygon)
 	var in_polygon = []
 	var offset = input.get_global_position() - get_global_position()
 	offset = Vector2(int(round(offset.x)),int(round(offset.y)))
 	for i in input.polygon:
 		in_polygon.append(i+offset)
-	print(in_polygon)
 	$Basecollision.polygon = Geometry.merge_polygons_2d(in_polygon,$Basecollision.polygon)[0]
-	print(Geometry.merge_polygons_2d(in_polygon,$Basecollision.polygon)[0])
 	$baseshape/Basecollision2.polygon = $Basecollision.polygon
 
 
@@ -86,12 +83,11 @@ func _integrate_forces(state):
 	pass
 			
 		
-func get_build_points(type):
+func get_build_points():
 	var points = []
-
 	if not rooms.empty():
 		for i in rooms:
-			points.append_array(i.get_build_points(type))
+			points.append_array(i.get_build_points())
 	return points
 
 func _on_baseshape_body_entered(body):
