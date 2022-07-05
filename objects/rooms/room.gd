@@ -27,17 +27,8 @@ func active(_base):
 func get_build():
 	return base
 	
-func get_build_points(type):
-	var out_points = []
-	for i in build_points:
-		if i.type == type:
-			if i.active == true:
-				out_points.append(i)
-	if type == 'Wall':
-		for i in $structures.get_children():
-			if i.name != 'points':
-				out_points.append(i)
-	return out_points
+func get_build_points():
+	return build_points
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

@@ -16,7 +16,8 @@ var state_factory
 
 var last_state	#temp print var
 var building_mode = false
-
+var build_points = []
+var build_point_flag = true
 var velocity = Vector2.ZERO
 var onboard = false
 
@@ -57,7 +58,9 @@ func _process(delta):
 	if last_state != state.get_class():
 		last_state = state.get_class()
 		print(last_state)
-	
+#	if build_point_flag:
+#		update_build_points()
+#		build_point_flag == false
 	
 	# find the cloest controllables
 	if controllables.size() > 0:
@@ -117,6 +120,7 @@ func _on_ControllableDetection_body_exited(body):
 func enter_building_mode() -> bool:
 	if not building_mode and state.get_class() != "ControlState":
 		building_mode = true
+		build_point_flag = true
 		return true
 	
 	return false
@@ -139,13 +143,19 @@ func set_prebuild_hint(text, prebuild):
 		$CanvasLayer/Control/PrebuildHint.set_text(text)
 		$CanvasLayer/Control/PrebuildHint.show()
 
+func update_build_points():
+	if base and base.has_method('get_build_points'):
+		build_points = base.get_build_points()
 
 func get_build_points(type):
-
-	if base and base.has_method('get_build_points'):
-
-		return base.get_build_points(type)
-
+	if build_point_flag:
+		update_build_points()
+	var out_points = []
+	for i in build_points:
+		if i.type == type:
+			if i.active == true:
+				out_points.append(i)
+	return out_points
 
 func is_in_air():
 	#print("in air: " + String(base == null))
