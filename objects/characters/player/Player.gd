@@ -24,7 +24,7 @@ var onboard = false
 var health = 100.0
 var storage = []
 onready var storage_ui = $CanvasLayer/Control/VBoxContainer/StorageBox.get_children()
-
+var move_velocity = Vector2(0,0)
 var camera
 
 var build_card = preload("res://objects/ui/BuildCard.tscn")
@@ -63,6 +63,7 @@ func _process(delta):
 #		update_build_points()
 #		build_point_flag == false
 	
+			
 	# update health
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
@@ -92,6 +93,24 @@ func _process(delta):
 
 
 func _physics_process(delta):
+	#temp sliding
+	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 3 ,[],2,true,false)
+	var temp_speed = Vector2(0,0)
+	var base_velocity = Vector2(0,0)
+	if not temp_base.empty():
+		temp_base=temp_base[0].collider
+		if temp_base.has_method("get_linear_velocity"):
+			temp_speed = temp_base.get_linear_velocity()*0.08
+	else:
+		temp_base = null
+	if temp_base != base:
+		if base:
+			if base.has_method("get_linear_velocity"):
+				base_velocity =  base.get_linear_velocity()*0.08
+		move_velocity = base_velocity + move_velocity - temp_speed
+		#print(move_velocity)
+		base = temp_base
+		
 	state.update()
 	
 	if Input.is_action_pressed('up'):

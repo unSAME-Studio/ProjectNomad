@@ -44,6 +44,7 @@ func _physics_process(delta):
 	
 	# else deal with the velocity in air
 	if persistent_state.is_in_air():
+		persistent_state.move_velocity = lerp(persistent_state.move_velocity, Vector2.ZERO, 0.01)
 		if direction.length() > 0:
 			persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * air_speed, air_acceleration)
 		else:
@@ -51,12 +52,19 @@ func _physics_process(delta):
 	
 	# or for on the floor
 	else:
+		if abs(persistent_state.move_velocity.x) > 5 or abs(persistent_state.move_velocity.y) > 5:
+			persistent_state.move_velocity = lerp(persistent_state.move_velocity, Vector2.ZERO, 0.01)
+		else:
+			persistent_state.move_velocity = Vector2.ZERO
 		if direction.length() > 0:
 			persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * speed, acceleration)
 		else:
 			persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
 	
 	direction = Vector2.ZERO
+	#print(persistent_state.move_velocity)
+	persistent_state.velocity+=persistent_state.move_velocity
+	#print(persistent_state.move_velocity)
 	persistent_state.move_and_slide(persistent_state.velocity)
 	
 	check_state_change()

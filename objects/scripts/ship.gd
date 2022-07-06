@@ -107,7 +107,7 @@ func _on_baseshape_body_entered(body):
 		
 func _on_baseshape_body_exited(body):
 	if(body.name == 'Player' and body.get_parent() == self and leave == false):
-		body.base = null
+		#body.base = null
 		var temppos = body.get_global_position()
 		body.onboard = false
 		self.remove_child(body)
