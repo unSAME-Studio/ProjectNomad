@@ -185,6 +185,7 @@ func _unhandled_input(event):
 						i.end_build()
 					build_points = []
 					target.finish_build()
+					
 			else:
 				var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
 				if (not result.empty()):
@@ -194,8 +195,9 @@ func _unhandled_input(event):
 						hovering = false
 						finish_build(base)
 				else:
-					hovering = false
-					finish_build(base)
+					if can_build:
+						hovering = false
+						finish_build(base)
 			
 		# right click cancel
 		elif event.get_button_index() == 2 and event.is_pressed():

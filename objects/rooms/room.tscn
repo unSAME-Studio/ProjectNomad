@@ -25,6 +25,7 @@ polygon = PoolVector2Array( -168, -248, 168, -248, 168, 240, -168, 240 )
 
 [node name="Wall" type="StaticBody2D" parent="structures"]
 position = Vector2( 0, -248 )
+z_index = 1
 collision_mask = 29
 script = ExtResource( 2 )
 
@@ -45,6 +46,7 @@ type = "wall"
 
 [node name="Wall2" type="StaticBody2D" parent="structures"]
 position = Vector2( -160, 0 )
+z_index = 1
 collision_mask = 29
 script = ExtResource( 2 )
 
@@ -63,6 +65,7 @@ type = "wall"
 
 [node name="Wall3" type="StaticBody2D" parent="structures"]
 position = Vector2( 160, 0 )
+z_index = 1
 collision_mask = 29
 script = ExtResource( 2 )
 
