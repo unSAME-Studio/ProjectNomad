@@ -5,14 +5,14 @@ onready var camera = get_node("Camera2D")
 
 export(NodePath) var target_node_path
 onready var target = get_node(target_node_path)
-
+var align_flag = true
 
 func _ready():
 	target.camera = self
 	#camera.rotating = true
 
 func align_camera():
-	#camera.rotation = target.get_global_rotation()
+	align_flag  = true
 	pass
 
 func _unhandled_input(event):
@@ -27,6 +27,7 @@ func _unhandled_input(event):
 		
 	if Input.is_action_just_pressed("zoom_reset"):
 		camera.set_zoom(Vector2(1, 1))
+		align_flag = true
 	
 	if Input.is_action_just_pressed("camera_left"):
 		pass
@@ -39,8 +40,10 @@ func _process(delta):
 	set_global_position(target.get_global_position())
 	
 	# rotate camera toward player when not 
-	if Global.player.state.get_class() != "ControlState":
+	if Global.player.state.get_class() != "ControlState" and align_flag:
 		set_global_rotation(lerp_angle(get_global_rotation(), target.get_global_rotation(), 10 * delta))
+		if get_global_rotation() == target.get_global_rotation():
+			align_flag = false
 	
 	# move the parallax layers
 	for i in $Parallax/Control.get_children():

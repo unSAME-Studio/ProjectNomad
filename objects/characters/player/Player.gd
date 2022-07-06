@@ -150,7 +150,6 @@ func set_prebuild_hint(text, prebuild):
 func update_build_points():
 	if base and base.has_method('get_build_points'):
 		build_points = base.get_build_points()
-	print(build_points)
 
 func get_build_points(type):
 	if build_point_flag:

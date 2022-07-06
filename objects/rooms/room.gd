@@ -38,6 +38,5 @@ func get_build_points():
 #	pass
 func disconnect_point(point):
 	if active:
-		print(point)
 		build_points.erase(point)
 		snappoint.erase(point)
