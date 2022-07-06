@@ -32,16 +32,17 @@ func _process(delta):
 
 
 # for entity, interact picks them up
-func initial_control(actor):
-	# check if over the limit
-	if actor.storage.size() < 5:
-		actor.storage.append(type)
-		actor.storage_ui[actor.storage.size() - 1].update_button(type)
+func initial_control(player):
+	# check for empty slot inside dictionary
+	var slot = player.find_storage_space()
+	if slot != null:
+		player.storage[slot] = type
+		player.storage_ui[slot].update_button(type)
 	
 		queue_free()
 
 
-func stop_control(actor):
+func stop_control(player):
 	pass
 
 

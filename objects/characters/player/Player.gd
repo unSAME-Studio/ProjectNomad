@@ -22,7 +22,13 @@ var velocity = Vector2.ZERO
 var onboard = false
 
 var health = 100.0
-var storage = []
+var storage = {
+	0: null,
+	1: null,
+	2: null,
+	3: null,
+	4: null,
+}
 onready var storage_ui = $CanvasLayer/Control/VBoxContainer/StorageBox.get_children()
 
 var camera
@@ -147,9 +153,11 @@ func set_prebuild_hint(text, prebuild):
 		$CanvasLayer/Control/PrebuildHint.set_text(text)
 		$CanvasLayer/Control/PrebuildHint.show()
 
+
 func update_build_points():
 	if base and base.has_method('get_build_points'):
 		build_points = base.get_build_points()
+
 
 func get_build_points(type):
 	if build_point_flag:
@@ -161,6 +169,8 @@ func get_build_points(type):
 				out_points.append(i)
 	return out_points
 
+
+# check if player is in the air (by detecting base)
 func is_in_air():
 	#print("in air: " + String(base == null))
 	
@@ -186,3 +196,24 @@ func edit_culpit(c):
 	# else hide
 	else:
 		$CanvasLayer/Control/CulpitMenu.close()
+
+
+# storage find space
+func find_storage_space():
+	for i in range(0, 5):
+		if storage[i] == null:
+			return i
+	
+	return null
+
+
+func attach_object(type):
+	var p
+	# check if it's a entity or a culpits
+	if not type in ["nano"]:
+		p = load("res://objects/culpits/Culpit.tscn").instance()
+	else:
+		p = load("res://objects/entities/Entity.tscn").instance()
+	
+	$WearSlot.add_child(p)
+	
