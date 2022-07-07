@@ -7,7 +7,7 @@ export(NodePath) var target_node_path
 onready var target = get_node(target_node_path)
 var align_flag = true
 var rotation_temp = 0
-var rotation_changed_flag = false
+var rotation_changed_flag = true
 
 func _ready():
 	target.camera = self
@@ -15,7 +15,8 @@ func _ready():
 
 func align_camera():
 	align_flag  = true
-	pass
+
+
 
 func _unhandled_input(event):
 	# camera control
@@ -41,14 +42,25 @@ func _get_rotation():
 	return rotation_temp
 
 func _process(delta):
+	
 	set_global_position(target.get_global_position())
+	
+	
+	#movement inheritance check @walk_state.gd
 	if not rotation_changed_flag:
-		rotation_temp = get_global_rotation()
+		if align_flag:
+			rotation_temp = target.get_global_rotation()
+		else:
+			rotation_temp = get_global_rotation()
+			
+			
 	# rotate camera toward player when not 
 	if Global.player.state.get_class() != "ControlState" and align_flag:
 		set_global_rotation(lerp_angle(get_global_rotation(), target.get_global_rotation(), 10 * delta))
-		if get_global_rotation() == target.get_global_rotation():
-			align_flag = false
+		if abs(get_global_rotation() - target.get_global_rotation()) < 0.001:
+			set_global_rotation(target.get_global_rotation())
+			#align_flag = false
+
 	
 	# move the parallax layers
 	for i in $Parallax/Control.get_children():

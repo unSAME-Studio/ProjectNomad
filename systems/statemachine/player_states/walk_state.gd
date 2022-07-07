@@ -15,7 +15,7 @@ var min_move_speed = 0.005
 var direction = Vector2.ZERO
 
 var controlling = false
-
+var last_input = Vector2.ZERO
 
 func get_class(): 
 	return "WalkState"
@@ -45,6 +45,7 @@ func _physics_process(delta):
 	# else deal with the velocity in air
 	#eizi: using acceleration simulation
 	if persistent_state.is_in_air():
+		persistent_state.get_node('testParticle').set_emitting(true)
 		if direction.length() > 0:
 			persistent_state.velocity += direction.rotated(persistent_state.camera._get_rotation()).normalized() * 5
 			 #lerp(persistent_state.move_velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * air_speed, air_acceleration)
@@ -59,6 +60,7 @@ func _physics_process(delta):
 		
 	# or for on the floor
 	else:
+		persistent_state.get_node('testParticle').set_emitting(false)
 		if abs(persistent_state.slide_velocity.x) > 5 or abs(persistent_state.slide_velocity.y) > 5:
 			persistent_state.slide_velocity = lerp(persistent_state.slide_velocity, Vector2.ZERO, 0.33)
 		else:
@@ -67,11 +69,23 @@ func _physics_process(delta):
 			persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera._get_rotation()).normalized() * speed, acceleration)
 		else:
 			persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
-	
+			
+	#camera movement inheritence
+	persistent_state.camera.rotation_changed_flag = persistent_state.input_moving
+	if direction.length() > 0:
+		direction.x = clamp(direction.x,-1,1)
+		direction.y = clamp(direction.y,-1,1)
+		if last_input != direction:
+			last_input = direction
+			persistent_state.camera.rotation_changed_flag = false
+		
+	persistent_state.input_moving = false
+		
+
 	direction = Vector2.ZERO
+	
 	#print(persistent_state.move_velocity)
 	#print(persistent_state.slide_velocity)
-	
 	#persistent_state.velocity = persistent_state.slide_velocity + persistent_state.move_velocity
 	#print(persistent_state.move_velocity)
 	persistent_state.move_and_slide(persistent_state.velocity)

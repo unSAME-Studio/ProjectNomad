@@ -26,8 +26,9 @@ func _ready():
 #input is a Polygon2D instance
 func update_polygon(input):
 	var in_polygon = []
-	var offset = input.get_global_position() - get_global_position()
+	var offset = input.get_parent().get_position()#(input.get_global_position() - get_global_position()).rotated(get_global_rotation())
 	offset = Vector2(int(round(offset.x)),int(round(offset.y)))
+
 	for i in input.polygon:
 		in_polygon.append(i+offset)
 	$Basecollision.polygon = Geometry.merge_polygons_2d(in_polygon,$Basecollision.polygon)[0]

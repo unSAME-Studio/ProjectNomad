@@ -18,18 +18,27 @@ polygon = PoolVector2Array( -168, -168, 168, -168, 168, 168, -168, 168 )
 
 [node name="structures" type="Node2D" parent="."]
 
-[node name="Wall" parent="structures" instance=ExtResource( 4 )]
-
 [node name="Wall2" parent="structures" instance=ExtResource( 4 )]
 position = Vector2( 0, 168 )
+
+[node name="buildpoint5" parent="structures/Wall2" instance=ExtResource( 3 )]
+rotation = -3.14159
+
+[node name="Wall4" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 168, 0 )
+rotation = 1.5708
+
+[node name="buildpoint7" parent="structures/Wall4" instance=ExtResource( 3 )]
+
+[node name="Wall" parent="structures" instance=ExtResource( 4 )]
+
+[node name="buildpoint2" parent="structures/Wall" instance=ExtResource( 3 )]
 
 [node name="Wall3" parent="structures" instance=ExtResource( 4 )]
 position = Vector2( -168, 0 )
 rotation = -1.5708
 
-[node name="Wall4" parent="structures" instance=ExtResource( 4 )]
-position = Vector2( 168, 0 )
-rotation = 1.5708
+[node name="buildpoint6" parent="structures/Wall3" instance=ExtResource( 3 )]
 
 [node name="points" type="Node2D" parent="structures"]
 
@@ -43,21 +52,6 @@ type = "utility"
 [node name="buildpoint4" parent="structures/points" instance=ExtResource( 3 )]
 position = Vector2( -184, -184 )
 type = "utility"
-
-[node name="buildpoint5" parent="structures/points" instance=ExtResource( 3 )]
-position = Vector2( 0, 168 )
-rotation = -3.14159
-
-[node name="buildpoint7" parent="structures/points" instance=ExtResource( 3 )]
-position = Vector2( 168, 0 )
-rotation = 1.5708
-
-[node name="buildpoint" parent="structures/points" instance=ExtResource( 3 )]
-position = Vector2( 0, -168 )
-
-[node name="buildpoint6" parent="structures/points" instance=ExtResource( 3 )]
-position = Vector2( -168, 0 )
-rotation = -1.5708
 
 [node name="BuildPoint2" type="Sprite" parent="structures"]
 position = Vector2( 0, -64 )
