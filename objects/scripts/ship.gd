@@ -41,8 +41,12 @@ func handle_movement(direction):
 		var currrangular = get_angular_velocity()
 		if currvelocity.length() > 300:
 			set_linear_velocity(lerp(currvelocity, currvelocity.normalized()*300, 0.05))
-		if abs(currrangular) > 0.5:
-			set_angular_velocity(lerp(currrangular,0.5, 0.05))
+		if abs(currrangular) > 0.45:
+			set_angular_velocity(lerp(currrangular,0.45, 0.05))
+			
+		if Input.is_action_pressed("ui_select"):
+			set_linear_velocity(lerp(currvelocity, Vector2.ZERO, 0.05))
+			set_angular_velocity(lerp(currrangular,0, 0.05))
 		#velocity = move_and_slide(velocity)
 		
 func enable_control(user):
@@ -90,25 +94,25 @@ func get_build_points():
 			points.append_array(i.get_build_points())
 	return points
 
-func _on_baseshape_body_entered(body):
-	if(body.name == 'Player' and body.onboard == false):
-		body.base = self
-		body.onboard = true
-		leave = true
-		var temppos = body.get_global_position()
-		body.get_parent().remove_child(body)
-		self.add_child(body)
-		body.set_global_position(temppos)
-		
-		
-func _on_baseshape_body_exited(body):
-	if(body.name == 'Player' and body.get_parent() == self and leave == false):
-		body.base = null
-		var temppos = body.get_global_position()
-		body.onboard = false
-		self.remove_child(body)
-		self.get_parent().add_child(body)
-		body.set_global_position(temppos)
+#func _on_baseshape_body_entered(body):
+#	if(body.name == 'Player' and body.onboard == false):
+#		body.base = self
+#		body.onboard = true
+#		leave = true
+#		var temppos = body.get_global_position()
+#		body.get_parent().remove_child(body)
+#		self.add_child(body)
+#		body.set_global_position(temppos)
+#
+#
+#func _on_baseshape_body_exited(body):
+#	if(body.name == 'Player' and body.get_parent() == self and leave == false):
+#		#body.base = null
+#		var temppos = body.get_global_position()
+#		body.onboard = false
+#		self.remove_child(body)
+#		self.get_parent().add_child(body)
+#		body.set_global_position(temppos)
 
 		
 func _o1n_baseshape_body_entered(body):

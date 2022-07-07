@@ -28,7 +28,7 @@ func _ready():
 	update_points()
 	if type == 'room':
 		#build_points = Global.player.get_build_points(point_type)
-		structure = load("res://objects/rooms/room.tscn").instance()
+		structure = load("res://objects/rooms/room2.tscn").instance()
 		structure.active = false
 		add_child(structure)
 
@@ -118,6 +118,7 @@ func _unhandled_input(event):
 						room = target.room
 						base = room.get_build()
 						target.finish_build()
+						structure.snappoint[snapindex].finish_build()
 					finish_build(room)
 					
 			
@@ -144,15 +145,21 @@ func finish_build(room):
 		structure.set_global_position(temp_pos)
 		structure.set_global_rotation(temp_rot)
 		structure.active(base)
-		build_points = []
+		
+	
 		
 	else:
 		if target:
 			target.get_parent().queue_free()
-			Global.player.build_point_flag = true
-			card.canceled_build()
+	for i in build_points:
+		i.end_build()
+	build_points = []
+	Global.player.build_point_flag = true
 	Global.player.end_building_mode()
-	card.queue_free()
+	if not structure:
+		card.canceled_build()
+	else:
+		card.queue_free()
 	queue_free()
 	
 
