@@ -66,8 +66,16 @@ func _input(event):
 	if Input.is_action_just_pressed("throw"):
 		if detach_object():
 			var object = $WearSlot.get_child(0)
-			object.throw(self)
+			reparent(object, base.get_node("entity"))
 			object.set_wearing(false)
+			object.stop_control(self)
+
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.get_button_index() == 1 and event.is_pressed():
+			if wearing != null:
+				$WearSlot.get_child(0).operate(self)
 
 
 func _process(delta):
@@ -278,11 +286,14 @@ func attach_object(slot):
 	# check if it's a entity or a culpits
 	if not storage[slot] in ["nano"]:
 		p = load("res://objects/culpits/Culpit.tscn").instance()
+		p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot])
 	else:
 		p = load("res://objects/entities/Entity.tscn").instance()
 	
 	p.set_wearing(true)
+	p.type = storage[slot]
 	$WearSlot.add_child(p)
+	p.initial_control(self)
 	
 	wearing = slot
 
@@ -301,3 +312,12 @@ func detach_object() -> bool:
 	
 	return false
 
+# https://godotengine.org/qa/9806/reparent-node-at-runtime
+# function for reparenting at realtime
+func reparent(child: Node, new_parent: Node):
+	var old_parent = child.get_parent()
+	var old_position = child.get_global_position()
+	old_parent.remove_child(child)
+	new_parent.add_child(child)
+	
+	child.set_global_position(old_position)

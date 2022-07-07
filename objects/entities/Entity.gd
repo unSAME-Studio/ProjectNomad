@@ -39,30 +39,14 @@ func _process(delta):
 
 # for entity, interact picks them up
 func initial_control(player):
-	player.add_storage_object(type)
-	queue_free()
+	if not wearing:
+		player.add_storage_object(type)
+		queue_free()
 
 
 func stop_control(player):
 	pass
 
 
-func operate():
-	pass
-
-
-# https://godotengine.org/qa/9806/reparent-node-at-runtime
-# function for reparenting at realtime
-func reparent(child: Node, new_parent: Node):
-	var old_parent = child.get_parent()
-	var old_position = child.get_global_position()
-	old_parent.remove_child(child)
-	new_parent.add_child(child)
-	
-	child.set_global_position(old_position)
-
-
-func throw(actor):
-	print("item have been thrown")
-	
-	reparent(self, actor.base.get_node("entity"))
+func operate(player):
+	print(type + "Being Used")

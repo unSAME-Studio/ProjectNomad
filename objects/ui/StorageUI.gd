@@ -11,7 +11,11 @@ func _ready():
 
 func add_object(new_type):
 	type = new_type
-	$TextureRect.set_texture(load("res://arts/resources/%s.png" % type))
+	
+	if type in ["nano"]:
+		$TextureRect.set_texture(load("res://arts/resources/%s.png" % type))
+	else:
+		$TextureRect.set_texture(load("res://arts/culpits/%s.png" % type))
 
 
 func remove_object():

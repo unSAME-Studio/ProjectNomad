@@ -5,6 +5,7 @@ class_name Culpit
 var prebuild = preload("res://objects/buildings/Prebuild.tscn")
 
 var base = null
+var wearing = false
 
 export(String) var type = "wheel"
 onready var action = Global.culpits_data[type]["action"]
@@ -31,12 +32,31 @@ func stop_control(body):
 	print("stopping " + name + " from controlling")
 
 
+# snap body to predefined point
+func snap_position(body):
+	if not wearing:
+		body.set_global_position($ControlPos.get_global_position())
+
+
 func _on_Culpit_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 2 and event.is_pressed():
 			print("player clicked on %s" % type)
 			
 			Global.player.edit_culpit(self)
+
+
+func set_wearing(value):
+	wearing = value
+	# if player is weearing this, it shouldn't be interactable or collision
+	if wearing:
+		set_collision_layer_bit(3, false)
+	else:
+		set_collision_layer_bit(3, true)
+
+
+func operate(player):
+	print(type + "Being Used")
 
 
 func _on_moved():

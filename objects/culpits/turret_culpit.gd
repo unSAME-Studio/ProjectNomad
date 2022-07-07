@@ -23,8 +23,7 @@ func _unhandled_input(event):
 
 
 func initial_control(body):
-	# snap body to predefined point
-	body.set_global_position($ControlPos.get_global_position())
+	snap_position(body)
 	
 	#body.camera.camera.set_zoom(Vector2(2,2))
 	
