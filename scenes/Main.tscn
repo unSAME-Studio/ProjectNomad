@@ -59,9 +59,11 @@ position = Vector2( 1893, 2053 )
 
 [node name="Entity2" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
 position = Vector2( 2025, 1899 )
+type = "locker"
 
 [node name="Entity3" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
 position = Vector2( 2161, 2094 )
+type = "turret"
 
 [node name="Entity4" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
 position = Vector2( 2293, 1940 )

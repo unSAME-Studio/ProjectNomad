@@ -30,6 +30,8 @@ var storage = {
 	4: null,
 }
 onready var storage_ui = $CanvasLayer/Control/VBoxContainer/StorageBox.get_children()
+var wearing = null
+
 var move_velocity = Vector2(0,0)
 var slide_velocity = Vector2(0,0)
 var camera
@@ -60,6 +62,20 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("control"):
 		state.interact()
+	
+	if Input.is_action_just_pressed("throw"):
+		if detach_object():
+			var object = $WearSlot.get_child(0)
+			reparent(object, base.get_node("entity"))
+			object.set_wearing(false)
+			object.stop_control(self)
+
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.get_button_index() == 1 and event.is_pressed():
+			if wearing != null:
+				$WearSlot.get_child(0).operate(self)
 
 
 func _process(delta):
@@ -210,7 +226,9 @@ func is_in_air():
 	return base == null
 
 
+# -----------------
 # add cards
+# -----------------
 func add_build_card(type):
 	# add a random card to player
 	var c = build_card.instance()
@@ -218,7 +236,9 @@ func add_build_card(type):
 	$CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer.add_child(c)
 
 
-# edit culpit
+# -----------------
+# edit culpit ui menu
+# -----------------
 func edit_culpit(c):
 	# if click on different culpit
 	if $CanvasLayer/Control/CulpitMenu.culpit != c:
@@ -229,7 +249,9 @@ func edit_culpit(c):
 		$CanvasLayer/Control/CulpitMenu.close()
 
 
-# storage find space
+# -----------------
+# storage management
+# -----------------
 func find_storage_space():
 	for i in range(0, 5):
 		if storage[i] == null:
@@ -237,14 +259,65 @@ func find_storage_space():
 	
 	return null
 
+func add_storage_object(type) -> bool:
+	var slot = find_storage_space()
+	if slot != null:
+		storage[slot] = type
+		storage_ui[slot].add_object(type)
+		
+		return true
+	
+	return false
 
-func attach_object(type):
+
+# -----------------
+# player wearing object management
+# -----------------
+func attach_object(slot):	
+	# if already holding item, hide and delete
+	if wearing != null:
+		hide_object()
+	
+	# do nothing if this slot have no item
+	if storage[slot] == null:
+		return
+	
 	var p
 	# check if it's a entity or a culpits
-	if not type in ["nano"]:
-		p = load("res://objects/culpits/Culpit.tscn").instance()
-	else:
+	if storage[slot] in Global.entity_data.keys():
 		p = load("res://objects/entities/Entity.tscn").instance()
+	else:
+		p = load("res://objects/culpits/Culpit.tscn").instance()
+		p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot])
 	
+	p.set_wearing(true)
+	p.type = storage[slot]
 	$WearSlot.add_child(p)
+	p.initial_control(self)
 	
+	wearing = slot
+
+func hide_object():
+	wearing = null
+	if $WearSlot.get_child_count() == 1:
+		$WearSlot.get_child(0).queue_free()
+
+func detach_object() -> bool:
+	if wearing != null:
+		storage[wearing] = null
+		storage_ui[wearing].remove_object()
+		wearing = null
+		
+		return true
+	
+	return false
+
+# https://godotengine.org/qa/9806/reparent-node-at-runtime
+# function for reparenting at realtime
+func reparent(child: Node, new_parent: Node):
+	var old_parent = child.get_parent()
+	var old_position = child.get_global_position()
+	old_parent.remove_child(child)
+	new_parent.add_child(child)
+	
+	child.set_global_position(old_position)
