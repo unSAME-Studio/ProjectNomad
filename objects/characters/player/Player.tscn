@@ -438,6 +438,12 @@ margin_right = 1184.0
 group = SubResource( 6 )
 build_type = "room"
 
+[node name="BuildCard13" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
+margin_left = 1080.0
+margin_right = 1184.0
+group = SubResource( 6 )
+build_type = "room"
+
 [node name="BuildCard12" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 3 )]
 margin_left = 1188.0
 margin_right = 1292.0

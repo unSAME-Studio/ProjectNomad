@@ -36,7 +36,7 @@ position = Vector2( 494, 268 )
 target_node_path = NodePath("../Player")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="Node2D"]
-position = Vector2( -385, -1698 )
+position = Vector2( -634, -1698 )
 collision_layer = 2
 collision_mask = 2
 mode = 1
