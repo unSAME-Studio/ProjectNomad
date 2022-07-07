@@ -9,6 +9,16 @@ var action = true
 var wearing = false
 
 
+func _ready():
+	var texture
+	if type in Global.entity_data.keys():
+		texture = load("res://arts/resources/%s.png" % type)
+	else:
+		texture = load("res://arts/culpits/%s.png" % type)
+	
+	$Resource.set_texture(texture)
+
+
 func set_wearing(value):
 	wearing = value
 	# if player is weearing this, it shouldn't be interactable or collision

@@ -12,10 +12,12 @@ func _ready():
 func add_object(new_type):
 	type = new_type
 	
-	if type in ["nano"]:
-		$TextureRect.set_texture(load("res://arts/resources/%s.png" % type))
+	var texture
+	if type in Global.entity_data.keys():
+		texture = load("res://arts/resources/%s.png" % type)
 	else:
-		$TextureRect.set_texture(load("res://arts/culpits/%s.png" % type))
+		texture = load("res://arts/culpits/%s.png" % type)
+	$TextureRect.set_texture(texture)
 
 
 func remove_object():

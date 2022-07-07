@@ -284,11 +284,11 @@ func attach_object(slot):
 	
 	var p
 	# check if it's a entity or a culpits
-	if not storage[slot] in ["nano"]:
+	if storage[slot] in Global.entity_data.keys():
+		p = load("res://objects/entities/Entity.tscn").instance()
+	else:
 		p = load("res://objects/culpits/Culpit.tscn").instance()
 		p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot])
-	else:
-		p = load("res://objects/entities/Entity.tscn").instance()
 	
 	p.set_wearing(true)
 	p.type = storage[slot]
