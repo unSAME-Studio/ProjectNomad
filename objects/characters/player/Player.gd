@@ -21,6 +21,8 @@ var build_point_flag = true
 var velocity = Vector2.ZERO
 var onboard = false
 
+var base_cooldown = false
+
 var input_moving = false
 
 var health = 100.0
@@ -139,14 +141,16 @@ func _physics_process(delta):
 	else:
 		temp_base = null
 	#switch base
-	if temp_base != base:
+	if temp_base != base and not base_cooldown:
 		switch_base(temp_base)
 		if base!=null:
 			if base.has_method("get_linear_velocity"):
-				base_velocity =  base.get_linear_velocity().rotated(base.get_global_rotation())
+				base_velocity =  base.get_linear_velocity().rotated(base.get_global_rotation()*1.2)
 		velocity = base_velocity + velocity - temp_speed
 		
 		#print(move_velocity)
+		$Basetimer.start()
+		base_cooldown = true
 		base = temp_base
 	#print(base)
 	state.update()
@@ -329,3 +333,8 @@ func reparent(child: Node, new_parent: Node):
 	new_parent.add_child(child)
 	
 	child.set_global_position(old_position)
+
+
+func _on_Basetimer_timeout():
+	base_cooldown = false
+	pass # Replace with function body.
