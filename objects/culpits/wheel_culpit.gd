@@ -13,9 +13,7 @@ func _process(delta):
 
 
 func initial_control(body):
-	
-	# snap body to predefined point
-	body.set_global_position($ControlPos.get_global_position())
+	snap_position(body)
 	
 	if base.has_method("enable_control"):
 		base.enable_control(body)

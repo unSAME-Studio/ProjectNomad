@@ -6,9 +6,7 @@ var player
 # card type = [Controller, Machine, Decoration, Weapons]
 var culpits_data = []
 
-var resources_data = [
-	
-]
+var entity_data = []
 
 
 func load_database(file_name: String):
@@ -23,5 +21,6 @@ func load_database(file_name: String):
 
 
 func _ready():
-	culpits_data = load_database("data")
+	culpits_data = load_database("culpit_data")
+	entity_data = load_database("entity_data")
 

@@ -214,7 +214,7 @@ func finish_build(room):
 	var c = load("res://objects/culpits/Culpit.tscn").instance()
 	c.script = load("res://objects/culpits/%s_culpit.gd" % type)
 	c.type = type
-	print("add script" + "res://objects/culpits/%s_culpit.gd" % type)
+	#print("add script" + "res://objects/culpits/%s_culpit.gd" % type)
 	
 	room.get_node("objects").add_child(c)
 	c.set_global_position(get_global_position())

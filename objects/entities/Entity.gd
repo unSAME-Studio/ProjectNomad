@@ -10,12 +10,34 @@ var wearing = false
 
 
 func _ready():
+	var texture
+	if type in Global.entity_data.keys():
+		texture = load("res://arts/resources/%s.png" % type)
+	else:
+		texture = load("res://arts/culpits/%s.png" % type)
+	
+	$Resource.set_texture(texture)
+
+
+func set_wearing(value):
+	wearing = value
 	# if player is weearing this, it shouldn't be interactable or collision
 	if wearing:
 		set_collision_layer_bit(6, false)
 		set_collision_mask_bit(0, false)
 		set_collision_mask_bit(3, false)
 		set_collision_mask_bit(6, false)
+		
+		$Card.hide()
+		$Light2D.hide()
+	else:
+		set_collision_layer_bit(6, true)
+		set_collision_mask_bit(0, true)
+		set_collision_mask_bit(3, true)
+		set_collision_mask_bit(6, true)
+		
+		$Card.show()
+		$Light2D.show()
 
 
 func get_hint_text():
@@ -33,22 +55,14 @@ func _process(delta):
 
 # for entity, interact picks them up
 func initial_control(player):
-	# check for empty slot inside dictionary
-	var slot = player.find_storage_space()
-	if slot != null:
-		player.storage[slot] = type
-		player.storage_ui[slot].update_button(type)
-	
-		queue_free()
+	if not wearing:
+		if player.add_storage_object(type):
+			queue_free()
 
 
 func stop_control(player):
 	pass
 
 
-func operate():
-	pass
-
-
-func throw():
-	pass
+func operate(player):
+	print(type + "Being Used")
