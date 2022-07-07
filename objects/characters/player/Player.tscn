@@ -587,5 +587,10 @@ local_coords = false
 process_material = SubResource( 21 )
 texture = ExtResource( 18 )
 
+[node name="Basetimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="ControllableDetection" to="." method="_on_ControllableDetection_body_entered"]
 [connection signal="body_exited" from="ControllableDetection" to="." method="_on_ControllableDetection_body_exited"]
+[connection signal="timeout" from="Basetimer" to="." method="_on_Basetimer_timeout"]
