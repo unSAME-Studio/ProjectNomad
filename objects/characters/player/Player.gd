@@ -25,6 +25,7 @@ var health = 100.0
 var storage = []
 onready var storage_ui = $CanvasLayer/Control/VBoxContainer/StorageBox.get_children()
 var move_velocity = Vector2(0,0)
+var slide_velocity = Vector2(0,0)
 var camera
 
 var build_card = preload("res://objects/ui/BuildCard.tscn")
@@ -91,23 +92,36 @@ func _process(delta):
 		else:
 			$CanvasLayer/Control/ControlHint.hide()
 
+func switch_base(base):
+	if base == null:
+		base = get_tree().get_root()
+	var temppos = get_global_position()
+	onboard = false
+	get_parent().remove_child(self)
+	base.add_child(self)
+	set_global_position(temppos)
 
 func _physics_process(delta):
 	#temp sliding
 	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 3 ,[],2,true,false)
 	var temp_speed = Vector2(0,0)
 	var base_velocity = Vector2(0,0)
+	#check base
 	if not temp_base.empty():
 		temp_base=temp_base[0].collider
 		if temp_base.has_method("get_linear_velocity"):
-			temp_speed = temp_base.get_linear_velocity()*0.08
+			temp_speed = temp_base.get_linear_velocity()
 	else:
 		temp_base = null
+	#switch base
 	if temp_base != base:
-		if base:
+		switch_base(temp_base)
+		if base!=null:
 			if base.has_method("get_linear_velocity"):
-				base_velocity =  base.get_linear_velocity()*0.08
-		move_velocity = base_velocity + move_velocity - temp_speed
+				base_velocity =  base.get_linear_velocity().rotated(base.get_global_rotation())
+		velocity = base_velocity + velocity - temp_speed
+		print(slide_velocity)
+		
 		#print(move_velocity)
 		base = temp_base
 		
@@ -182,8 +196,6 @@ func get_build_points(type):
 
 func is_in_air():
 	#print("in air: " + String(base == null))
-	
-	return false
 	
 	return base == null
 

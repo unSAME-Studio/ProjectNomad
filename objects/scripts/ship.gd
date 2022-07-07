@@ -94,25 +94,25 @@ func get_build_points():
 			points.append_array(i.get_build_points())
 	return points
 
-func _on_baseshape_body_entered(body):
-	if(body.name == 'Player' and body.onboard == false):
-		body.base = self
-		body.onboard = true
-		leave = true
-		var temppos = body.get_global_position()
-		body.get_parent().remove_child(body)
-		self.add_child(body)
-		body.set_global_position(temppos)
-		
-		
-func _on_baseshape_body_exited(body):
-	if(body.name == 'Player' and body.get_parent() == self and leave == false):
-		#body.base = null
-		var temppos = body.get_global_position()
-		body.onboard = false
-		self.remove_child(body)
-		self.get_parent().add_child(body)
-		body.set_global_position(temppos)
+#func _on_baseshape_body_entered(body):
+#	if(body.name == 'Player' and body.onboard == false):
+#		body.base = self
+#		body.onboard = true
+#		leave = true
+#		var temppos = body.get_global_position()
+#		body.get_parent().remove_child(body)
+#		self.add_child(body)
+#		body.set_global_position(temppos)
+#
+#
+#func _on_baseshape_body_exited(body):
+#	if(body.name == 'Player' and body.get_parent() == self and leave == false):
+#		#body.base = null
+#		var temppos = body.get_global_position()
+#		body.onboard = false
+#		self.remove_child(body)
+#		self.get_parent().add_child(body)
+#		body.set_global_position(temppos)
 
 		
 func _o1n_baseshape_body_entered(body):

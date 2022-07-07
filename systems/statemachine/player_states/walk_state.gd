@@ -43,27 +43,36 @@ func _physics_process(delta):
 	animated_sprite.get_node("Eyes").set_position(lerp(animated_sprite.get_node("Eyes").get_position(), direction * 15, 10 * delta))
 	
 	# else deal with the velocity in air
+	#eizi: using acceleration simulation
 	if persistent_state.is_in_air():
-		persistent_state.move_velocity = lerp(persistent_state.move_velocity, Vector2.ZERO, 0.01)
 		if direction.length() > 0:
-			persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * air_speed, air_acceleration)
-		else:
-			persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, air_friction)
-	
+			persistent_state.velocity += direction.rotated(persistent_state.camera._get_rotation()).normalized() * 5
+			 #lerp(persistent_state.move_velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * air_speed, air_acceleration)
+
+		#else:
+			#persistent_state.move_velocity = lerp(persistent_state.move_velocity, Vector2.ZERO, air_friction)
+#		if persistent_state.velocity > speed:
+#			pass
+		#print(persistent_state.velocity.normalized()*(air_friction*(int(persistent_state.velocity.length()*10))))
+		
+		persistent_state.velocity -= persistent_state.velocity.normalized()*(air_friction*(persistent_state.velocity.length()*10))#lerp(persistent_state.velocity, Vector2.ZERO, air_friction)
+		
 	# or for on the floor
 	else:
-		if abs(persistent_state.move_velocity.x) > 5 or abs(persistent_state.move_velocity.y) > 5:
-			persistent_state.move_velocity = lerp(persistent_state.move_velocity, Vector2.ZERO, 0.01)
+		if abs(persistent_state.slide_velocity.x) > 5 or abs(persistent_state.slide_velocity.y) > 5:
+			persistent_state.slide_velocity = lerp(persistent_state.slide_velocity, Vector2.ZERO, 0.33)
 		else:
-			persistent_state.move_velocity = Vector2.ZERO
+			persistent_state.slide_velocity = Vector2.ZERO
 		if direction.length() > 0:
-			persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * speed, acceleration)
+			persistent_state.velocity = lerp(persistent_state.velocity, direction.rotated(persistent_state.camera._get_rotation()).normalized() * speed, acceleration)
 		else:
 			persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
 	
 	direction = Vector2.ZERO
 	#print(persistent_state.move_velocity)
-	persistent_state.velocity+=persistent_state.move_velocity
+	#print(persistent_state.slide_velocity)
+	
+	#persistent_state.velocity = persistent_state.slide_velocity + persistent_state.move_velocity
 	#print(persistent_state.move_velocity)
 	persistent_state.move_and_slide(persistent_state.velocity)
 	

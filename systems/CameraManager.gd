@@ -6,6 +6,8 @@ onready var camera = get_node("Camera2D")
 export(NodePath) var target_node_path
 onready var target = get_node(target_node_path)
 var align_flag = true
+var rotation_temp = 0
+var rotation_changed_flag = false
 
 func _ready():
 	target.camera = self
@@ -35,10 +37,13 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("camera_right"):
 		pass
 
+func _get_rotation():
+	return rotation_temp
 
 func _process(delta):
 	set_global_position(target.get_global_position())
-	
+	if not rotation_changed_flag:
+		rotation_temp = get_global_rotation()
 	# rotate camera toward player when not 
 	if Global.player.state.get_class() != "ControlState" and align_flag:
 		set_global_rotation(lerp_angle(get_global_rotation(), target.get_global_rotation(), 10 * delta))
