@@ -15,3 +15,5 @@ func update_button(new_type):
 
 func _on_button_pressed():
 	print(type)
+	
+	$"../../../../..".attach_object(type)
