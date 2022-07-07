@@ -27,11 +27,17 @@ func set_wearing(value):
 		set_collision_mask_bit(0, false)
 		set_collision_mask_bit(3, false)
 		set_collision_mask_bit(6, false)
+		
+		$Card.hide()
+		$Light2D.hide()
 	else:
 		set_collision_layer_bit(6, true)
 		set_collision_mask_bit(0, true)
 		set_collision_mask_bit(3, true)
 		set_collision_mask_bit(6, true)
+		
+		$Card.show()
+		$Light2D.show()
 
 
 func get_hint_text():
@@ -50,8 +56,8 @@ func _process(delta):
 # for entity, interact picks them up
 func initial_control(player):
 	if not wearing:
-		player.add_storage_object(type)
-		queue_free()
+		if player.add_storage_object(type):
+			queue_free()
 
 
 func stop_control(player):
