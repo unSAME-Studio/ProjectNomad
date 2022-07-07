@@ -9,13 +9,19 @@ var action = true
 var wearing = false
 
 
-func _ready():
+func set_wearing(value):
+	wearing = value
 	# if player is weearing this, it shouldn't be interactable or collision
 	if wearing:
 		set_collision_layer_bit(6, false)
 		set_collision_mask_bit(0, false)
 		set_collision_mask_bit(3, false)
 		set_collision_mask_bit(6, false)
+	else:
+		set_collision_layer_bit(6, true)
+		set_collision_mask_bit(0, true)
+		set_collision_mask_bit(3, true)
+		set_collision_mask_bit(6, true)
 
 
 func get_hint_text():
@@ -33,13 +39,8 @@ func _process(delta):
 
 # for entity, interact picks them up
 func initial_control(player):
-	# check for empty slot inside dictionary
-	var slot = player.find_storage_space()
-	if slot != null:
-		player.storage[slot] = type
-		player.storage_ui[slot].update_button(type)
-	
-		queue_free()
+	player.add_storage_object(type)
+	queue_free()
 
 
 func stop_control(player):
@@ -50,5 +51,18 @@ func operate():
 	pass
 
 
-func throw():
-	pass
+# https://godotengine.org/qa/9806/reparent-node-at-runtime
+# function for reparenting at realtime
+func reparent(child: Node, new_parent: Node):
+	var old_parent = child.get_parent()
+	var old_position = child.get_global_position()
+	old_parent.remove_child(child)
+	new_parent.add_child(child)
+	
+	child.set_global_position(old_position)
+
+
+func throw(actor):
+	print("item have been thrown")
+	
+	reparent(self, actor.base.get_node("entity"))

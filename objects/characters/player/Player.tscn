@@ -371,7 +371,7 @@ custom_constants/margin_left = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer"]
 margin_left = 100.0
-margin_right = 1392.0
+margin_right = 1500.0
 margin_bottom = 145.0
 theme = ExtResource( 5 )
 alignment = 1

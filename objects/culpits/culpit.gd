@@ -33,7 +33,7 @@ func stop_control(body):
 
 func _on_Culpit_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
-		if event.get_button_index() == 1 and event.is_pressed():
+		if event.get_button_index() == 2 and event.is_pressed():
 			print("player clicked on %s" % type)
 			
 			Global.player.edit_culpit(self)
