@@ -26,10 +26,15 @@ var build_points = []
 func _ready():
 	$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
 	#var space_state = get_world_2d().direct_space_state
-	build_points = Global.player.get_build_points(point_type)
+	update_points()
 
-
-
+func update_points():
+	var new_build_points = Global.player.get_build_points(point_type)
+	for i in build_points:
+		i.end_build()
+	build_points = new_build_points
+	for i in build_points:
+		i.ready_build()
 
 # https://godotengine.org/qa/20263/find-the-closest-number-in-array
 func find_closest(value, array):
@@ -55,13 +60,14 @@ func find_closest(value, array):
 func check_build_condition(target_mode = false) -> bool:
 	if target_mode:
 		hovering = false
+		Global.player.set_prebuild_hint("", self)
 		return true
+		
 	if get_global_position().distance_to(Global.player.get_global_position()) > 300:
 		Global.player.set_prebuild_hint("Too far!", self)
 		return false
-	
 	var on_floor = false
-	
+	hovering = true
 	# overlapping check
 	for i in get_overlapping_bodies():
 		#print(i.get_collision_layer())
@@ -82,22 +88,42 @@ func check_build_condition(target_mode = false) -> bool:
 	Global.player.set_prebuild_hint("", self)
 	return true
 
+func check_build_point():
+	var result = get_world_2d().get_direct_space_state().intersect_point(get_global_mouse_position(), 3 ,[],1024,false,true)
+	if (not result.empty()):
+		var dist = 1024
+		for i in result:
+			var object = i.collider
+			if object in build_points:
+				var temp = get_global_mouse_position().distance_to(object.get_global_position())
+				if dist > temp:
+					dist = temp
+					target = object
+		if target:
+			return true
+	else:
+		target = null
+		return false
+			
+#	if build_points:
+#		for i in build_points:
+#			var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
+#			if dist < SNAP_THRESHOLD:
+#				if target == i:
+#					return true
+#				elif target != i:
+#					if target == null:
+#						target = i
+#						return true
+#					elif dist < get_global_mouse_position().distance_to(target.get_global_position()):
+#						target = i
+#						return true
 
 func _process(delta):
 	# check if in build_point range
-	if build_points:
-		for i in build_points:
-			var dist = get_global_mouse_position().distance_to(i.get_global_position()) 
-			if dist < SNAP_THRESHOLD:
-				if target == i:
-					point_mode = true
-				elif target != i:
-					if target == null:
-						target = i
-						point_mode = true
-					elif dist < get_global_mouse_position().distance_to(target.get_global_position()):
-						target = i
-						point_mode = true
+	point_mode = check_build_point()
+#	print(point_mode)
+#	print(target)
 		
 	# check if player can build here
 	if check_build_condition(point_mode):
@@ -149,25 +175,28 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
 			# [TEMP] Repeated function please delete
-			var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
-			if (not result.empty()):
-				room = result[0].collider
-				base = room.get_build()
-				if can_build:
-					hovering = false
-					finish_build(base)
 					
-			elif target:
+			if target:
 				if can_build:
 					room = target.room
 					base = room.get_build()
 					finish_build(room)
+					for i in build_points:
+						i.end_build()
 					build_points = []
 					target.finish_build()
 			else:
-				hovering = false
-				finish_build(base)
-		
+				var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
+				if (not result.empty()):
+					room = result[0].collider
+					base = room.get_build()
+					if can_build:
+						hovering = false
+						finish_build(base)
+				else:
+					hovering = false
+					finish_build(base)
+			
 		# right click cancel
 		elif event.get_button_index() == 2 and event.is_pressed():
 			card.canceled_build()

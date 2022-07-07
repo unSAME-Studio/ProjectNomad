@@ -3,11 +3,11 @@ extends Area2D
 var base = null
 var build_points = []
 var active = true
-var snappoint
+var snappoint = []
 
 
 func _ready():
-	snappoint = $snappoint
+	#snappoint = $snappoint
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
 	if active == true:
 		active(get_parent().get_parent())
@@ -32,3 +32,6 @@ func get_build_points():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func disconnect_point(point):
+	build_points.erase(point)
+	snappoint.erase(point)
