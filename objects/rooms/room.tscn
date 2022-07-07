@@ -41,8 +41,8 @@ polygon = PoolVector2Array( -160, -12, -160, 12, 144, 12, 144, -12 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="structures/Wall"]
 occluder = SubResource( 3 )
 
-[node name="buildpoint" parent="structures/Wall" instance=ExtResource( 3 )]
-type = "wall"
+[node name="buildpoint2" parent="structures/Wall" instance=ExtResource( 3 )]
+position = Vector2( 0, 8 )
 
 [node name="Wall2" type="StaticBody2D" parent="structures"]
 position = Vector2( -160, 0 )
@@ -60,9 +60,6 @@ color = Color( 0.392157, 0.431373, 0.54902, 1 )
 antialiased = true
 polygon = PoolVector2Array( -16, -264, 16, -264, 16, 240, -16, 240 )
 
-[node name="buildpoint" parent="structures/Wall2" instance=ExtResource( 3 )]
-type = "wall"
-
 [node name="Wall3" type="StaticBody2D" parent="structures"]
 position = Vector2( 160, 0 )
 z_index = 1
@@ -78,9 +75,6 @@ occluder = SubResource( 2 )
 color = Color( 0.392157, 0.431373, 0.54902, 1 )
 antialiased = true
 polygon = PoolVector2Array( -16, -264, -16, 240, 16, 240, 16, -264 )
-
-[node name="buildpoint" parent="structures/Wall3" instance=ExtResource( 3 )]
-type = "wall"
 
 [node name="points" type="Node2D" parent="structures"]
 
@@ -99,8 +93,5 @@ type = "utility"
 [node name="buildpoint5" parent="structures/points" instance=ExtResource( 3 )]
 position = Vector2( 0, 240 )
 rotation = -3.14159
-
-[node name="buildpoint" parent="structures/points" instance=ExtResource( 3 )]
-position = Vector2( 0, -240 )
 
 [node name="objects" type="Node2D" parent="."]

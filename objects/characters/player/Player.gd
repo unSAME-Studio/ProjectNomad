@@ -21,6 +21,8 @@ var build_point_flag = true
 var velocity = Vector2.ZERO
 var onboard = false
 
+var input_moving = false
+
 var health = 100.0
 var storage = {
 	0: null,
@@ -110,6 +112,7 @@ func switch_base(base):
 func _physics_process(delta):
 	#temp sliding
 	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 3 ,[],2,true,false)
+
 	var temp_speed = Vector2(0,0)
 	var base_velocity = Vector2(0,0)
 	#check base
@@ -126,25 +129,30 @@ func _physics_process(delta):
 			if base.has_method("get_linear_velocity"):
 				base_velocity =  base.get_linear_velocity().rotated(base.get_global_rotation())
 		velocity = base_velocity + velocity - temp_speed
-		print(slide_velocity)
 		
 		#print(move_velocity)
 		base = temp_base
-		
+	#print(base)
 	state.update()
 	
 	if Input.is_action_pressed('up'):
+		input_moving = true
 		state.move_up()
 	
 	if Input.is_action_pressed('down'):
+		input_moving = true
 		state.move_down()
 	
 	if Input.is_action_pressed('left'):
+		input_moving = true
 		state.move_left()
 	
 	if Input.is_action_pressed('right'):
+		input_moving = true
 		state.move_right()
 
+		
+		
 
 # add and remove culpit body in the dictionary
 func _on_ControllableDetection_body_entered(body):

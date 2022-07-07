@@ -5,11 +5,14 @@ export(String,"utility","room","weapon","wall","snap","core","connector") var ty
 var active = true
 var object = null
 var room = null
+var wall
 var indi
 
 func _ready():
 	hide()
-
+	if "Wall" in get_parent().name:
+		wall = get_parent()
+	
 	room = find_parent("room")
 	if room:
 		if type == 'room':
@@ -29,6 +32,8 @@ func end_build():
 
 func finish_build():
 	active = false
+	if wall:
+		wall.queue_free()
 	end_build()
 
 func disconnect_point():
