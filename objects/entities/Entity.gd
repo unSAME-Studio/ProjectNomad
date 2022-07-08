@@ -84,7 +84,7 @@ func stop_control(player):
 
 
 func throw(player):
-	player.reparent(self, player.base)
+	check_base()
 	set_wearing(false)
 	stop_control(player)
 	velocity = player.get_facing().normalized() * 1000

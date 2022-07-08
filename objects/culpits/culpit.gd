@@ -55,7 +55,6 @@ func throw(player):
 	
 	e.set_global_position(get_global_position())
 	e.set_wearing(false)
-	e.stop_control(player)
 	e.velocity = player.get_facing().normalized() * 1000
 	e.throwing = true
 	
@@ -103,4 +102,4 @@ func canceled_build():
 func _on_destroy():	
 	print(type + "have been destroyed")
 	
-	queue_free()
+	throw(Global.player)

@@ -268,11 +268,27 @@ func find_storage_space():
 	
 	return null
 
+func find_slot_by_type(type):
+	for i in range(0, 5):
+		if storage[i] == type:
+			return i
+	
+	return null
+
 func add_storage_object(type) -> bool:
 	var slot = find_storage_space()
 	if slot != null:
 		storage[slot] = type
 		storage_ui[slot].add_object(type)
+		
+		return true
+	
+	return false
+
+func remove_storage_object(slot) -> bool:
+	if storage[slot] != null:
+		storage[slot] = null
+		storage_ui[slot].remove_object()
 		
 		return true
 	
