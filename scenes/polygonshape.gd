@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends "res://objects/object_base.gd"
 
 
 func _ready():

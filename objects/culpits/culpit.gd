@@ -45,6 +45,10 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 			
 			Global.player.edit_culpit(self)
 
+func throw(player):
+	player.reparent(self, player.base.get_node("entity"))
+	set_wearing(false)
+	stop_control(self)
 
 func set_wearing(value):
 	wearing = value

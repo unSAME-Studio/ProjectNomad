@@ -70,10 +70,11 @@ func _input(event):
 	if Input.is_action_just_pressed("throw"):
 		if detach_object():
 			var object = $WearSlot.get_child(0)
-			reparent(object, base.get_node("entity"))
-			object.set_wearing(false)
-			object.stop_control(self)
+			
+			object.throw(self)
 
+func get_facing() -> Vector2:
+	return get_global_mouse_position() - get_global_position()
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -121,11 +122,7 @@ func _process(delta):
 func switch_base(base):
 	if base == null:
 		base = get_tree().get_root()
-	var temppos = get_global_position()
-	onboard = false
-	get_parent().remove_child(self)
-	base.add_child(self)
-	set_global_position(temppos)
+	reparent(self,base)
 
 func _physics_process(delta):
 	#temp sliding
@@ -327,6 +324,8 @@ func detach_object() -> bool:
 # https://godotengine.org/qa/9806/reparent-node-at-runtime
 # function for reparenting at realtime
 func reparent(child: Node, new_parent: Node):
+	if new_parent == null:
+		new_parent = get_tree().get_root()
 	var old_parent = child.get_parent()
 	var old_position = child.get_global_position()
 	old_parent.remove_child(child)

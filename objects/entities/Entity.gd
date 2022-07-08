@@ -8,6 +8,8 @@ export(String) var type = "nano"
 var action = true
 var wearing = false
 
+var throwing = false
+var velocity = Vector2.ZERO
 
 func _ready():
 	var texture
@@ -43,8 +45,24 @@ func set_wearing(value):
 func get_hint_text():
 	return "Pick Up"
 
+func check_base():
+	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 2 ,[],2,true,false)
+	if not temp_base.empty():
+		temp_base=temp_base[0].collider
+	else:
+		temp_base = get_tree().get_root()
+	
+	Global.player.reparent(self,temp_base)
+	
 
 func _process(delta):
+	if throwing:
+		velocity = lerp(velocity, Vector2.ZERO, 0.05)
+		if velocity.length()<10:
+			velocity = Vector2.ZERO
+			throwing = false
+			check_base()
+		move_and_slide(velocity)
 	pass
 	
 	# if player is in range, magnet over there
@@ -63,6 +81,12 @@ func initial_control(player):
 func stop_control(player):
 	pass
 
+func throw(player):
+	player.reparent(self, player.base)
+	set_wearing(player)
+	stop_control(player)
+	velocity = player.get_facing().normalized()*1000
+	throwing = true
 
 func operate(player):
 	print(type + "Being Used")
