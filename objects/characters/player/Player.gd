@@ -81,6 +81,10 @@ func _unhandled_input(event):
 		if event.get_button_index() == 1 and event.is_pressed():
 			if wearing != null:
 				$WearSlot.get_child(0).operate(self)
+		
+		#elif event.get_button_index() == 2 and event.is_pressed():
+		#	if wearing != null and storage[wearing] in Global.culpits_data.keys():
+		#		$WearSlot.get_child(0)._on_moved()
 
 
 func _process(delta):
@@ -268,11 +272,27 @@ func find_storage_space():
 	
 	return null
 
+func find_slot_by_type(type):
+	for i in range(0, 5):
+		if storage[i] == type:
+			return i
+	
+	return null
+
 func add_storage_object(type) -> bool:
 	var slot = find_storage_space()
 	if slot != null:
 		storage[slot] = type
 		storage_ui[slot].add_object(type)
+		
+		return true
+	
+	return false
+
+func remove_storage_object(slot) -> bool:
+	if storage[slot] != null:
+		storage[slot] = null
+		storage_ui[slot].remove_object()
 		
 		return true
 	
@@ -308,8 +328,8 @@ func attach_object(slot):
 
 func hide_object():
 	wearing = null
-	if $WearSlot.get_child_count() == 1:
-		$WearSlot.get_child(0).queue_free()
+	for i in $WearSlot.get_children():
+		i.queue_free()
 
 func detach_object() -> bool:
 	if wearing != null:
@@ -325,7 +345,7 @@ func detach_object() -> bool:
 # function for reparenting at realtime
 func reparent(child: Node, new_parent: Node):
 	if new_parent == null:
-		new_parent = get_tree().get_root()
+		new_parent = get_tree().get_current_scene().get_node("Node2D")
 	var old_parent = child.get_parent()
 	var old_position = child.get_global_position()
 	old_parent.remove_child(child)
