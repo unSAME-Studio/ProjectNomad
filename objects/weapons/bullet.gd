@@ -9,3 +9,7 @@ func _process(delta):
 	if collided:
 		print(collided.get_collider().name)
 		queue_free()
+
+
+func _on_Timer_timeout():
+	queue_free()
