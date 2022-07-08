@@ -21,6 +21,7 @@ func add_object(new_type):
 
 
 func remove_object():
+	set_pressed(false)
 	type = null
 	$TextureRect.set_texture(Image.new())
 
@@ -36,4 +37,8 @@ func _on_button_pressed():
 		set_pressed(false)
 		player.hide_object()
 	else:
+		# do nothing if nothing equipted
+		if type == null:
+			set_pressed(false)
+		
 		player.attach_object(slot)

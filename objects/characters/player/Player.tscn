@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -17,7 +17,7 @@
 [ext_resource path="res://arts/ui/quick_access_pressed.png" type="Texture" id=15]
 [ext_resource path="res://objects/ui/StorageGroup.tres" type="ButtonGroup" id=16]
 [ext_resource path="res://arts/font/BarlowCondensed-SemiBold.ttf" type="DynamicFontData" id=17]
-[ext_resource path="res://arts/VFX/Circle.png" type="Texture" id=18]
+[ext_resource path="res://arts/light_small.png" type="Texture" id=18]
 [ext_resource path="res://objects/ui/StorageUI.gd" type="Script" id=21]
 
 [sub_resource type="SpriteFrames" id=7]
@@ -86,8 +86,15 @@ shortcut = SubResource( 16 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 83.2947
 
+[sub_resource type="Gradient" id=22]
+offsets = PoolRealArray( 0, 0.304348 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=23]
+gradient = SubResource( 22 )
+
 [sub_resource type="Curve" id=19]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.4125 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.443182 ), -0.176565, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=20]
 curve = SubResource( 19 )
@@ -99,11 +106,12 @@ flag_disable_z = true
 gravity = Vector3( 0, 98, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale = 0.25
+scale = 0.2
 scale_curve = SubResource( 20 )
+color_ramp = SubResource( 23 )
 
 [node name="Player" type="KinematicBody2D"]
-z_index = 20
+z_index = 40
 collision_layer = 4
 collision_mask = 9
 script = ExtResource( 4 )
@@ -112,7 +120,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -123,7 +130,7 @@ shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 2 )
-energy = 0.42
+energy = 0.7
 mode = 2
 shadow_enabled = true
 shadow_filter = 1
@@ -143,12 +150,36 @@ theme = ExtResource( 5 )
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -117.0
+margin_left = 40.0
+margin_top = -363.0
+margin_right = 466.0
+margin_bottom = -44.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.415686 )
 margin_right = 426.0
+margin_bottom = 198.0
+grow_horizontal = 0
+grow_vertical = 0
+bbcode_enabled = true
+bbcode_text = "NUM KEY - Select Slot
+G - Throw Holding Item
+LMB - Use Holding Item
+RMB - Build Holding Item
+
+"
+text = "NUM KEY - Select Slot
+G - Throw Holding Item
+LMB - Use Holding Item
+RMB - Build Holding Item
+
+"
+fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
+margin_top = 202.0
 margin_right = 426.0
-margin_bottom = 81.0
+margin_bottom = 283.0
 alignment = 1
 
 [node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
@@ -341,9 +372,9 @@ expand = true
 stretch_mode = 6
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 85.0
+margin_top = 287.0
 margin_right = 426.0
-margin_bottom = 117.0
+margin_bottom = 319.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
 margin_right = 23.0
@@ -582,6 +613,7 @@ collision_mask = 72
 shape = SubResource( 2 )
 
 [node name="testParticle" type="Particles2D" parent="."]
+z_index = -1
 emitting = false
 local_coords = false
 process_material = SubResource( 21 )
