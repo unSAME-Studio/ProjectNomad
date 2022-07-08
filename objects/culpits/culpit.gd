@@ -7,6 +7,8 @@ var prebuild = preload("res://objects/buildings/Prebuild.tscn")
 var base = null
 var wearing = false
 
+var build_point
+
 export(String) var type = "wheel"
 onready var action = Global.culpits_data[type]["action"]
 onready var controllable = Global.culpits_data[type]["controllable"]
@@ -89,5 +91,6 @@ func canceled_build():
 
 func _on_destroy():	
 	print(type + "have been destroyed")
-	
+	if build_point:
+		build_point.activate_build()
 	queue_free()

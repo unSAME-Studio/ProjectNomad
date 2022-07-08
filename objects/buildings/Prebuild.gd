@@ -184,7 +184,7 @@ func _unhandled_input(event):
 					for i in build_points:
 						i.end_build()
 					build_points = []
-					target.finish_build()
+					
 					
 			else:
 				var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
@@ -218,7 +218,8 @@ func finish_build(room):
 	
 	room.get_node("objects").add_child(c)
 	c.set_global_position(get_global_position())
-	
+	if target:
+		target.finish_build(c)
 	c.set_global_rotation(get_global_rotation())
 	
 	Global.player.end_building_mode()

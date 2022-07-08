@@ -5,6 +5,7 @@ export(String,"utility","room","weapon","wall","snap","core","connector") var ty
 var active = true
 var object = null
 var room = null
+var target = null
 var wall
 var indi
 
@@ -30,8 +31,12 @@ func ready_build():
 func end_build():
 	hide()
 
-func finish_build():
+func finish_build(_object):
 	active = false
+	if _object:
+		target = _object
+		_object.build_point = self
+		
 	if wall:
 		wall.queue_free()
 	end_build()
