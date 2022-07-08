@@ -21,6 +21,7 @@ func load_database(file_name: String):
 
 
 func _ready():
+	print("LOADING JSON")
 	culpits_data = load_database("culpit_data")
 	entity_data = load_database("entity_data")
-
+	print("JSON LOAD SUCCSEFUL")
