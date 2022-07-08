@@ -70,8 +70,10 @@ _global_script_class_icons={
 
 config/name="ProjectNomad"
 run/main_scene="res://scenes/Main.tscn"
-boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
-config/icon="res://icon.png"
+boot_splash/image="res://temp_icon.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.258824, 0.286275, 0.211765, 1 )
+config/icon="res://temp_icon.png"
 
 [autoload]
 
