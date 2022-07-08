@@ -55,24 +55,42 @@ polygon = PoolVector2Array( -239, -302, -657, 102, 6.99997, 602, 333, 114, 763, 
 [node name="entity" type="Node2D" parent="Node2D/RigidBody2D"]
 
 [node name="Entity" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 1893, 2053 )
+position = Vector2( 1947, 2077 )
 
 [node name="Entity2" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2025, 1899 )
+position = Vector2( 2079, 1923 )
 type = "locker"
 
 [node name="Entity3" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2161, 2094 )
+position = Vector2( 2215, 2118 )
 type = "turret"
 
 [node name="Entity4" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2293, 1940 )
+position = Vector2( 2347, 1964 )
 
 [node name="Entity5" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2434, 2007 )
+position = Vector2( 2488, 2031 )
 
 [node name="Entity6" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2566, 1853 )
+position = Vector2( 2620, 1877 )
+
+[node name="Entity7" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
+position = Vector2( -2013, 2352 )
+
+[node name="Entity8" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
+position = Vector2( -1881, 2198 )
+
+[node name="Entity9" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
+position = Vector2( -1745, 2393 )
+
+[node name="Entity10" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
+position = Vector2( -1613, 2239 )
+
+[node name="Entity11" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
+position = Vector2( -1472, 2306 )
+
+[node name="Entity12" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
+position = Vector2( -1340, 2152 )
 
 [node name="RigidBody2D2" type="RigidBody2D" parent="Node2D"]
 position = Vector2( 1755, 177 )

@@ -328,8 +328,8 @@ func attach_object(slot):
 
 func hide_object():
 	wearing = null
-	if $WearSlot.get_child_count() == 1:
-		$WearSlot.get_child(0).queue_free()
+	for i in $WearSlot.get_children():
+		i.queue_free()
 
 func detach_object() -> bool:
 	if wearing != null:
