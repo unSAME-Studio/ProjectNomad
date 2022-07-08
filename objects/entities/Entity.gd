@@ -51,7 +51,7 @@ func check_base():
 	if not temp_base.empty():
 		temp_base=temp_base[0].collider
 	else:
-		temp_base = get_tree().get_root()
+		temp_base = get_tree().get_current_scene().get_node("Node2D")
 	
 	Global.player.reparent(self,temp_base)
 	
