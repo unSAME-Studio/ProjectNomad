@@ -74,24 +74,6 @@ position = Vector2( 2488, 2031 )
 [node name="Entity6" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
 position = Vector2( 2620, 1877 )
 
-[node name="Entity7" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( -2013, 2352 )
-
-[node name="Entity8" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( -1881, 2198 )
-
-[node name="Entity9" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( -1745, 2393 )
-
-[node name="Entity10" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( -1613, 2239 )
-
-[node name="Entity11" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( -1472, 2306 )
-
-[node name="Entity12" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( -1340, 2152 )
-
 [node name="RigidBody2D2" type="RigidBody2D" parent="Node2D"]
 position = Vector2( 1755, 177 )
 collision_layer = 2
@@ -129,6 +111,24 @@ polygon = PoolVector2Array( -187, -1253, 372, -996, 342, -165, 825, 605, 1052, 2
 [node name="objects" type="Node2D" parent="Node2D/RigidBody2D3"]
 
 [node name="entity" type="Node2D" parent="Node2D/RigidBody2D3"]
+
+[node name="Entity7" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
+position = Vector2( -588, -670 )
+
+[node name="Entity8" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
+position = Vector2( -456, -824 )
+
+[node name="Entity9" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
+position = Vector2( -320, -629 )
+
+[node name="Entity10" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
+position = Vector2( -188, -783 )
+
+[node name="Entity11" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
+position = Vector2( -47, -716 )
+
+[node name="Entity12" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
+position = Vector2( 85, -870 )
 
 [node name="RigidBody2D4" type="RigidBody2D" parent="Node2D"]
 position = Vector2( 1405, -2933 )

@@ -120,6 +120,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -165,13 +166,13 @@ bbcode_enabled = true
 bbcode_text = "NUM KEY - Select Slot
 G - Throw Holding Item
 LMB - Use Holding Item
-RMB - Build Holding Item
+
 
 "
 text = "NUM KEY - Select Slot
 G - Throw Holding Item
 LMB - Use Holding Item
-RMB - Build Holding Item
+
 
 "
 fit_content_height = true
