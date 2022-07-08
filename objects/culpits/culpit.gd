@@ -3,6 +3,7 @@ extends StaticBody2D
 class_name Culpit
 
 var prebuild = preload("res://objects/buildings/Prebuild.tscn")
+var entity = preload("res://objects/entities/Entity.tscn")
 
 var base = null
 var wearing = false
@@ -45,10 +46,22 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 			
 			Global.player.edit_culpit(self)
 
+
 func throw(player):
-	player.reparent(self, player.base.get_node("entity"))
-	set_wearing(false)
-	stop_control(self)
+	var e = entity.instance()
+	
+	e.type = type
+	player.base.add_child(e)
+	
+	e.set_global_position(get_global_position())
+	e.set_wearing(false)
+	e.stop_control(player)
+	e.velocity = player.get_facing().normalized() * 1000
+	e.throwing = true
+	
+	
+	queue_free()
+
 
 func set_wearing(value):
 	wearing = value

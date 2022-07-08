@@ -45,6 +45,7 @@ func set_wearing(value):
 func get_hint_text():
 	return "Pick Up"
 
+
 func check_base():
 	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 2 ,[],2,true,false)
 	if not temp_base.empty():
@@ -81,12 +82,14 @@ func initial_control(player):
 func stop_control(player):
 	pass
 
+
 func throw(player):
 	player.reparent(self, player.base)
-	set_wearing(player)
+	set_wearing(false)
 	stop_control(player)
-	velocity = player.get_facing().normalized()*1000
+	velocity = player.get_facing().normalized() * 1000
 	throwing = true
+
 
 func operate(player):
 	print(type + "Being Used")

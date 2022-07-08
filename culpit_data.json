@@ -21,7 +21,7 @@
     "type": 1,
     "controllable": 1,
     "action": 1,
-    "hint": "Print Card"
+    "hint": "Print Card (Consume 1 Nano)"
   },
   "turret": {
     "type": 3,

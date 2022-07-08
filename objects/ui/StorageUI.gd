@@ -21,6 +21,7 @@ func add_object(new_type):
 
 
 func remove_object():
+	set_pressed(false)
 	type = null
 	$TextureRect.set_texture(Image.new())
 
