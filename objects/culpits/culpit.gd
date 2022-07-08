@@ -22,6 +22,13 @@ func _ready():
 	
 	connect("input_event", self, "_on_Culpit_input_event")
 
+	$Anim.play("build")
+	
+	ready()
+
+
+func ready():
+	pass
 
 func get_hint_text():
 	return Global.culpits_data[type]["hint"]
@@ -49,18 +56,23 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 			Global.player.edit_culpit(self)
 
 
-func throw(player):
-	var e = entity.instance()
+func throw(player,_build = false):
 	
+	var e = entity.instance()
 	e.type = type
-	player.base.add_child(e)
+	if _build:
+		e.buildable = true
+	if player.base:
+		player.base.add_child(e)
+	else:
+		get_tree().get_current_scene().get_node("Node2D").add_child(e)
 	
 	e.set_global_position(get_global_position())
-	e.set_wearing(false)
-	e.velocity = player.get_facing().normalized() * 1000
-	e.throwing = true
 	
-	
+	e.throw(player,_build)
+#	e.velocity = player.get_facing().normalized() * 1000
+#	e.throwing = true
+#	e.set_wearing(false)
 	queue_free()
 
 

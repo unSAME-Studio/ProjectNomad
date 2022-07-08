@@ -13,6 +13,8 @@ var hovering = true
 var can_build = true
 var lock_point = false
 
+var directbuild = false
+
 var base = null
 var room
 var direction = 0
@@ -26,7 +28,8 @@ var build_points = []
 func _ready():
 	$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
 	#var space_state = get_world_2d().direct_space_state
-	update_points()
+	if not directbuild:
+		update_points()
 
 func update_points():
 	var new_build_points = Global.player.get_build_points(point_type)
@@ -56,6 +59,8 @@ func find_closest(value, array):
 
 	return best_match
 
+func check_blocked():
+	return false
 
 func check_build_condition(target_mode = false) -> bool:
 	if target_mode:

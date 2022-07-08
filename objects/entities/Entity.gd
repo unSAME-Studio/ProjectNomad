@@ -11,12 +11,19 @@ var wearing = false
 var throwing = false
 var velocity = Vector2.ZERO
 
+var buildable = false
+
 func _ready():
 	var texture
 	if type in Global.entity_data.keys():
 		texture = load("res://arts/resources/%s.png" % type)
 	else:
 		texture = load("res://arts/culpits/%s.png" % type)
+	if not buildable:
+		$Card.show()
+	else:
+		set_collision_layer_bit(3, true)
+		set_collision_layer_bit(0, true)
 	
 	$Resource.set_texture(texture)
 
@@ -38,22 +45,46 @@ func set_wearing(value):
 		set_collision_mask_bit(3, true)
 		set_collision_mask_bit(6, true)
 		
-		$Card.show()
+		if not buildable:
+			$Card.show()
 		$Light2D.show()
 
 
 func get_hint_text():
 	return "Pick Up"
+	
 
+func build_entity(base):
+	if buildable:
+		var builder = load("res://objects/buildings/Prebuild.tscn").instance()
+		builder.type = type
+		builder.card = self
+		builder.directbuild = true
+		get_tree().get_current_scene().get_node("Node2D").add_child(builder)
+		builder.set_global_position(get_global_position())
+		if not builder.check_blocked():
+			builder.finish_build(base)
+		else:
+			cancel_build_entity()
+
+func cancel_build_entity():
+	buildable = false
+	set_collision_layer_bit(3, false)
+	set_collision_layer_bit(0, false)
+	$Card.show()
 
 func check_base():
 	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 2 ,[],2,true,false)
 	if not temp_base.empty():
 		temp_base=temp_base[0].collider
+		build_entity(temp_base)
+
 	else:
 		temp_base = get_tree().get_current_scene().get_node("Node2D")
-	
-	Global.player.reparent(self,temp_base)
+		if buildable == true:
+			cancel_build_entity()
+	if not buildable:
+		Global.player.reparent(self,temp_base)
 	
 
 func _process(delta):
@@ -83,11 +114,12 @@ func stop_control(player):
 	pass
 
 
-func throw(player):
-	check_base()
+func throw(player,_throw = false):
+	#check_base()
 	set_wearing(false)
 	stop_control(player)
-	velocity = player.get_facing().normalized() * 1000
+	if _throw:
+		velocity = player.get_facing().normalized() * 1000
 	throwing = true
 
 
