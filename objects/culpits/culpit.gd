@@ -99,7 +99,7 @@ func canceled_build():
 	$CollisionShape2D.set_deferred("disabled", false)
 
 
-func _on_destroy():	
+func _on_destroy():
 	print(type + "have been destroyed")
 	
 	throw(Global.player)
