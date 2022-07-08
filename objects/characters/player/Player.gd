@@ -70,8 +70,8 @@ func _input(event):
 	if Input.is_action_just_pressed("throw"):
 		if detach_object():
 			var object = $WearSlot.get_child(0)
-			
-			object.throw(self)
+			reparent(object,base)
+			object.throw(self,true)
 
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
