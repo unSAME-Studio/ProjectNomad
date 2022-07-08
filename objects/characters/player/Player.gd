@@ -345,7 +345,7 @@ func detach_object() -> bool:
 # function for reparenting at realtime
 func reparent(child: Node, new_parent: Node):
 	if new_parent == null:
-		new_parent = get_tree().get_root()
+		new_parent = get_tree().get_current_scene().get_node("Node2D")
 	var old_parent = child.get_parent()
 	var old_position = child.get_global_position()
 	old_parent.remove_child(child)
