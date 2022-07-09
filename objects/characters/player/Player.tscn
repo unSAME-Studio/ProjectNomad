@@ -94,9 +94,10 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 gradient = SubResource( 22 )
 
 [sub_resource type="Curve" id=19]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.443182 ), -0.176565, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.712963, 0 ), -0.176565, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=20]
+width = 64
 curve = SubResource( 19 )
 
 [sub_resource type="ParticlesMaterial" id=21]
@@ -120,6 +121,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
