@@ -31,14 +31,16 @@ func ready_build():
 func end_build():
 	hide()
 
-func finish_build(_object):
+func finish_build(object = null):
 	active = false
-	if _object:
-		target = _object
-		_object.build_point = self
+	
+	if object:
+		target = object
+		object.build_point = self
 		
 	if wall:
 		wall.queue_free()
+		
 	end_build()
 
 func disconnect_point():

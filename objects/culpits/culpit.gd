@@ -22,8 +22,6 @@ func _ready():
 	
 	connect("input_event", self, "_on_Culpit_input_event")
 
-	$Anim.play("build")
-	
 	ready()
 
 
