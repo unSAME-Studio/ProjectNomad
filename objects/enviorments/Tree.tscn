@@ -26,6 +26,7 @@ occluder = SubResource( 1 )
 [node name="Branch" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.290196 )
 light_mask = 2
+z_index = 50
 texture = ExtResource( 3 )
 script = ExtResource( 7 )
 offset_amount = 0.7

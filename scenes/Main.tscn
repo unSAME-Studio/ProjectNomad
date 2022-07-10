@@ -47,6 +47,7 @@ script = ExtResource( 2 )
 [node name="Shadow" type="Polygon2D" parent="Node2D/Island"]
 light_mask = 2
 position = Vector2( -109, -22 )
+z_index = -50
 color = Color( 0.376471, 0.396078, 0.188235, 1 )
 antialiased = true
 script = ExtResource( 6 )
