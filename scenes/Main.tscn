@@ -50,6 +50,7 @@ position = Vector2( -109, -22 )
 color = Color( 0.376471, 0.396078, 0.188235, 1 )
 antialiased = true
 script = ExtResource( 6 )
+offset_amount = -0.2
 
 [node name="Polygon2D" type="Polygon2D" parent="Node2D/Island"]
 antialiased = true

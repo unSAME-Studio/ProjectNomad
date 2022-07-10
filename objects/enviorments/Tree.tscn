@@ -28,7 +28,7 @@ modulate = Color( 1, 1, 1, 0.290196 )
 light_mask = 2
 texture = ExtResource( 3 )
 script = ExtResource( 7 )
-offset_amount = 0.3
+offset_amount = 0.7
 
 [node name="Leaf" type="Sprite" parent="Branch"]
 light_mask = 2
