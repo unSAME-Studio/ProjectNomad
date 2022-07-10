@@ -13,6 +13,7 @@ var velocity = Vector2.ZERO
 
 var buildable = false
 
+
 func _ready():
 	var texture
 	if type in Global.entity_data.keys():
@@ -67,11 +68,13 @@ func build_entity(base):
 		else:
 			cancel_build_entity()
 
+
 func cancel_build_entity():
 	buildable = false
 	set_collision_layer_bit(3, false)
 	set_collision_layer_bit(0, false)
 	$Card.show()
+
 
 func check_base():
 	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 2 ,[],2,true,false)
@@ -107,6 +110,16 @@ func _process(delta):
 func initial_control(player):
 	if not wearing:
 		if player.add_storage_object(type):
+			
+			$CollisionShape2D.set_deferred("disabled", true)
+			
+			var tween = get_node("Tween")
+			tween.interpolate_property(self, "global_position",
+				get_global_position(), player.get_global_position(), 0.15,
+				Tween.TRANS_SINE, Tween.EASE_OUT)
+			tween.start()
+			
+			yield(tween, "tween_all_completed")
 			queue_free()
 
 
