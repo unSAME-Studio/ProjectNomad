@@ -18,6 +18,8 @@ func add_object(new_type):
 	else:
 		texture = load("res://arts/culpits/%s.png" % type)
 	$TextureRect.set_texture(texture)
+	
+	set_tooltip(type.capitalize())
 
 
 func remove_object():
