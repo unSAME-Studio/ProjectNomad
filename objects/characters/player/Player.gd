@@ -240,6 +240,20 @@ func is_in_air():
 
 
 # -----------------
+# player health control
+# -----------------
+func damage(amount):
+	health = clamp(health - amount, 0, 100)
+	
+	if health <= 0:
+		print("GAME OVER")
+		pass
+
+func heal(amount):
+	health = clamp(health + amount, 0, 100)
+
+
+# -----------------
 # add cards
 # -----------------
 func add_build_card(type):

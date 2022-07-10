@@ -33,11 +33,11 @@ func get_hint_text():
 
 
 func initial_control(body):
-	print(name + " is being controller")
+	print(type + " is being controller")
 
 
 func stop_control(body):
-	print("stopping " + name + " from controlling")
+	print("stopping " + type + " from controlling")
 
 
 # snap body to predefined point

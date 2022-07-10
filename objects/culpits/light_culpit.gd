@@ -23,11 +23,15 @@ func _process(delta):
 		$Sprite.rotate(1 * delta)
 
 
+func operate(player):
+	light2d.set_enabled(!light2d.is_enabled())
+
+
 func initial_control(body):
-	print(name + " is being controller")
+	print("LET THERE BE LIGHTs!!")
 	
 	light2d.set_enabled(!light2d.is_enabled())
 
 
 func stop_control(body):
-	print("stopping " + name + " from controlling")
+	print("stopping " + type + " from controlling")

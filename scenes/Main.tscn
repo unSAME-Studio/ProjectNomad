@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/polygonshape.gd" type="Script" id=2]
 [ext_resource path="res://objects/ship.tscn" type="PackedScene" id=3]
 [ext_resource path="res://systems/CameraManager.tscn" type="PackedScene" id=4]
-[ext_resource path="res://objects/entities/Entity.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/enviorments/Tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/parallax_offset.gd" type="Script" id=6]
 [ext_resource path="res://arts/enviroment/island.png" type="Texture" id=8]
 
 [sub_resource type="PhysicsMaterial" id=1]
@@ -35,46 +36,7 @@ position = Vector2( 494, 268 )
 [node name="CameraManager" parent="Node2D" instance=ExtResource( 4 )]
 target_node_path = NodePath("../Player")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Node2D"]
-position = Vector2( -634, -1698 )
-collision_layer = 2
-collision_mask = 2
-mode = 1
-mass = 30.0
-script = ExtResource( 2 )
-
-[node name="Polygon2D" type="Polygon2D" parent="Node2D/RigidBody2D"]
-color = Color( 0.894118, 1, 0.913725, 1 )
-texture = ExtResource( 8 )
-polygon = PoolVector2Array( -239, -302, -657, 102, 6.99997, 602, 333, 114, 763, -190, 135, -490 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/RigidBody2D"]
-
-[node name="objects" type="Node2D" parent="Node2D/RigidBody2D"]
-
-[node name="entity" type="Node2D" parent="Node2D/RigidBody2D"]
-
-[node name="Entity" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 1947, 2077 )
-
-[node name="Entity2" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2079, 1923 )
-type = "locker"
-
-[node name="Entity3" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2215, 2118 )
-type = "turret"
-
-[node name="Entity4" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2347, 1964 )
-
-[node name="Entity5" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2488, 2031 )
-
-[node name="Entity6" parent="Node2D/RigidBody2D/entity" instance=ExtResource( 5 )]
-position = Vector2( 2620, 1877 )
-
-[node name="RigidBody2D2" type="RigidBody2D" parent="Node2D"]
+[node name="Island" type="RigidBody2D" parent="Node2D"]
 position = Vector2( 1755, 177 )
 collision_layer = 2
 collision_mask = 2
@@ -82,70 +44,28 @@ mode = 1
 mass = 30.0
 script = ExtResource( 2 )
 
-[node name="Polygon2D" type="Polygon2D" parent="Node2D/RigidBody2D2"]
-color = Color( 0.894118, 1, 0.913725, 1 )
+[node name="Shadow" type="Polygon2D" parent="Node2D/Island"]
+light_mask = 2
+position = Vector2( -109, -22 )
+z_index = -50
+color = Color( 0.376471, 0.396078, 0.188235, 1 )
+antialiased = true
+script = ExtResource( 6 )
+offset_amount = -0.2
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D/Island"]
+antialiased = true
 texture = ExtResource( 8 )
 polygon = PoolVector2Array( -143, -146, -657, 102, -63, 942, 1209, 342, 801, -810, -167, -978 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/RigidBody2D2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Island"]
 
-[node name="objects" type="Node2D" parent="Node2D/RigidBody2D2"]
+[node name="objects" type="Node2D" parent="Node2D/Island"]
 
-[node name="entity" type="Node2D" parent="Node2D/RigidBody2D2"]
+[node name="entity" type="Node2D" parent="Node2D/Island"]
 
-[node name="RigidBody2D3" type="RigidBody2D" parent="Node2D"]
-position = Vector2( -2121, 1225 )
-collision_layer = 2
-collision_mask = 2
-mode = 1
-mass = 30.0
-script = ExtResource( 2 )
+[node name="Tree" parent="Node2D/Island/entity" instance=ExtResource( 5 )]
+position = Vector2( 202, 353 )
 
-[node name="Polygon2D" type="Polygon2D" parent="Node2D/RigidBody2D3"]
-color = Color( 0.894118, 1, 0.913725, 1 )
-texture = ExtResource( 8 )
-polygon = PoolVector2Array( -187, -1253, 372, -996, 342, -165, 825, 605, 1052, 212, 1112, -195, 1278, -528, 1475, -195, 1414, 227, 1399, 665, 1656, 801, 1505, 1103, 870, 1300, 236, 1315, -202, 1662, -655, 1315, 221, 696, -96, 363, -776, 273, -1002, -44, -1123, -875, -761, -1041 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/RigidBody2D3"]
-
-[node name="objects" type="Node2D" parent="Node2D/RigidBody2D3"]
-
-[node name="entity" type="Node2D" parent="Node2D/RigidBody2D3"]
-
-[node name="Entity7" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
-position = Vector2( -588, -670 )
-
-[node name="Entity8" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
-position = Vector2( -456, -824 )
-
-[node name="Entity9" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
-position = Vector2( -320, -629 )
-
-[node name="Entity10" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
-position = Vector2( -188, -783 )
-
-[node name="Entity11" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
-position = Vector2( -47, -716 )
-
-[node name="Entity12" parent="Node2D/RigidBody2D3/entity" instance=ExtResource( 5 )]
-position = Vector2( 85, -870 )
-
-[node name="RigidBody2D4" type="RigidBody2D" parent="Node2D"]
-position = Vector2( 1405, -2933 )
-collision_layer = 2
-collision_mask = 2
-mode = 1
-mass = 30.0
-script = ExtResource( 2 )
-
-[node name="Polygon2D" type="Polygon2D" parent="Node2D/RigidBody2D4"]
-position = Vector2( 645, -871 )
-color = Color( 0.894118, 1, 0.913725, 1 )
-texture = ExtResource( 8 )
-polygon = PoolVector2Array( -1352, 610, -1231, 933, -1204, 1269, -1070, 1700, -975, 1821, -814, 1834, -639, 1740, -545, 1592, -276, 1485, -155, 1310, -168, 1041, -101, 906, -60, 718, -47, 502, -222, 274, -800, 327, -1096, 623 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/RigidBody2D4"]
-
-[node name="objects" type="Node2D" parent="Node2D/RigidBody2D4"]
-
-[node name="entity" type="Node2D" parent="Node2D/RigidBody2D4"]
+[node name="Tree2" parent="Node2D/Island/entity" instance=ExtResource( 5 )]
+position = Vector2( 482, -363 )
