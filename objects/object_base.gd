@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name Base
+
 export (String) var type
 
 var velocity = Vector2()
@@ -52,7 +54,10 @@ func _physics_process(delta):
 func _integrate_forces(state):
 	pass
 			
-		
+
+func get_build():
+	return self
+
 func get_build_points():
 	var points = []
 	if not rooms.empty():
