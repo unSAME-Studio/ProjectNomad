@@ -141,7 +141,9 @@ func _process(delta):
 	if hovering:
 		var target_snap = get_global_mouse_position()
 		
-		var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
+		var result = get_world_2d().get_direct_space_state().intersect_point(position, 3 ,[],32,false,true)
+		if result.empty():
+			result = get_world_2d().get_direct_space_state().intersect_point(position, 3 ,[],2,true,false)
 		if not result.empty():
 			var parent = result[0].collider.get_build()
 			
