@@ -20,6 +20,8 @@ var point_type = "room"
 var point_mode = false
 var build_points = []
 
+var wall_info = 0
+
 var snapindex = 0
 
 var structure
@@ -145,12 +147,14 @@ func finish_build(room):
 		structure.set_global_position(temp_pos)
 		structure.set_global_rotation(temp_rot)
 		structure.active(base)
+
 		
 	
 		
 	else:
 		if target:
-			target.get_parent().queue_free()
+			if target.wall:
+				target.wall.change_type('empty')
 	for i in build_points:
 		i.end_build()
 	build_points = []
