@@ -100,7 +100,7 @@ func _process(delta):
 			set_global_position(target.get_global_position())
 			set_global_rotation(target.get_global_rotation())
 			if structure:
-				structure.set_global_rotation(target.get_global_rotation() +(3.14159 - structure.snappoint[snapindex].get_rotation()))
+				structure.set_global_rotation(target.get_global_rotation() +(3.14159 - structure.snappoint[snapindex].get_parent().get_rotation()))
 				structure.set_position((structure.snappoint[snapindex].get_global_position()-structure.get_global_position()).rotated(-structure.snappoint[snapindex].get_global_rotation()))
 		
 	else:
@@ -154,7 +154,7 @@ func finish_build(room):
 	else:
 		if target:
 			if target.wall:
-				target.wall.change_type('empty')
+				target.wall.destroy()
 	for i in build_points:
 		i.end_build()
 	build_points = []

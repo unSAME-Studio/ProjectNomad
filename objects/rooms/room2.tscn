@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://arts/ui/build_point.png" type="Texture" id=2]
 [ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/rooms/walls/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/rooms/walls/Door.tscn" type="PackedScene" id=5]
 
 [node name="room" type="Area2D"]
 collision_layer = 34
@@ -18,11 +19,11 @@ polygon = PoolVector2Array( -168, -168, 168, -168, 168, 168, -168, 168 )
 
 [node name="structures" type="Node2D" parent="."]
 
-[node name="Wall2" parent="structures" instance=ExtResource( 4 )]
+[node name="Wall1" parent="structures" instance=ExtResource( 5 )]
 position = Vector2( 0, 168 )
+rotation = 3.14159
 
-[node name="buildpoint5" parent="structures/Wall2" instance=ExtResource( 3 )]
-rotation = -3.14159
+[node name="buildpoint5" parent="structures/Wall1" instance=ExtResource( 3 )]
 
 [node name="Wall4" parent="structures" instance=ExtResource( 4 )]
 position = Vector2( 168, 0 )
@@ -31,6 +32,7 @@ rotation = 1.5708
 [node name="buildpoint7" parent="structures/Wall4" instance=ExtResource( 3 )]
 
 [node name="Wall" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 0, -168 )
 
 [node name="buildpoint2" parent="structures/Wall" instance=ExtResource( 3 )]
 
@@ -39,6 +41,7 @@ position = Vector2( -168, 0 )
 rotation = -1.5708
 
 [node name="buildpoint6" parent="structures/Wall3" instance=ExtResource( 3 )]
+rotation = -0.00305401
 
 [node name="points" type="Node2D" parent="structures"]
 
