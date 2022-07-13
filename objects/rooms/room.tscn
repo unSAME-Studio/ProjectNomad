@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/Wall.gd" type="Script" id=2]
 [ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/rooms/walls/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/rooms/walls/Door.tscn" type="PackedScene" id=5]
 
 [sub_resource type="OccluderPolygon2D" id=4]
 
@@ -54,6 +55,9 @@ color = Color( 0.392157, 0.431373, 0.54902, 1 )
 antialiased = true
 polygon = PoolVector2Array( -16, -264, -16, 240, 16, 240, 16, -264 )
 
+[node name="Wall4" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 0, -248 )
+
 [node name="points" type="Node2D" parent="structures"]
 
 [node name="buildpoint2" parent="structures/points" instance=ExtResource( 3 )]
@@ -72,7 +76,7 @@ type = "utility"
 position = Vector2( 0, 240 )
 rotation = -3.14159
 
-[node name="Wall4" parent="structures" instance=ExtResource( 4 )]
-position = Vector2( 0, -248 )
+[node name="Wall" parent="structures" instance=ExtResource( 5 )]
+position = Vector2( 0, 232 )
 
 [node name="objects" type="Node2D" parent="."]

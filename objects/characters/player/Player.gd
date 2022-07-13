@@ -174,7 +174,6 @@ func _physics_process(delta):
 
 		
 		
-
 # add and remove culpit body in the dictionary
 func _on_ControllableDetection_body_entered(body):
 	controllables[body.name] = body
@@ -371,3 +370,5 @@ func reparent(child: Node, new_parent: Node):
 func _on_Basetimer_timeout():
 	base_cooldown = false
 	pass # Replace with function body.
+
+

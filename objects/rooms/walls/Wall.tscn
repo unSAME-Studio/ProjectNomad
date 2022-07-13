@@ -5,7 +5,6 @@
 [sub_resource type="OccluderPolygon2D" id=3]
 
 [node name="Wall" type="StaticBody2D"]
-position = Vector2( 0, -168 )
 z_index = 1
 collision_mask = 29
 script = ExtResource( 1 )
@@ -23,3 +22,9 @@ polygon = PoolVector2Array( -196, -12, -196, 12, 196, 12, 196, -12 )
 occluder = SubResource( 3 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
+
+[node name="FramePolygon" type="Polygon2D" parent="."]
+visible = false
+color = Color( 0.392157, 0.431373, 0.54902, 1 )
+polygon = PoolVector2Array( -192, -16, -128, -16, 128, -16, 192, -16, 192, 16, 128, 16, -128, 16, -192, 16 )
+polygons = [ PoolIntArray( 0, 1, 6, 7 ), PoolIntArray( 2, 3, 4, 5 ), null ]

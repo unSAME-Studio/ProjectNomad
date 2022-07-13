@@ -1,7 +1,7 @@
 extends Area2D
 
 
-export(String,"utility","room","weapon","wall","snap","core","connector") var type = "Snap"
+export(String,"utility","room","weapon","wall","door","snap","core","connector") var type = "Snap"
 var active = true
 var object = null
 var room = null
