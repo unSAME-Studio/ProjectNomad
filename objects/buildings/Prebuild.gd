@@ -141,6 +141,9 @@ func _process(delta):
 	if hovering:
 		var target_snap = get_global_mouse_position()
 		
+		$GuideLineH.hide()
+		$GuideLineV.hide()
+		
 		var result = get_world_2d().get_direct_space_state().intersect_point(position, 3 ,[],32,false,true)
 		if result.empty():
 			result = get_world_2d().get_direct_space_state().intersect_point(position, 3 ,[],2,true,false)
@@ -162,9 +165,14 @@ func _process(delta):
 		
 			if target_x != null:
 				target_snap.x = target_x
+				#$GuideLineV.points.set(1, Vector2(target_x - get_global_position().x, 0))
+				$GuideLineV.show()
+				$GuideLineV.set_rotation(parent.get_global_rotation())
 			
 			if target_y != null:
 				target_snap.y = target_y
+				$GuideLineH.show()
+				$GuideLineH.set_rotation(parent.get_global_rotation())
 			
 			target_snap = parent.get_global_position() + target_snap.rotated(parent.get_global_rotation())
 		
