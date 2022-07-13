@@ -13,5 +13,6 @@ func _ready():
 			i.hide()
 			continue
 		
-		# random rotation
+		# random size
+		i.set_scale(Vector2(rand_range(0.8, 4), rand_range(0.8, 4)))
 		i.set_rotation_degrees(rand_range(0, 360))
