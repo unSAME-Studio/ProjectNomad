@@ -128,6 +128,8 @@ func _unhandled_input(event):
 		# right click cancel
 		elif event.get_button_index() == 2 and event.is_pressed():
 			card.canceled_build()
+			for i in build_points:
+				i.end_build()
 			queue_free()
 	
 	if Input.is_action_just_pressed("rotate"):

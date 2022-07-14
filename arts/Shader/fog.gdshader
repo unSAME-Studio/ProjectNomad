@@ -32,17 +32,17 @@ float fbm(vec2 coord){
 	for(int i = 0; i < OCTAVES; i++){
 		value += noise(coord) * scale;
 		coord *= 3.0;
-		scale *= 0.5;
+		scale *= 0.2;
 	}
 	return value;
 }
 
 void fragment() {
-	vec2 coord = UV * 20.0;
+	vec2 coord = UV * 10.0;
 
 	vec2 motion = vec2( fbm(coord + vec2(TIME * -0.2, TIME * 0.2)) );
 
-	float final = fbm(coord + motion);
+	float final = fbm(coord + motion)*1.5;
 
 	COLOR = vec4(color, final);
 }
