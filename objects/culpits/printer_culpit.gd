@@ -16,16 +16,12 @@ func initial_control(body):
 			body.remove_storage_object(result)
 		
 		# spawn entity
-		var e = entity.instance()
-
-		e.type = ["light", "locker"][randi() % 2]
-		base.add_child(e)
-		
-		e.set_global_position(get_global_position())
-		e.set_wearing(false)
-		e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
-		e.throwing = true
+		body.add_build_card(["wall", "room", "door wall"][randi() % 3])
 
 
 func stop_control(body):
 	print("stopping " + name + " from controlling")
+
+
+func operate(player):
+	initial_control(player)
