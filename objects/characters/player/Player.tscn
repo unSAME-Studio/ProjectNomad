@@ -120,7 +120,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -174,7 +173,7 @@ G - Throw Holding Item
 LMB - Use Holding Item
 
 
-"
+Backpack"
 fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
@@ -522,7 +521,7 @@ margin_top = 199.0
 margin_right = 1446.0
 margin_bottom = 231.0
 theme = ExtResource( 5 )
-text = "Q - Building Blueprints"
+text = "Q - Open Blueprints"
 align = 2
 
 [node name="ControlHint" type="VBoxContainer" parent="CanvasLayer/Control"]

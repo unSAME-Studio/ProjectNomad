@@ -28,6 +28,7 @@ func _ready():
 func ready():
 	pass
 
+
 func get_hint_text():
 	return Global.culpits_data[type]["hint"]
 
