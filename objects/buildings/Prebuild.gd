@@ -67,7 +67,10 @@ func check_build_condition(target_mode = false) -> bool:
 		hovering = false
 		Global.player.set_prebuild_hint("", self)
 		return true
-		
+	
+	if point_mode:
+		return false
+	
 	if get_global_position().distance_to(Global.player.get_global_position()) > 300:
 		Global.player.set_prebuild_hint("Too far!", self)
 		return false

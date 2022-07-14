@@ -118,7 +118,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -174,6 +173,13 @@ LMB - Use Holding Item
 
 "
 fit_content_height = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/RichTextLabel"]
+margin_top = 110.0
+margin_right = 40.0
+margin_bottom = 142.0
+text = "Why I can't change the text in this richtext label?
+And, Tab to align camera"
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
 margin_top = 202.0
@@ -490,7 +496,10 @@ align = 2
 
 [node name="ControlHint" type="VBoxContainer" parent="CanvasLayer/Control"]
 visible = false
-margin_bottom = 32.0
+margin_left = 980.0
+margin_top = 540.0
+margin_right = 1169.0
+margin_bottom = 585.0
 mouse_filter = 2
 theme = ExtResource( 5 )
 alignment = 1
