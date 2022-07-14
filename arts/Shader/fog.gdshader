@@ -32,7 +32,7 @@ float fbm(vec2 coord){
 	for(int i = 0; i < OCTAVES; i++){
 		value += noise(coord) * scale;
 		coord *= 3.0;
-		scale *= 0.2;
+		scale *= 0.3;
 	}
 	return value;
 }
