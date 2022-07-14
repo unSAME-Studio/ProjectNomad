@@ -148,10 +148,11 @@ func _process(delta):
 		$GuideLineV.hide()
 		
 		var result = get_world_2d().get_direct_space_state().intersect_point(position, 3 ,[],32,false,true)
+		var parent = null
 		if result.empty():
 			result = get_world_2d().get_direct_space_state().intersect_point(position, 3 ,[],2,true,false)
 		if not result.empty():
-			var parent = result[0].collider.get_build()
+			parent = result[0].collider.get_build()
 			
 			# snapping by checking nearby edges
 			var x_edge = []
@@ -170,17 +171,22 @@ func _process(delta):
 				target_snap.x = target_x
 				#$GuideLineV.points.set(1, Vector2(target_x - get_global_position().x, 0))
 				$GuideLineV.show()
-				$GuideLineV.set_rotation(parent.get_global_rotation())
+				#$GuideLineV.set_rotation(parent.get_global_rotation())
 			
 			if target_y != null:
 				target_snap.y = target_y
 				$GuideLineH.show()
-				$GuideLineH.set_rotation(parent.get_global_rotation())
+				#$GuideLineH.set_rotation(parent.get_global_rotation())
 			
 			target_snap = parent.get_global_position() + target_snap.rotated(parent.get_global_rotation())
 		
 		set_global_position(get_global_position().linear_interpolate(target_snap, 20 * delta))
-		set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
+		
+		# follow the floor rotation / else follow camera rotation
+		if parent:
+			set_rotation(parent.get_global_rotation() + PI / 2 * direction)
+		else:
+			set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 	else:
 		if target:
 			set_global_position(get_global_position().linear_interpolate(target.get_global_position(), 20 * delta))
@@ -232,7 +238,6 @@ func finish_build(room):
 	var c = load("res://objects/culpits/Culpit.tscn").instance()
 	c.script = load("res://objects/culpits/%s_culpit.gd" % type)
 	c.type = type
-	#print("add script" + "res://objects/culpits/%s_culpit.gd" % type)
 	
 	room.get_node("objects").add_child(c)
 	c.set_global_position(get_global_position())
@@ -242,5 +247,11 @@ func finish_build(room):
 	
 	Global.player.end_building_mode()
 	
-	card.queue_free()
+	# [probably update later]
+	# check for type, if it's card then don't destroy but restore
+	if "Card" in card.name:
+		card.canceled_build()
+	else:
+		card.queue_free()
+	
 	queue_free()

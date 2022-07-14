@@ -147,8 +147,7 @@ func finish_build(room):
 		structure.set_global_position(temp_pos)
 		structure.set_global_rotation(temp_rot)
 		structure.active(base)
-
-		
+	
 	
 		
 	else:
@@ -160,10 +159,9 @@ func finish_build(room):
 	build_points = []
 	Global.player.build_point_flag = true
 	Global.player.end_building_mode()
-	if not structure:
-		card.canceled_build()
-	else:
-		card.queue_free()
+	
+	
+	card.canceled_build()
 	queue_free()
 	
 

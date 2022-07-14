@@ -7,9 +7,9 @@
   },
   "locker": {
     "type": 1,
-    "controllable": 1,
-    "action": 1,
-    "hint": "Lock / Unlock"
+    "controllable": 0,
+    "action": 0,
+    "hint": ""
   },
   "light": {
     "type": 2,
@@ -21,19 +21,13 @@
     "type": 1,
     "controllable": 1,
     "action": 1,
-    "hint": "Print Card (Consume 1 Nano)"
+    "hint": "Print Card"
   },
-  "turret": {
-    "type": 3,
-    "controllable": 1,
-    "action": 0,
-    "hint": "Control"
-  },
-  "auto_turret": {
-    "type": 3,
+  "crafter": {
+    "type": 1,
     "controllable": 1,
     "action": 1,
-    "hint": "Disable"
+    "hint": "Craft Item"
   },
   "wall": {
     "type": 2,
@@ -42,6 +36,12 @@
     "hint": ""
   },
   "room": {
+    "type": 2,
+    "controllable": 0,
+    "action": 0,
+    "hint": ""
+  },
+  "door wall": {
     "type": 2,
     "controllable": 0,
     "action": 0,
