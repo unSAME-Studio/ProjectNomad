@@ -8,6 +8,8 @@ func get_class():
 
 
 func _ready():
+	if persistent_state.camera:
+		persistent_state.camera.align_camera()
 	animated_sprite.play("idle")
 
 

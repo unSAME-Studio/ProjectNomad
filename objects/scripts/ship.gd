@@ -6,6 +6,7 @@ export var acceleration = 0.1
 
 var controlling = false
 var captain = null
+var onboard = []
 
 var leave = false
 
@@ -38,17 +39,25 @@ func enable_control(user):
 	#sleeping = false
 	controlling = true
 	captain = user
+	
+func player_entered(player):
+	onboard.append(player)
 
+func player_leaved(player):
+	onboard.erase(player)
 
 func disable_control():
-
+	captain.camera.align_camera()
 	captain = null
 	controlling = false
 	leave = false
 	set_applied_force(Vector2(0,0))
 	set_applied_torque(0)		
 	
-
+func _process(delta):
+	if not onboard.empty():
+		if not captain:
+			onboard[0].camera.align_camera()
 
 func _physics_process(delta):
 	if(controlling):
