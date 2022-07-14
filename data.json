@@ -6,12 +6,6 @@
       "action": 0,
       "hint": "Steer"
     },
-    "locker": {
-      "type": 1,
-      "controllable": 0,
-      "action": 0,
-      "hint": ""
-    },
     "light": {
       "type": 2,
       "controllable": 1,
@@ -67,6 +61,9 @@
     }
   },
   "structure": {
+    "locker": {
+      "type": 1
+    },
     "wall": {
       "type": 0
     },
