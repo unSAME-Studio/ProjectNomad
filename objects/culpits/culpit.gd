@@ -27,11 +27,10 @@ func _ready():
 	connect("select", self, "on_select")
 	connect("deselect", self, "on_deselect")
 	
-	ready()
-
-
-func ready():
-	pass
+	# don't allow player to control if not controllable
+	if not controllable:
+		set_collision_layer_bit(0, true)
+		set_collision_layer_bit(3, false)
 
 
 func get_hint_text():
