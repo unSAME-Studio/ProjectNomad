@@ -18,7 +18,7 @@ func initial_control(body):
 		# spawn entity
 		var e = entity.instance()
 
-		e.type = "light"
+		e.type = Global.culpits_data.keys()[randi() % Global.culpits_data.size()]
 		base.add_child(e)
 		
 		e.set_global_position(get_global_position())
@@ -29,3 +29,7 @@ func initial_control(body):
 
 func stop_control(body):
 	print("stopping " + name + " from controlling")
+
+
+func operate(player):
+	initial_control(player)
