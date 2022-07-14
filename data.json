@@ -1,0 +1,86 @@
+{
+  "culpit": {
+    "wheel": {
+      "type": 0,
+      "controllable": 1,
+      "action": 0,
+      "hint": "Steer"
+    },
+    "locker": {
+      "type": 1,
+      "controllable": 0,
+      "action": 0,
+      "hint": ""
+    },
+    "light": {
+      "type": 2,
+      "controllable": 1,
+      "action": 1,
+      "hint": "Turn On / Off"
+    },
+    "printer": {
+      "type": 1,
+      "controllable": 1,
+      "action": 1,
+      "hint": "Print Cards"
+    },
+    "crafter": {
+      "type": 1,
+      "controllable": 1,
+      "action": 1,
+      "hint": "Craft Items"
+    },
+    "turret": {
+      "type": 3,
+      "controllable": 1,
+      "action": "",
+      "hint": "Control"
+    },
+    "zapper": {
+      "type": 3,
+      "controllable": 1,
+      "action": "",
+      "hint": "Control"
+    },
+    "generator": {
+      "type": 2,
+      "controllable": 1,
+      "action": "",
+      "hint": "Turn On / Off"
+    },
+    "recycler": {
+      "type": 2,
+      "controllable": 1,
+      "action": "",
+      "hint": "Recycle"
+    }
+  },
+  "entity": {
+    "nano": {
+      "type": 0
+    },
+    "weed": {
+      "type": 0
+    },
+    "booster core": {
+      "type": 0
+    }
+  },
+  "structure": {
+    "wall": {
+      "type": 0
+    },
+    "door wall": {
+      "type": 0
+    },
+    "room": {
+      "type": 0
+    },
+    "wall remove": {
+      "type": 0
+    },
+    "room remove": {
+      "type": 0
+    }
+  }
+}

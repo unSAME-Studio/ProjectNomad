@@ -3,10 +3,9 @@ extends Node
 
 var player
 
-# card type = [Controller, Machine, Decoration, Weapons]
 var culpits_data = []
-
 var entity_data = []
+var structure_data = []
 
 
 func load_database(file_name: String):
@@ -22,6 +21,10 @@ func load_database(file_name: String):
 
 func _ready():
 	print("LOADING JSON")
-	culpits_data = load_database("culpit_data")
-	entity_data = load_database("entity_data")
+	var data = load_database("data")
+	
+	culpits_data = data["culpit"]
+	entity_data = data["entity"]
+	structure_data = data["structure"]
+	
 	print("JSON LOAD SUCCSEFUL")
