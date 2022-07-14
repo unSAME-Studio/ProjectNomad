@@ -168,6 +168,7 @@ anims/build = SubResource( 2 )
 anims/hover = SubResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="."]
+visible = false
 texture = ExtResource( 4 )
 energy = 0.7
 mode = 2

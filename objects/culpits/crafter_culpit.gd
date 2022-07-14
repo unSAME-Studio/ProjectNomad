@@ -18,7 +18,7 @@ func initial_control(body):
 		# spawn entity
 		var e = entity.instance()
 
-		e.type = ["light", "locker"][randi() % 2]
+		e.type = "light"
 		base.add_child(e)
 		
 		e.set_global_position(get_global_position())
