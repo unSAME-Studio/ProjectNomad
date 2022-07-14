@@ -8,7 +8,7 @@ onready var target = get_node(target_node_path)
 var align_flag = false
 var rotation_temp = 0
 var rotation_changed_flag = true
-
+var align_fix = 0
 func _ready():
 	target.camera = self
 	#camera.rotating = true
@@ -57,12 +57,18 @@ func _process(delta):
 			
 			
 	# rotate camera toward player when not 
-	if Global.player.state.get_class() != "ControlState" and align_flag:
+	if align_flag:#Global.player.state.get_class() != "ControlState" and align_flag:
 		set_global_rotation(lerp_angle(get_global_rotation(), target.get_global_rotation(), 10 * delta))
-		if abs(get_global_rotation() - target.get_global_rotation()) < 0.01:
-			set_global_rotation(target.get_global_rotation())
+		if abs(get_global_rotation() - target.get_global_rotation()) < 0.1:
+			#set_global_rotation(target.get_global_rotation())
 			align_flag = false
-
+			align_fix = 0.1
+			
+	if abs(get_global_rotation() - target.get_global_rotation()) < 0.1 and align_fix > 0:
+		set_global_rotation(lerp_angle(get_global_rotation(), target.get_global_rotation(), 20 * delta))
+		align_fix -= delta
+		print(align_fix)
+		
 	
 	# move the parallax layers
 	for i in $Parallax/Control.get_children():

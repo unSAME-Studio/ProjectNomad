@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/rooms/walls/Door.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/walls/interact_struct.gd" type="Script" id=2]
+[ext_resource path="res://objects/rooms/walls/Auto_get_polygon.gd" type="Script" id=3]
 
 [sub_resource type="OccluderPolygon2D" id=3]
 polygon = PoolVector2Array( -32, -16, -32, 16, 32, 16, 32, -16 )
@@ -104,6 +105,9 @@ rotation = 0.00362432
 color = Color( 0.698039, 0.796078, 0.94902, 1 )
 polygon = PoolVector2Array( -128, -16, -128, 16, 0, 16, 0, -16 )
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="structure/door/DoorColli/Polygon2D"]
+script = ExtResource( 3 )
+
 [node name="DoorColli2" type="CollisionPolygon2D" parent="structure/door"]
 position = Vector2( 128, 0 )
 rotation = 3.14159
@@ -114,6 +118,9 @@ position = Vector2( 128, 0 )
 rotation = 0.00362432
 color = Color( 0.698039, 0.796078, 0.94902, 1 )
 polygon = PoolVector2Array( -128, -16, -128, 16, 0, 16, 0, -16 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="structure/door/DoorColli2/Polygon2D"]
+script = ExtResource( 3 )
 
 [node name="Anim" type="AnimationPlayer" parent="structure/door"]
 anims/door_interact = SubResource( 5 )
