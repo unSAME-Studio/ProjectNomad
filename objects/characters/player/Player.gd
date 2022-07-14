@@ -35,6 +35,7 @@ var storage = {
 }
 onready var storage_ui = $CanvasLayer/Control/VBoxContainer/StorageBox.get_children()
 var wearing = null
+var wearoffset = Vector2(0,32)
 
 var move_velocity = Vector2(0,0)
 var slide_velocity = Vector2(0,0)
@@ -49,7 +50,7 @@ func _ready():
 	# set up state machine
 	state_factory = StateFactory.new()
 	change_state("idle")
-
+	$CanvasLayer/Control/ControlHint.set_position(get_global_transform_with_canvas().get_origin()- $CanvasLayer/Control/ControlHint.get_size() / 2)
 
 func change_state(new_state_name):
 	if state != null:
@@ -94,7 +95,10 @@ func _process(delta):
 #	if build_point_flag:
 #		update_build_points()
 #		build_point_flag == false
-	
+
+#	if base:
+#		if base.has_method('player_entered'):
+#			base.player_entered(self)
 			
 	# update health
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
@@ -122,10 +126,13 @@ func _process(delta):
 			
 		else:
 			$CanvasLayer/Control/ControlHint.hide()
+			$CanvasLayer/Control/ControlHint.set_position(get_global_transform_with_canvas().get_origin()- $CanvasLayer/Control/ControlHint.get_size() / 2)
 
 func switch_base(base):
 	if base == null:
 		base = get_tree().get_root()
+	if base.has_method('player_entered'):
+		base.player_entered(self)
 	reparent(self,base)
 
 func _physics_process(delta):
@@ -171,6 +178,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed('right'):
 		input_moving = true
 		state.move_right()
+	if wearing != null:
+		$WearSlot.set_position(get_facing().normalized() * 32)
 
 		
 		

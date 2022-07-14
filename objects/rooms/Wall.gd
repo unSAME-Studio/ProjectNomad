@@ -17,6 +17,9 @@ func ready():
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
 	$LightOccluder2D.occluder.set_polygon($Polygon2D.polygon)
 
+func deactivate():
+	pass
+
 func change_type(type_to):
 	polygon.hide()
 	match(type_to):

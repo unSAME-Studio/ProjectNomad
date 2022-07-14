@@ -38,10 +38,14 @@ func enable_control(user):
 	#sleeping = false
 	controlling = true
 	captain = user
+	
+func player_entered(player):
+	player.camera.align_camera()
+	pass
 
 
 func disable_control():
-
+	captain.camera.align_camera()
 	captain = null
 	controlling = false
 	leave = false
