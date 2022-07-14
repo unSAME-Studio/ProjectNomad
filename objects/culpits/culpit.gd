@@ -1,5 +1,8 @@
 extends StaticBody2D
 
+signal select
+signal deselect
+
 class_name Culpit
 
 var prebuild = preload("res://objects/buildings/Prebuild.tscn")
@@ -21,7 +24,9 @@ func _ready():
 	base = get_parent().get_parent()
 	
 	connect("input_event", self, "_on_Culpit_input_event")
-
+	connect("select", self, "on_select")
+	connect("deselect", self, "on_deselect")
+	
 	ready()
 
 
@@ -120,3 +125,10 @@ func _on_destroy():
 
 	throw(Global.player)
 
+
+func on_select():
+	return
+
+
+func on_deselect():
+	return

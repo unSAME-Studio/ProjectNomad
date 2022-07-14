@@ -8,7 +8,10 @@
     "booster core": {
 
     },
-    "weapon": {
+    "turret": {
+
+    },
+    "zapper": {
 
     },
     "generator": {

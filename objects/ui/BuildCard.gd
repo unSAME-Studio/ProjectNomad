@@ -42,7 +42,7 @@ func _on_BuildCard_pressed():
 	set_modulate(Color("7d737373"))
 	
 	var p
-	if build_type in ['room', 'wall']:
+	if 'room' in build_type or 'wall' in build_type:
 		p = structure_prebuild.instance()
 	else:
 		p = prebuild.instance()

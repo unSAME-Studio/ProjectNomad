@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/polygonshape.gd" type="Script" id=2]
+[ext_resource path="res://scripts/parallax_offset.gd" type="Script" id=4]
+[ext_resource path="res://arts/enviroment/island.png" type="Texture" id=5]
+[ext_resource path="res://objects/enviorments/Tree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/entities/Entity.tscn" type="PackedScene" id=7]
+
+[node name="Island" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+mode = 1
+mass = 30.0
+script = ExtResource( 2 )
+
+[node name="Shadow" type="Polygon2D" parent="."]
+light_mask = 2
+z_index = -50
+color = Color( 0.376471, 0.396078, 0.188235, 1 )
+antialiased = true
+script = ExtResource( 4 )
+offset_amount = -0.2
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+antialiased = true
+texture = ExtResource( 5 )
+polygon = PoolVector2Array( -143, -146, -657, 102, -63, 942, 1209, 342, 801, -810, -167, -978 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="entity" type="Node2D" parent="."]
+
+[node name="Tree" parent="entity" instance=ExtResource( 6 )]
+position = Vector2( 202, 353 )
+
+[node name="Tree2" parent="entity" instance=ExtResource( 6 )]
+position = Vector2( 482, -363 )
+
+[node name="Entity" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( -247, 250 )
+
+[node name="Entity2" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( -43, 541 )
+
+[node name="Entity3" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 155, -115 )
+
+[node name="Entity4" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 127, -644 )
+
+[node name="Entity5" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 577, -737 )
+
+[node name="Entity6" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 827, 228 )
+
+[node name="Entity7" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 778, 51 )
+
+[node name="Entity8" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 442, 353 )
+
+[node name="Entity9" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 450, -194 )
+
+[node name="Entity10" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 639, -300 )
+
+[node name="Entity11" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 688, -376 )
+
+[node name="Entity12" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 718, -300 )
+
+[node name="Entity13" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 703, -228 )
+
+[node name="Entity14" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 790, -251 )
+
+[node name="Entity15" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( 348, 432 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+rect = Rect2( -1500, -1500, 3000, 3000 )

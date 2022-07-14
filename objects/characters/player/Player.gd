@@ -107,11 +107,15 @@ func _process(delta):
 				selected_object = i
 		
 	else:
-		selected_object = null
+		if selected_object != null:
+			#selected_object.emit_signal("deselect")
+			selected_object = null
 	
 	if last_state != "ControlState":
 		# set hint text 
 		if selected_object:
+			#selected_object.emit_signal("select")
+			
 			var target_pos = selected_object.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/ControlHint.get_size() / 2
 			target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/ControlHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/ControlHint.get_size().y))
 			$CanvasLayer/Control/ControlHint.set_position($CanvasLayer/Control/ControlHint.get_position().linear_interpolate(target_pos, 20 * delta))

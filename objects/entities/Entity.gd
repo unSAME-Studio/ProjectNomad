@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal select
+signal deselect
+
 class_name Entity
 
 const SNAP_RANGE = 300
@@ -15,6 +18,9 @@ var buildable = false
 
 
 func _ready():
+	connect("select", self, "on_select")
+	connect("deselect", self, "on_deselect")
+	
 	var texture
 	if type in Global.entity_data.keys():
 		texture = load("res://arts/resources/%s.png" % type)
@@ -23,7 +29,7 @@ func _ready():
 	if not buildable:
 		$Card.show()
 	else:
-		set_collision_layer_bit(3, true)
+		#set_collision_layer_bit(3, true)
 		set_collision_layer_bit(0, true)
 	
 	$Resource.set_texture(texture)
@@ -138,3 +144,11 @@ func throw(player,_throw = false):
 
 func operate(player):
 	print(type + "Being Used")
+
+
+func on_select():
+	$AnimationPlayer.play("hover")
+
+
+func on_deselect():
+	$AnimationPlayer.play_backwards("hover")
