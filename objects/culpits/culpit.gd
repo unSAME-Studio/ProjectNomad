@@ -15,7 +15,7 @@ var build_point
 
 export(String) var type = "wheel"
 onready var action = Global.culpits_data[type]["action"]
-onready var controllable = Global.culpits_data[type]["controllable"]
+onready var controllable = true
 
 
 func _ready():

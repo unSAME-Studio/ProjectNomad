@@ -18,7 +18,7 @@ func _ready():
 	var card = load("res://arts/cards/C_%s.png" % build_type)
 	$TextureRect.set_texture(card)
 	
-	set_self_modulate(type_color[Global.culpits_data[build_type]["type"]])
+	set_self_modulate(type_color[Global.structure_data[build_type]["type"]])
 	
 	$Label.set_text(build_type)
 

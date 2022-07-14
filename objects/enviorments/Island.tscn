@@ -81,7 +81,12 @@ position = Vector2( 703, -228 )
 position = Vector2( 790, -251 )
 
 [node name="Entity15" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 348, 432 )
+position = Vector2( -325, 23 )
+type = "printer"
+
+[node name="Entity16" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( -201, 44 )
+type = "crafter"
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 rect = Rect2( -1500, -1500, 3000, 3000 )
