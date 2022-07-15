@@ -10,7 +10,7 @@
 blend_mode = 1
 light_mode = 1
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=24]
 size = 22
 extra_spacing_top = -9
 font_data = ExtResource( 4 )
@@ -38,7 +38,7 @@ margin_left = 6.0
 margin_right = -7.0
 margin_bottom = -9.0
 custom_colors/font_color = Color( 1, 1, 1, 0.32549 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 24 )
 text = "Auto Turret"
 align = 1
 valign = 2
