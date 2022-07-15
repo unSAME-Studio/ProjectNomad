@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objects/rooms/walls/interact_struct.gd" type="Script" id=1]
+[ext_resource path="res://objects/rooms/walls/Auto_get_polygon.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 64.0
+height = 224.0
+
+[sub_resource type="Animation" id=5]
+resource_name = "door_interact"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoorColli:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DoorColli2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.1, 1 ) ]
+}
+
+[node name="door" type="StaticBody2D"]
+script = ExtResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="DoorColli" type="CollisionPolygon2D" parent="."]
+position = Vector2( -128, 0 )
+polygon = PoolVector2Array( 128, -16, 144, 0, 128, 16, 0, 16, 0, -0.321579, 0, -16 )
+
+[node name="Polygon2D" type="Polygon2D" parent="DoorColli"]
+position = Vector2( 128, 0 )
+rotation = 0.00362432
+color = Color( 0.698039, 0.796078, 0.94902, 1 )
+polygon = PoolVector2Array( -128, -16, -128, 16, 0, 16, 0, -16 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorColli/Polygon2D"]
+script = ExtResource( 2 )
+
+[node name="DoorColli2" type="CollisionPolygon2D" parent="."]
+position = Vector2( 128, 0 )
+rotation = 3.14159
+polygon = PoolVector2Array( 128, -16, 144, 0, 128, 16, 0, 16, 0, -0.321579, 0, -16 )
+
+[node name="Polygon2D" type="Polygon2D" parent="DoorColli2"]
+position = Vector2( 128, 0 )
+rotation = 0.00362432
+color = Color( 0.698039, 0.796078, 0.94902, 1 )
+polygon = PoolVector2Array( -128, -16, -128, 16, 0, 16, 0, -16 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorColli2/Polygon2D"]
+script = ExtResource( 2 )
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/door_interact = SubResource( 5 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

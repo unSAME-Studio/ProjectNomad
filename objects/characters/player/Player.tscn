@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
+[ext_resource path="res://arts/cards/C_base_hover.png" type="Texture" id=3]
 [ext_resource path="res://objects/characters/player/Player.gd" type="Script" id=4]
 [ext_resource path="res://arts/ui/theme.tres" type="Theme" id=5]
 [ext_resource path="res://arts/characters/player_walk1.png" type="Texture" id=6]
@@ -17,6 +18,8 @@
 [ext_resource path="res://objects/ui/StorageGroup.tres" type="ButtonGroup" id=16]
 [ext_resource path="res://arts/font/BarlowCondensed-SemiBold.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://arts/light_small.png" type="Texture" id=18]
+[ext_resource path="res://arts/cards/C_base.png" type="Texture" id=19]
+[ext_resource path="res://arts/font/BarlowCondensed-SemiBoldItalic.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://objects/ui/StorageUI.gd" type="Script" id=21]
 
 [sub_resource type="SpriteFrames" id=7]
@@ -74,7 +77,16 @@ pressed = true
 [sub_resource type="ShortCut" id=17]
 shortcut = SubResource( 16 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="DynamicFont" id=24]
+size = 22
+extra_spacing_top = -9
+font_data = ExtResource( 20 )
+
+[sub_resource type="CircleShape2D" id=25]
 radius = 83.2947
 
 [sub_resource type="Gradient" id=22]
@@ -111,7 +123,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -150,7 +161,7 @@ margin_bottom = -44.0
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.415686 )
 margin_right = 426.0
-margin_bottom = 198.0
+margin_bottom = 231.0
 grow_horizontal = 0
 grow_vertical = 0
 bbcode_enabled = true
@@ -158,6 +169,7 @@ bbcode_text = "NUM 1-5  - Select Slot
 G - Throw Item
 Click - Use Holding Item
 Tab - Align Camera
+
 
 [center]Backpack Slots[/center]"
 text = "NUM 1-5  - Select Slot
@@ -169,9 +181,9 @@ Backpack Slots"
 fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 202.0
+margin_top = 235.0
 margin_right = 426.0
-margin_bottom = 283.0
+margin_bottom = 316.0
 alignment = 1
 
 [node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
@@ -381,9 +393,9 @@ expand = true
 stretch_mode = 6
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 287.0
+margin_top = 320.0
 margin_right = 426.0
-margin_bottom = 319.0
+margin_bottom = 352.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
 margin_right = 23.0
@@ -422,14 +434,14 @@ size_flags_horizontal = 6
 theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer"]
-margin_right = 204.0
+margin_right = 312.0
 margin_bottom = 145.0
 custom_constants/margin_right = 100
 custom_constants/margin_left = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer"]
 margin_left = 100.0
-margin_right = 104.0
+margin_right = 212.0
 margin_bottom = 145.0
 theme = ExtResource( 5 )
 alignment = 1
@@ -438,6 +450,52 @@ alignment = 1
 margin_right = 4.0
 margin_bottom = 145.0
 rect_min_size = Vector2( 0, 145 )
+
+[node name="emptyHint" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer"]
+self_modulate = Color( 0.376471, 0.376471, 0.376471, 1 )
+margin_left = 8.0
+margin_right = 112.0
+margin_bottom = 145.0
+rect_clip_content = true
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 19 )
+texture_hover = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer/emptyHint"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 7.0
+margin_right = -7.0
+margin_bottom = -2.0
+custom_colors/font_color = Color( 1, 1, 1, 0.32549 )
+custom_fonts/font = SubResource( 24 )
+text = "Empty
+"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer/emptyHint"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 21.0
+margin_right = 69.0
+margin_bottom = 134.0
+rect_scale = Vector2( 0.596175, 0.696866 )
+custom_colors/font_color = Color( 1, 1, 1, 0.32549 )
+custom_fonts/font = SubResource( 24 )
+text = "[unlock bluprints from a printer]
+"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
 margin_top = 199.0
@@ -553,7 +611,7 @@ collision_layer = 0
 collision_mask = 72
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ControllableDetection"]
-shape = SubResource( 2 )
+shape = SubResource( 25 )
 
 [node name="testParticle" type="Particles2D" parent="."]
 z_index = -1

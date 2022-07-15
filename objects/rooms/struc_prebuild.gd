@@ -155,7 +155,9 @@ func finish_build(room):
 	else:
 		if target:
 			if target.wall:
-				target.wall.destroy()
+				target.wall.switch()
+				if target.wall.type == 'door wall':
+					target.wall.spawn_door()
 	for i in build_points:
 		i.end_build()
 	build_points = []
