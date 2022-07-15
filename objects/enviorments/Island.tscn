@@ -92,5 +92,13 @@ type = "crafter"
 position = Vector2( -457, 80 )
 type = "box"
 
+[node name="Entity18" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( -384, 147 )
+type = "light"
+
+[node name="Entity19" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( -286, 145 )
+type = "generator"
+
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 rect = Rect2( -1500, -1500, 3000, 3000 )

@@ -27,11 +27,9 @@ func operate(player):
 	light2d.set_enabled(!light2d.is_enabled())
 
 
-func initial_control(body):
-	print("LET THERE BE LIGHTs!!")
-	
-	light2d.set_enabled(!light2d.is_enabled())
+func powered():
+	light2d.set_texture_scale(4)
 
 
-func stop_control(body):
-	print("stopping " + type + " from controlling")
+func unpowered():
+	light2d.set_texture_scale(2)

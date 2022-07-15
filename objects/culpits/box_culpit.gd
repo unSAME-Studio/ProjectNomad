@@ -35,6 +35,7 @@ func _process(delta):
 		for i in $DetectionArea.get_overlapping_bodies():
 			# do nothing if box is full
 			if count >= 5:
+				operate(self)
 				return
 			
 			# if currently not storing, then set the type to current

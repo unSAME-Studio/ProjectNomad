@@ -41,6 +41,10 @@ func get_hint_text():
 
 func initial_control(body):
 	print(type + " is being controller")
+	
+	# don't initial operate if player is wearing
+	if not wearing:
+		operate(body)
 
 
 func stop_control(body):
@@ -136,6 +140,14 @@ func on_select():
 
 func on_deselect():
 	return
+
+
+func powered():
+	pass
+
+
+func unpowered():
+	pass
 
 
 func get_data():
