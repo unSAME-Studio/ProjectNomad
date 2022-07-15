@@ -8,6 +8,7 @@ class_name Entity
 const SNAP_RANGE = 300
 
 export(String) var type = "nano"
+var data = null
 var action = true
 var wearing = false
 
@@ -20,6 +21,8 @@ var buildable = false
 func _ready():
 	connect("select", self, "on_select")
 	connect("deselect", self, "on_deselect")
+	
+	$Tween.connect("tween_all_completed", self, "_on_Tween_tween_all_completed")
 	
 	var texture
 	if type in Global.entity_data.keys():
@@ -65,6 +68,7 @@ func build_entity(base):
 	if buildable:
 		var builder = load("res://objects/buildings/Prebuild.tscn").instance()
 		builder.type = type
+		builder.data = data
 		builder.card = self
 		builder.directbuild = true
 		get_tree().get_current_scene().get_node("Node2D").add_child(builder)
@@ -115,18 +119,11 @@ func _process(delta):
 # for entity, interact picks them up
 func initial_control(player):
 	if not wearing:
-		if player.add_storage_object(type):
+		if player.add_storage_object(type, data):
 			
 			$CollisionShape2D.set_deferred("disabled", true)
 			
-			var tween = get_node("Tween")
-			tween.interpolate_property(self, "global_position",
-				get_global_position(), player.get_global_position(), 0.15,
-				Tween.TRANS_SINE, Tween.EASE_OUT)
-			tween.start()
-			
-			yield(tween, "tween_all_completed")
-			queue_free()
+			magenet_to_delete(player)
 
 
 func stop_control(player):
@@ -144,6 +141,20 @@ func throw(player,_throw = false):
 
 func operate(player):
 	print(type + "Being Used")
+
+
+func magenet_to_delete(actor):
+	$CollisionShape2D.set_deferred("disabled", true)
+	
+	var tween = get_node("Tween")
+	tween.interpolate_property(self, "global_position",
+		get_global_position(), actor.get_global_position(), 0.15,
+		Tween.TRANS_SINE, Tween.EASE_OUT)
+	tween.start()
+
+
+func _on_Tween_tween_all_completed():
+	queue_free()
 
 
 func on_select():

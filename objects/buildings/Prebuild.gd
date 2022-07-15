@@ -9,6 +9,8 @@ signal built
 var card
 
 var type = ""
+var data = null
+
 var hovering = true
 var can_build = true
 var lock_point = false
@@ -239,9 +241,17 @@ func _unhandled_input(event):
 
 
 func finish_build(room):
-	var c = load("res://objects/culpits/Culpit.tscn").instance()
-	c.script = load("res://objects/culpits/%s_culpit.gd" % type)
+	var c
+	# check if special scene exist, else spawn the standard one with script
+	if ResourceLoader.exists("res://objects/culpits/%s_culpit.tscn" % type):
+		c = load("res://objects/culpits/%s_culpit.tscn" % type).instance()
+		print("special culpit loaded for %s" % type)
+	else:
+		c = load("res://objects/culpits/Culpit.tscn").instance()
+		c.script = load("res://objects/culpits/%s_culpit.gd" % type)
+	
 	c.type = type
+	c.data = data
 	
 	room.get_node("objects").add_child(c)
 	c.set_global_position(get_global_position())

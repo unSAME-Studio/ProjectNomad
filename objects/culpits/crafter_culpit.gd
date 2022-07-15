@@ -4,16 +4,25 @@ extends Culpit
 func initial_control(body):
 	print(name + " is being controller")
 	
+	if not wearing:
+		operate(body)
+
+
+func stop_control(body):
+	print("stopping " + name + " from controlling")
+
+
+func operate(player):
 	# currently only print when player is holding nano
-	var result = body.find_slot_by_type("nano")
+	var result = player.find_slot_by_type("nano")
 	if result != null:
 		
 		# if holding it also remove it
-		if result == body.wearing:
-			if body.detach_object():
-				body.get_node("WearSlot").get_child(0).queue_free()
+		if result == player.wearing:
+			if player.detach_object():
+				player.get_node("WearSlot").get_child(0).queue_free()
 		else:
-			body.remove_storage_object(result)
+			player.remove_storage_object(result)
 		
 		# spawn entity
 		var e = entity.instance()
@@ -25,11 +34,3 @@ func initial_control(body):
 		e.set_wearing(false)
 		e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
 		e.throwing = true
-
-
-func stop_control(body):
-	print("stopping " + name + " from controlling")
-
-
-func operate(player):
-	initial_control(player)

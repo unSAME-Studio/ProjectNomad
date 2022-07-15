@@ -1,37 +1,43 @@
 extends Culpit
 
 
-var light2d
-
-
-func _ready():
-	._ready()
-	
-	light2d = Light2D.new()
-	light2d.set_texture(load("res://arts/light.png"))
-	light2d.set_texture_scale(2)
-	light2d.set_energy(1)
-	light2d.set_mode(Light2D.MODE_MIX)
-	light2d.set_shadow_enabled(true)
-	light2d.set_shadow_filter(Light2D.SHADOW_FILTER_PCF3)
-	light2d.set_shadow_smooth(25.1)
-	add_child(light2d)
+var enabled = true
 
 
 func _process(delta):
-	if light2d.is_enabled():
-		$Sprite.rotate(1 * delta)
+	if enabled:
+		$Sprite.rotate(-5 * delta)
 
 
 func operate(player):
-	light2d.set_enabled(!light2d.is_enabled())
+	enabled = !enabled
+	
+	$Particles2D.set_emitting(enabled)
+	
+	# unpowered all the current powered items
+	if $DetectionArea.get_overlapping_bodies().size() > 0:
+		for i in $DetectionArea.get_overlapping_bodies():
+			if enabled:
+				i.powered()
+			else:
+				i.unpowered()
 
 
 func initial_control(body):
-	print("LET THERE BE LIGHTs!!")
-	
-	light2d.set_enabled(!light2d.is_enabled())
+	if not wearing:
+		operate(body)
 
 
 func stop_control(body):
 	print("stopping " + type + " from controlling")
+
+
+func _on_DetectionArea_body_entered(body):
+	print("%s have been powered" % body.name)
+	
+	if enabled:
+		body.powered()
+
+
+func _on_DetectionArea_body_exited(body):
+	body.unpowered()

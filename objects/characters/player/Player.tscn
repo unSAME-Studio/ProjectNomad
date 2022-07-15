@@ -422,17 +422,22 @@ size_flags_horizontal = 6
 theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer"]
-margin_right = 520.0
+margin_right = 204.0
 margin_bottom = 145.0
 custom_constants/margin_right = 100
 custom_constants/margin_left = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer"]
 margin_left = 100.0
-margin_right = 420.0
+margin_right = 104.0
 margin_bottom = 145.0
 theme = ExtResource( 5 )
 alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer"]
+margin_right = 4.0
+margin_bottom = 145.0
+rect_min_size = Vector2( 0, 145 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
 margin_top = 199.0

@@ -147,19 +147,19 @@ func switch_base(new_base):
 	reparent(self,new_base)
 
 func _physics_process(delta):
-	#temp sliding
+	# temp sliding
 	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 3 ,[],2,true,false)
 
 	var temp_speed = Vector2(0,0)
 	var base_velocity = Vector2(0,0)
-	#check base
+	# check base
 	if not temp_base.empty():
 		temp_base=temp_base[0].collider
 		if temp_base.has_method("get_linear_velocity"):
 			temp_speed = temp_base.get_linear_velocity()
 	else:
 		temp_base = null
-	#switch base
+	# switch base
 	if temp_base != base and not base_cooldown:
 		switch_base(temp_base)
 		if base!=null:
@@ -189,11 +189,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed('right'):
 		input_moving = true
 		state.move_right()
+	
 	if wearing != null:
 		$WearSlot.set_position(get_facing().normalized() * 32)
+		$WearSlot.get_child(0).look_at(get_global_mouse_position())
 
-		
-		
+
 # add and remove culpit body in the dictionary
 func _on_ControllableDetection_body_entered(body):
 	controllables[body.name] = body
@@ -307,15 +308,18 @@ func find_storage_space():
 
 func find_slot_by_type(type):
 	for i in range(0, 5):
-		if storage[i] == type:
+		if storage[i] != null and storage[i]["type"] == type:
 			return i
 	
 	return null
 
-func add_storage_object(type) -> bool:
+func add_storage_object(type, data) -> bool:
 	var slot = find_storage_space()
 	if slot != null:
-		storage[slot] = type
+		storage[slot] = {
+			"type": type,
+			"data": data,
+		}
 		storage_ui[slot].add_object(type)
 		
 		return true
@@ -346,20 +350,29 @@ func attach_object(slot):
 	
 	var p
 	# check if it's a entity or a culpits
-	if storage[slot] in Global.entity_data.keys():
+	if storage[slot]["type"] in Global.entity_data.keys():
 		p = load("res://objects/entities/Entity.tscn").instance()
 	else:
-		p = load("res://objects/culpits/Culpit.tscn").instance()
-		p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot])
+		# check if special scene exist, else spawn the standard one with script
+		if ResourceLoader.exists("res://objects/culpits/%s_culpit.tscn" % storage[slot]["type"]):
+			p = load("res://objects/culpits/%s_culpit.tscn" % storage[slot]["type"]).instance()
+		else:
+			p = load("res://objects/culpits/Culpit.tscn").instance()
+			p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot]["type"])
 	
 	p.set_wearing(true)
-	p.type = storage[slot]
+	p.type = storage[slot]["type"]
+	p.data = storage[slot]["data"]
 	$WearSlot.add_child(p)
 	p.initial_control(self)
 	
 	wearing = slot
 
 func hide_object():
+	# update the data for this slot
+	if wearing != null:
+		storage[wearing]["data"] = $WearSlot.get_child(0).data
+	
 	wearing = null
 	for i in $WearSlot.get_children():
 		i.queue_free()
