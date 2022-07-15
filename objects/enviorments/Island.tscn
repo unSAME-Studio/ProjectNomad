@@ -88,5 +88,9 @@ type = "printer"
 position = Vector2( -201, 44 )
 type = "crafter"
 
+[node name="Entity17" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( -457, 80 )
+type = "box"
+
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 rect = Rect2( -1500, -1500, 3000, 3000 )

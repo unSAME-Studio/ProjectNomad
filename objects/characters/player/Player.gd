@@ -349,8 +349,12 @@ func attach_object(slot):
 	if storage[slot] in Global.entity_data.keys():
 		p = load("res://objects/entities/Entity.tscn").instance()
 	else:
-		p = load("res://objects/culpits/Culpit.tscn").instance()
-		p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot])
+		# check if special scene exist, else spawn the standard one with script
+		if ResourceLoader.exists("res://objects/culpits/%s_culpit.tscn" % storage[slot]):
+			p = load("res://objects/culpits/%s_culpit.tscn" % storage[slot]).instance()
+		else:
+			p = load("res://objects/culpits/Culpit.tscn").instance()
+			p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot])
 	
 	p.set_wearing(true)
 	p.type = storage[slot]
