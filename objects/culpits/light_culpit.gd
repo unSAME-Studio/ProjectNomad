@@ -2,6 +2,7 @@ extends Culpit
 
 
 var light2d
+var rotate_speed = 1
 
 
 func _ready():
@@ -20,7 +21,7 @@ func _ready():
 
 func _process(delta):
 	if light2d.is_enabled():
-		$Sprite.rotate(1 * delta)
+		$Sprite.rotate(rotate_speed * delta)
 
 
 func operate(player):
@@ -29,7 +30,9 @@ func operate(player):
 
 func powered():
 	light2d.set_texture_scale(4)
+	rotate_speed = 2
 
 
 func unpowered():
 	light2d.set_texture_scale(2)
+	rotate_speed = 1
