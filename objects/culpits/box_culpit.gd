@@ -1,5 +1,7 @@
 extends Culpit
 
+const RANGE = 70
+
 var storing = null
 var count = 0
 
