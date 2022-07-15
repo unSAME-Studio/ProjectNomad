@@ -106,7 +106,6 @@ rect = Rect2( -1500, -1500, 3000, 3000 )
 
 [node name="Rock" type="StaticBody2D" parent="."]
 position = Vector2( 659, 199 )
-collision_layer = 9
 collision_mask = 0
 script = ExtResource( 1 )
 
