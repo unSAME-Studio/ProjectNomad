@@ -13,6 +13,9 @@ func operate(player):
 		$Anim.play("active")
 	else:
 		$Anim.stop()
+	
+	$Particles2D.set_emitting(enabled)
+	$Particles2D2.set_emitting(enabled)
 
 
 func _process(delta):
@@ -29,7 +32,9 @@ func _process(delta):
 			# only store if the type is the same
 			if i.type == storing:
 				count += 1
-				i.magenet_to_delete(self)
+				#[TEMP] [FIX] so this thingy will store one object multiple time frmae
+				#i.magenet_to_delete(self)
+				i.queue_free()
 				
 				$Label.set_text("%s [%d]" % [storing.capitalize(), count])
 				
