@@ -278,6 +278,8 @@ func heal(amount):
 # -----------------
 func add_build_card(type):
 	# add a random card to player
+	if $CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer.find_node('emptyHint'):
+		$CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer/emptyHint.hide()
 	var c = build_card.instance()
 	c.build_type = type
 	$CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer.add_child(c)
