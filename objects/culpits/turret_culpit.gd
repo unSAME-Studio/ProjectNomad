@@ -8,7 +8,8 @@ var bullet = preload("res://objects/weapons/bullet.tscn")
 
 func _process(delta):
 	if controlling:
-		$Sprite.look_at(get_global_mouse_position())
+		pass
+		#$Sprite.look_at(get_global_mouse_position())
 
 
 func operate(player):

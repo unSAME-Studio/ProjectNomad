@@ -147,19 +147,19 @@ func switch_base(new_base):
 	reparent(self,new_base)
 
 func _physics_process(delta):
-	#temp sliding
+	# temp sliding
 	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 3 ,[],2,true,false)
 
 	var temp_speed = Vector2(0,0)
 	var base_velocity = Vector2(0,0)
-	#check base
+	# check base
 	if not temp_base.empty():
 		temp_base=temp_base[0].collider
 		if temp_base.has_method("get_linear_velocity"):
 			temp_speed = temp_base.get_linear_velocity()
 	else:
 		temp_base = null
-	#switch base
+	# switch base
 	if temp_base != base and not base_cooldown:
 		switch_base(temp_base)
 		if base!=null:
@@ -189,11 +189,12 @@ func _physics_process(delta):
 	if Input.is_action_pressed('right'):
 		input_moving = true
 		state.move_right()
+	
 	if wearing != null:
 		$WearSlot.set_position(get_facing().normalized() * 32)
+		$WearSlot.get_child(0).look_at(get_global_mouse_position())
 
-		
-		
+
 # add and remove culpit body in the dictionary
 func _on_ControllableDetection_body_entered(body):
 	controllables[body.name] = body
