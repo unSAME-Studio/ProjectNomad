@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://arts/culpits/crafter.png" type="Texture" id=1]
 [ext_resource path="res://objects/culpits/crafter_culpit.gd" type="Script" id=2]
+[ext_resource path="res://arts/ui/theme.tres" type="Theme" id=3]
 
 [sub_resource type="Animation" id=2]
 resource_name = "build"
@@ -44,3 +45,48 @@ position = Vector2( 9.53674e-07, 0.499997 )
 scale = Vector2( 3.9, 3.35 )
 process_parent = true
 physics_process_parent = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
+margin_left = 1376.0
+margin_top = 318.0
+margin_right = 1723.0
+margin_bottom = 729.0
+mouse_filter = 2
+theme = ExtResource( 3 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/PanelContainer"]
+margin_right = 347.0
+margin_bottom = 411.0
+theme = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/ScrollContainer"]
+margin_right = 347.0
+margin_bottom = 411.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
+margin_right = 347.0
+margin_bottom = 32.0
+text = "Crafter (Everything for 1 Nano!)"
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 347.0
+margin_bottom = 411.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 3 )
+allow_reselect = true
+fixed_icon_size = Vector2( 50, 50 )
+
+[connection signal="item_selected" from="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
