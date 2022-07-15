@@ -1,13 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enviorments/Island.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/ship.tscn" type="PackedScene" id=3]
 [ext_resource path="res://systems/CameraManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://arts/Shader/fog.gdshader" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 6 )
+shader_param/color = Vector3( 0.9, 0.9, 0.9 )
+shader_param/OCTAVES = 2
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.5
 bounce = 0.33
+
+[sub_resource type="Environment" id=2]
 
 [node name="Main" type="Node"]
 
@@ -21,11 +30,20 @@ mouse_filter = 2
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
 color = Color( 0.231373, 0.231373, 0.231373, 1 )
 
+[node name="TestFog" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.501961 )
+material = SubResource( 3 )
+scale = Vector2( 100, 100 )
+texture = ExtResource( 5 )
+
 [node name="ship" parent="Node2D" instance=ExtResource( 3 )]
 position = Vector2( 509, -25 )
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 speed = 400
+
+[node name="Island" parent="Node2D" instance=ExtResource( 2 )]
+position = Vector2( 1382, 563 )
 
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 494, 268 )
@@ -33,8 +51,8 @@ position = Vector2( 494, 268 )
 [node name="CameraManager" parent="Node2D" instance=ExtResource( 4 )]
 target_node_path = NodePath("../Player")
 
-[node name="Island" parent="Node2D" instance=ExtResource( 2 )]
-position = Vector2( 1382, 563 )
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Node2D"]
+environment = SubResource( 2 )
 
 [node name="Island2" parent="Node2D" instance=ExtResource( 2 )]
 position = Vector2( -2063, 1038 )
