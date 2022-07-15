@@ -308,9 +308,15 @@ func find_storage_space():
 
 func find_slot_by_type(type):
 	for i in range(0, 5):
-		if storage[i] != null and storage[i]["type"] == type:
-			return i
-	
+		if storage[i] != null:
+			if storage[i]["type"] == type: 
+				return i
+			
+			# else check if it's a box containing item
+			if storage[i]["type"] == "box":
+				if storage[i]["data"] != null and storage[i]["data"]["storing"] == type :
+					return i
+			
 	return null
 
 func add_storage_object(type, data) -> bool:
@@ -335,6 +341,28 @@ func remove_storage_object(slot) -> bool:
 	
 	return false
 
+func consume_storage_object(type) -> bool:
+	var result = find_slot_by_type(type)
+	if result == null:
+		return false
+	
+	# check if the slot is a box
+	if type != "box" and storage[result]["type"] == "box":
+		storage[result]["data"]["count"] -= 1
+		
+		# if empty clear box data
+		if storage[result]["data"]["count"] == 0:
+			storage[result]["data"] = null
+	
+	else:
+		# if holding it also remove it
+		if result == wearing:
+			if detach_object():
+				get_node("WearSlot").get_child(0).queue_free()
+		else:
+			remove_storage_object(result)
+	
+	return true
 
 # -----------------
 # player wearing object management

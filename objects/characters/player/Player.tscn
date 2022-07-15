@@ -154,16 +154,16 @@ margin_bottom = 198.0
 grow_horizontal = 0
 grow_vertical = 0
 bbcode_enabled = true
-bbcode_text = "NUM KEY - Select Slot
-G - Throw Holding Item
-LMB - Use Holding Item
+bbcode_text = "NUM 1-5  - Select Slot
+G - Throw Item
+Click - Use Holding Item
+Tab - Align Camera
 
-
-Backpack Slots"
-text = "NUM KEY - Select Slot
-G - Throw Holding Item
-LMB - Use Holding Item
-
+[center]Backpack Slots[/center]"
+text = "NUM 1-5  - Select Slot
+G - Throw Item
+Click - Use Holding Item
+Tab - Align Camera
 
 Backpack Slots"
 fit_content_height = true

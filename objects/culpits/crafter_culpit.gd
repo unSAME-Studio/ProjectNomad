@@ -1,33 +1,43 @@
 extends Culpit
 
 
+func _ready():
+	._ready()
+	
+	var culpit_list = Global.culpits_data.keys()
+	culpit_list.sort()
+	for i in culpit_list:
+		$CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.add_item(i.capitalize(), load("res://arts/culpits/%s.png" % i), true)
+
+
 func initial_control(body):
 	print(name + " is being controller")
 	
-	if not wearing:
-		operate(body)
+	$CanvasLayer/Control.show()
 
 
 func stop_control(body):
 	print("stopping " + name + " from controlling")
+	
+	$CanvasLayer/Control.hide()
 
 
 func operate(player):
-	# currently only print when player is holding nano
-	var result = player.find_slot_by_type("nano")
-	if result != null:
-		
-		# if holding it also remove it
-		if result == player.wearing:
-			if player.detach_object():
-				player.get_node("WearSlot").get_child(0).queue_free()
-		else:
-			player.remove_storage_object(result)
+	pass
+
+
+func _on_ItemList_item_selected(index):
+	var target_type = $CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.get_item_text(index)
+	#$CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.unselect(index)
+	print("CRAFTER %s" % target_type)
+	target_type = target_type.to_lower()
+	
+	if Global.player.consume_storage_object("nano"):
 		
 		# spawn entity
 		var e = entity.instance()
 
-		e.type = Global.culpits_data.keys()[randi() % Global.culpits_data.size()]
+		e.type = target_type
 		base.add_child(e)
 		
 		e.set_global_position(get_global_position())

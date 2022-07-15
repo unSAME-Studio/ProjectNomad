@@ -17,7 +17,7 @@
     },
     "crafter": {
       "type": 1,
-      "action": 1,
+      "action": 0,
       "hint": "Craft Items"
     },
     "turret": {
