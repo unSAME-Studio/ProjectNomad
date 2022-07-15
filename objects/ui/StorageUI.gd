@@ -4,7 +4,6 @@ extends TextureButton
 onready var slot = get_index()
 var type = null
 
-
 func _ready():
 	connect("pressed", self, "_on_button_pressed")
 

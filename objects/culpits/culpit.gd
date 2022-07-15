@@ -14,6 +14,8 @@ var wearing = false
 var build_point
 
 export(String) var type = "wheel"
+var data setget ,get_data
+
 onready var action = Global.culpits_data[type]["action"]
 onready var controllable = true
 
@@ -63,6 +65,8 @@ func throw(player,_build = false):
 	
 	var e = entity.instance()
 	e.type = type
+	e.data = get_data()
+	
 	if _build:
 		e.buildable = true
 	if player.base:
@@ -106,6 +110,7 @@ func _on_moved():
 	var p = prebuild.instance()
 	p.card = self
 	p.type = type
+	p.data = data
 	get_tree().get_current_scene().get_node("Node2D").add_child(p)
 
 
@@ -120,9 +125,9 @@ func _on_destroy():
 	print(type + "have been destroyed")
 	if build_point:
 		build_point.activate_build()
-	queue_free()
 
 	throw(Global.player)
+	queue_free()
 
 
 func on_select():
@@ -131,3 +136,7 @@ func on_select():
 
 func on_deselect():
 	return
+
+
+func get_data():
+	return null

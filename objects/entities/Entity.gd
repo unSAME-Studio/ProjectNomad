@@ -68,6 +68,7 @@ func build_entity(base):
 	if buildable:
 		var builder = load("res://objects/buildings/Prebuild.tscn").instance()
 		builder.type = type
+		builder.data = data
 		builder.card = self
 		builder.directbuild = true
 		get_tree().get_current_scene().get_node("Node2D").add_child(builder)
@@ -118,7 +119,7 @@ func _process(delta):
 # for entity, interact picks them up
 func initial_control(player):
 	if not wearing:
-		if player.add_storage_object(type):
+		if player.add_storage_object(type, data):
 			
 			$CollisionShape2D.set_deferred("disabled", true)
 			

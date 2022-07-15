@@ -9,6 +9,8 @@ signal built
 var card
 
 var type = ""
+var data = null
+
 var hovering = true
 var can_build = true
 var lock_point = false
@@ -249,6 +251,7 @@ func finish_build(room):
 		c.script = load("res://objects/culpits/%s_culpit.gd" % type)
 	
 	c.type = type
+	c.data = data
 	
 	room.get_node("objects").add_child(c)
 	c.set_global_position(get_global_position())

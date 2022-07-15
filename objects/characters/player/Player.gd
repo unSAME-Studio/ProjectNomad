@@ -307,15 +307,18 @@ func find_storage_space():
 
 func find_slot_by_type(type):
 	for i in range(0, 5):
-		if storage[i] == type:
+		if storage[i] != null and storage[i]["type"] == type:
 			return i
 	
 	return null
 
-func add_storage_object(type) -> bool:
+func add_storage_object(type, data) -> bool:
 	var slot = find_storage_space()
 	if slot != null:
-		storage[slot] = type
+		storage[slot] = {
+			"type": type,
+			"data": data,
+		}
 		storage_ui[slot].add_object(type)
 		
 		return true
@@ -346,24 +349,29 @@ func attach_object(slot):
 	
 	var p
 	# check if it's a entity or a culpits
-	if storage[slot] in Global.entity_data.keys():
+	if storage[slot]["type"] in Global.entity_data.keys():
 		p = load("res://objects/entities/Entity.tscn").instance()
 	else:
 		# check if special scene exist, else spawn the standard one with script
-		if ResourceLoader.exists("res://objects/culpits/%s_culpit.tscn" % storage[slot]):
-			p = load("res://objects/culpits/%s_culpit.tscn" % storage[slot]).instance()
+		if ResourceLoader.exists("res://objects/culpits/%s_culpit.tscn" % storage[slot]["type"]):
+			p = load("res://objects/culpits/%s_culpit.tscn" % storage[slot]["type"]).instance()
 		else:
 			p = load("res://objects/culpits/Culpit.tscn").instance()
-			p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot])
+			p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot]["type"])
 	
 	p.set_wearing(true)
-	p.type = storage[slot]
+	p.type = storage[slot]["type"]
+	p.data = storage[slot]["data"]
 	$WearSlot.add_child(p)
 	p.initial_control(self)
 	
 	wearing = slot
 
 func hide_object():
+	# update the data for this slot
+	if wearing != null:
+		storage[wearing]["data"] = $WearSlot.get_child(0).data
+	
 	wearing = null
 	for i in $WearSlot.get_children():
 		i.queue_free()

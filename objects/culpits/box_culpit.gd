@@ -6,6 +6,18 @@ var count = 0
 var enabled = false
 
 
+func _ready():
+	._ready()
+	
+	if data != null:
+		print("Hey it contains data")
+		
+		storing = data["storing"]
+		count = data["count"]
+		
+		$Label.set_text("%s [%d]" % [storing.capitalize(), count])
+
+
 func operate(player):
 	enabled = !enabled
 	
@@ -47,3 +59,14 @@ func initial_control(body):
 
 func stop_control(body):
 	print("stopping " + type + " from controlling")
+
+
+func get_data():
+	if count > 0:
+		data = {
+			"storing": storing,
+			"count": count,
+		}
+		return data
+	else:
+		return null
