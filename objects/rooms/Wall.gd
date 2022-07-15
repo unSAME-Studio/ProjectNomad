@@ -2,9 +2,10 @@ extends StaticBody2D
 
 class_name Wall
 
-var type
+var type = 'wall'
 var polygon_id
 var polygon
+var actived = true
 
 func _ready():
 	var point = load("res://objects/buildings/buildpoint.tscn").instance()
@@ -39,8 +40,16 @@ func change_type(type_to):
 			print(type_to)
 			
 
+func switch():
+	if actived:
+		destroy()
+	else:
+		repair()
+
 func destroy():
 	change_type('empty')
+	actived = false
 	
 func repair():
 	change_type('wall')
+	actived = true

@@ -67,7 +67,7 @@ func _process(delta):
 	if abs(get_global_rotation() - target.get_global_rotation()) < 0.1 and align_fix > 0:
 		set_global_rotation(lerp_angle(get_global_rotation(), target.get_global_rotation(), 20 * delta))
 		align_fix -= delta
-		print(align_fix)
+		#print(align_fix)
 		
 	
 	# move the parallax layers
