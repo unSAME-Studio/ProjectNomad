@@ -1,5 +1,6 @@
 extends Culpit
 
+const MAX_COUNT = 10
 
 var storing = null
 var count = 0
@@ -15,7 +16,17 @@ func _ready():
 		storing = data["storing"]
 		count = data["count"]
 		
-		$Label.set_text("%s [%d]" % [storing.capitalize(), count])
+		# update label
+		$Sprite/Label.set_text(String(count))
+		
+		# update texture
+		var texture
+		if type in Global.entity_data.keys():
+			print("res://arts/resources/%s.png" % storing)
+			texture = load("res://arts/resources/%s.png" % storing)
+		else:
+			texture = load("res://arts/culpits/%s.png" % storing)
+		$Sprite/Icon.set_texture(texture)
 
 
 func operate(player):
@@ -34,13 +45,22 @@ func _process(delta):
 	if enabled and $DetectionArea.get_overlapping_bodies().size() > 0:
 		for i in $DetectionArea.get_overlapping_bodies():
 			# do nothing if box is full
-			if count >= 5:
+			if count >= MAX_COUNT:
+				# operate to turn it off
 				operate(self)
 				return
 			
 			# if currently not storing, then set the type to current
 			if storing == null:
 				storing = i.type
+				
+				var texture
+				print("res://arts/resources/%s.png" % storing)
+				if type in Global.entity_data.keys():
+					texture = load("res://arts/resources/%s.png" % storing)
+				else:
+					texture = load("res://arts/culpits/%s.png" % storing)
+				$Sprite/Icon.set_texture(texture)
 			
 			# only store if the type is the same
 			if i.type == storing:
@@ -49,7 +69,8 @@ func _process(delta):
 				#i.magenet_to_delete(self)
 				i.queue_free()
 				
-				$Label.set_text("%s [%d]" % [storing.capitalize(), count])
+				#$Label.set_text("%s [%d]" % [storing.capitalize(), count])
+				$Sprite/Label.set_text(String(count))
 				
 				print("sucking %s at count %d" % [storing, count])
 
