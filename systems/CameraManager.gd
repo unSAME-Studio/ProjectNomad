@@ -20,11 +20,11 @@ func align_camera():
 
 func _unhandled_input(event):
 	# camera control
-	if Input.is_action_just_pressed("zoom_in"):
+	if Input.is_action_pressed("zoom_in"):
 		var new_zoom = clamp(camera.get_zoom().x * 0.9, 0.5, 3)
 		camera.set_zoom(Vector2(new_zoom, new_zoom))
 		
-	if Input.is_action_just_pressed("zoom_out"):
+	if Input.is_action_pressed("zoom_out"):
 		var new_zoom = clamp(camera.get_zoom().x * 1.1, 0.5, 3)
 		camera.set_zoom(Vector2(new_zoom, new_zoom))
 		
