@@ -53,6 +53,7 @@ func _ready():
 	change_state("idle")
 	$CanvasLayer/Control/ControlHint.set_position(get_global_transform_with_canvas().get_origin()- $CanvasLayer/Control/ControlHint.get_size() / 2)
 
+
 func change_state(new_state_name):
 	if state != null:
 		state.queue_free()

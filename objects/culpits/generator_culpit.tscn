@@ -100,8 +100,6 @@ texture_scale = 1.41
 color = Color( 0.764706, 0.505882, 0.729412, 1 )
 energy = 0.7
 shadow_enabled = true
-shadow_filter = 1
-shadow_filter_smooth = 25.1
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_DetectionArea_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_DetectionArea_body_exited"]
