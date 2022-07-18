@@ -53,13 +53,13 @@ physics_process_parent = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 1376.0
 margin_top = 318.0
 margin_right = 1723.0

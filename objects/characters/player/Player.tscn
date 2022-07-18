@@ -156,7 +156,7 @@ grow_vertical = 0
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.415686 )
 margin_right = 426.0
-margin_bottom = 561.0
+margin_bottom = 627.0
 grow_horizontal = 0
 grow_vertical = 0
 bbcode_enabled = true
@@ -167,8 +167,10 @@ E - Interact
 [u]Backpack[/u]
 Mouse Wheel - Scroll
 Num 1 to 5 - Quick Select
-G - Throw Item
+Q - Throw Item
 Click - Use Holding Item
+
+B - Open Blueprints
 
 [u]Camera[/u]
 Shift+W/S - Zoom
@@ -177,29 +179,31 @@ Tab - Align
 
 
 [center]Backpack Slots[/center]"
-text = "Player
+text = "[u]Player[/u]
 WASD - Move
 E - Interact
 
-Backpack
+[u]Backpack[/u]
 Mouse Wheel - Scroll
 Num 1 to 5 - Quick Select
-G - Throw Item
+Q - Throw Item
 Click - Use Holding Item
 
-Camera
+B - Open Blueprints
+
+[u]Camera[/u]
 Shift+W/S - Zoom
 Tab - Align
 
 
 
-Backpack Slots"
+[center]Backpack Slots[/center]"
 fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 565.0
+margin_top = 631.0
 margin_right = 426.0
-margin_bottom = 646.0
+margin_bottom = 712.0
 alignment = 1
 
 [node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
@@ -409,20 +413,21 @@ expand = true
 stretch_mode = 6
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 650.0
+margin_top = 716.0
 margin_right = 426.0
-margin_bottom = 682.0
+margin_bottom = 754.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
+margin_top = 3.0
 margin_right = 23.0
-margin_bottom = 32.0
+margin_bottom = 35.0
 theme = ExtResource( 5 )
 text = "HP"
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
 margin_left = 27.0
 margin_right = 426.0
-margin_bottom = 32.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 theme = ExtResource( 5 )
 
@@ -450,27 +455,21 @@ size_flags_horizontal = 6
 theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer"]
-margin_right = 312.0
+margin_right = 304.0
 margin_bottom = 145.0
 custom_constants/margin_right = 100
 custom_constants/margin_left = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer"]
 margin_left = 100.0
-margin_right = 212.0
+margin_right = 204.0
 margin_bottom = 145.0
 theme = ExtResource( 5 )
 alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer"]
-margin_right = 4.0
-margin_bottom = 145.0
-rect_min_size = Vector2( 0, 145 )
-
 [node name="emptyHint" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer"]
 self_modulate = Color( 0.376471, 0.376471, 0.376471, 1 )
-margin_left = 8.0
-margin_right = 112.0
+margin_right = 104.0
 margin_bottom = 145.0
 rect_clip_content = true
 mouse_default_cursor_shape = 2
@@ -512,11 +511,12 @@ autowrap = true
 uppercase = true
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
+modulate = Color( 1, 1, 1, 0.427451 )
 margin_top = 199.0
 margin_right = 1446.0
 margin_bottom = 231.0
 theme = ExtResource( 5 )
-text = "Q - Open Structure Blueprints"
+text = "Project Nomad 7/23 build"
 align = 2
 
 [node name="ControlHint" type="VBoxContainer" parent="CanvasLayer/Control"]
