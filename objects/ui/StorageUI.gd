@@ -40,6 +40,6 @@ func _on_button_pressed():
 	else:
 		# do nothing if nothing equipted
 		if type == null:
-			set_pressed(false)
+			pass
 		
 		player.attach_object(slot)
