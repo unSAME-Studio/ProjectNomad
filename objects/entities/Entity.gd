@@ -61,7 +61,7 @@ func set_wearing(value):
 
 
 func get_hint_text():
-	return "Pick Up"
+	return "Pick Up %s" % type.capitalize()
 	
 
 func build_entity(base):

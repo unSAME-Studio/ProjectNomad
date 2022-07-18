@@ -74,7 +74,13 @@ func _input(event):
 			var object = $WearSlot.get_child(0)
 			reparent(object,base)
 			object.throw(self,true)
-	
+
+
+func get_facing() -> Vector2:
+	return get_global_mouse_position() - get_global_position()
+
+
+func _unhandled_input(event):
 	if Input.is_action_just_pressed("storage_left"):
 		if storage_ui_group.get_pressed_button() != null:
 			var target = wrapi(storage_ui_group.get_pressed_button().slot - 1, 0, 5)
@@ -96,12 +102,8 @@ func _input(event):
 		else:
 			storage_ui[0].set_pressed(true)
 			storage_ui[0].emit_signal("pressed")
-
-
-func get_facing() -> Vector2:
-	return get_global_mouse_position() - get_global_position()
-
-func _unhandled_input(event):
+	
+	
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
 			if wearing != null:

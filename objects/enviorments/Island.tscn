@@ -110,6 +110,10 @@ type = "light"
 position = Vector2( -286, 145 )
 type = "generator"
 
+[node name="Entity20" parent="entity" instance=ExtResource( 7 )]
+position = Vector2( -182, 138 )
+type = "recycler"
+
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 rect = Rect2( -1500, -1500, 3000, 3000 )
 
