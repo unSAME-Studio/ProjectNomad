@@ -132,8 +132,6 @@ texture = ExtResource( 2 )
 energy = 0.7
 mode = 2
 shadow_enabled = true
-shadow_filter = 1
-shadow_filter_smooth = 25.1
 
 [node name="WearSlot" type="Position2D" parent="."]
 position = Vector2( 0, -31 )

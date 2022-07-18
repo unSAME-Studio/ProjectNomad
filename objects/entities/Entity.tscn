@@ -173,7 +173,5 @@ texture = ExtResource( 4 )
 energy = 0.7
 mode = 2
 shadow_enabled = true
-shadow_filter = 1
-shadow_filter_smooth = 25.1
 
 [node name="Tween" type="Tween" parent="."]
