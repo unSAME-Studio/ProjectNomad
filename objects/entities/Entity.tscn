@@ -77,7 +77,7 @@ shader_param/inside = false
 shader_param/add_margins = true
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 33.0151
+radius = 26.0
 
 [sub_resource type="Animation" id=6]
 length = 0.001

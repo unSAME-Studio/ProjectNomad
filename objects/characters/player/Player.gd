@@ -355,7 +355,11 @@ func consume_storage_object(type) -> bool:
 		# if empty clear box data
 		if storage[result]["data"]["count"] == 0:
 			storage[result]["data"] = null
-	
+		
+		# also update the box if holding it
+		if result == wearing:
+			get_node("WearSlot").get_child(0).use_storing()
+		
 	else:
 		# if holding it also remove it
 		if result == wearing:

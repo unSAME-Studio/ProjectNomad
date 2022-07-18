@@ -21,7 +21,7 @@ func _ready():
 		
 		# update texture
 		var texture
-		if type in Global.entity_data.keys():
+		if Global.entity_data.keys().has(storing):
 			print("res://arts/resources/%s.png" % storing)
 			texture = load("res://arts/resources/%s.png" % storing)
 		else:
@@ -56,7 +56,7 @@ func _process(delta):
 				
 				var texture
 				print("res://arts/resources/%s.png" % storing)
-				if type in Global.entity_data.keys():
+				if Global.entity_data.keys().has(storing):
 					texture = load("res://arts/resources/%s.png" % storing)
 				else:
 					texture = load("res://arts/culpits/%s.png" % storing)
@@ -76,11 +76,39 @@ func _process(delta):
 
 
 func initial_control(body):
-	print("HOLDING A BOX")
+	if not wearing:
+		var temp_type = storing
+		
+		if use_storing():
+			# spawn entity
+			var e = entity.instance()
+
+			e.type = temp_type
+			base.add_child(e)
+			
+			e.set_global_position(get_global_position())
+			e.set_wearing(false)
+			e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
+			e.throwing = true
 
 
 func stop_control(body):
 	print("stopping " + type + " from controlling")
+
+
+func use_storing() -> bool:
+	if count > 0:
+		count -= 1
+		$Sprite/Label.set_text(String(count))
+		
+		# clear graphic if empty
+		if count == 0:
+			$Sprite/Icon.set_texture(Texture.new())
+			storing = null
+		
+		return true
+	
+	return false
 
 
 func get_data():

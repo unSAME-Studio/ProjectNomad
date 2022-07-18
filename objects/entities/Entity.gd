@@ -48,7 +48,7 @@ func set_wearing(value):
 		set_collision_mask_bit(6, false)
 		
 		$Card.hide()
-		$Light2D.hide()
+		#$Light2D.hide()
 	else:
 		set_collision_layer_bit(6, true)
 		set_collision_mask_bit(0, true)
@@ -57,7 +57,7 @@ func set_wearing(value):
 		
 		if not buildable:
 			$Card.show()
-		$Light2D.show()
+		#$Light2D.show()
 
 
 func get_hint_text():
