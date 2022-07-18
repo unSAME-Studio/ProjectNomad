@@ -19,10 +19,12 @@ func add_object(new_type):
 	$TextureRect.set_texture(texture)
 	
 	set_tooltip(type.capitalize())
+	
+	set_pressed(true)
+	emit_signal("pressed")
 
 
 func remove_object():
-	set_pressed(false)
 	type = null
 	$TextureRect.set_texture(Image.new())
 
@@ -40,6 +42,6 @@ func _on_button_pressed():
 	else:
 		# do nothing if nothing equipted
 		if type == null:
-			set_pressed(false)
+			pass
 		
 		player.attach_object(slot)

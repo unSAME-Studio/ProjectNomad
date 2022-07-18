@@ -34,6 +34,7 @@ var storage = {
 	4: null,
 }
 onready var storage_ui = $CanvasLayer/Control/VBoxContainer/StorageBox.get_children()
+onready var storage_ui_group = storage_ui[0].get_button_group()
 var wearing = null
 var wearoffset = Vector2(0,32)
 
@@ -74,10 +75,35 @@ func _input(event):
 			reparent(object,base)
 			object.throw(self,true)
 
+
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
 
+
 func _unhandled_input(event):
+	if Input.is_action_just_pressed("storage_left"):
+		if storage_ui_group.get_pressed_button() != null:
+			var target = wrapi(storage_ui_group.get_pressed_button().slot - 1, 0, 5)
+			storage_ui[target].set_pressed(true)
+			storage_ui[target].emit_signal("pressed")
+		
+		# if nothing currently selected, default select 0
+		else:
+			storage_ui[0].set_pressed(true)
+			storage_ui[0].emit_signal("pressed")
+		
+	if Input.is_action_just_pressed("storage_right"):
+		if storage_ui_group.get_pressed_button() != null:
+			var target = wrapi(storage_ui_group.get_pressed_button().slot + 1, 0, 5)
+			storage_ui[target].set_pressed(true)
+			storage_ui[target].emit_signal("pressed")
+		
+		# if nothing currently selected, default select 0
+		else:
+			storage_ui[0].set_pressed(true)
+			storage_ui[0].emit_signal("pressed")
+	
+	
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
 			if wearing != null:
@@ -355,7 +381,11 @@ func consume_storage_object(type) -> bool:
 		# if empty clear box data
 		if storage[result]["data"]["count"] == 0:
 			storage[result]["data"] = null
-	
+		
+		# also update the box if holding it
+		if result == wearing:
+			get_node("WearSlot").get_child(0).use_storing()
+		
 	else:
 		# if holding it also remove it
 		if result == wearing:
