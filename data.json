@@ -3,47 +3,56 @@
     "wheel": {
       "type": 0,
       "action": 0,
-      "hint": "Steer"
+      "hint": "Steer",
+      "cost": 1
     },
     "light": {
       "type": 2,
       "action": 1,
-      "hint": "Turn On / Off"
+      "hint": "Turn On / Off",
+      "cost": 1
     },
     "printer": {
       "type": 1,
       "action": 1,
-      "hint": "Print Cards"
+      "hint": "Print Cards",
+      "cost": 3
     },
     "crafter": {
       "type": 1,
       "action": 1,
-      "hint": "Craft Items"
+      "hint": "Craft Items",
+      "cost": 3
     },
     "turret": {
       "type": 3,
       "action": 0,
-      "hint": "Control"
+      "hint": "Control",
+      "cost": 5
     },
     "zapper": {
       "type": 3,
       "action": 0,
-      "hint": "Control"
+      "hint": "Control",
+      "cost": 5
     },
     "generator": {
       "type": 2,
       "action": 1,
-      "hint": "Turn On / Off"
+      "hint": "Turn On / Off",
+      "cost": 9
     },
     "recycler": {
       "type": 2,
       "action": 1,
-      "hint": "Recycle"
+      "hint": "Recycle",
+      "cost": 3
     },
     "box": {
       "type": 1,
       "action": 1,
-      "hint": "Collect"
+      "hint": "Collect",
+      "cost": 1
     }
   },
   "entity": {
