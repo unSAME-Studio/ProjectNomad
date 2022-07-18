@@ -17,7 +17,7 @@
     },
     "crafter": {
       "type": 1,
-      "action": 0,
+      "action": 1,
       "hint": "Craft Items"
     },
     "turret": {
@@ -48,13 +48,19 @@
   },
   "entity": {
     "nano": {
-      "type": 0
+      "type": 0,
+      "recyclable": 0,
+      "recycled": 0
     },
     "weed": {
-      "type": 0
+      "type": 0,
+      "recyclable": 1,
+      "recycled": "nano"
     },
     "booster core": {
-      "type": 0
+      "type": 0,
+      "recyclable": 5,
+      "recycled": "nano"
     }
   },
   "structure": {
