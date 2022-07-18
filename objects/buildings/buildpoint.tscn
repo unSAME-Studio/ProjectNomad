@@ -1,10 +1,54 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/rooms/buildpoint.gd" type="Script" id=1]
-[ext_resource path="res://arts/ui/build_point.png" type="Texture" id=2]
+[ext_resource path="res://arts/ui/build_arrow.png" type="Texture" id=2]
+[ext_resource path="res://arts/ui/build_base.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.0
+
+[sub_resource type="CanvasItemMaterial" id=3]
+light_mode = 1
+
+[sub_resource type="Animation" id=2]
+resource_name = "hint"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BuildArrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ), Vector2( 0, -31 ), Vector2( 0, -20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BuildPoint:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BuildPoint:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 60.0 ]
+}
 
 [node name="buildpoint" type="Area2D"]
 collision_layer = 1024
@@ -20,6 +64,21 @@ shape = SubResource( 1 )
 visible = false
 polygon = PoolVector2Array( -16, 0, 0, 16, 16, 0, 0, -80 )
 
-[node name="BuildPoint" type="Sprite" parent="."]
-position = Vector2( 0, -16 )
+[node name="BuildArrow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.627451 )
+material = SubResource( 3 )
+position = Vector2( 0, -20 )
 texture = ExtResource( 2 )
+
+[node name="BuildPoint" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.627451 )
+material = SubResource( 3 )
+texture = ExtResource( 3 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+rect = Rect2( -50, -50, 100, 100 )
+process_parent = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "hint"
+anims/hint = SubResource( 2 )

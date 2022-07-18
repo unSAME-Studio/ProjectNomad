@@ -21,6 +21,8 @@ func _ready():
 		room.build_points.append(self)
 		self.connect("tree_exiting", self, "disconnect_point")
 
+func _process(delta):
+	set_global_rotation(Global.player.camera.camera.get_global_rotation())
 
 func activate_build():
 	active = true
