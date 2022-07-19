@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/box.png-f4c85b5746ef70c20b9ed24ac4d3c50a.stex"
+path="res://.import/build_arrow.png-57f690fcab5170365e831717ff9667e0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/culpits/box.png"
-dest_files=[ "res://.import/box.png-f4c85b5746ef70c20b9ed24ac4d3c50a.stex" ]
+source_file="res://arts/ui/build_arrow.png"
+dest_files=[ "res://.import/build_arrow.png-57f690fcab5170365e831717ff9667e0.stex" ]
 
 [params]
 

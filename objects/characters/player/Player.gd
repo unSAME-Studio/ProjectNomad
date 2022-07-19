@@ -34,6 +34,7 @@ var storage = {
 	4: null,
 }
 onready var storage_ui = $CanvasLayer/Control/VBoxContainer/StorageBox.get_children()
+onready var storage_ui_group = storage_ui[0].get_button_group()
 var wearing = null
 var wearoffset = Vector2(0,32)
 
@@ -51,6 +52,7 @@ func _ready():
 	state_factory = StateFactory.new()
 	change_state("idle")
 	$CanvasLayer/Control/ControlHint.set_position(get_global_transform_with_canvas().get_origin()- $CanvasLayer/Control/ControlHint.get_size() / 2)
+
 
 func change_state(new_state_name):
 	if state != null:
@@ -74,10 +76,35 @@ func _input(event):
 			reparent(object,base)
 			object.throw(self,true)
 
+
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
 
+
 func _unhandled_input(event):
+	if Input.is_action_just_pressed("storage_left"):
+		if storage_ui_group.get_pressed_button() != null:
+			var target = wrapi(storage_ui_group.get_pressed_button().slot - 1, 0, 5)
+			storage_ui[target].set_pressed(true)
+			storage_ui[target].emit_signal("pressed")
+		
+		# if nothing currently selected, default select 0
+		else:
+			storage_ui[0].set_pressed(true)
+			storage_ui[0].emit_signal("pressed")
+		
+	if Input.is_action_just_pressed("storage_right"):
+		if storage_ui_group.get_pressed_button() != null:
+			var target = wrapi(storage_ui_group.get_pressed_button().slot + 1, 0, 5)
+			storage_ui[target].set_pressed(true)
+			storage_ui[target].emit_signal("pressed")
+		
+		# if nothing currently selected, default select 0
+		else:
+			storage_ui[0].set_pressed(true)
+			storage_ui[0].emit_signal("pressed")
+	
+	
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
 			if wearing != null:
@@ -310,9 +337,15 @@ func find_storage_space():
 
 func find_slot_by_type(type):
 	for i in range(0, 5):
-		if storage[i] != null and storage[i]["type"] == type:
-			return i
-	
+		if storage[i] != null:
+			if storage[i]["type"] == type: 
+				return i
+			
+			# else check if it's a box containing item
+			if storage[i]["type"] == "box":
+				if storage[i]["data"] != null and storage[i]["data"]["storing"] == type :
+					return i
+			
 	return null
 
 func add_storage_object(type, data) -> bool:
@@ -337,6 +370,32 @@ func remove_storage_object(slot) -> bool:
 	
 	return false
 
+func consume_storage_object(type) -> bool:
+	var result = find_slot_by_type(type)
+	if result == null:
+		return false
+	
+	# check if the slot is a box
+	if type != "box" and storage[result]["type"] == "box":
+		storage[result]["data"]["count"] -= 1
+		
+		# if empty clear box data
+		if storage[result]["data"]["count"] == 0:
+			storage[result]["data"] = null
+		
+		# also update the box if holding it
+		if result == wearing:
+			get_node("WearSlot").get_child(0).use_storing()
+		
+	else:
+		# if holding it also remove it
+		if result == wearing:
+			if detach_object():
+				get_node("WearSlot").get_child(0).queue_free()
+		else:
+			remove_storage_object(result)
+	
+	return true
 
 # -----------------
 # player wearing object management

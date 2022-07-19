@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/box.png-f4c85b5746ef70c20b9ed24ac4d3c50a.stex"
+path="res://.import/pattern1.png-e5eda2325bef76494d96f924be886bd5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/culpits/box.png"
-dest_files=[ "res://.import/box.png-f4c85b5746ef70c20b9ed24ac4d3c50a.stex" ]
+source_file="res://arts/structures/pattern1.png"
+dest_files=[ "res://.import/pattern1.png-e5eda2325bef76494d96f924be886bd5.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=2
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

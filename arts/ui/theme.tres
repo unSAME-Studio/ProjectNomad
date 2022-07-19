@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=2]
+[gd_resource type="Theme" load_steps=11 format=2]
 
 [ext_resource path="res://arts/font/BarlowCondensed-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://arts/ui/panel.png" type="Texture" id=2]
@@ -25,6 +25,13 @@ margin_left = 45.0
 margin_right = 45.0
 modulate_color = Color( 0, 0, 0, 0.223529 )
 
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 1, 1, 1, 0.168627 )
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
 [sub_resource type="StyleBoxTexture" id=8]
 content_margin_left = 0.0
 content_margin_right = 0.0
@@ -33,6 +40,25 @@ region_rect = Rect2( 0, 0, 161, 139 )
 margin_left = 45.0
 margin_right = 45.0
 modulate_color = Color( 1, 1, 1, 0.223529 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 1, 1, 1, 0 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 1, 1, 0.439216 )
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 1, 1, 1, 0.478431 )
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
 
 [sub_resource type="DynamicFont" id=3]
 size = 26
@@ -45,6 +71,9 @@ default_font = SubResource( 3 )
 Button/styles/hover = SubResource( 9 )
 Button/styles/normal = SubResource( 6 )
 Button/styles/pressed = SubResource( 10 )
+ItemList/styles/bg = SubResource( 13 )
 PanelContainer/styles/panel = SubResource( 8 )
+ProgressBar/styles/bg = SubResource( 11 )
+ProgressBar/styles/fg = SubResource( 12 )
 TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
 TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.486275 )

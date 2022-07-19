@@ -27,10 +27,7 @@ texture = ExtResource( 3 )
 texture_scale = 0.5
 color = Color( 1, 0.454902, 0.454902, 1 )
 energy = 0.5
-mode = 2
 shadow_enabled = true
-shadow_filter = 1
-shadow_filter_smooth = 25.1
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
