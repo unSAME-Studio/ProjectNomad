@@ -10,6 +10,9 @@ var card
 
 var type = ""
 var data = null
+var is_structure = false
+var structure
+var build_type = 'culpit'
 
 var hovering = true
 var can_build = true
@@ -28,7 +31,10 @@ var point_mode = false
 var build_points = []
 
 func _ready():
-	$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
+	if not is_structure:
+		$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
+	else: 
+		build_type = 'struc'
 	#var space_state = get_world_2d().direct_space_state
 	if not directbuild:
 		update_points()
@@ -193,7 +199,7 @@ func _process(delta):
 	else:
 		if target:
 			set_global_position(get_global_position().linear_interpolate(target.get_global_position(), 20 * delta))
-			set_rotation(target.get_rotation())
+			set_global_rotation(target.get_global_rotation())
 	
 	point_mode = false
 
@@ -243,12 +249,19 @@ func _unhandled_input(event):
 func finish_build(room):
 	var c
 	# check if special scene exist, else spawn the standard one with script
-	if ResourceLoader.exists("res://objects/culpits/%s_culpit.tscn" % type):
-		c = load("res://objects/culpits/%s_culpit.tscn" % type).instance()
-		print("special culpit loaded for %s" % type)
+	if is_structure:
+		if ResourceLoader.exists("res://objects/structure/%s_%s.tscn" % [type, build_type]):
+			c = load("res://objects/structure/%s_%s.tscn" % [type,build_type]).instance()
+			print("special culpit loaded for %s" % type)
+		else:
+			c = load("res://objects/structure/Structure.tscn").instance()
 	else:
-		c = load("res://objects/culpits/Culpit.tscn").instance()
-		c.script = load("res://objects/culpits/%s_culpit.gd" % type)
+		if ResourceLoader.exists("res://objects/culpits/%s_%s.tscn" % [type, build_type]):
+			c = load("res://objects/culpits/%s_%s.tscn" % [type,build_type]).instance()
+			print("special culpit loaded for %s" % type)
+		else:
+			c = load("res://objects/culpits/Culpit.tscn").instance()
+			c.script = load("res://objects/culpits/%s_culpit.gd" % type)
 	
 	c.type = type
 	c.data = data

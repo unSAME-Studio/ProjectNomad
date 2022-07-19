@@ -7,8 +7,8 @@ var enabled = false
 
 
 func _ready():
-	._ready()
 	
+	._ready()
 	if data != null:
 		print("Hey it contains data")
 		
