@@ -119,6 +119,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -179,11 +180,11 @@ Tab - Align
 
 
 [center]Backpack Slots[/center]"
-text = "[u]Player[/u]
+text = "Player
 WASD - Move
 E - Interact
 
-[u]Backpack[/u]
+Backpack
 Mouse Wheel - Scroll
 Num 1 to 5 - Quick Select
 Q - Throw Item
@@ -191,13 +192,13 @@ Click - Use Holding Item
 
 B - Open Blueprints
 
-[u]Camera[/u]
+Camera
 Shift+W/S - Zoom
 Tab - Align
 
 
 
-[center]Backpack Slots[/center]"
+Backpack Slots"
 fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
@@ -437,6 +438,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 474.0
 margin_top = -231.0
+mouse_filter = 2
 alignment = 2
 
 [node name="BuildMenu" type="ScrollContainer" parent="CanvasLayer/Control/VBoxContainer2"]
