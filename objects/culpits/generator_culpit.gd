@@ -13,6 +13,7 @@ func operate(player):
 	enabled = !enabled
 	
 	$Particles2D.set_emitting(enabled)
+	$Light2D.set_visible(enabled)
 	
 	# unpowered all the current powered items
 	if $DetectionArea.get_overlapping_bodies().size() > 0:

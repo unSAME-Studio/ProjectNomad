@@ -14,15 +14,7 @@ func stop_control(body):
 
 func operate(player):
 	# currently only print when player is holding nano
-	var result = player.find_slot_by_type("nano")
-	if result != null:
+	if player.consume_storage_object("nano"):
 		
-		# if holding it also remove it
-		if result == player.wearing:
-			if player.detach_object():
-				player.get_node("WearSlot").get_child(0).queue_free()
-		else:
-			player.remove_storage_object(result)
-		
-		# spawn entity
+		# spawn card
 		player.add_build_card(["wall", "room", "door wall"][randi() % 3])
