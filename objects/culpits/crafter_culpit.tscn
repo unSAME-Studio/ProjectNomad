@@ -96,5 +96,6 @@ allow_reselect = true
 fixed_icon_size = Vector2( 50, 50 )
 
 [node name="DamageComponent" parent="." instance=ExtResource( 4 )]
+health_max = 50
 
 [connection signal="item_selected" from="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]

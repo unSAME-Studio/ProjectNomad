@@ -103,6 +103,7 @@ energy = 0.7
 shadow_enabled = true
 
 [node name="DamageComponent" parent="." instance=ExtResource( 4 )]
+health_max = 50
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_DetectionArea_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_DetectionArea_body_exited"]

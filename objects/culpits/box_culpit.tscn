@@ -202,3 +202,4 @@ mode = 2
 shadow_enabled = true
 
 [node name="DamageComponent" parent="." instance=ExtResource( 8 )]
+health_max = 50
