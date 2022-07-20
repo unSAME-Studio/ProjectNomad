@@ -7,6 +7,7 @@ var structure_prebuild = preload("res://objects/rooms/struc_prebuild.tscn")
 
 var hovering = false
 var current_prebuild = null
+export var test = false
 
 onready var initial_position = get_position()
 
@@ -15,11 +16,12 @@ var type_color = ["647cb5", "cec35b", "7ab266", "c16868"]
 
 
 func _ready():
-	var card = load("res://arts/cards/C_%s.png" % build_type)
-	$TextureRect.set_texture(card)
-	
-	set_self_modulate(type_color[Global.structure_data[build_type]["type"]])
-	
+	if not test:
+		var card = load("res://arts/cards/C_%s.png" % build_type)
+		$TextureRect.set_texture(card)
+		
+		set_self_modulate(type_color[Global.structure_data[build_type]["type"]])
+		
 	$Label.set_text(build_type)
 
 
@@ -46,6 +48,7 @@ func _on_BuildCard_pressed():
 		p = structure_prebuild.instance()
 	else:
 		p = prebuild.instance()
+		p.is_structure = true
 	
 	p.card = self
 	p.type = build_type
