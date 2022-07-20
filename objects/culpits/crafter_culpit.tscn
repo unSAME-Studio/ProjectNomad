@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://arts/culpits/crafter.png" type="Texture" id=1]
 [ext_resource path="res://objects/culpits/crafter_culpit.gd" type="Script" id=2]
 [ext_resource path="res://arts/ui/theme.tres" type="Theme" id=3]
+[ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=2]
 resource_name = "build"
@@ -53,6 +54,7 @@ physics_process_parent = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -92,5 +94,8 @@ size_flags_vertical = 3
 theme = ExtResource( 3 )
 allow_reselect = true
 fixed_icon_size = Vector2( 50, 50 )
+
+[node name="DamageComponent" parent="." instance=ExtResource( 4 )]
+health_max = 50
 
 [connection signal="item_selected" from="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]

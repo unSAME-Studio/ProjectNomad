@@ -123,9 +123,13 @@ func _unhandled_input(event):
 			if wearing != null:
 				$WearSlot.get_child(0).operate(self)
 		
-		#elif event.get_button_index() == 2 and event.is_pressed():
-		#	if wearing != null and storage[wearing] in Global.culpits_data.keys():
-		#		$WearSlot.get_child(0)._on_moved()
+		elif event.get_button_index() == 2 and event.is_pressed():
+			if wearing != null and storage[wearing]["type"] in Global.culpits_data.keys():
+				if detach_object():
+					var object = $WearSlot.get_child(0)
+					reparent(object,base)
+					object._on_moved()
+					#object.throw(self,true)
 
 
 func _process(delta):

@@ -7,14 +7,14 @@ var bullet = preload("res://objects/weapons/bullet.tscn")
 
 
 func _process(delta):
-	if controlling:
-		pass
-		#$Sprite.look_at(get_global_mouse_position())
+	if controlling and not wearing:
+		$Sprite.look_at(get_global_mouse_position())
 
 
 func operate(player):
 	print("FIRE!!!")
 	var b = bullet.instance()
+	b.parent = self
 	b.set_global_position(get_global_position())
 	b.set_global_rotation($Sprite.get_global_rotation())
 	get_tree().get_current_scene().get_node("Node2D").add_child(b)
