@@ -116,6 +116,7 @@ func _on_moved():
 	p.type = type
 	p.data = data
 	get_tree().get_current_scene().get_node("Node2D").add_child(p)
+	return p
 
 
 func canceled_build():

@@ -22,6 +22,7 @@ var velocity = Vector2.ZERO
 var onboard = false
 
 var base_cooldown = false
+var throw_hold = true
 
 var input_moving = false
 
@@ -69,14 +70,26 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("control"):
 		state.interact()
-	
+		
+	if Input.is_action_just_released('throw'):
+		if throw_hold:
+			if detach_object():
+				var object = $WearSlot.get_child(0)
+				reparent(object,base)
+				object.throw(self,true)
+		
 	if Input.is_action_just_pressed("throw"):
-		if detach_object():
-			var object = $WearSlot.get_child(0)
-			reparent(object,base)
-			object.throw(self,true)
+		pass
+#		if wearing:
+#			var object = $WearSlot.get_child(0)
+#			if object.has_method('_on_moved'):
+#				var pre_object = object._on_moved()
+#			wearing = null
+			#pre_object.connect("tree_exiting", self, "reset_throw")
 
-
+func reset_throw():
+	wearing = true
+	
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
 
@@ -438,7 +451,7 @@ func hide_object():
 	for i in $WearSlot.get_children():
 		i.queue_free()
 
-func detach_object() -> bool:
+func detach_object(check = false) -> bool:
 	if wearing != null:
 		storage[wearing] = null
 		storage_ui[wearing].remove_object()
