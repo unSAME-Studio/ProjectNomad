@@ -9,7 +9,7 @@ var explosion = preload("res://objects/VFX/Explosion.tscn")
 
 func _process(delta):
 	if controlling and not wearing:
-		$Sprite.look_at(get_global_mouse_position())
+		look_at(get_global_mouse_position())
 
 
 func operate(player):
@@ -24,7 +24,6 @@ func operate(player):
 
 
 func initial_control(body):
-	controlling = true
 	print(name + " is being controller")
 	
 	if not wearing:
@@ -34,6 +33,8 @@ func initial_control(body):
 
 func stop_control(body):
 	#body.camera.camera.set_zoom(Vector2(1,1))
+	
+	set_rotation(0)
 	
 	controlling = false
 	print("stopping " + name + " from controlling")

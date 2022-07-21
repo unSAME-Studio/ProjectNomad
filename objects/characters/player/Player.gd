@@ -313,14 +313,18 @@ func is_in_air():
 # -----------------
 func damage(amount):
 	health = clamp(health - amount, 0, 100)
+	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
 	if health <= 0:
 		print("GAME OVER")
-		pass
+		kill()
 
 func heal(amount):
 	health = clamp(health + amount, 0, 100)
+	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 
+func kill():
+	get_tree().reload_current_scene()
 
 # -----------------
 # add cards
