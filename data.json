@@ -36,6 +36,12 @@
       "hint": "Control",
       "cost": 5
     },
+    "healer": {
+      "type": 3,
+      "action": 0,
+      "hint": "Control",
+      "cost": 5
+    },
     "generator": {
       "type": 2,
       "action": 1,
