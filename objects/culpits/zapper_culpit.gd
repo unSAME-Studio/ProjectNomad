@@ -24,12 +24,12 @@ func operate(player):
 
 
 func initial_control(body):
+	controlling = true
+	print(name + " is being controller")
 	
 	if not wearing:
 		snap_position(body)
 	
-		controlling = true
-		print(name + " is being controller")
 
 
 func stop_control(body):

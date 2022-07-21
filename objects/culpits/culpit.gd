@@ -63,6 +63,8 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 			print("player clicked on %s" % type)
 			
 			Global.player.edit_culpit(self)
+			
+			get_viewport().set_input_as_handled()
 
 
 func throw(player,_build = false):

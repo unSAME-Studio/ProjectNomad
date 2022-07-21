@@ -116,7 +116,7 @@ position = Vector2( -182, 138 )
 type = "recycler"
 
 [node name="Entity21" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -371, 258 )
+position = Vector2( -371, 261 )
 type = "turret"
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]

@@ -120,8 +120,13 @@ func _unhandled_input(event):
 	
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
+			# if wearing stuff, operate it
 			if wearing != null:
 				$WearSlot.get_child(0).operate(self)
+			
+			# else if using culpit, operate it
+			elif culpit != null:
+				culpit.operate(self)
 		
 		elif event.get_button_index() == 2 and event.is_pressed():
 			if wearing != null and storage[wearing]["type"] in Global.culpits_data.keys():

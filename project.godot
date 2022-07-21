@@ -96,6 +96,7 @@ config/icon="res://temp_icon.png"
 [autoload]
 
 Global="*res://scripts/global.gd"
+SaveSystem="*res://systems/SaveSystem.gd"
 
 [display]
 
