@@ -198,7 +198,7 @@ func switch_base(new_base):
 func _physics_process(delta):
 	# temp sliding
 	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 3 ,[],2,true,false)
-
+	#print(temp_base)
 	var temp_speed = Vector2(0,0)
 	var base_velocity = Vector2(0,0)
 	# check base

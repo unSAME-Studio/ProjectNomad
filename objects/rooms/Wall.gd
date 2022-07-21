@@ -50,6 +50,10 @@ func destroy():
 	change_type('empty')
 	actived = false
 	
+func _on_destroy():
+	destroy()
+	$DamageComponent.reset()
+	
 func repair():
 	change_type('wall')
 	actived = true

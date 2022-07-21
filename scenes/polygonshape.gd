@@ -5,6 +5,13 @@ var tree = preload("res://objects/enviorments/Tree.tscn")
 var rock = preload("res://objects/enviorments/Rock.tscn")
 var entity = preload("res://objects/entities/Entity.tscn")
 
+export var special = false
+
+func _ready():
+	if special:
+		$Shadow.polygon = $Polygon2D.polygon
+		
+		$CollisionPolygon2D.polygon = $Polygon2D.polygon
 
 func generate(polygon):
 	$Polygon2D.polygon = polygon
