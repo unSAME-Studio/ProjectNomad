@@ -37,6 +37,7 @@ func _ready():
 	for i in range(cells.size()):
 		# random generation chance
 		if randi() % 2:
+			
 			var p = island.instance()
 			get_parent().call_deferred("add_child", p)
 			
