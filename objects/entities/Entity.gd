@@ -154,7 +154,7 @@ func magenet_to_delete(actor):
 
 
 func _on_Tween_tween_all_completed():
-	queue_free()
+	call_deferred("queue_free")
 
 
 func on_select():

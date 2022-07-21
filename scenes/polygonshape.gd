@@ -5,18 +5,19 @@ var tree = preload("res://objects/enviorments/Tree.tscn")
 var entity = preload("res://objects/entities/Entity.tscn")
 
 
-func _ready():
-	$CollisionPolygon2D.polygon = $Polygon2D.polygon
+func generate(polygon):
+	$Polygon2D.polygon = polygon
+	#$Polygon2D.color = Color(randf(), randf(), randf(), 0.6)
+	$Shadow.polygon = polygon
 	
-	$Shadow.polygon = $Polygon2D.polygon
+	$CollisionPolygon2D.polygon = polygon
 	#$VisibilityEnabler2D.set_rect($Polygon2D.)
 	
-	
-	return
+	return 
 	
 	# generate a bunch of trees
-	for i in range(randi() % 5):
-		var t = tree.instancce()
+	for i in range(randi() % 3):
+		var t = tree.instance()
 		$entity.add_child(t)
 		
 		var pos = Vector2.ZERO

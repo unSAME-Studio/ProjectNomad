@@ -1,5 +1,7 @@
 extends Node2D
 
+const MAX_ZOOM = 100
+const MIN_ZOOM = 0.5
 
 onready var camera = get_node("Camera2D")
 
@@ -39,11 +41,11 @@ func _get_rotation():
 func _process(delta):
 	# camera control
 	if Input.is_action_pressed("zoom_in"):
-		var new_zoom = clamp(camera.get_zoom().x * 0.9, 0.5, 3)
+		var new_zoom = clamp(camera.get_zoom().x * 0.9, MIN_ZOOM, MAX_ZOOM)
 		camera.set_zoom(lerp(camera.get_zoom(), Vector2(new_zoom, new_zoom), 20 * delta))
 		
 	if Input.is_action_pressed("zoom_out"):
-		var new_zoom = clamp(camera.get_zoom().x * 1.1, 0.5, 3)
+		var new_zoom = clamp(camera.get_zoom().x * 1.1, MIN_ZOOM, MAX_ZOOM)
 		camera.set_zoom(lerp(camera.get_zoom(), Vector2(new_zoom, new_zoom), 20 * delta))
 	
 	

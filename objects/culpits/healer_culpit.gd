@@ -5,7 +5,7 @@ var controlling = false
 var shooting = false
 var damage = 2
 
-var explosion = preload("res://objects/VFX/Explosion.tscn")
+var explosion = preload("res://objects/VFX/Healing.tscn")
 
 
 func _process(delta):
@@ -45,7 +45,8 @@ func _on_Timer_timeout():
 	if $RayCast2D.is_colliding():
 		
 		# snap line2d position
-		$Line2D.get_points().set(1, to_local($RayCast2D.get_collision_point()))
+		var p = PoolVector2Array([Vector2.ZERO, to_local($RayCast2D.get_collision_point())])
+		$Line2D.set_points(p)
 		
 		# send message to the damage component
 		if $RayCast2D.get_collider().has_node("DamageComponent"):
@@ -55,3 +56,8 @@ func _on_Timer_timeout():
 		var e = explosion.instance()
 		get_tree().get_current_scene().get_node("Node2D").add_child(e)
 		e.set_global_position($RayCast2D.get_collision_point())
+	
+	else:
+		# reset line2d
+		var p = PoolVector2Array([Vector2.ZERO, Vector2(500, 0)])
+		$Line2D.set_points(p)
