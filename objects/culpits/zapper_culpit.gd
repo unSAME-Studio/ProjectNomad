@@ -2,6 +2,7 @@ extends Culpit
 
 
 var controlling = false
+var shooting = false
 var damage = 2
 
 var explosion = preload("res://objects/VFX/Explosion.tscn")
@@ -13,11 +14,11 @@ func _process(delta):
 
 
 func operate(player):
-	controlling = !controlling
-	$RayCast2D.set_enabled(controlling)
-	$Line2D.set_visible(controlling)
+	shooting = !shooting
+	$RayCast2D.set_enabled(shooting)
+	$Line2D.set_visible(shooting)
 	
-	if controlling:
+	if shooting:
 		$Timer.start()
 	else:
 		$Timer.stop()
@@ -25,16 +26,16 @@ func operate(player):
 
 func initial_control(body):
 	print(name + " is being controller")
+	controlling = true
 	
 	if not wearing:
-		snap_position(body)
+		pass
+		#snap_position(body)
 	
 
 
 func stop_control(body):
 	#body.camera.camera.set_zoom(Vector2(1,1))
-	
-	set_rotation(0)
 	
 	controlling = false
 	print("stopping " + name + " from controlling")
