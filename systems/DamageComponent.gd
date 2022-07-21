@@ -21,18 +21,23 @@ func damage(amount):
 	# show bar when first hit
 	if health == health_max:
 		$CanvasLayer/Control.show()
+	$Timer.start()
 		
 	health = clamp(health - amount, 0, health_max)
 	
 	$CanvasLayer/Control/ProgressBar.set_value(health)
-	
+	if get_parent().has_method("_on_damage"):
+		get_parent()._on_damage()
 	if health <= 0:
 		if get_parent().has_method("_on_destroy"):
 			get_parent()._on_destroy()
 		else:
 			_on_destroy()
 
-
+func reset():
+	health = health_max
+	$CanvasLayer/Control.hide()
+	
 func heal(amount):
 	print("%s | %d + %d" % [get_parent().name, health, amount])
 	
@@ -64,3 +69,7 @@ func _on_destroy():
 		e.throw(Global.player, false)
 		
 		get_parent().queue_free()
+
+
+func _on_Timer_timeout():
+	$CanvasLayer/Control.hide()

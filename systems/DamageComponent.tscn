@@ -23,3 +23,9 @@ rect_min_size = Vector2( 200, 38 )
 mouse_filter = 2
 theme = ExtResource( 2 )
 value = 100.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

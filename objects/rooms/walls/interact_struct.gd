@@ -33,6 +33,9 @@ func _on_Area2D_body_exited(body):
 		in_range = null
 		body.controllables.erase(name)
 
+func _on_destroy():
+	destroy()
+
 func destroy():
 	if in_range:
 		in_range.controllables.erase(name)

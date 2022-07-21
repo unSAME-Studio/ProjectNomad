@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enviorments/Island.tscn" type="PackedScene" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://arts/Shader/fog.gdshader" type="Shader" id=6]
 [ext_resource path="res://scripts/world_generator.gd" type="Script" id=7]
+[ext_resource path="res://objects/enviorments/Rock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/entities/Entity.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/enviorments/Tree.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/ship_base.tscn" type="PackedScene" id=11]
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 6 )
@@ -39,16 +43,37 @@ scale = Vector2( 100, 100 )
 texture = ExtResource( 5 )
 
 [node name="ship" parent="Node2D" instance=ExtResource( 3 )]
-position = Vector2( 509, -25 )
+position = Vector2( 951, 126 )
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 speed = 400
 
 [node name="Island" parent="Node2D" instance=ExtResource( 2 )]
-position = Vector2( 10729, 5903 )
+position = Vector2( 1497, 970 )
+
+[node name="Rock" parent="Node2D/Island/objects" index="0" instance=ExtResource( 8 )]
+position = Vector2( -116, 445 )
+
+[node name="Tree" parent="Node2D/Island/objects" index="1" instance=ExtResource( 10 )]
+position = Vector2( 565, 70 )
+
+[node name="Entity" parent="Node2D/Island/entity" index="0" instance=ExtResource( 9 )]
+position = Vector2( -177, 47 )
+
+[node name="Entity2" parent="Node2D/Island/entity" index="1" instance=ExtResource( 9 )]
+position = Vector2( 107, -125 )
+
+[node name="Entity3" parent="Node2D/Island/entity" index="2" instance=ExtResource( 9 )]
+position = Vector2( 331, -513 )
+
+[node name="Entity4" parent="Node2D/Island/entity" index="3" instance=ExtResource( 9 )]
+position = Vector2( 198, 401 )
+
+[node name="Entity5" parent="Node2D/Island/entity" index="4" instance=ExtResource( 9 )]
+position = Vector2( 547, -247 )
 
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]
-position = Vector2( 494, 268 )
+position = Vector2( 947, 623 )
 
 [node name="CameraManager" parent="Node2D" instance=ExtResource( 4 )]
 target_node_path = NodePath("../Player")
@@ -56,5 +81,11 @@ target_node_path = NodePath("../Player")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node2D"]
 environment = SubResource( 2 )
 
-[node name="WorldGenerator" type="Node2D" parent="Node2D"]
+[node name="IslandGenerator" type="Node2D" parent="Node2D"]
 script = ExtResource( 7 )
+
+[node name="Base" parent="Node2D" instance=ExtResource( 11 )]
+position = Vector2( 1430, -450 )
+rotation = 0.42513
+
+[editable path="Node2D/Island"]

@@ -10,6 +10,7 @@ collision_mask = 2
 mode = 1
 mass = 30.0
 script = ExtResource( 2 )
+special = true
 
 [node name="Shadow" type="Polygon2D" parent="."]
 visible = false

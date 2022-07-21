@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://objects/rooms/room.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/rooms/room2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/scripts/ship.gd" type="Script" id=2]
-[ext_resource path="res://objects/culpits/Culpit.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/culpits/crafter_culpit.tscn" type="PackedScene" id=4]
 
 [node name="Base" type="RigidBody2D"]
 collision_layer = 2
@@ -20,16 +18,6 @@ script = ExtResource( 2 )
 [node name="room" parent="rooms" instance=ExtResource( 1 )]
 
 [node name="objects" type="Node2D" parent="."]
-
-[node name="Culpit" parent="objects" instance=ExtResource( 3 )]
-
-[node name="Culpit2" parent="objects" instance=ExtResource( 3 )]
-position = Vector2( 90, -127 )
-type = "printer"
-
-[node name="Crafter_Culpit" parent="objects" instance=ExtResource( 4 )]
-position = Vector2( -83, -125 )
-type = "crafter"
 
 [node name="baseshape" type="Area2D" parent="."]
 collision_layer = 4

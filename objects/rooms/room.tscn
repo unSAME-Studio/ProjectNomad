@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/Wall.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://objects/rooms/walls/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://arts/structures/pattern2.png" type="Texture" id=6]
 [ext_resource path="res://arts/structures/pattern1.png" type="Texture" id=7]
+[ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=8]
 
 [sub_resource type="OccluderPolygon2D" id=4]
 
@@ -44,6 +45,9 @@ antialiased = true
 texture = ExtResource( 6 )
 polygon = PoolVector2Array( -16, -264, 16, -264, 16, 240, -16, 240 )
 
+[node name="DamageComponent" parent="structures/Wall2" instance=ExtResource( 8 )]
+position = Vector2( 320, 0 )
+
 [node name="Wall3" type="StaticBody2D" parent="structures"]
 position = Vector2( 160, 0 )
 z_index = 1
@@ -60,6 +64,8 @@ color = Color( 0.392157, 0.431373, 0.54902, 1 )
 antialiased = true
 texture = ExtResource( 6 )
 polygon = PoolVector2Array( -16, -264, -16, 240, 16, 240, 16, -264 )
+
+[node name="DamageComponent" parent="structures/Wall3" instance=ExtResource( 8 )]
 
 [node name="Wall4" parent="structures" instance=ExtResource( 4 )]
 position = Vector2( 0, -248 )
