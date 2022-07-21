@@ -45,7 +45,7 @@ gravity_scale = 0.0
 speed = 400
 
 [node name="Island" parent="Node2D" instance=ExtResource( 2 )]
-position = Vector2( 1382, 563 )
+position = Vector2( 10729, 5903 )
 
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 494, 268 )
@@ -55,14 +55,6 @@ target_node_path = NodePath("../Player")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node2D"]
 environment = SubResource( 2 )
-
-[node name="Island2" parent="Node2D" instance=ExtResource( 2 )]
-position = Vector2( -2063, 1038 )
-rotation = 2.22329
-
-[node name="Island3" parent="Node2D" instance=ExtResource( 2 )]
-position = Vector2( -1033, -2051 )
-rotation = 3.90577
 
 [node name="WorldGenerator" type="Node2D" parent="Node2D"]
 script = ExtResource( 7 )

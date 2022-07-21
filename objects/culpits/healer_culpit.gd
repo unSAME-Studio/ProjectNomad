@@ -5,7 +5,7 @@ var controlling = false
 var shooting = false
 var damage = 2
 
-var explosion = preload("res://objects/VFX/Explosion.tscn")
+var explosion = preload("res://objects/VFX/Healing.tscn")
 
 
 func _process(delta):
@@ -50,7 +50,7 @@ func _on_Timer_timeout():
 		
 		# send message to the damage component
 		if $RayCast2D.get_collider().has_node("DamageComponent"):
-			$RayCast2D.get_collider().get_node("DamageComponent").damage(damage)
+			$RayCast2D.get_collider().get_node("DamageComponent").heal(damage)
 		
 		# make particles
 		var e = explosion.instance()

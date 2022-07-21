@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -22,6 +22,7 @@
 [ext_resource path="res://arts/font/BarlowCondensed-SemiBoldItalic.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://objects/ui/StorageUI.gd" type="Script" id=21]
 [ext_resource path="res://objects/ui/BuildCard.tscn" type="PackedScene" id=22]
+[ext_resource path="res://objects/characters/player/PlayerDamageComponent.gd" type="Script" id=23]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -120,7 +121,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -646,6 +646,9 @@ texture = ExtResource( 18 )
 [node name="Basetimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="DamageComponent" type="Node2D" parent="."]
+script = ExtResource( 23 )
 
 [connection signal="body_entered" from="ControllableDetection" to="." method="_on_ControllableDetection_body_entered"]
 [connection signal="body_exited" from="ControllableDetection" to="." method="_on_ControllableDetection_body_exited"]

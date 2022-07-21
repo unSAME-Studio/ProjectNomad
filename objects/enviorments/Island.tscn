@@ -1,12 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://objects/enviorments/set_polygon.gd" type="Script" id=1]
 [ext_resource path="res://scenes/polygonshape.gd" type="Script" id=2]
-[ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/parallax_offset.gd" type="Script" id=4]
 [ext_resource path="res://arts/enviroment/island.png" type="Texture" id=5]
-[ext_resource path="res://objects/enviorments/Tree.tscn" type="PackedScene" id=6]
-[ext_resource path="res://objects/entities/Entity.tscn" type="PackedScene" id=7]
 
 [node name="Island" type="RigidBody2D"]
 collision_layer = 2
@@ -16,6 +12,7 @@ mass = 30.0
 script = ExtResource( 2 )
 
 [node name="Shadow" type="Polygon2D" parent="."]
+visible = false
 light_mask = 2
 z_index = -50
 color = Color( 0.376471, 0.396078, 0.188235, 1 )
@@ -34,147 +31,5 @@ polygon = PoolVector2Array( -143, -146, -657, 102, -63, 942, 1209, 342, 801, -81
 
 [node name="entity" type="Node2D" parent="."]
 
-[node name="Tree" parent="entity" instance=ExtResource( 6 )]
-position = Vector2( 202, 353 )
-
-[node name="Tree2" parent="entity" instance=ExtResource( 6 )]
-position = Vector2( 482, -363 )
-
-[node name="Entity" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -247, 250 )
-
-[node name="Entity2" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -43, 541 )
-type = "booster core"
-
-[node name="Entity3" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 155, -115 )
-
-[node name="Entity4" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 127, -644 )
-
-[node name="Entity5" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 577, -737 )
-
-[node name="Entity6" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 827, 228 )
-
-[node name="Entity7" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 778, 51 )
-type = "weed"
-
-[node name="Entity8" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 442, 353 )
-type = "weed"
-
-[node name="Entity9" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 450, -194 )
-type = "weed"
-
-[node name="Entity10" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 639, -300 )
-type = "booster core"
-
-[node name="Entity11" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 688, -376 )
-type = "weed"
-
-[node name="Entity12" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 718, -300 )
-type = "weed"
-
-[node name="Entity13" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 703, -228 )
-type = "weed"
-
-[node name="Entity14" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( 790, -251 )
-type = "weed"
-
-[node name="Entity15" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -325, 23 )
-type = "printer"
-
-[node name="Entity16" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -201, 44 )
-type = "crafter"
-
-[node name="Entity17" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -457, 80 )
-type = "box"
-
-[node name="Entity18" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -384, 147 )
-type = "light"
-
-[node name="Entity19" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -286, 145 )
-type = "generator"
-
-[node name="Entity20" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -182, 138 )
-type = "recycler"
-
-[node name="Entity21" parent="entity" instance=ExtResource( 7 )]
-position = Vector2( -371, 258 )
-type = "turret"
-
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 rect = Rect2( -1500, -1500, 3000, 3000 )
-
-[node name="Rock" type="StaticBody2D" parent="."]
-position = Vector2( 700, 345 )
-collision_mask = 0
-script = ExtResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="Rock"]
-scale = Vector2( 1.0453, 1.12683 )
-color = Color( 0.309804, 0.309804, 0.309804, 1 )
-polygon = PoolVector2Array( -57, -100, -133.933, 21.2987, 4.78333, 73.658, 61.2264, 15.0866, 20.09, -65.671 )
-vertex_colors = PoolColorArray( 0.654902, 0.145098, 0.145098, 1, 1, 0.447059, 0.447059, 1 )
-
-[node name="Polygon2D2" type="Polygon2D" parent="Rock"]
-color = Color( 0.45098, 0.45098, 0.45098, 1 )
-polygon = PoolVector2Array( -65, -81, -94, 20, -14, 67, 38, 2, 1, -69 )
-vertex_colors = PoolColorArray( 0.654902, 0.145098, 0.145098, 1, 1, 0.447059, 0.447059, 1 )
-
-[node name="Polygon2D3" type="Polygon2D" parent="Rock"]
-position = Vector2( -2, 12 )
-color = Color( 0.623529, 0.623529, 0.623529, 1 )
-polygon = PoolVector2Array( -36, -70, -66, -12, -14, 20, 0, -35 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock"]
-
-[node name="DamageComponent" parent="Rock" instance=ExtResource( 3 )]
-health_max = 150
-drop_types = [ "nano" ]
-drop_amount = 6
-
-[node name="Rock2" type="StaticBody2D" parent="."]
-position = Vector2( 90, -417 )
-rotation = -2.77334
-collision_mask = 0
-script = ExtResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="Rock2"]
-scale = Vector2( 1.0453, 1.12683 )
-color = Color( 0.309804, 0.309804, 0.309804, 1 )
-polygon = PoolVector2Array( -87.262, -145.692, -112.57, 62.1714, -20.7661, 38.8232, 50.4322, 15.2409, 53.6199, -78.1683 )
-vertex_colors = PoolColorArray( 0.654902, 0.145098, 0.145098, 1, 1, 0.447059, 0.447059, 1 )
-
-[node name="Polygon2D2" type="Polygon2D" parent="Rock2"]
-color = Color( 0.45098, 0.45098, 0.45098, 1 )
-polygon = PoolVector2Array( -82.8089, -92.3834, -73.8355, 39.2087, -41.5269, 39.6045, 38, 2, 20.0085, -87.0383 )
-vertex_colors = PoolColorArray( 0.654902, 0.145098, 0.145098, 1, 1, 0.447059, 0.447059, 1 )
-
-[node name="Polygon2D3" type="Polygon2D" parent="Rock2"]
-position = Vector2( -2, 12 )
-color = Color( 0.623529, 0.623529, 0.623529, 1 )
-polygon = PoolVector2Array( -45.0324, -83.8885, -56.8573, 2.13577, -12.2884, -12.9178, 8.84541, -55.3721 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock2"]
-
-[node name="DamageComponent" parent="Rock2" instance=ExtResource( 3 )]
-health_max = 150
-drop_types = [ "nano" ]
-drop_amount = 6
