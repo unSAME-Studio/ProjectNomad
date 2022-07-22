@@ -114,18 +114,18 @@ color_ramp = SubResource( 23 )
 [node name="Player" type="KinematicBody2D"]
 z_index = 40
 collision_layer = 4
-collision_mask = 9
+collision_mask = 25
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
 texture = ExtResource( 7 )
+offset = Vector2( 0, 25.437 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
