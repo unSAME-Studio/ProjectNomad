@@ -126,6 +126,7 @@ playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
 texture = ExtResource( 7 )
+offset = Vector2( 0, 25.437 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

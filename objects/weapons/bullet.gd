@@ -3,6 +3,7 @@ extends KinematicBody2D
 var explosion = preload("res://objects/VFX/Explosion.tscn")
 
 var parent
+onready var user = parent.user
 var speed = 5
 var damage = 6
 
@@ -17,7 +18,7 @@ func _process(delta):
 		
 		# send message to the damage component
 		if collided.get_collider().has_node("DamageComponent"):
-			collided.get_collider().get_node("DamageComponent").damage(parent.user, damage)
+			collided.get_collider().get_node("DamageComponent").damage(user, damage)
 		
 		# make particles
 		var e = explosion.instance()
