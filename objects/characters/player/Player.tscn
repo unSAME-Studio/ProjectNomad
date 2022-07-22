@@ -121,6 +121,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -466,7 +467,7 @@ custom_constants/margin_left = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer"]
 margin_left = 100.0
-margin_right = 312.0
+margin_right = 420.0
 margin_bottom = 145.0
 theme = ExtResource( 5 )
 alignment = 1
@@ -517,8 +518,12 @@ uppercase = true
 [node name="BuildCard" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
 margin_left = 108.0
 margin_right = 212.0
-build_type = "storage"
-test = true
+build_type = "room"
+
+[node name="BuildCard2" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
+margin_left = 108.0
+margin_right = 212.0
+build_type = "wall"
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
 modulate = Color( 1, 1, 1, 0.427451 )

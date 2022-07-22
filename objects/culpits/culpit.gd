@@ -108,7 +108,8 @@ func operate(player):
 func _on_moved():
 	if not Global.player.enter_building_mode():
 		return
-	
+	if build_point:
+		build_point.activate_build()
 	print(type + "is being moved")
 	
 	modulate.a = 0.3
@@ -128,6 +129,8 @@ func canceled_build():
 	modulate.a = 1
 	Global.player.edit_culpit(self)
 	
+	if build_point:
+		build_point.end_build()
 	$CollisionShape2D.set_deferred("disabled", false)
 
 

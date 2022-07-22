@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/Wall.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://arts/structures/pattern2.png" type="Texture" id=6]
 [ext_resource path="res://arts/structures/pattern1.png" type="Texture" id=7]
 [ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/structure/storage_struc.tscn" type="PackedScene" id=9]
 
 [sub_resource type="OccluderPolygon2D" id=4]
 
@@ -73,7 +74,7 @@ position = Vector2( 0, -248 )
 [node name="points" type="Node2D" parent="structures"]
 
 [node name="buildpoint2" parent="structures/points" instance=ExtResource( 3 )]
-position = Vector2( 0, -144 )
+position = Vector2( 0, -176 )
 type = "utility"
 
 [node name="buildpoint3" parent="structures/points" instance=ExtResource( 3 )]
@@ -84,11 +85,19 @@ type = "utility"
 position = Vector2( -192, 0 )
 type = "utility"
 
-[node name="buildpoint5" parent="structures/points" instance=ExtResource( 3 )]
-position = Vector2( 0, 240 )
-rotation = -3.14159
-
 [node name="Wall" parent="structures" instance=ExtResource( 5 )]
 position = Vector2( 0, 232 )
+rotation = 3.14159
+
+[node name="buildpoint5" parent="structures/Wall" instance=ExtResource( 3 )]
+rotation = 2.44776e-06
 
 [node name="objects" type="Node2D" parent="."]
+
+[node name="Culpit" parent="objects" instance=ExtResource( 9 )]
+position = Vector2( -200, -280 )
+
+[node name="Culpit2" parent="objects" instance=ExtResource( 9 )]
+position = Vector2( 200, -280 )
+
+[editable path="objects/Culpit2"]

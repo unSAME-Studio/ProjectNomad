@@ -6,6 +6,7 @@ var active = true
 var object = null
 var room = null
 var target = null
+export(NodePath) var preset = null
 var wall
 var indi
 
@@ -15,6 +16,7 @@ func _ready():
 		wall = get_parent()
 	
 	room = find_parent("room")
+
 	if room:
 		if type == 'room':
 			room.snappoint.append(self)
@@ -39,6 +41,9 @@ func finish_build(object = null):
 	if object:
 		target = object
 		object.build_point = self
+		
+	if get_parent().has_method('connect_culpit'):
+		get_parent().connect_culpit(object)
 		
 	if wall:
 		wall.queue_free()

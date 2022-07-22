@@ -26,6 +26,9 @@ func active(_base):
 #			i.connect("tree_exiting", self, "disconnect_point")
 	#print($Polygon2D.polygon)
 
+func get_base():
+	return get_parent().get_parent()
+
 # will return the base
 func get_build():
 	return base

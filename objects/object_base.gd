@@ -29,7 +29,9 @@ func handle_movement(direction):
 func enable_control(user):
 	pass
 
-
+func get_base():
+	return self
+	
 func disable_control():
 	pass
 	
