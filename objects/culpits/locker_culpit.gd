@@ -2,8 +2,8 @@ extends Culpit
 
 
 func initial_control(body):
-	print(name + " is being controller")
+	.initial_control(body)
 
 
 func stop_control(body):
-	print("stopping " + name + " from controlling")
+	.stop_control(body)

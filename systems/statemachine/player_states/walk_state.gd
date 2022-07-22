@@ -40,7 +40,8 @@ func _physics_process(delta):
 	animated_sprite.set_speed_scale(persistent_state.velocity.length() / speed)
 	
 	# change eyes position
-	animated_sprite.get_node("Eyes").set_position(lerp(animated_sprite.get_node("Eyes").get_position(), direction * 15, 10 * delta))
+	#animated_sprite.get_node("Eyes").set_position(lerp(animated_sprite.get_node("Eyes").get_position(), direction * 15, 10 * delta))
+	animated_sprite.get_node("Eyes").set_rotation(lerp_angle(animated_sprite.get_node("Eyes").get_rotation(), direction.angle() - PI/2, 10 * delta))
 	
 	# else deal with the velocity in air
 	#eizi: using acceleration simulation

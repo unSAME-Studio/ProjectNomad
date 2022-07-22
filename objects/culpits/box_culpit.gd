@@ -78,6 +78,8 @@ func _process(delta):
 
 
 func initial_control(body):
+	user = body
+	
 	if not wearing:
 		var temp_type = storing
 		
@@ -95,7 +97,7 @@ func initial_control(body):
 
 
 func stop_control(body):
-	print("stopping " + type + " from controlling")
+	.stop_control(body)
 
 
 func use_storing() -> bool:

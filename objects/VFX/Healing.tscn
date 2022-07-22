@@ -23,6 +23,7 @@ scale_curve = SubResource( 2 )
 
 [node name="Explosion" type="Particles2D"]
 emitting = false
+amount = 6
 one_shot = true
 speed_scale = 1.59
 explosiveness = 1.0

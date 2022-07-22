@@ -25,12 +25,11 @@ func operate(player):
 
 
 func initial_control(body):
-	if not wearing:
-		operate(body)
+	.initial_control(body)
 
 
 func stop_control(body):
-	print("stopping " + type + " from controlling")
+	.stop_control(body)
 
 
 func _on_DetectionArea_body_entered(body):

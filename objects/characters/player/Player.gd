@@ -311,7 +311,11 @@ func is_in_air():
 # -----------------
 # player health control
 # -----------------
-func damage(amount):
+func damage(dealer, amount):
+	# ignore if self damage
+	if dealer == self:
+		return
+	
 	health = clamp(health - amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
@@ -319,7 +323,7 @@ func damage(amount):
 		print("GAME OVER")
 		kill()
 
-func heal(amount):
+func heal(dealer, amount):
 	health = clamp(health + amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 
