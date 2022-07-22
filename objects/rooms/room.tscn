@@ -95,7 +95,9 @@ rotation = 2.44776e-06
 [node name="objects" type="Node2D" parent="."]
 
 [node name="Culpit" parent="objects" instance=ExtResource( 9 )]
-position = Vector2( -208, -296 )
+position = Vector2( -200, -280 )
 
 [node name="Culpit2" parent="objects" instance=ExtResource( 9 )]
-position = Vector2( 216, -296 )
+position = Vector2( 200, -280 )
+
+[editable path="objects/Culpit2"]

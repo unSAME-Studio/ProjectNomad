@@ -28,6 +28,7 @@ func damage(dealer, amount):
 		$CanvasLayer/Control.show()
 	
 	# start the hiding ui timer
+	$CanvasLayer/Control.show()
 	$Timer.start()
 	
 	# start the autoheal timer
@@ -56,7 +57,8 @@ func heal(dealer, amount):
 	print("%s heal by %s | %d + %d" % [get_parent().name, dealer.name, health, amount])
 	
 	health = clamp(health + amount, 0, health_max)
-	
+	$CanvasLayer/Control.show()
+	$Timer.start()
 	# if full don't set value and hide bar
 	if health == health_max:
 		$CanvasLayer/Control.hide()

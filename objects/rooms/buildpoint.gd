@@ -6,6 +6,7 @@ var active = true
 var object = null
 var room = null
 var target = null
+export(NodePath) var preset = null
 var wall
 var indi
 
