@@ -12,12 +12,14 @@ func _ready():
 
 func initial_control(body):
 	print(name + " is being controller")
+	user = body
 	
 	$CanvasLayer/Control.show()
 
 
 func stop_control(body):
 	print("stopping " + name + " from controlling")
+	user = null
 	
 	$CanvasLayer/Control.hide()
 
