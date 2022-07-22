@@ -12,7 +12,7 @@ func _ready():
 func _physics_process(delta):
 	$Enemy.look_at(Global.player.get_global_position())
 	
-	move_and_slide(Vector2.RIGHT * delta * 20, Vector2.UP)
+	#move_and_slide(Vector2.RIGHT * delta * 20, Vector2.UP)
 
 
 func _on_Timer_timeout():
