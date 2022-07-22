@@ -21,3 +21,11 @@ func _on_Timer_timeout():
 	b.set_global_position($Enemy/Position2D.get_global_position())
 	b.set_global_rotation($Enemy/Position2D.get_global_rotation())
 	get_tree().get_current_scene().get_node("Node2D").add_child(b)
+
+
+func _on_VisibilityEnabler2D_screen_entered():
+	$Timer.start()
+
+
+func _on_VisibilityEnabler2D_screen_exited():
+	$Timer.stop()
