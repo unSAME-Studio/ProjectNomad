@@ -8,7 +8,8 @@ class_name Culpit
 var prebuild = preload("res://objects/buildings/Prebuild.tscn")
 var entity = preload("res://objects/entities/Entity.tscn")
 
-var base = null
+var base = null	# the base this culpit rest on
+var user = null	# the owner of this culpit, currently using it
 var wearing = false
 
 var build_point
@@ -41,6 +42,7 @@ func get_hint_text():
 
 func initial_control(body):
 	print(type + " is being controller")
+	user = body
 	
 	# don't initial operate if player is wearing
 	if not wearing:
@@ -49,6 +51,7 @@ func initial_control(body):
 
 func stop_control(body):
 	print("stopping " + type + " from controlling")
+	user = null
 
 
 # snap body to predefined point

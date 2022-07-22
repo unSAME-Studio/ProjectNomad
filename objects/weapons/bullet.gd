@@ -17,7 +17,7 @@ func _process(delta):
 		
 		# send message to the damage component
 		if collided.get_collider().has_node("DamageComponent"):
-			collided.get_collider().get_node("DamageComponent").damage(damage)
+			collided.get_collider().get_node("DamageComponent").damage(parent.user, damage)
 		
 		# make particles
 		var e = explosion.instance()

@@ -13,6 +13,8 @@ func _process(delta):
 
 
 func initial_control(body):
+	user = body
+	
 	snap_position(body)
 	
 	if base.has_method("enable_control"):
@@ -26,6 +28,7 @@ func initial_control(body):
 
 func stop_control(body):
 	print("stopping " + name + " from controlling")
+	user = null
 	
 	if base.has_method("enable_control"):
 		base.disable_control()

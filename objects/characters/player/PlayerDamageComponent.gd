@@ -1,9 +1,9 @@
 extends Node2D
 
 
-func damage(value):
-	get_parent().damage(value)
+func damage(dealer, value):
+	get_parent().damage(dealer, value)
 
 
-func heal(value):
-	get_parent().heal(value)
+func heal(dealer, value):
+	get_parent().heal(dealer, value)

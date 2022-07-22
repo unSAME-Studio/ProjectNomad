@@ -2,14 +2,11 @@ extends Culpit
 
 
 func initial_control(body):
-	print(name + " is being controller")
-	
-	if not wearing:
-		operate(body)
+	.initial_control(body)
 
 
 func stop_control(body):
-	print("stopping " + name + " from controlling")
+	.stop_control(body)
 
 
 func operate(player):

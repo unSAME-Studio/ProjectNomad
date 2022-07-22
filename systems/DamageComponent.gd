@@ -1,8 +1,9 @@
 extends Node2D
 
-
 export var health_max = 100
 onready var health = health_max
+export var autoheal = false
+export var autoheal_speed = 1
 
 # data for no default drop
 export(Array) var drop_types = []
@@ -15,37 +16,53 @@ func _ready():
 	$CanvasLayer/Control/ProgressBar.set_max(health_max)
 
 
-func damage(amount):
-	print("%s | %d - %d" % [get_parent().name, health, amount])
+func damage(dealer, amount):
+	print("%s hit by %s | %d - %d" % [get_parent().name, dealer.name, health, amount])
+	
+	# ignore if self damage
+	if dealer == self:
+		return
 	
 	# show bar when first hit
 	if health == health_max:
 		$CanvasLayer/Control.show()
+	
+	# start the hiding ui timer
 	$Timer.start()
+	
+	# start the autoheal timer
+	if autoheal == true:
+		$Autoheal.start()
 		
 	health = clamp(health - amount, 0, health_max)
-	
 	$CanvasLayer/Control/ProgressBar.set_value(health)
+	
 	if get_parent().has_method("_on_damage"):
 		get_parent()._on_damage()
+	
 	if health <= 0:
 		if get_parent().has_method("_on_destroy"):
 			get_parent()._on_destroy()
 		else:
 			_on_destroy()
 
+
 func reset():
 	health = health_max
 	$CanvasLayer/Control.hide()
-	
-func heal(amount):
-	print("%s | %d + %d" % [get_parent().name, health, amount])
+
+
+func heal(dealer, amount):
+	print("%s heal by %s | %d + %d" % [get_parent().name, dealer.name, health, amount])
 	
 	health = clamp(health + amount, 0, health_max)
 	
 	# if full don't set value and hide bar
 	if health == health_max:
 		$CanvasLayer/Control.hide()
+		
+		# stop autoheal timer
+		$Autoheal.stop()
 	else:
 		$CanvasLayer/Control/ProgressBar.set_value(health)
 
@@ -73,3 +90,7 @@ func _on_destroy():
 
 func _on_Timer_timeout():
 	$CanvasLayer/Control.hide()
+
+
+func _on_Autoheal_timeout():
+	heal(self, autoheal_speed)

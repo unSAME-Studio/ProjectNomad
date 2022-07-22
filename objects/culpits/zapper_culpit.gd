@@ -26,6 +26,7 @@ func operate(player):
 
 func initial_control(body):
 	print(name + " is being controller")
+	user = body
 	controlling = true
 	
 	if not wearing:
@@ -35,6 +36,7 @@ func initial_control(body):
 
 
 func stop_control(body):
+	user = null
 	#body.camera.camera.set_zoom(Vector2(1,1))
 	
 	controlling = false
@@ -50,7 +52,7 @@ func _on_Timer_timeout():
 		
 		# send message to the damage component
 		if $RayCast2D.get_collider().has_node("DamageComponent"):
-			$RayCast2D.get_collider().get_node("DamageComponent").damage(damage)
+			$RayCast2D.get_collider().get_node("DamageComponent").damage(user, damage)
 		
 		# make particles
 		var e = explosion.instance()
