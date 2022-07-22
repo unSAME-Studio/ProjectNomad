@@ -22,6 +22,7 @@ func damage(amount):
 	if health == health_max:
 		$CanvasLayer/Control.show()
 	$Timer.start()
+	$CanvasLayer/Control.show()
 		
 	health = clamp(health - amount, 0, health_max)
 	

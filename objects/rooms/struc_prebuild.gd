@@ -98,10 +98,13 @@ func _process(delta):
 			set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 		else:
 			set_global_position(target.get_global_position())
-			set_global_rotation(target.get_global_rotation())
+			set_global_rotation(target.get_parent().get_global_rotation())
 			if structure:
-				structure.set_global_rotation(target.get_global_rotation() +(3.14159 - structure.snappoint[snapindex].get_parent().get_rotation()))
-				structure.set_position((structure.snappoint[snapindex].get_global_position()-structure.get_global_position()).rotated(-structure.snappoint[snapindex].get_global_rotation()))
+				structure.set_rotation((3.14159 - structure.snappoint[snapindex].get_parent().get_rotation()))
+				structure.set_global_position(target.get_global_position()-(structure.snappoint[snapindex].get_global_position()-structure.get_global_position()))
+		
+				#structure.set_rotation((3.14159 - structure.snappoint[snapindex].get_parent().get_rotation()))
+				#structure.set_position((structure.snappoint[snapindex].get_global_position()-structure.get_global_position()).rotated(-structure.snappoint[snapindex].get_parent().get_rotation()))
 		
 	else:
 		Global.player.set_prebuild_hint("Not avaliable", self)

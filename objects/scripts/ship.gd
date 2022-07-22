@@ -14,6 +14,8 @@ var steerforce = 1
 var forwardforce = 1
 var brakeforce = 1
 
+var controlled = []
+
 func _ready():
 	#$RigidBody2D/PinJoint2D.connect_bodies(self,$RigidBody2D)
 	# [TEMP DELETE]
@@ -59,16 +61,22 @@ func _process(delta):
 		if not captain:
 			onboard[0].camera.align_camera()
 
+
 func _physics_process(delta):
 	if(controlling):
 		var direction = get_input()
 		handle_movement(direction)
-			
+		if Input.is_action_pressed("fire"):
+			if not controlled.empty():
+				for i in controlled:
+					i.operate(self)
 			
 func _integrate_forces(state):
 	pass
 			
-		
+
+
+
 func get_build_points():
 	var points = []
 	if not rooms.empty():

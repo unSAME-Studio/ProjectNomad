@@ -248,6 +248,9 @@ func _unhandled_input(event):
 
 func finish_build(room):
 	var c
+	if build_points:
+		for i in build_points:
+				i.end_build()
 	# check if special scene exist, else spawn the standard one with script
 	if is_structure:
 		if ResourceLoader.exists("res://objects/structure/%s_%s.tscn" % [type, build_type]):

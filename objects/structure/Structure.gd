@@ -23,7 +23,7 @@ onready var controllable = false
 func _ready():
 	#$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
 	
-	base = get_parent().get_parent()
+	base = get_parent().get_parent().get_base()
 	
 	connect("input_event", self, "_on_Culpit_input_event")
 	connect("select", self, "on_select")
