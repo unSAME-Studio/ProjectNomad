@@ -12,14 +12,14 @@ func _process(delta):
 	if collided:
 		print(collided.get_collider().name)
 		
-		# ignore parent
+		# ignore parent (turret
 		if collided.get_collider() == parent:
 			return
-		
+			
 		# send message to the damage component
 		if collided.get_collider().has_node("DamageComponent"):
 			collided.get_collider().get_node("DamageComponent").damage(user, damage)
-		
+	
 		# make particles
 		var e = explosion.instance()
 		e.set_global_position(get_global_position())
