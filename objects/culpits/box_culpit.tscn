@@ -146,6 +146,7 @@ position = Vector2( 0, 60 )
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 position = Vector2( 0.5, -0.5 )
 scale = Vector2( 2.45, 2.45 )
+pause_particles = false
 process_parent = true
 physics_process_parent = true
 
@@ -203,3 +204,6 @@ shadow_enabled = true
 
 [node name="DamageComponent" parent="." instance=ExtResource( 8 )]
 health_max = 50
+
+[connection signal="screen_entered" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]

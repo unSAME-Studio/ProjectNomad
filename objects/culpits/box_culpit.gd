@@ -124,3 +124,14 @@ func get_data():
 		return data
 	else:
 		return null
+
+
+func _on_VisibilityEnabler2D_screen_entered():
+	if enabled:
+		$Particles2D.set_emitting(true)
+		$Particles2D2.set_emitting(true)
+
+
+func _on_VisibilityEnabler2D_screen_exited():
+	$Particles2D.set_emitting(false)
+	$Particles2D2.set_emitting(false)
