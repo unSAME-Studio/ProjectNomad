@@ -52,7 +52,8 @@ func generate(polygon):
 		while not Geometry.is_point_in_polygon(pos, $Polygon2D.get_polygon()):
 			pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		
-		t.set_global_position(pos)
+		#t.set_global_position(pos)
+		t.call_deferred("set_global_position", pos)
 		t.set_rotation(rand_range(0, PI))
 		
 	# generate a bunch of rocks
@@ -64,7 +65,8 @@ func generate(polygon):
 		while not Geometry.is_point_in_polygon(pos, $Polygon2D.get_polygon()):
 			pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		
-		t.set_global_position(pos)
+		#t.set_global_position(pos)
+		t.call_deferred("set_global_position", pos)
 		t.set_rotation(rand_range(0, PI))
 		
 	# generate a bunch of random items
@@ -79,7 +81,8 @@ func generate(polygon):
 		while not Geometry.is_point_in_polygon(pos, $Polygon2D.get_polygon()):
 			pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		
-		e.set_global_position(pos)
+		#e.set_global_position(pos)
+		e.call_deferred("set_global_position", pos)
 		e.set_rotation(rand_range(0, PI))
 	
 	# [TEMP]
@@ -93,4 +96,5 @@ func generate(polygon):
 		while not Geometry.is_point_in_polygon(pos, $Polygon2D.get_polygon()):
 			pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		
-		e.set_global_position(pos)
+		#e.set_global_position(pos)
+		e.call_deferred("set_global_position", pos)

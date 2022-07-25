@@ -13,7 +13,7 @@ func _ready():
 	animated_sprite.play("idle")
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	persistent_state.move_and_slide(persistent_state.velocity)
 
 
