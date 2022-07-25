@@ -89,7 +89,7 @@ func throw(player,_build = false):
 #	e.velocity = player.get_facing().normalized() * 1000
 #	e.throwing = true
 #	e.set_wearing(false)
-	queue_free()
+	call_deferred("queue_free")
 
 
 func set_wearing(value):
@@ -140,7 +140,7 @@ func _on_destroy():
 		build_point.activate_build()
 
 	throw(Global.player)
-	queue_free()
+	call_deferred("queue_free")
 
 
 func on_select():
