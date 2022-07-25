@@ -75,6 +75,8 @@ func _process(delta):
 		
 	
 	# move the parallax layers
+	return
+	
 	for i in $Parallax/Control.get_children():
 		i.get_material().set_shader_param("offset", $Camera2D.get_camera_screen_center())
 		i.get_material().set_shader_param("rot_offset", get_global_rotation())
