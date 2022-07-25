@@ -37,7 +37,7 @@ func _ready():
 			cells[i] = cliped.back()
 	
 	# generate island
-	for i in range(10):
+	for i in range(cells.size()):
 		# random generation chance
 		if randi() % 2:
 			

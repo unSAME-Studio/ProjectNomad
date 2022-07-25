@@ -6,7 +6,6 @@ var controlling = false
 var using = false
 
 func _ready():
-	._ready()
 	base.controlled.append(self)
 	self.connect("tree_exiting", self, "destroy")
 

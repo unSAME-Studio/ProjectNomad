@@ -20,7 +20,7 @@ func align_camera():
 
 
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("zoom_reset"):
 		camera.set_zoom(Vector2(1, 1))
 	
@@ -75,6 +75,8 @@ func _process(delta):
 		
 	
 	# move the parallax layers
+	return
+	
 	for i in $Parallax/Control.get_children():
 		i.get_material().set_shader_param("offset", $Camera2D.get_camera_screen_center())
 		i.get_material().set_shader_param("rot_offset", get_global_rotation())

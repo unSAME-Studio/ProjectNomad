@@ -68,7 +68,7 @@ func check_build_condition(target_mode = false) -> bool:
 		return false
 
 
-func _process(delta):
+func _process(_delta):
 	#check if in build_point range
 	if build_points:
 		#check if on build point, output a buildpoint to target, and set point_mode to true if =\ 

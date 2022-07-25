@@ -2,8 +2,6 @@ extends Culpit
 
 
 func _ready():
-	._ready()
-	
 	var culpit_list = Global.culpits_data.keys()
 	culpit_list.sort()
 	for i in culpit_list:

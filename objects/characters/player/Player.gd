@@ -140,7 +140,8 @@ func _unhandled_input(event):
 func _process(delta):
 	if last_state != state.get_class():
 		last_state = state.get_class()
-		print(last_state)
+		#print(last_state)
+
 #	if camera:
 #		$AnimatedSprite.set_global_rotation(camera.get_global_rotation())
 #	if build_point_flag:
@@ -195,7 +196,7 @@ func switch_base(new_base):
 	base = new_base
 	reparent(self,new_base)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# temp sliding
 	var temp_base = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 3 ,[],2,true,false)
 	#print(temp_base)
@@ -328,7 +329,8 @@ func heal(dealer, amount):
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 
 func kill():
-	get_tree().reload_current_scene()
+	var error = get_tree().reload_current_scene()
+
 
 # -----------------
 # add cards
