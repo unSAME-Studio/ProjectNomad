@@ -44,7 +44,7 @@ func generate(polygon):
 	print(min_point)
 	
 	# generate a bunch of trees
-	for i in range(randi() % 3):
+	for _i in range(randi() % 3):
 		var t = tree.instance()
 		$entity.add_child(t)
 		
@@ -56,7 +56,7 @@ func generate(polygon):
 		t.set_rotation(rand_range(0, PI))
 		
 	# generate a bunch of rocks
-	for i in range(randi() % 2):
+	for _i in range(randi() % 2):
 		var t = rock.instance()
 		$entity.add_child(t)
 		
@@ -68,7 +68,7 @@ func generate(polygon):
 		t.set_rotation(rand_range(0, PI))
 		
 	# generate a bunch of random items
-	for i in range(randi() % 10):
+	for _i in range(randi() % 10):
 		var e = entity.instance()
 		e.type = Global.entity_data.keys()[randi() % Global.entity_data.size()]
 		e.data = null
@@ -84,7 +84,7 @@ func generate(polygon):
 	
 	# [TEMP]
 	# generate some stupid boys
-	for i in range(randi() % 5):
+	for _i in range(randi() % 5):
 		var e = boys.instance()
 		
 		add_child(e)

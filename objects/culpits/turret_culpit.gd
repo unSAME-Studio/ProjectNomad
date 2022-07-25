@@ -7,8 +7,6 @@ var bullet = preload("res://objects/weapons/bullet.tscn")
 
 
 func _ready():
-	._ready()
-	
 	var p = Position2D.new()
 	$Sprite.add_child(p)
 	p.set_name("Position2D")
@@ -38,7 +36,7 @@ func initial_control(body):
 		snap_position(body)
 
 
-func stop_control(body):
+func stop_control(_body):
 	user = null
 	#body.camera.camera.set_zoom(Vector2(1,1))
 	

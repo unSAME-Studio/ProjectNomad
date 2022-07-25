@@ -8,8 +8,6 @@ var enabled = false
 
 
 func _ready():
-	
-	._ready()
 	if data != null:
 		print("Hey it contains data")
 		
@@ -94,10 +92,6 @@ func initial_control(body):
 			e.set_wearing(false)
 			e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
 			e.throwing = true
-
-
-func stop_control(body):
-	.stop_control(body)
 
 
 func use_storing() -> bool:

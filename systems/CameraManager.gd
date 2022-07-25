@@ -20,7 +20,7 @@ func align_camera():
 
 
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("zoom_reset"):
 		camera.set_zoom(Vector2(1, 1))
 	

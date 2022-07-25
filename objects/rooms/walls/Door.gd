@@ -4,7 +4,7 @@ var door_instance = preload("res://objects/rooms/walls/door_struct.tscn")
 var point
 
 func ready():
-	polygon = $Polygon2Ds
+	polygon = $Polygon2D
 	type = 'door wall'
 #	$CollisionPolygon2D.polygon = $Polygon2D.polygon
 #	$LightOccluder2D.occluder.set_polygon($Polygon2D.polygon)
