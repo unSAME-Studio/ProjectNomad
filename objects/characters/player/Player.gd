@@ -140,7 +140,8 @@ func _unhandled_input(event):
 func _process(delta):
 	if last_state != state.get_class():
 		last_state = state.get_class()
-		print(last_state)
+		#print(last_state)
+
 #	if camera:
 #		$AnimatedSprite.set_global_rotation(camera.get_global_rotation())
 #	if build_point_flag:
