@@ -46,27 +46,27 @@ func generate(polygon):
 	# generate a bunch of trees
 	for _i in range(randi() % 3):
 		var t = tree.instance()
-		$entity.add_child(t)
 		
 		var pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		while not Geometry.is_point_in_polygon(pos, $Polygon2D.get_polygon()):
 			pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		
-		#t.set_global_position(pos)
-		t.call_deferred("set_global_position", pos)
+		$entity.add_child(t)
+		t.set_global_position(pos)
+		#t.call_deferred("set_global_position", pos)
 		t.set_rotation(rand_range(0, PI))
 		
 	# generate a bunch of rocks
 	for _i in range(randi() % 2):
 		var t = rock.instance()
-		$entity.add_child(t)
 		
 		var pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		while not Geometry.is_point_in_polygon(pos, $Polygon2D.get_polygon()):
 			pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		
-		#t.set_global_position(pos)
-		t.call_deferred("set_global_position", pos)
+		$entity.add_child(t)
+		t.set_global_position(pos)
+		#t.call_deferred("set_global_position", pos)
 		t.set_rotation(rand_range(0, PI))
 		
 	# generate a bunch of random items
@@ -75,14 +75,14 @@ func generate(polygon):
 		e.type = Global.entity_data.keys()[randi() % Global.entity_data.size()]
 		e.data = null
 		
-		$entity.add_child(e)
 		
 		var pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		while not Geometry.is_point_in_polygon(pos, $Polygon2D.get_polygon()):
 			pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		
-		#e.set_global_position(pos)
-		e.call_deferred("set_global_position", pos)
+		$entity.add_child(e)
+		e.set_global_position(pos)
+		#e.call_deferred("set_global_position", pos)
 		e.set_rotation(rand_range(0, PI))
 	
 	# [TEMP]
@@ -90,11 +90,11 @@ func generate(polygon):
 	for _i in range(randi() % 5):
 		var e = boys.instance()
 		
-		add_child(e)
 		
 		var pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		while not Geometry.is_point_in_polygon(pos, $Polygon2D.get_polygon()):
 			pos = Vector2(rand_range(min_point.x, max_point.x), rand_range(min_point.y, max_point.y))
 		
-		#e.set_global_position(pos)
-		e.call_deferred("set_global_position", pos)
+		add_child(e)
+		e.set_global_position(pos)
+		#e.call_deferred("set_global_position", pos)
