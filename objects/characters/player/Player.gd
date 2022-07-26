@@ -93,6 +93,8 @@ func reset_throw():
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
 
+func get_base():
+	return self
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("storage_left"):
