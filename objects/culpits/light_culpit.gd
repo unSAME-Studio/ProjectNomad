@@ -6,8 +6,6 @@ var rotate_speed = 1
 
 
 func _ready():
-	._ready()
-	
 	light2d = Light2D.new()
 	light2d.set_texture(load("res://arts/light.png"))
 	light2d.set_texture_scale(2)
