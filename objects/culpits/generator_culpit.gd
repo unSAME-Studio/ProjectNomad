@@ -7,14 +7,16 @@ var current_bodies
 func _process(delta):
 	if enabled:
 		$Sprite.rotate(-5 * delta)
-		
+	
 		# check for differences
 		if current_bodies != $DetectionArea.get_overlapping_bodies():
-			print("Update bodies generator")
+			print("|||||||     Update bodies generator")
 			current_bodies = $DetectionArea.get_overlapping_bodies()
 			
-			for i in $DetectionArea.get_overlapping_bodies():
-				i.powered()
+		#print($DetectionArea.get_overlapping_bodies())
+		for i in $DetectionArea.get_overlapping_bodies():
+			i.powered()
+
 
 
 func operate(player):
