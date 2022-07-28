@@ -44,7 +44,7 @@ func stop_control(body):
 
 
 func _on_Timer_timeout():
-	if $RayCast2D.is_colliding():
+	if $RayCast2D.is_colliding() and $CooldownComponent.can_fire(5):
 		
 		# snap line2d position
 		var p = PoolVector2Array([Vector2.ZERO, to_local($RayCast2D.get_collision_point())])
@@ -58,7 +58,10 @@ func _on_Timer_timeout():
 		var e = explosion.instance()
 		get_tree().get_current_scene().get_node("Node2D").add_child(e)
 		e.set_global_position($RayCast2D.get_collision_point())
-	
+		
+		# consume cooldown
+		$CooldownComponent.increase_cooldown(5)
+		
 	else:
 		# reset line2d
 		var p = PoolVector2Array([Vector2.ZERO, Vector2(500, 0)])
