@@ -77,7 +77,6 @@ func generate(polygon):
 		
 		$entity.add_child(t)
 		t.set_position(pos)
-		#t.call_deferred("set_global_position", pos)
 		t.set_rotation(rand_range(0, PI))
 		
 	# generate a bunch of rocks
@@ -90,7 +89,6 @@ func generate(polygon):
 		
 		$entity.add_child(t)
 		t.set_position(pos)
-		#t.call_deferred("set_global_position", pos)
 		t.set_rotation(rand_range(0, PI))
 		
 	# generate a bunch of random items
@@ -106,7 +104,6 @@ func generate(polygon):
 		
 		$entity.add_child(e)
 		e.set_position(pos)
-		#e.call_deferred("set_global_position", pos)
 		e.set_rotation(rand_range(0, PI))
 	
 	# [TEMP]
@@ -121,4 +118,3 @@ func generate(polygon):
 		
 		add_child(e)
 		e.set_position(pos)
-		#e.call_deferred("set_global_position", pos)
