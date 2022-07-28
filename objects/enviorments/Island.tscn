@@ -24,6 +24,7 @@ script = ExtResource( 4 )
 offset_amount = -0.2
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -5
 antialiased = true
 texture = ExtResource( 5 )
 polygon = PoolVector2Array( -143, -146, -657, 102, -63, 942, 1209, 342, 801, -810, -167, -978 )
