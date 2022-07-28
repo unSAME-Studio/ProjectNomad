@@ -10,7 +10,7 @@ radius = 5.0
 [node name="bullet" type="KinematicBody2D"]
 z_index = 30
 collision_layer = 32
-collision_mask = 29
+collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -18,7 +18,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.941176, 0.396078, 0.396078, 1 )
+modulate = Color( 1.4, 0.6, 0.6, 1 )
 rotation = 1.5708
 texture = ExtResource( 1 )
 
@@ -32,4 +32,14 @@ shadow_enabled = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="fuse" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 61
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fuse"]
+rotation = 1.5708
+shape = SubResource( 1 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="area_entered" from="fuse" to="." method="_on_fuse_area_entered"]
+[connection signal="body_entered" from="fuse" to="." method="_on_fuse_body_entered"]

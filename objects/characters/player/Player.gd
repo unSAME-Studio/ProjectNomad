@@ -93,6 +93,8 @@ func reset_throw():
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
 
+func get_base():
+	return self
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("storage_left"):
@@ -315,8 +317,8 @@ func is_in_air():
 func damage(dealer, amount):
 	# ignore if self damage
 	if dealer == self:
-		return
-	
+		return false
+	return true
 	health = clamp(health - amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
