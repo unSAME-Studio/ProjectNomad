@@ -17,11 +17,11 @@ func _ready():
 
 
 func damage(dealer, amount):
-	#print("%s hit by %s | %d - %d" % [get_parent().get_name(), dealer.get_name(), health, amount])
+	print("%s hit by %s | %d - %d" % [get_parent().get_name(), dealer.get_name(), health, amount])
 	
 	# ignore if self damage
-	if dealer == self:
-		return
+	if dealer == self.get_parent():
+		return false
 	
 	# show bar when first hit
 	if health == health_max:
@@ -46,7 +46,7 @@ func damage(dealer, amount):
 			get_parent()._on_destroy()
 		else:
 			_on_destroy()
-
+	return true
 
 func reset():
 	health = health_max

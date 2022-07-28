@@ -317,8 +317,8 @@ func is_in_air():
 func damage(dealer, amount):
 	# ignore if self damage
 	if dealer == self:
-		return
-	
+		return false
+	return true
 	health = clamp(health - amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
