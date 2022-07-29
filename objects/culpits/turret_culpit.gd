@@ -36,6 +36,8 @@ func operate(player):
 		get_tree().get_current_scene().get_node("Node2D").add_child(b)
 		
 		cooldown.increase_cooldown(10)
+		
+		$Anim.play("fire")
 
 
 func initial_control(body):

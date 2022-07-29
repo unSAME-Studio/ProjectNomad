@@ -49,6 +49,8 @@ func _on_Timer_timeout():
 		# consume cooldown
 		$CooldownComponent.increase_cooldown(5)
 		
+		$Anim.play("fire")
+		
 		if $RayCast2D.is_colliding():
 			
 			# snap line2d position
