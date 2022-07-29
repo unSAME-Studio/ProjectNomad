@@ -99,6 +99,10 @@ rotation = 2.44776e-06
 position = Vector2( -200, -280 )
 
 [node name="Culpit2" parent="objects" instance=ExtResource( 9 )]
-position = Vector2( 200, -280 )
+position = Vector2( 0, -160 )
+scale = Vector2( 2, 2 )
+damage_buff = 2
+speed_buff = 2
+cd_multiplyer = 2
 
 [editable path="objects/Culpit2"]

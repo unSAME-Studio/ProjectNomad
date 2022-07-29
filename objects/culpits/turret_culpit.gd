@@ -5,8 +5,13 @@ var controlling = false
 
 var bullet = preload("res://objects/weapons/bullet.tscn")
 
+
+var damage = 6
+var projectile_speed = 5
+var cd = 0.25
 var cooldown_comp = preload("res://systems/CooldownComponent.tscn")
 var cooldown
+
 
 
 func _ready():
@@ -30,6 +35,10 @@ func operate(player):
 	if cooldown.can_fire(10):
 		print("FIRE!!!")
 		var b = bullet.instance()
+		if slotted:
+			b.damage = damage + slotted.damage_buff
+			b.speed = projectile_speed*slotted.speed_buff
+			b.scale = scale
 		b.parent = self
 		b.set_global_position($Sprite/Position2D.get_global_position())
 		b.set_global_rotation($Sprite.get_global_rotation())
@@ -38,6 +47,7 @@ func operate(player):
 		cooldown.increase_cooldown(10)
 		
 		$Anim.play("fire")
+
 
 
 func initial_control(body):

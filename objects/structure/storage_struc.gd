@@ -5,6 +5,10 @@ var controlling = false
 
 var using = false
 
+export var damage_buff = 1
+export var speed_buff = 1
+export var cd_multiplyer = 1
+
 func _ready():
 	base.controlled.append(self)
 	self.connect("tree_exiting", self, "destroy")
@@ -13,25 +17,31 @@ func destroy():
 	base.controlled.erase(self)
 	if connected:
 		connected.destroy()
-	disconnect_culpit()
+	disconnect_culpit(true)
 
 func operate(player):
 	if connected:
 		if not using:
 			connected.operate(player)
 			using = true
-			$Timer.start()
+			$Timer.start(connected.cd * cd_multiplyer)
 
 func connect_culpit(object):
 	if object:
 		connected = object
+		connected.slotted = self
+		
 		connected.wearing = true
 		connected.initial_control(self)
+		
+		connected.scale = scale
 		connected.connect("tree_exiting", self, "disconnect_culpit")
 #		object.get_parent().remove_child(object)
 #		add_child(object)
 
-func disconnect_culpit():
+func disconnect_culpit(clear = false):
+	if not clear:
+		connected.slotted = null
 	connected = null
 
 func _process(_delta):
