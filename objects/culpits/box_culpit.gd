@@ -73,6 +73,9 @@ func _process(delta):
 				$Sprite/Label.set_text(String(count))
 				
 				print("sucking %s at count %d" % [storing, count])
+				
+				# update player ui (kinda sketch
+				user.storage_ui[user.wearing].update_box_info(storing, count)
 
 
 func initial_control(body):

@@ -87,8 +87,8 @@ func _input(event):
 #			wearing = null
 			#pre_object.connect("tree_exiting", self, "reset_throw")
 
-func reset_throw():
-	wearing = true
+#func reset_throw():
+#	wearing = 0
 	
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
@@ -316,8 +316,10 @@ func is_in_air():
 # -----------------
 func damage(dealer, amount):
 	# ignore if self damage
+	print(dealer.name, self.name)
 	if dealer == self:
 		return false
+	
 	return true
 	health = clamp(health - amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
