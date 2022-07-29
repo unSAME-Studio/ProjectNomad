@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enviorments/Island.tscn" type="PackedScene" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://objects/entities/Entity.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/enviorments/Tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/ship_base.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/object_base.gd" type="Script" id=12]
+[ext_resource path="res://objects/rooms/room2.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/culpits/Culpit.tscn" type="PackedScene" id=14]
+[ext_resource path="res://objects/characters/enemy/StupidBoy.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -100,6 +104,10 @@ position = Vector2( 70.5459, -319.3 )
 [node name="Tree" parent="Node2D/Island2/objects" index="1" instance=ExtResource( 10 )]
 position = Vector2( -196.558, -547.293 )
 
+[node name="Culpit" parent="Node2D/Island2/objects" index="2" instance=ExtResource( 14 )]
+position = Vector2( 467.436, 225.143 )
+type = "light"
+
 [node name="Entity" parent="Node2D/Island2/entity" index="0" instance=ExtResource( 9 )]
 position = Vector2( -177, 47 )
 
@@ -107,16 +115,33 @@ position = Vector2( -177, 47 )
 position = Vector2( 107, -125 )
 
 [node name="Entity3" parent="Node2D/Island2/entity" index="2" instance=ExtResource( 9 )]
-position = Vector2( -205.837, -153.01 )
+position = Vector2( 334.831, 352.536 )
 
 [node name="Entity4" parent="Node2D/Island2/entity" index="3" instance=ExtResource( 9 )]
-position = Vector2( 198, 401 )
+position = Vector2( 420.134, 480.962 )
 
 [node name="Entity5" parent="Node2D/Island2/entity" index="4" instance=ExtResource( 9 )]
-position = Vector2( 413.449, -17.2101 )
+position = Vector2( 516.428, 374.223 )
 
 [node name="StupidBoy" parent="Node2D/Island2" index="6"]
 position = Vector2( -294.61, -724.622 )
+
+[node name="Base" type="RigidBody2D" parent="Node2D/Island2/structure" index="0"]
+position = Vector2( 420.327, 373.473 )
+collision_layer = 2
+collision_mask = 0
+mode = 1
+script = ExtResource( 12 )
+
+[node name="rooms" type="Node2D" parent="Node2D/Island2/structure/Base"]
+
+[node name="room" parent="Node2D/Island2/structure/Base/rooms" instance=ExtResource( 13 )]
+rotation = 2.63467
+
+[node name="Basecollision" type="CollisionPolygon2D" parent="Node2D/Island2/structure/Base"]
+
+[node name="StupidBoy2" parent="Node2D/Island2" instance=ExtResource( 15 )]
+position = Vector2( 468.559, 433.287 )
 
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 947, 623 )

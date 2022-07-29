@@ -23,8 +23,8 @@ func damage(dealer, amount):
 	if dealer == self.get_parent():
 		return false
 	if "base" in self.get_parent():
-		print(dealer)
-		print(get_parent().base)
+#		print(dealer)
+#		print(get_parent().base)
 		if dealer == self.get_parent().base:
 			return false
 	# show bar when first hit
