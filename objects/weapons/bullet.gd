@@ -6,19 +6,22 @@ var parent
 onready var user = parent.user
 var speed = 5
 var damage = 6
+var collided = null
+
+export var mounted = false
+
 
 func _process(delta):
-	var collided = move_and_collide(speed * Vector2.RIGHT.rotated(get_rotation()), true)
+	move_and_collide(speed * Vector2.RIGHT.rotated(get_rotation()))
 	if collided:
-		print(collided.get_collider().name)
 		
-		# ignore parent (turret
-		if collided.get_collider() == parent:
-			return
-			
-		# send message to the damage component
-		if collided.get_collider().has_node("DamageComponent"):
-			collided.get_collider().get_node("DamageComponent").damage(user, damage)
+#		# ignore parent (turret
+#		if collided.get_collider() == parent:
+#			return
+#
+#		# send message to the damage component
+#		if collided.get_collider().has_node("DamageComponent"):
+#			collided.get_collider().get_node("DamageComponent").damage(user, damage)
 	
 		# make particles
 		var e = explosion.instance()
@@ -30,3 +33,19 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	queue_free()
+
+
+func _on_fuse_area_entered(area):
+	pass
+
+
+func _on_fuse_body_entered(body):
+	if not body.get_collision_layer_bit(6):
+		if body != parent:
+			if body.has_node("DamageComponent"):
+				if mounted:
+					if body.get_node("DamageComponent").damage(user, damage):
+						collided = true
+				else:
+					body.get_node("DamageComponent").damage(user, damage)
+					collided = true
