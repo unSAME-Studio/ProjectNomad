@@ -20,7 +20,7 @@ func update_polygon(input):
 	for i in input.polygon:
 		in_polygon.append(i+offset)
 	$Basecollision.polygon = Geometry.merge_polygons_2d(in_polygon,$Basecollision.polygon)[0]
-	$baseshape/Basecollision2.polygon = $Basecollision.polygon
+	#$baseshape/Basecollision2.polygon = $Basecollision.polygon
 
 
 func handle_movement(direction):

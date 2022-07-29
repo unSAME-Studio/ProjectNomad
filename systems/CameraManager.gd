@@ -7,18 +7,22 @@ onready var camera = get_node("Camera2D")
 
 export(NodePath) var target_node_path
 onready var target = get_node(target_node_path)
+
+var camera_mode = ['NORMAL','PILOT']
+
 var align_flag = false
 var rotation_temp = 0
 var rotation_changed_flag = true
 var align_fix = 0
+var center_camera = false
+
+
 func _ready():
 	target.camera = self
 	#camera.rotating = true
 
 func align_camera():
 	align_flag = true
-
-
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("zoom_reset"):
@@ -48,9 +52,13 @@ func _process(delta):
 		var new_zoom = clamp(camera.get_zoom().x * 1.1, MIN_ZOOM, MAX_ZOOM)
 		camera.set_zoom(lerp(camera.get_zoom(), Vector2(new_zoom, new_zoom), 20 * delta))
 	
-	
+	if center_camera:
+		for i in range(0,4):
+			camera.set_drag_margin(i,lerp(camera.get_drag_margin(i), 0.05, 0.02))
+	else:
+		for i in range(0,4):
+			camera.set_drag_margin(i,lerp(camera.get_drag_margin(i), 0.2, 0.05))
 	set_global_position(target.get_global_position())
-	
 	
 	#movement inheritance check @walk_state.gd
 	if not rotation_changed_flag:

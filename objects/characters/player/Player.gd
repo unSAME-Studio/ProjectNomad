@@ -320,14 +320,16 @@ func damage(dealer, amount):
 	print(dealer.name, self.name)
 	if dealer == self:
 		return false
-	
-	return true
+	if controlling:
+		if dealer == base:
+			return false
 	health = clamp(health - amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
 	if health <= 0:
 		print("GAME OVER")
 		kill()
+	return true
 
 func heal(dealer, amount):
 	health = clamp(health + amount, 0, 100)

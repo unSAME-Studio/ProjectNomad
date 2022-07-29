@@ -5,9 +5,10 @@ var controlling = false
 
 var using = false
 
-export var damage_buff = 1
-export var speed_buff = 1
-export var cd_multiplyer = 1
+export var rate = 0.25
+export var damage_buff = 1.0
+export var speed_buff = 1.0
+export var cd_multiplyer = 1.0
 
 func _ready():
 	base.controlled.append(self)
@@ -24,7 +25,7 @@ func operate(player):
 		if not using:
 			connected.operate(player)
 			using = true
-			$Timer.start(connected.cd * cd_multiplyer)
+			$Timer.start(rate)
 
 func connect_culpit(object):
 	if object:
@@ -32,7 +33,9 @@ func connect_culpit(object):
 		connected.slotted = self
 		
 		connected.wearing = true
-		connected.initial_control(self)
+		connected.initial_control(base)
+		
+
 		
 		connected.scale = scale
 		connected.connect("tree_exiting", self, "disconnect_culpit")

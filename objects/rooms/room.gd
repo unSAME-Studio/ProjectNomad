@@ -21,6 +21,9 @@ func active(_base):
 	base = _base
 	base.rooms.append(self)
 	base.update_polygon($Polygon2D)
+	for i in $structures.get_children():
+		if i.has_method('active'):
+			i.active()
 #	if build_points:
 #		for i in build_points:
 #			i.connect("tree_exiting", self, "disconnect_point")

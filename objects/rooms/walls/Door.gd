@@ -20,6 +20,7 @@ func spawn_door():
 	else:
 		for i in $structure.get_children():
 			i.queue_free()
+			
 func destroy():
 	hide()
 	$CollisionPolygon2D2.polygon = []

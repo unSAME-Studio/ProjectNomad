@@ -30,6 +30,9 @@ func handle_movement(direction):
 		var currrangular = get_angular_velocity()
 		if currvelocity.length() > 300:
 			set_linear_velocity(lerp(currvelocity, currvelocity.normalized()*300, 0.05))
+			Global.player.camera.center_camera = true
+		else:
+			Global.player.camera.center_camera = false
 		set_angular_velocity(lerp(currrangular,0.0, 0.01))
 			
 		if Input.is_action_pressed("ui_select"):
@@ -50,6 +53,7 @@ func player_leaved(player):
 
 func disable_control():
 	captain.camera.align_camera()
+	Global.player.camera.center_camera = false
 	captain = null
 	controlling = false
 	leave = false

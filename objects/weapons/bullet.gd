@@ -8,7 +8,7 @@ var speed = 5
 var damage = 6
 var collided = null
 
-export var mounted = false
+export var mounted = true
 
 
 func _process(delta):

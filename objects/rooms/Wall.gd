@@ -6,17 +6,27 @@ var type = 'wall'
 var polygon_id
 var polygon
 var actived = true
+var base = null
+export var sp = false
 
 func _ready():
 	var point = load("res://objects/buildings/buildpoint.tscn").instance()
 	point.type = 'wall'
 	add_child(point)
-	ready()
+	if sp:
+		active()
 
+func active():
+	base = get_parent().get_parent().get_base()
+	ready()
+	
 func ready():
 	polygon = $Polygon2D
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
 	$LightOccluder2D.occluder.set_polygon($Polygon2D.polygon)
+	
+func get_base():
+	return get_parent().get_parent().get_base()
 
 func deactivate():
 	pass

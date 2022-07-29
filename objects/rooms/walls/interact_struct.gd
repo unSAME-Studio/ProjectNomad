@@ -3,9 +3,14 @@ extends StaticBody2D
 var action = true
 var door_state = false
 var in_range
+var base
+
+func get_base():
+	return base
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	base = get_parent().get_parent().get_base()
+
 	
 func get_hint_text():
 	return 'Door'

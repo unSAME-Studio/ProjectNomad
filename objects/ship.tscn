@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/rooms/room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/scripts/ship.gd" type="Script" id=2]
 [ext_resource path="res://objects/culpits/Culpit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/culpits/crafter_culpit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/culpits/turret_culpit.gd" type="Script" id=5]
+[ext_resource path="res://objects/culpits/zapper_culpit.tscn" type="PackedScene" id=6]
 
 [node name="Base" type="RigidBody2D"]
 collision_layer = 2
@@ -32,6 +33,10 @@ type = "turret"
 [node name="Crafter_Culpit" parent="objects" instance=ExtResource( 4 )]
 position = Vector2( -100, 98 )
 type = "crafter"
+
+[node name="Zapper_Culpit" parent="objects" instance=ExtResource( 6 )]
+position = Vector2( 5, 127 )
+type = "zapper"
 
 [node name="baseshape" type="Area2D" parent="."]
 collision_layer = 4
