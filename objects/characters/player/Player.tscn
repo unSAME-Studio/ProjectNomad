@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -49,6 +49,10 @@ shortcut = SubResource( 8 )
 
 [sub_resource type="DynamicFont" id=18]
 size = 18
+font_data = ExtResource( 17 )
+
+[sub_resource type="DynamicFont" id=26]
+size = 22
 font_data = ExtResource( 17 )
 
 [sub_resource type="InputEventAction" id=10]
@@ -121,6 +125,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -259,6 +264,39 @@ align = 1
 valign = 2
 autowrap = true
 
+[node name="Additional" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 12
+size_flags_vertical = 12
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage/Additional"]
+margin_left = 23.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage/Additional"]
+margin_left = 39.0
+margin_top = 43.0
+margin_right = 43.0
+margin_bottom = 70.0
+size_flags_horizontal = 4
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0.521569, 0.556863, 0.568627, 1 )
+custom_fonts/font = SubResource( 26 )
+text = " "
+
 [node name="Storage2" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
 margin_left = 86.0
 margin_right = 168.0
@@ -297,6 +335,39 @@ margin_bottom = 24.5
 rect_min_size = Vector2( 50, 50 )
 expand = true
 stretch_mode = 6
+
+[node name="Additional" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 12
+size_flags_vertical = 12
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage2/Additional"]
+margin_left = 23.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage2/Additional"]
+margin_left = 39.0
+margin_top = 43.0
+margin_right = 43.0
+margin_bottom = 70.0
+size_flags_horizontal = 4
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0.521569, 0.556863, 0.568627, 1 )
+custom_fonts/font = SubResource( 26 )
+text = " "
 
 [node name="Storage3" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
 margin_left = 172.0
@@ -337,6 +408,39 @@ rect_min_size = Vector2( 50, 50 )
 expand = true
 stretch_mode = 6
 
+[node name="Additional" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 12
+size_flags_vertical = 12
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage3/Additional"]
+margin_left = 23.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage3/Additional"]
+margin_left = 39.0
+margin_top = 43.0
+margin_right = 43.0
+margin_bottom = 70.0
+size_flags_horizontal = 4
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0.521569, 0.556863, 0.568627, 1 )
+custom_fonts/font = SubResource( 26 )
+text = " "
+
 [node name="Storage4" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
 margin_left = 258.0
 margin_right = 340.0
@@ -376,6 +480,39 @@ rect_min_size = Vector2( 50, 50 )
 expand = true
 stretch_mode = 6
 
+[node name="Additional" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 12
+size_flags_vertical = 12
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage4/Additional"]
+margin_left = 23.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage4/Additional"]
+margin_left = 39.0
+margin_top = 43.0
+margin_right = 43.0
+margin_bottom = 70.0
+size_flags_horizontal = 4
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0.521569, 0.556863, 0.568627, 1 )
+custom_fonts/font = SubResource( 26 )
+text = " "
+
 [node name="Storage5" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
 margin_left = 344.0
 margin_right = 426.0
@@ -414,6 +551,39 @@ margin_bottom = 24.5
 rect_min_size = Vector2( 50, 50 )
 expand = true
 stretch_mode = 6
+
+[node name="Additional" type="VBoxContainer" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+size_flags_horizontal = 12
+size_flags_vertical = 12
+custom_constants/separation = -2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage5/Additional"]
+margin_left = 23.0
+margin_top = 10.0
+margin_right = 58.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 35, 35 )
+mouse_filter = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Count" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage5/Additional"]
+margin_left = 39.0
+margin_top = 43.0
+margin_right = 43.0
+margin_bottom = 70.0
+size_flags_horizontal = 4
+theme = ExtResource( 5 )
+custom_colors/font_color = Color( 0.521569, 0.556863, 0.568627, 1 )
+custom_fonts/font = SubResource( 26 )
+text = " "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
 margin_top = 716.0

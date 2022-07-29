@@ -41,7 +41,7 @@ func _on_fuse_area_entered(area):
 
 func _on_fuse_body_entered(body):
 	if not body.get_collision_layer_bit(6):
-		if body != parent:
+		if body != parent and body != user:
 			if body.has_node("DamageComponent"):
 				if mounted:
 					if body.get_node("DamageComponent").damage(user, damage):

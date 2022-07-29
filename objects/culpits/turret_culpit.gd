@@ -18,7 +18,7 @@ func _ready():
 	cooldown = cooldown_comp.instance()
 	add_child(cooldown)
 	cooldown.set_name("CooldownComponent")
-	cooldown.speed = 10
+	cooldown.speed = 20
 
 
 func _process(delta):
@@ -36,6 +36,8 @@ func operate(player):
 		get_tree().get_current_scene().get_node("Node2D").add_child(b)
 		
 		cooldown.increase_cooldown(10)
+		
+		$Anim.play("fire")
 
 
 func initial_control(body):

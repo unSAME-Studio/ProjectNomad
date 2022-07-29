@@ -73,6 +73,9 @@ func _process(delta):
 				$Sprite/Label.set_text(String(count))
 				
 				print("sucking %s at count %d" % [storing, count])
+				
+				# update player ui (kinda sketch
+				user.storage_ui[user.wearing].update_box_info(storing, count)
 
 
 func initial_control(body):
@@ -98,6 +101,9 @@ func use_storing() -> bool:
 	if count > 0:
 		count -= 1
 		$Sprite/Label.set_text(String(count))
+		
+		# update player ui (kinda sketch
+		user.storage_ui[user.wearing].update_box_info(storing, count)
 		
 		# clear graphic if empty
 		if count == 0:

@@ -17,7 +17,7 @@ func _ready():
 
 
 func damage(dealer, amount):
-	print("%s hit by %s | %d - %d" % [get_parent().get_name(), dealer.get_name(), health, amount])
+	#print("%s hit by %s | %d - %d" % [get_parent().get_name(), dealer.get_name(), health, amount])
 	
 	# ignore if self damage
 	if dealer == self.get_parent():

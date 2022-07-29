@@ -44,25 +44,29 @@ func stop_control(body):
 
 
 func _on_Timer_timeout():
-	if $RayCast2D.is_colliding() and $CooldownComponent.can_fire(5):
-		
-		# snap line2d position
-		var p = PoolVector2Array([Vector2.ZERO, to_local($RayCast2D.get_collision_point())])
-		$Line2D.set_points(p)
-		
-		# send message to the damage component
-		if $RayCast2D.get_collider().has_node("DamageComponent"):
-			$RayCast2D.get_collider().get_node("DamageComponent").heal(user, damage)
-		
-		# make particles
-		var e = explosion.instance()
-		get_tree().get_current_scene().get_node("Node2D").add_child(e)
-		e.set_global_position($RayCast2D.get_collision_point())
+	if $CooldownComponent.can_fire(5):
 		
 		# consume cooldown
 		$CooldownComponent.increase_cooldown(5)
-	
-	else:
-		# reset line2d
-		var p = PoolVector2Array([Vector2.ZERO, Vector2(500, 0)])
-		$Line2D.set_points(p)
+		
+		$Anim.play("fire")
+		
+		if $RayCast2D.is_colliding():
+			
+			# snap line2d position
+			var p = PoolVector2Array([Vector2.ZERO, to_local($RayCast2D.get_collision_point())])
+			$Line2D.set_points(p)
+			
+			# send message to the damage component
+			if $RayCast2D.get_collider().has_node("DamageComponent"):
+				$RayCast2D.get_collider().get_node("DamageComponent").heal(user, damage)
+			
+			# make particles
+			var e = explosion.instance()
+			get_tree().get_current_scene().get_node("Node2D").add_child(e)
+			e.set_global_position($RayCast2D.get_collision_point())
+		
+		else:
+			# reset line2d
+			var p = PoolVector2Array([Vector2.ZERO, Vector2(500, 0)])
+			$Line2D.set_points(p)

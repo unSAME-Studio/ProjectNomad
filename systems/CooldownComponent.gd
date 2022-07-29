@@ -8,6 +8,10 @@ export var speed = 5
 func _process(delta):
 	cooldown = clamp(cooldown + delta * speed, 0.0, 100.0)
 	
+	# hide UI if cooldown full
+	if cooldown >= 100:
+		$CanvasLayer/Control.hide()
+	
 	if $CanvasLayer/Control.is_visible():
 		$CanvasLayer/Control.set_position(get_parent().get_global_transform_with_canvas().get_origin())
 	
@@ -16,6 +20,9 @@ func _process(delta):
 
 func increase_cooldown(amount):
 	cooldown = clamp(cooldown - amount, 0.0, 100.0)
+	
+	if cooldown < 100:
+		$CanvasLayer/Control.show()
 
 
 func can_fire(amount):

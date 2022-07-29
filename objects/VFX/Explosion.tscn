@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/VFX/Explosion.gd" type="Script" id=1]
-[ext_resource path="res://arts/VFX/damage.png" type="Texture" id=2]
+[ext_resource path="res://arts/ui/panel.png" type="Texture" id=2]
 
 [sub_resource type="Curve" id=4]
 max_value = 100.0
@@ -27,6 +27,7 @@ orbit_velocity_random = 0.0
 damping = 100.0
 damping_random = 0.79
 damping_curve = SubResource( 5 )
+scale = 0.2
 scale_random = 0.07
 scale_curve = SubResource( 2 )
 color = Color( 0.866667, 0.290196, 0.290196, 1 )
