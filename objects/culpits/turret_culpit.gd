@@ -18,7 +18,7 @@ func _ready():
 	cooldown = cooldown_comp.instance()
 	add_child(cooldown)
 	cooldown.set_name("CooldownComponent")
-	cooldown.speed = 10
+	cooldown.speed = 20
 
 
 func _process(delta):
