@@ -27,12 +27,13 @@ func initial_control(body):
 
 
 func stop_control(body):
-	print("stopping " + name + " from controlling")
-	user = null
-	
-	if base.has_method("enable_control"):
-		base.disable_control()
-	
-	body.camera.camera.set_zoom(Vector2(1,1))
-	
-	controlling = false
+	if controlling:
+		print("stopping " + name + " from controlling")
+		user = null
+		
+		if base.has_method("enable_control"):
+			base.disable_control()
+		
+		body.camera.camera.set_zoom(Vector2(1,1))
+		
+		controlling = false

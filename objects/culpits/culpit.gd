@@ -14,6 +14,8 @@ var wearing = false
 
 var build_point
 
+var slotted = null
+
 export(String) var type = "wheel"
 var data setget ,get_data
 
@@ -140,7 +142,7 @@ func _on_destroy():
 	print(type + "have been destroyed")
 	if build_point:
 		build_point.activate_build()
-
+	stop_control()
 	throw(Global.player)
 	call_deferred("queue_free")
 

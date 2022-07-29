@@ -5,6 +5,10 @@ var controlling = false
 
 var bullet = preload("res://objects/weapons/bullet.tscn")
 
+var damage = 6
+var projectile_speed = 5
+var cd = 0.25
+
 
 func _ready():
 	var p = Position2D.new()
@@ -21,7 +25,11 @@ func _process(delta):
 func operate(player):
 	print("FIRE!!!")
 	var b = bullet.instance()
+	if slotted:
+		b.damage = damage + slotted.damage_buff
+		b.speed = projectile_speed*slotted.speed_buff
 	b.parent = self
+	b.scale = scale
 	b.set_global_position($Sprite/Position2D.get_global_position())
 	b.set_global_rotation($Sprite.get_global_rotation())
 	get_tree().get_current_scene().get_node("Node2D").add_child(b)

@@ -25,12 +25,12 @@ script = ExtResource( 2 )
 [node name="Culpit" parent="objects" instance=ExtResource( 3 )]
 
 [node name="Culpit2" parent="objects" instance=ExtResource( 3 )]
-position = Vector2( 90, -127 )
+position = Vector2( 104, 97 )
 script = ExtResource( 5 )
 type = "turret"
 
 [node name="Crafter_Culpit" parent="objects" instance=ExtResource( 4 )]
-position = Vector2( -83, -125 )
+position = Vector2( -100, 98 )
 type = "crafter"
 
 [node name="baseshape" type="Area2D" parent="."]
