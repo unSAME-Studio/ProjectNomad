@@ -134,6 +134,7 @@ func _unhandled_input(event):
 			if wearing != null and storage[wearing]["type"] in Global.culpits_data.keys():
 				if detach_object():
 					var object = $WearSlot.get_child(0)
+					object.set_wearing(false)
 					reparent(object,base)
 					object._on_moved()
 					#object.throw(self,true)
