@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enviorments/Island.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://objects/entities/Entity.tscn" type="PackedScene" id=9]
 [ext_resource path="res://objects/enviorments/Tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/ship_base.tscn" type="PackedScene" id=11]
-[ext_resource path="res://arts/weapons/bullet.png" type="Texture" id=12]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -96,11 +95,5 @@ target_node_path = NodePath("../Player")
 
 [node name="IslandGenerator" type="Node2D" parent="Node2D"]
 script = ExtResource( 7 )
-
-[node name="Bullet" type="Sprite" parent="Node2D"]
-modulate = Color( 83.13, 3, 3, 1 )
-light_mask = 5
-position = Vector2( 1096, -61 )
-texture = ExtResource( 12 )
 
 [editable path="Node2D/Island"]

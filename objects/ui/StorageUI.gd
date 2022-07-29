@@ -2,7 +2,11 @@ extends TextureButton
 
 
 onready var slot = get_index()
+onready var player = get_node("../../../../..")
 var type = null
+
+var box_storing = null
+
 
 func _ready():
 	connect("pressed", self, "_on_button_pressed")
@@ -18,6 +22,11 @@ func add_object(new_type):
 		texture = load("res://arts/culpits/%s.png" % type)
 	$TextureRect.set_texture(texture)
 	
+	# special set box icons
+	if type == "box":
+		if player.storage[slot]["data"] != null:
+			update_box_info(player.storage[slot]["data"]["storing"], player.storage[slot]["data"]["count"])
+	
 	set_tooltip(type.capitalize())
 	
 	set_pressed(true)
@@ -27,13 +36,35 @@ func add_object(new_type):
 func remove_object():
 	type = null
 	$TextureRect.set_texture(Image.new())
+	
+	box_storing = null
+	$Additional/Icon.set_texture(Image.new())
+	$Additional/Count.set_text("")
+
+
+func update_box_info(storing, count):
+	# only update when different type icon
+	if storing != box_storing:
+		box_storing = storing
+		
+		var icon_texture
+		if type == null:
+			icon_texture = ImageTexture.new()
+		else:
+			if storing in Global.entity_data.keys():
+				icon_texture = load("res://arts/resources/%s.png" % storing)
+			else:
+				icon_texture = load("res://arts/culpits/%s.png" % storing)
+			
+		$Additional/Icon.set_texture(icon_texture)
+	
+	# set count
+	$Additional/Count.set_text(String(count))
 
 
 func _on_button_pressed():	
 	print("trying to hold ->")
 	print(type)
-	
-	var player = get_node("../../../../..")
 	
 	# if already wearing the same slot
 	if player.wearing == slot:

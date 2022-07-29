@@ -5,9 +5,13 @@ var controlling = false
 
 var bullet = preload("res://objects/weapons/bullet.tscn")
 
+
 var damage = 6
 var projectile_speed = 5
 var cd = 0.25
+var cooldown_comp = preload("res://systems/CooldownComponent.tscn")
+var cooldown
+
 
 
 func _ready():
@@ -15,6 +19,11 @@ func _ready():
 	$Sprite.add_child(p)
 	p.set_name("Position2D")
 	p.set_position(Vector2(10, 0))
+	
+	cooldown = cooldown_comp.instance()
+	add_child(cooldown)
+	cooldown.set_name("CooldownComponent")
+	cooldown.speed = 20
 
 
 func _process(delta):
@@ -23,16 +32,22 @@ func _process(delta):
 
 
 func operate(player):
-	print("FIRE!!!")
-	var b = bullet.instance()
-	if slotted:
-		b.damage = damage + slotted.damage_buff
-		b.speed = projectile_speed*slotted.speed_buff
-	b.parent = self
-	b.scale = scale
-	b.set_global_position($Sprite/Position2D.get_global_position())
-	b.set_global_rotation($Sprite.get_global_rotation())
-	get_tree().get_current_scene().get_node("Node2D").add_child(b)
+	if cooldown.can_fire(10):
+		print("FIRE!!!")
+		var b = bullet.instance()
+		if slotted:
+			b.damage = damage + slotted.damage_buff
+			b.speed = projectile_speed*slotted.speed_buff
+			b.scale = scale
+		b.parent = self
+		b.set_global_position($Sprite/Position2D.get_global_position())
+		b.set_global_rotation($Sprite.get_global_rotation())
+		get_tree().get_current_scene().get_node("Node2D").add_child(b)
+		
+		cooldown.increase_cooldown(10)
+		
+		$Anim.play("fire")
+
 
 
 func initial_control(body):

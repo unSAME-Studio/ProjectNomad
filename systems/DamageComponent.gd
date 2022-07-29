@@ -17,7 +17,7 @@ func _ready():
 
 
 func damage(dealer, amount):
-	print("%s hit by %s | %d - %d" % [get_parent().get_name(), dealer.get_name(), health, amount])
+	#print("%s hit by %s | %d - %d" % [get_parent().get_name(), dealer.get_name(), health, amount])
 	
 	# ignore if self damage
 	if dealer == self.get_parent():
@@ -72,7 +72,6 @@ func heal(dealer, amount):
 func _process(delta):
 	if $CanvasLayer/Control.is_visible():
 		$CanvasLayer/Control.set_position(get_parent().get_global_transform_with_canvas().get_origin())
-
 
 # this on destory only work if parent doesn't have a _on_destory function
 func _on_destroy():
