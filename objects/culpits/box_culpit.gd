@@ -102,6 +102,9 @@ func use_storing() -> bool:
 		count -= 1
 		$Sprite/Label.set_text(String(count))
 		
+		# update player ui (kinda sketch
+		user.storage_ui[user.wearing].update_box_info(storing, count)
+		
 		# clear graphic if empty
 		if count == 0:
 			$Sprite/Icon.set_texture(Texture.new())

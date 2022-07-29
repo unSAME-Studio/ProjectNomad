@@ -5,7 +5,8 @@ func _ready():
 	var culpit_list = Global.culpits_data.keys()
 	culpit_list.sort()
 	for i in culpit_list:
-		$CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.add_item(i.capitalize(), load("res://arts/culpits/%s.png" % i), true)
+		var text = "%s|%d" % [i.capitalize(), Global.culpits_data[i]["cost"]]
+		$CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.add_item(text, load("res://arts/culpits/%s.png" % i), true)
 
 
 func initial_control(body):
@@ -29,10 +30,12 @@ func operate(player):
 func _on_ItemList_item_selected(index):
 	var target_type = $CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.get_item_text(index)
 	#$CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.unselect(index)
-	print("CRAFTER %s" % target_type)
-	target_type = target_type.to_lower()
+	target_type = target_type.split("|", false)
+	var amount = int(target_type[1])
+	target_type = target_type[0].to_lower()
+	print("CRAFTER %s %d" % [target_type, amount])
 	
-	if Global.player.consume_storage_object("nano"):
+	if Global.player.consume_storage_object("nano", amount):
 		
 		# spawn entity
 		var e = entity.instance()

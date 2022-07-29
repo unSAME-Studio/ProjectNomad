@@ -385,6 +385,20 @@ func find_slot_by_type(type):
 			
 	return null
 
+func count_by_type(type):
+	var count = 0
+	for i in range(0, 5):
+		if storage[i] != null:
+			if storage[i]["type"] == type: 
+				count += 1
+			
+			# else check if it's a box containing item
+			if storage[i]["type"] == "box":
+				if storage[i]["data"] != null and storage[i]["data"]["storing"] == type :
+					count += 1
+	
+	return count
+
 func add_storage_object(type, data) -> bool:
 	var slot = find_storage_space()
 	if slot != null:
@@ -407,30 +421,38 @@ func remove_storage_object(slot) -> bool:
 	
 	return false
 
-func consume_storage_object(type) -> bool:
-	var result = find_slot_by_type(type)
-	if result == null:
+func consume_storage_object(type, amount = 1) -> bool:
+	var owns_amount = count_by_type(type)
+	print("trying to use %d nanos have %d" % [amount, owns_amount])
+	
+	if owns_amount == 0 or owns_amount < amount:
 		return false
 	
-	# check if the slot is a box
-	if type != "box" and storage[result]["type"] == "box":
-		storage[result]["data"]["count"] -= 1
+	for _i in range(amount):
 		
-		# if empty clear box data
-		if storage[result]["data"]["count"] == 0:
-			storage[result]["data"] = null
+		var result = find_slot_by_type(type)
+		if result == null:
+			return false
 		
-		# also update the box if holding it
-		if result == wearing:
-			get_node("WearSlot").get_child(0).use_storing()
-		
-	else:
-		# if holding it also remove it
-		if result == wearing:
-			if detach_object():
-				get_node("WearSlot").get_child(0).queue_free()
+		# check if the slot is a box
+		if type != "box" and storage[result]["type"] == "box":
+			storage[result]["data"]["count"] -= 1
+			
+			# if empty clear box data
+			if storage[result]["data"]["count"] == 0:
+				storage[result]["data"] = null
+			
+			# also update the box if holding it
+			if result == wearing:
+				get_node("WearSlot").get_child(0).use_storing()
+			
 		else:
-			remove_storage_object(result)
+			# if holding it also remove it
+			if result == wearing:
+				if detach_object():
+					get_node("WearSlot").get_child(0).queue_free()
+			else:
+				remove_storage_object(result)
 	
 	return true
 

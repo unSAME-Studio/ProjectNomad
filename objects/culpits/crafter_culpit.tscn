@@ -62,7 +62,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
 margin_right = 347.0
 margin_bottom = 32.0
-text = "Crafter (Everything for 1 Nano!)"
+text = "Crafter Menu"
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
 margin_top = 36.0
