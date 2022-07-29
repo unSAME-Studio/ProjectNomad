@@ -37,6 +37,7 @@ func remove_object():
 	type = null
 	$TextureRect.set_texture(Image.new())
 	
+	box_storing = null
 	$Additional/Icon.set_texture(Image.new())
 	$Additional/Count.set_text("")
 
