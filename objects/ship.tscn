@@ -5,7 +5,7 @@
 [ext_resource path="res://objects/culpits/Culpit.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/culpits/crafter_culpit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/culpits/turret_culpit.gd" type="Script" id=5]
-[ext_resource path="res://objects/culpits/zapper_culpit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/entities/Entity.tscn" type="PackedScene" id=6]
 
 [node name="Base" type="RigidBody2D"]
 collision_layer = 2
@@ -26,20 +26,23 @@ script = ExtResource( 2 )
 [node name="Culpit" parent="objects" instance=ExtResource( 3 )]
 
 [node name="Culpit2" parent="objects" instance=ExtResource( 3 )]
-position = Vector2( 104, 97 )
+position = Vector2( -102, 38 )
 script = ExtResource( 5 )
 type = "turret"
 
 [node name="Crafter_Culpit" parent="objects" instance=ExtResource( 4 )]
-position = Vector2( -100, 98 )
+position = Vector2( -99, 153 )
 type = "crafter"
-
-[node name="Zapper_Culpit" parent="objects" instance=ExtResource( 6 )]
-position = Vector2( 5, 127 )
-type = "zapper"
 
 [node name="baseshape" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
 
 [node name="Basecollision2" type="CollisionPolygon2D" parent="baseshape"]
+
+[node name="Entity" parent="." instance=ExtResource( 6 )]
+position = Vector2( 103, 1 )
+
+[node name="Entity2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 101, 74 )
+type = "turret"
