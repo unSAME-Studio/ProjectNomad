@@ -87,6 +87,37 @@ position = Vector2( 198, 401 )
 [node name="Entity5" parent="Node2D/Island/entity" index="4" instance=ExtResource( 9 )]
 position = Vector2( 547, -247 )
 
+[node name="Island2" parent="Node2D" instance=ExtResource( 2 )]
+position = Vector2( -1614, -1202 )
+rotation = 2.92415
+
+[node name="Polygon2D" parent="Node2D/Island2" index="1"]
+polygon = PoolVector2Array( -365.925, -856.103, -439.701, 279.727, -63, 942, 1209, 342, 414.688, -157.24, -75.6582, -668.054 )
+
+[node name="Rock" parent="Node2D/Island2/objects" index="0" instance=ExtResource( 8 )]
+position = Vector2( 70.5459, -319.3 )
+
+[node name="Tree" parent="Node2D/Island2/objects" index="1" instance=ExtResource( 10 )]
+position = Vector2( -196.558, -547.293 )
+
+[node name="Entity" parent="Node2D/Island2/entity" index="0" instance=ExtResource( 9 )]
+position = Vector2( -177, 47 )
+
+[node name="Entity2" parent="Node2D/Island2/entity" index="1" instance=ExtResource( 9 )]
+position = Vector2( 107, -125 )
+
+[node name="Entity3" parent="Node2D/Island2/entity" index="2" instance=ExtResource( 9 )]
+position = Vector2( -205.837, -153.01 )
+
+[node name="Entity4" parent="Node2D/Island2/entity" index="3" instance=ExtResource( 9 )]
+position = Vector2( 198, 401 )
+
+[node name="Entity5" parent="Node2D/Island2/entity" index="4" instance=ExtResource( 9 )]
+position = Vector2( 413.449, -17.2101 )
+
+[node name="StupidBoy" parent="Node2D/Island2" index="6"]
+position = Vector2( -294.61, -724.622 )
+
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 947, 623 )
 
@@ -97,3 +128,4 @@ target_node_path = NodePath("../Player")
 script = ExtResource( 7 )
 
 [editable path="Node2D/Island"]
+[editable path="Node2D/Island2"]

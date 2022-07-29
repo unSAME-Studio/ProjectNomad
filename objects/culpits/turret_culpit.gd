@@ -8,7 +8,9 @@ var bullet = preload("res://objects/weapons/bullet.tscn")
 
 var damage = 6
 var projectile_speed = 5
-var cd = 0.25
+
+var rate = 0.05
+var cd = 10
 var cooldown_comp = preload("res://systems/CooldownComponent.tscn")
 var cooldown
 
@@ -32,19 +34,20 @@ func _process(delta):
 
 
 func operate(player):
-	if cooldown.can_fire(10):
+	if cooldown.can_fire(cd):
 		print("FIRE!!!")
 		var b = bullet.instance()
 		if slotted:
-			b.damage = damage + slotted.damage_buff
+			b.damage = damage * slotted.damage_buff
 			b.speed = projectile_speed*slotted.speed_buff
 			b.scale = scale
+			
 		b.parent = self
 		b.set_global_position($Sprite/Position2D.get_global_position())
 		b.set_global_rotation($Sprite.get_global_rotation())
 		get_tree().get_current_scene().get_node("Node2D").add_child(b)
 		
-		cooldown.increase_cooldown(10)
+		cooldown.increase_cooldown(cd)
 		
 		$Anim.play("fire")
 
@@ -54,13 +57,15 @@ func initial_control(body):
 	controlling = true
 	user = body
 	print(name + " is being controller")
-	
+	if slotted:
+		cd = cd*slotted.cd_multiplyer
+	print(cd)
 	if not wearing:
 		snap_position(body)
 
 
 func stop_control(_body):
-	user = null
+	user = self
 	#body.camera.camera.set_zoom(Vector2(1,1))
 	
 	controlling = false

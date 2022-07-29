@@ -142,7 +142,7 @@ func _on_destroy():
 	print(type + "have been destroyed")
 	if build_point:
 		build_point.activate_build()
-	stop_control()
+	stop_control(Global.player)
 	throw(Global.player)
 	call_deferred("queue_free")
 

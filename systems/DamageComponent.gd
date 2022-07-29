@@ -22,7 +22,11 @@ func damage(dealer, amount):
 	# ignore if self damage
 	if dealer == self.get_parent():
 		return false
-	
+	if "base" in self.get_parent():
+		print(dealer)
+		print(get_parent().base)
+		if dealer == self.get_parent().base:
+			return false
 	# show bar when first hit
 	if health == health_max:
 		$CanvasLayer/Control.show()
