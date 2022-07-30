@@ -397,7 +397,7 @@ func count_by_type(type):
 			# else check if it's a box containing item
 			if storage[i]["type"] == "box":
 				if storage[i]["data"] != null and storage[i]["data"]["storing"] == type :
-					count += 1
+					count += storage[i]["data"]["count"]
 	
 	return count
 
