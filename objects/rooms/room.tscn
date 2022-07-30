@@ -98,13 +98,13 @@ rotation = 2.44776e-06
 [node name="Culpit" parent="objects" instance=ExtResource( 9 )]
 position = Vector2( -192, -280 )
 rate = 0.1
-damage_buff = 0.2
+damage_buff = 0.4
 cd_multiplyer = 0.5
 
 [node name="Culpit3" parent="objects" instance=ExtResource( 9 )]
 position = Vector2( 192, -280 )
 rate = 0.1
-damage_buff = 0.2
+damage_buff = 0.4
 cd_multiplyer = 0.5
 
 [node name="Culpit2" parent="objects" instance=ExtResource( 9 )]
