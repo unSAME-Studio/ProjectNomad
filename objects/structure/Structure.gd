@@ -92,9 +92,6 @@ func connect_culpit(object):
 	connect_failsafe = false
 
 
-func disconnect_culpit(clear = false):
-	pass
-
 
 func _on_moved():
 	if not Global.player.enter_building_mode():
