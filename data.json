@@ -65,16 +65,36 @@
     "nano": {
       "type": 0,
       "recyclable": 0,
-      "recycled": 0
+      "recycled": "nano"
     },
     "weed": {
       "type": 0,
       "recyclable": 1,
       "recycled": "nano"
     },
+    "seed": {
+      "type": 0,
+      "recyclable": 1,
+      "recycled": "weed"
+    },
+    "scrap": {
+      "type": 0,
+      "recyclable": 1,
+      "recycled": "nano"
+    },
+    "crystal": {
+      "type": 0,
+      "recyclable": 1,
+      "recycled": "nano"
+    },
+    "gasoline": {
+      "type": 0,
+      "recyclable": 0,
+      "recycled": "nano"
+    },
     "booster core": {
       "type": 0,
-      "recyclable": 5,
+      "recyclable": 0,
       "recycled": "nano"
     }
   },
