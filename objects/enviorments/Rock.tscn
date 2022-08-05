@@ -28,5 +28,5 @@ polygon = PoolVector2Array( -36, -70, -66, -12, -14, 20, 0, -35 )
 
 [node name="DamageComponent" parent="." instance=ExtResource( 3 )]
 health_max = 150
-drop_types = [ "crystal", "scrap" ]
+drop_types = [ "crystal", "scrap", "gasoline" ]
 drop_amount = 6
