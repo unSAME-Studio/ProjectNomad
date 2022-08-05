@@ -4,14 +4,14 @@ var explosion = preload("res://objects/VFX/Explosion.tscn")
 
 var parent
 onready var user = parent.user
-var speed = 5
+var speed = 10
 var damage = 6
 var collided = null
 
 export var mounted = true
 
 
-func _process(delta):
+func _physics_process(delta):
 	move_and_collide(speed * Vector2.RIGHT.rotated(get_rotation()))
 	if collided:
 		

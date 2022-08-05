@@ -30,7 +30,7 @@ energy = 0.5
 shadow_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 
 [node name="fuse" type="Area2D" parent="."]
 collision_layer = 0
