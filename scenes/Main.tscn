@@ -55,6 +55,7 @@ color = Color( 0.231373, 0.231373, 0.231373, 1 )
 modulate = Color( 1, 1, 1, 0.501961 )
 material = SubResource( 3 )
 scale = Vector2( 100, 100 )
+z_index = -200
 texture = ExtResource( 5 )
 
 [node name="Base_ship" parent="Node2D" instance=ExtResource( 3 )]
