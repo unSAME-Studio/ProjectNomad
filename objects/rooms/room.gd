@@ -46,3 +46,4 @@ func disconnect_point(point):
 	if active:
 		build_points.erase(point)
 		snappoint.erase(point)
+		Global.player.build_point_flag
