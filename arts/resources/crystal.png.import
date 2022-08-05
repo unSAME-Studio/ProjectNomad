@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/box.png-f4c85b5746ef70c20b9ed24ac4d3c50a.stex"
+path="res://.import/crystal.png-e544438650f582b9c7b63fb1abd33bbb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/culpits/box.png"
-dest_files=[ "res://.import/box.png-f4c85b5746ef70c20b9ed24ac4d3c50a.stex" ]
+source_file="res://arts/resources/crystal.png"
+dest_files=[ "res://.import/crystal.png-e544438650f582b9c7b63fb1abd33bbb.stex" ]
 
 [params]
 
