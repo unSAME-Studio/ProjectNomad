@@ -13,7 +13,7 @@ var rate = 0.05
 var cd = 10
 var cooldown_comp = preload("res://systems/CooldownComponent.tscn")
 var cooldown
-
+var cd_speed = 20
 
 
 func _ready():
@@ -25,13 +25,18 @@ func _ready():
 	cooldown = cooldown_comp.instance()
 	add_child(cooldown)
 	cooldown.set_name("CooldownComponent")
-	cooldown.speed = 20
+	cooldown.speed = cd_speed
 
 
 func _process(delta):
 	if controlling and not wearing:
 		$Sprite.look_at(get_global_mouse_position())
 
+func apply_buff(buff):
+		if 'recharge_boost' in buff:
+			cooldown.speed = cd_speed * buff.recharge_boost
+			print("buff recieved!")
+			print(cooldown.speed)
 
 func operate(player):
 	if cooldown.can_fire(cd):
@@ -41,7 +46,6 @@ func operate(player):
 			b.damage = damage * slotted.damage_buff
 			b.speed = projectile_speed*slotted.speed_buff
 			b.scale = scale
-			
 		b.parent = self
 		b.set_global_position($Sprite/Position2D.get_global_position())
 		b.set_global_rotation($Sprite.get_global_rotation())

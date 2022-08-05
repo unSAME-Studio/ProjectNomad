@@ -68,6 +68,11 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 func operate(player):
 	print(type + "Being Used")
 
+func connect_culpit(object):
+	object.add_to_group(base.name + "culpits")
+
+func disconnect_culpit(clear = false):
+	pass
 
 func _on_moved():
 	if not Global.player.enter_building_mode():
@@ -85,6 +90,7 @@ func _on_moved():
 	p.type = type
 	p.data = data
 	get_tree().get_current_scene().get_node("Node2D").add_child(p)
+
 
 
 func canceled_build():

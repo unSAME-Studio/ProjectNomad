@@ -125,7 +125,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -614,7 +613,6 @@ mouse_filter = 2
 alignment = 2
 
 [node name="BuildMenu" type="ScrollContainer" parent="CanvasLayer/Control/VBoxContainer2"]
-visible = false
 margin_top = 50.0
 margin_right = 1446.0
 margin_bottom = 195.0
@@ -623,20 +621,21 @@ follow_focus = true
 scroll_vertical_enabled = false
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu"]
-margin_left = 723.0
-margin_right = 723.0
+margin_left = 409.0
+margin_right = 1037.0
+margin_bottom = 145.0
 size_flags_horizontal = 6
 theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer"]
-margin_right = 412.0
+margin_right = 628.0
 margin_bottom = 145.0
 custom_constants/margin_right = 100
 custom_constants/margin_left = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer"]
 margin_left = 100.0
-margin_right = 420.0
+margin_right = 528.0
 margin_bottom = 145.0
 theme = ExtResource( 5 )
 alignment = 1
@@ -690,9 +689,14 @@ margin_right = 212.0
 build_type = "room"
 
 [node name="BuildCard2" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
-margin_left = 108.0
-margin_right = 212.0
+margin_left = 216.0
+margin_right = 320.0
 build_type = "wall"
+
+[node name="BuildCard3" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
+margin_left = 324.0
+margin_right = 428.0
+build_type = "power"
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
 modulate = Color( 1, 1, 1, 0.427451 )

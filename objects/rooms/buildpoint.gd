@@ -9,6 +9,7 @@ var target = null
 export(NodePath) var preset = null
 var wall
 var indi
+var bind_list = []
 
 func _ready():
 	hide()
@@ -18,9 +19,16 @@ func _ready():
 	room = find_parent("room")
 
 	if room:
+		bind_point(room)
+
+func bind_point(target):
+	if not target in bind_list:
+		bind_list.append(target)
 		if type == 'room':
-			room.snappoint.append(self)
-		room.build_points.append(self)
+			if 'snappoint' in target:
+				target.snappoint.append(self)
+		target.build_points.append(self)
+		room = target
 		self.connect("tree_exiting", self, "disconnect_point")
 
 func _process(delta):
@@ -51,5 +59,7 @@ func finish_build(object = null):
 	end_build()
 
 func disconnect_point():
-	if room:
-		room.disconnect_point(self)
+	for i in bind_list:
+		if i.has_method('disconnect_point'):
+			room.disconnect_point(self)
+	bind_list = []

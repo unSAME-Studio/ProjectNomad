@@ -10,6 +10,7 @@ var card
 
 var type = ""
 var data = null
+
 var is_structure = false
 var structure
 var build_type = 'culpit'
@@ -226,7 +227,7 @@ func _unhandled_input(event):
 					base = room.get_build()
 					if can_build:
 						hovering = false
-						finish_build(base)
+						finish_build(room)
 				else:
 					if can_build:
 						hovering = false
@@ -247,6 +248,7 @@ func _unhandled_input(event):
 
 
 func finish_build(room):
+	print(room)
 	var c
 	if build_points:
 		for i in build_points:
@@ -255,7 +257,7 @@ func finish_build(room):
 	if is_structure:
 		if ResourceLoader.exists("res://objects/structure/%s_%s.tscn" % [type, build_type]):
 			c = load("res://objects/structure/%s_%s.tscn" % [type,build_type]).instance()
-			print("special culpit loaded for %s" % type)
+			print("structure loaded for %s" % type)
 		else:
 			c = load("res://objects/structure/Structure.tscn").instance()
 	else:
