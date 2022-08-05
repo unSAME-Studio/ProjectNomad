@@ -12,7 +12,8 @@ export var cd_multiplyer = 1.0
 
 onready var slot_build_point = get_node('buildpoint')
 
-func _ready():
+
+func ready():
 	base.controlled.append(self)
 	self.connect("tree_exiting", self, "destroy")
 	#slot_build_point.bind_point(base)
@@ -45,10 +46,15 @@ func connect_culpit(object):
 #		add_child(object)
 	.connect_culpit(object)
 
+
 func disconnect_culpit(clear = false):
-	if not clear:
-		connected.slotted = null
-	connected = null
+
+	if not connect_failsafe:
+		if not clear:
+			if connected:
+				connected.slotted = null
+		connected = null
+
 
 func _process(_delta):
 	if connected and base.controlling:

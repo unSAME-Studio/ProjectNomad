@@ -24,6 +24,9 @@ func active(_base):
 	for i in $structures.get_children():
 		if i.has_method('active'):
 			i.active()
+	for i in $objects.get_children():
+		if i.has_method('active'):
+			i.active()
 #	if build_points:
 #		for i in build_points:
 #			i.connect("tree_exiting", self, "disconnect_point")
@@ -37,7 +40,6 @@ func get_build():
 	return base
 	
 func get_build_points():
-
 	return build_points
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

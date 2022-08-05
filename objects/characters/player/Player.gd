@@ -299,7 +299,7 @@ func get_build_points(type):
 		update_build_points()
 	var out_points = []
 	for i in build_points:
-		if i:
+		if is_instance_valid(i):
 			if i.type == type:
 				if i.active == true:
 					out_points.append(i)

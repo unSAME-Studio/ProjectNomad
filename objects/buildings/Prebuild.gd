@@ -163,14 +163,15 @@ func _process(delta):
 			result = get_world_2d().get_direct_space_state().intersect_point(position, 3 ,[],2,true,false)
 		if not result.empty():
 			parent = result[0].collider.get_build()
-			
+			print(parent)
 			# snapping by checking nearby edges
 			var x_edge = []
 			var y_edge = []
-			for i in parent.get_node("objects").get_children():
-				if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
-					x_edge.append(i.get_position().x)
-					y_edge.append(i.get_position().y)
+			if parent.get_node("objects"):
+				for i in parent.get_node("objects").get_children():
+					if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
+						x_edge.append(i.get_position().x)
+						y_edge.append(i.get_position().y)
 		
 			target_snap = parent.get_local_mouse_position()
 				
@@ -278,12 +279,12 @@ func finish_build(room):
 	c.set_global_rotation(get_global_rotation())
 	
 	Global.player.end_building_mode()
-	
+
 	# [probably update later]
 	# check for type, if it's card then don't destroy but restore
 	if "Card" in card.name:
 		card.canceled_build()
 	else:
 		card.queue_free()
-	
+
 	queue_free()
