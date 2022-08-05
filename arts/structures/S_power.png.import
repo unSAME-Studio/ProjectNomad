@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/C_power.png-ea43e8656f2452e52b8266274da538a2.stex"
+path="res://.import/S_power.png-0f4857ded1e4361fa59d289e7133ecbd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/cards/C_power.png"
-dest_files=[ "res://.import/C_power.png-ea43e8656f2452e52b8266274da538a2.stex" ]
+source_file="res://arts/structures/S_power.png"
+dest_files=[ "res://.import/S_power.png-0f4857ded1e4361fa59d289e7133ecbd.stex" ]
 
 [params]
 
