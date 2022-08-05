@@ -51,7 +51,7 @@
     "recycler": {
       "type": 2,
       "action": 1,
-      "hint": "Recycle",
+      "hint": "Recycle Hold Item",
       "cost": 3
     },
     "box": {
