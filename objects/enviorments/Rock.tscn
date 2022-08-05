@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://objects/enviorments/set_polygon.gd" type="Script" id=1]
-[ext_resource path="res://systems/DamageComponent.gd" type="Script" id=2]
 [ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=3]
 
 [node name="Rock" type="StaticBody2D"]
@@ -27,8 +26,7 @@ polygon = PoolVector2Array( -36, -70, -66, -12, -14, 20, 0, -35 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 
-[node name="DamageComponent" type="Node2D" parent="." instance=ExtResource( 3 )]
-script = ExtResource( 2 )
+[node name="DamageComponent" parent="." instance=ExtResource( 3 )]
 health_max = 150
-drop_types = [ "nano" ]
+drop_types = [ "crystal", "scrap", "gasoline" ]
 drop_amount = 6

@@ -70,5 +70,5 @@ physics_process_parent = true
 [node name="DamageComponent" parent="." instance=ExtResource( 8 )]
 health_max = 200
 autoheal = true
-drop_types = [ "weed", "nano" ]
+drop_types = [ "weed", "seed" ]
 drop_amount = 8

@@ -21,7 +21,8 @@ func initial_control(body):
 		base.enable_control(body)
 		controlling = true
 	
-	body.camera.camera.set_zoom(Vector2(2,2))
+	if body.get("camera"):
+		body.camera.camera.set_zoom(Vector2(2,2))
 	
 	print(name + " is being controller")
 
@@ -34,6 +35,7 @@ func stop_control(body):
 		if base.has_method("enable_control"):
 			base.disable_control()
 		
-		body.camera.camera.set_zoom(Vector2(1,1))
+		if body.get("camera"):
+			body.camera.camera.set_zoom(Vector2(1,1))
 		
 		controlling = false

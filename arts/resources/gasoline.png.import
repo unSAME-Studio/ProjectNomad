@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/box.png-f4c85b5746ef70c20b9ed24ac4d3c50a.stex"
+path="res://.import/gasoline.png-04b2124b79a1dd7638c88fa2766c3a94.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/culpits/box.png"
-dest_files=[ "res://.import/box.png-f4c85b5746ef70c20b9ed24ac4d3c50a.stex" ]
+source_file="res://arts/resources/gasoline.png"
+dest_files=[ "res://.import/gasoline.png-04b2124b79a1dd7638c88fa2766c3a94.stex" ]
 
 [params]
 
