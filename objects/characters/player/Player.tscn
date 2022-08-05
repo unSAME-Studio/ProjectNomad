@@ -2,7 +2,7 @@
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
-[ext_resource path="res://arts/cards/C_base_hover.png" type="Texture" id=3]
+[ext_resource path="res://arts/cards/Base_hover.png" type="Texture" id=3]
 [ext_resource path="res://objects/characters/player/Player.gd" type="Script" id=4]
 [ext_resource path="res://arts/ui/theme.tres" type="Theme" id=5]
 [ext_resource path="res://arts/characters/player_walk1.png" type="Texture" id=6]
@@ -18,11 +18,12 @@
 [ext_resource path="res://objects/ui/StorageGroup.tres" type="ButtonGroup" id=16]
 [ext_resource path="res://arts/font/BarlowCondensed-SemiBold.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://arts/light_small.png" type="Texture" id=18]
-[ext_resource path="res://arts/cards/C_base.png" type="Texture" id=19]
+[ext_resource path="res://arts/cards/Base.png" type="Texture" id=19]
 [ext_resource path="res://arts/font/BarlowCondensed-SemiBoldItalic.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://objects/ui/StorageUI.gd" type="Script" id=21]
 [ext_resource path="res://objects/ui/BuildCard.tscn" type="PackedScene" id=22]
 [ext_resource path="res://objects/characters/player/PlayerDamageComponent.gd" type="Script" id=23]
+
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/C_base_hover.png-4ae9148e65f1ed23ccdc2b0b46074dac.stex"
+path="res://.import/C_booster.png-1800353650c669e1168c18ce3c6287a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/cards/C_base_hover.png"
-dest_files=[ "res://.import/C_base_hover.png-4ae9148e65f1ed23ccdc2b0b46074dac.stex" ]
+source_file="res://arts/cards/C_booster.png"
+dest_files=[ "res://.import/C_booster.png-1800353650c669e1168c18ce3c6287a3.stex" ]
 
 [params]
 
