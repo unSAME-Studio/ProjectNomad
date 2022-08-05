@@ -67,3 +67,4 @@ process_parent = true
 physics_process_parent = true
 
 [node name="DamageComponent" parent="." instance=ExtResource( 3 )]
+autoheal = true

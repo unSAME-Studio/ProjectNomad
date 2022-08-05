@@ -1,6 +1,6 @@
 extends Culpit
 
-
+export var preopen = false
 var light2d
 var rotate_speed = 1
 
@@ -15,6 +15,8 @@ func _ready():
 	light2d.set_shadow_filter(Light2D.SHADOW_FILTER_PCF3)
 	light2d.set_shadow_smooth(25.1)
 	add_child(light2d)
+	if preopen:
+		operate(null)
 
 
 func _process(delta):

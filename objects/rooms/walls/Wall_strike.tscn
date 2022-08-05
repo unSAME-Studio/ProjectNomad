@@ -33,4 +33,6 @@ polygon = PoolVector2Array( -192, -16, -128, -16, 128, -16, 192, -16, 192, 16, 1
 polygons = [ PoolIntArray( 0, 1, 6, 7 ), PoolIntArray( 2, 3, 4, 5 ), null ]
 
 [node name="DamageComponent" parent="." instance=ExtResource( 3 )]
+health_max = 125
+autoheal = true
 drop_amount = 0

@@ -32,6 +32,7 @@ type = "base_fix"
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.921569, 0.321569, 0.321569, 1 )
+scale = Vector2( 1, 1.5 )
 texture = ExtResource( 1 )
 
 [node name="buildpoint" parent="." instance=ExtResource( 3 )]
