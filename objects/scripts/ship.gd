@@ -86,7 +86,12 @@ func _integrate_forces(state):
 			
 
 func add_buff(buff):
-	buffs.append(buff)
+	if not buff in buffs:
+		buffs.append(buff)
+	apply_buff()
+
+func remove_buff(buff):
+	buffs.erase(buff)
 	apply_buff()
 
 func apply_buff():
@@ -99,6 +104,8 @@ func apply_buff():
 			cd_temp *= i.recharge_boost
 	speed_boost = speed_temp
 	recharge_boost = cd_temp
+	print('buff applied')
+	print("speed:% ,cd:%",[speed_boost,recharge_boost])
 	for i in get_tree().get_nodes_in_group(name + "culpits"):
 		if i.has_method('apply_buff'):
 			i.apply_buff(self)

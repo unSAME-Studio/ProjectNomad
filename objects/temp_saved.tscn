@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://objects/structure/power_struc.gd" type="Script" id=1]
+[ext_resource path="res://objects/structure/booster_struc.gd" type="Script" id=2]
+[ext_resource path="res://objects/structure/base_struc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/structure/power_struc.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/structure/base_fix_struc.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/structure/booster_struc.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/structure/base_struc.gd" type="Script" id=7]
+[ext_resource path="res://objects/structure/base_fix_struc.gd" type="Script" id=8]
+
+[node name="objects" type="Node2D"]
+
+[node name="Culpit" type="StaticBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( -192, -280 )
+collision_layer = 0
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 7 )
+rate = 0.1
+damage_buff = 0.4
+cd_multiplyer = 0.5
+
+[node name="Culpit3" type="StaticBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 192, -280 )
+collision_layer = 0
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 7 )
+rate = 0.1
+damage_buff = 0.4
+cd_multiplyer = 0.5
+
+[node name="Culpit2" type="StaticBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -160 )
+scale = Vector2( 2, 2 )
+collision_layer = 0
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 7 )
+damage_buff = 2.5
+speed_buff = 2.0
+cd_multiplyer = 2.0
+
+[node name="base_fix_struct" type="StaticBody2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( -1, -341 )
+scale = Vector2( 1.68879, 1.68879 )
+collision_layer = 0
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 8 )
+type = "base_fix"
+damage_buff = 20.0
+speed_buff = 5.0
+
+[node name="power_struct" type="StaticBody2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 106, -48 )
+collision_layer = 0
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 1 )
+type = "power"
+
+[node name="booster_struct" type="StaticBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( -155, 314 )
+collision_layer = 0
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 2 )
+
+[node name="booster_struct2" type="StaticBody2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 158, 321 )
+collision_layer = 0
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 2 )

@@ -621,21 +621,21 @@ follow_focus = true
 scroll_vertical_enabled = false
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu"]
-margin_left = 409.0
-margin_right = 1037.0
+margin_left = 193.0
+margin_right = 1253.0
 margin_bottom = 145.0
 size_flags_horizontal = 6
 theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer"]
-margin_right = 628.0
+margin_right = 1060.0
 margin_bottom = 145.0
 custom_constants/margin_right = 100
 custom_constants/margin_left = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer"]
 margin_left = 100.0
-margin_right = 528.0
+margin_right = 960.0
 margin_bottom = 145.0
 theme = ExtResource( 5 )
 alignment = 1
@@ -686,17 +686,41 @@ uppercase = true
 [node name="BuildCard" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
 margin_left = 108.0
 margin_right = 212.0
-build_type = "room"
+build_type = "room2"
+test = true
 
-[node name="BuildCard2" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
+[node name="BuildCard5" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
 margin_left = 216.0
 margin_right = 320.0
+build_type = "room3"
+test = true
+
+[node name="BuildCard6" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
+margin_left = 324.0
+margin_right = 428.0
+build_type = "room4"
+test = true
+
+[node name="BuildCard7" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
+margin_left = 432.0
+margin_right = 536.0
+build_type = "room5"
+test = true
+
+[node name="BuildCard2" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
+margin_left = 540.0
+margin_right = 644.0
 build_type = "wall"
 
 [node name="BuildCard3" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
-margin_left = 324.0
-margin_right = 428.0
+margin_left = 648.0
+margin_right = 752.0
 build_type = "power"
+
+[node name="BuildCard4" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
+margin_left = 756.0
+margin_right = 860.0
+build_type = "booster"
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer2"]
 modulate = Color( 1, 1, 1, 0.427451 )

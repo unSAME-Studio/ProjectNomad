@@ -5,8 +5,7 @@ var controlling = false
 
 var using = false
 
-var recharge_boost = 1
-#var speed_boost = 200
+var speed_boost = 200
 
 onready var slot_build_point = get_node('buildpoint')
 
@@ -34,24 +33,22 @@ func connect_culpit(object):
 		
 		if object.has_method('get_buff'):
 			object.get_buff()
-		add_buff(object)
 		
 #		object.get_parent().remove_child(object)
 #		add_child(object)
 
 func add_buff(buff):
 	if buff.type == 'generator':
-		recharge_boost = 1.5
+		speed_boost = 2
 	if base.has_method('add_buff'):
 		base.add_buff(self)
-
+		
 func disconnect_culpit(clear = false):
-	if not clear:
-		if connected:
-			connected.slotted = null
-	connected = null
-	recharge_boost = 1
-	base.apply_buff()
+	if not connect_failsafe:
+		if not clear:
+			if connected:
+				connected.slotted = null
+		connected = null
 
 
 func _on_Timer_timeout():

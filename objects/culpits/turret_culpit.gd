@@ -15,7 +15,6 @@ var cooldown_comp = preload("res://systems/CooldownComponent.tscn")
 var cooldown
 var cd_speed = 20
 
-
 func _ready():
 	var p = Position2D.new()
 	$Sprite.add_child(p)
@@ -46,6 +45,7 @@ func operate(player):
 			b.damage = damage * slotted.damage_buff
 			b.speed = projectile_speed*slotted.speed_buff
 			b.scale = scale
+			
 		b.parent = self
 		b.set_global_position($Sprite/Position2D.get_global_position())
 		b.set_global_rotation($Sprite.get_global_rotation())
@@ -62,8 +62,8 @@ func initial_control(body):
 	user = body
 	print(name + " is being controller")
 	if slotted:
-		cd = cd*slotted.cd_multiplyer
-	print(cd)
+		if 'cd_multiplyer' in slotted:
+			cd = cd*slotted.cd_multiplyer
 	if not wearing:
 		snap_position(body)
 

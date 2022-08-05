@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/Wall.gd" type="Script" id=2]
@@ -8,8 +8,6 @@
 [ext_resource path="res://arts/structures/pattern2.png" type="Texture" id=6]
 [ext_resource path="res://arts/structures/pattern1.png" type="Texture" id=7]
 [ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objects/structure/base_struc.tscn" type="PackedScene" id=9]
-[ext_resource path="res://objects/structure/base_fix_struc.tscn" type="PackedScene" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=4]
 
@@ -73,6 +71,8 @@ polygon = PoolVector2Array( -16, -264, -16, 240, 16, 240, 16, -264 )
 [node name="Wall4" parent="structures" instance=ExtResource( 4 )]
 position = Vector2( 0, -248 )
 
+[node name="buildpoint6" parent="structures/Wall4" instance=ExtResource( 3 )]
+
 [node name="points" type="Node2D" parent="structures"]
 
 [node name="buildpoint2" parent="structures/points" instance=ExtResource( 3 )]
@@ -95,30 +95,3 @@ rotation = 3.14159
 rotation = 2.44776e-06
 
 [node name="objects" type="Node2D" parent="."]
-
-[node name="Culpit" parent="objects" instance=ExtResource( 9 )]
-position = Vector2( -192, -280 )
-rate = 0.1
-damage_buff = 0.4
-cd_multiplyer = 0.5
-
-[node name="Culpit3" parent="objects" instance=ExtResource( 9 )]
-position = Vector2( 192, -280 )
-rate = 0.1
-damage_buff = 0.4
-cd_multiplyer = 0.5
-
-[node name="Culpit2" parent="objects" instance=ExtResource( 9 )]
-position = Vector2( 0, -160 )
-scale = Vector2( 2, 2 )
-damage_buff = 2.5
-speed_buff = 2.0
-cd_multiplyer = 2.0
-
-[node name="base_fix_struct" parent="objects" instance=ExtResource( 10 )]
-position = Vector2( -1, -341 )
-scale = Vector2( 1.68879, 1.68879 )
-damage_buff = 20.0
-speed_buff = 5.0
-
-[editable path="objects/Culpit2"]

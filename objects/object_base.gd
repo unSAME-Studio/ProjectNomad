@@ -8,6 +8,8 @@ var velocity = Vector2()
 
 var rooms = []
 
+var is_base
+
 func _ready():
 	pass
 

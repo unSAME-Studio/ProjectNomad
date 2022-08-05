@@ -14,7 +14,7 @@ var reset_angle = false
 
 onready var slot_build_point = get_node('buildpoint')
 
-func _ready():
+func ready():
 	base.controlled.append(self)
 	self.connect("tree_exiting", self, "destroy")
 	#slot_build_point.bind_point(base)

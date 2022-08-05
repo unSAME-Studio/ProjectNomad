@@ -11,10 +11,12 @@ var base = null
 var wearing = false
 
 var build_point
+var connect_failsafe = false
 
 export(String) var type = "Storage"
 var data setget ,get_data
 
+var delay_active = false
 #onready var action = Global.culpits_data[type]["action"]
 
 onready var controllable = false
@@ -24,6 +26,10 @@ func _ready():
 	#$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
 	
 	base = get_parent().get_parent().get_base()
+	if 'is_base' in base:
+		ready()
+	else:
+		delay_active = true
 	
 	connect("input_event", self, "_on_Culpit_input_event")
 	connect("select", self, "on_select")
@@ -34,7 +40,13 @@ func _ready():
 		set_collision_layer_bit(0, true)
 		set_collision_layer_bit(3, false)
 
+func active():
+	base = get_parent().get_parent().get_base()
+	ready()
 
+func ready():
+	pass
+	
 func get_hint_text():
 	return 'Interact'
 
@@ -67,12 +79,18 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 
 func operate(player):
 	print(type + "Being Used")
+	
+func disconnect_culpit(clear = false):
+	pass
 
 func connect_culpit(object):
 	object.add_to_group(base.name + "culpits")
-
-func disconnect_culpit(clear = false):
-	pass
+	base.apply_buff()
+	connect_failsafe = true
+	yield(get_tree(), "physics_frame")
+	print('delayed')
+	connect_failsafe = false
+	
 
 func _on_moved():
 	if not Global.player.enter_building_mode():
