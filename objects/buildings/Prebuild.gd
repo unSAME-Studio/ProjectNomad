@@ -35,6 +35,7 @@ func _ready():
 	if not is_structure:
 		$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
 	else: 
+		$Sprite.set_texture(load("res://arts/structures/S_%s.png" % type))
 		build_type = 'struc'
 	#var space_state = get_world_2d().direct_space_state
 	if not directbuild:
