@@ -15,7 +15,12 @@ func _physics_process(delta):
 		$Enemy.look_at(Global.player.get_global_position())
 		
 		var temp_base = get_world_2d().get_direct_space_state().intersect_point($Position2D.get_global_position(), 3 ,[],2,true,false)
-		if not temp_base.empty() and Global.player.get_global_position().distance_to(get_global_position()) >= 500:
+		if temp_base.empty():
+			speed = 50
+		else:
+			speed = 100
+		
+		if Global.player.get_global_position().distance_to(get_global_position()) >= 500:
 			var heading = to_local(Global.player.get_global_position())
 			heading.x = clamp(heading.x, -1, 1)
 			heading.y = clamp(heading.y, -1, 1)
@@ -24,6 +29,8 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	if Global.player.get_global_position().distance_to(get_global_position()) <= 3000:
+		$AnimationPlayer.play("shoot")
+		
 		var b = bullet.instance()
 		b.parent = self
 		b.set_global_position($Enemy/Position2D.get_global_position())
@@ -37,3 +44,8 @@ func _on_VisibilityEnabler2D_screen_entered():
 
 func _on_VisibilityEnabler2D_screen_exited():
 	$Timer.stop()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "shoot":
+		$AnimationPlayer.play("idle")
