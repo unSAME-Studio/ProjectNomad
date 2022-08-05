@@ -62,8 +62,8 @@ func initial_control(body):
 	user = body
 	print(name + " is being controller")
 	if slotted:
-		cd = cd*slotted.cd_multiplyer
-	print(cd)
+		if 'cd_multiplyer' in slotted:
+			cd = cd*slotted.cd_multiplyer
 	if not wearing:
 		snap_position(body)
 

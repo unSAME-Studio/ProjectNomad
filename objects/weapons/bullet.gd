@@ -22,9 +22,10 @@ func _physics_process(delta):
 #		# send message to the damage component
 #		if collided.get_collider().has_node("DamageComponent"):
 #			collided.get_collider().get_node("DamageComponent").damage(user, damage)
-	
+
 		# make particles
 		var e = explosion.instance()
+		e.scale = scale
 		e.set_global_position(get_global_position())
 		get_parent().add_child(e)
 		

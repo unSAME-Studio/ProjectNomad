@@ -23,16 +23,20 @@ var build_points = []
 var wall_info = 0
 
 var snapindex = 0
+var roomindex = '2'
 
 var structure
+
 func _ready():
 	$Sprite.set_texture(load("res://arts/VFX/Circle.png"))
-	update_points()
-	if type == 'room':
+	if 'room' in type:
+		roomindex = type.substr(4)
+		type = 'room'
 		#build_points = Global.player.get_build_points(point_type)
-		structure = load("res://objects/rooms/room2.tscn").instance()
+		structure = load("res://objects/rooms/room%s.tscn" % roomindex).instance()
 		structure.active = false
 		add_child(structure)
+	update_points()
 
 		
 func update_points():

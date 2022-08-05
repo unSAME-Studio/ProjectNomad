@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
+[ext_resource path="res://objects/structure/base_struc.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/rooms/walls/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/rooms/walls/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/rooms/walls/Wall_strike.tscn" type="PackedScene" id=6]
+
+[node name="room" type="Area2D"]
+collision_layer = 34
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.584314, 0.639216, 0.74902, 1 )
+polygon = PoolVector2Array( -168, -80, -80, -208, 80, -208, 168, -80, 168, 168, -168, 168 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="structures" type="Node2D" parent="."]
+
+[node name="Wall1" parent="structures" instance=ExtResource( 5 )]
+position = Vector2( 0, 168 )
+rotation = 3.14159
+
+[node name="buildpoint5" parent="structures/Wall1" instance=ExtResource( 3 )]
+
+[node name="Wall4" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 168, 40 )
+rotation = 1.5708
+scale = Vector2( 0.6, 1 )
+
+[node name="Wall3" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -168, 40 )
+rotation = -1.5708
+scale = Vector2( 0.6, 1 )
+
+[node name="points" type="Node2D" parent="structures"]
+
+[node name="buildpoint4" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( 0, -224 )
+type = "utility"
+
+[node name="Wall" parent="structures" instance=ExtResource( 6 )]
+position = Vector2( 0, -200 )
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="Base_struct" parent="objects" instance=ExtResource( 2 )]
+position = Vector2( 0, -96 )
+scale = Vector2( 2.72, 2.72 )
+damage_buff = 2.5
+speed_buff = 2.0
+cd_multiplyer = 2.0
+
+[node name="Base_struct2" parent="objects" instance=ExtResource( 2 )]
+position = Vector2( -184, -96 )
+rate = 0.1
+damage_buff = 0.4
+speed_buff = 1.2
+cd_multiplyer = 0.5
+
+[node name="Base_struct3" parent="objects" instance=ExtResource( 2 )]
+position = Vector2( 184, -96 )
+rate = 0.1
+damage_buff = 0.4
+speed_buff = 1.2
+cd_multiplyer = 0.5

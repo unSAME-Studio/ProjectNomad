@@ -41,8 +41,36 @@ collision_mask = 4
 [node name="Basecollision2" type="CollisionPolygon2D" parent="baseshape"]
 
 [node name="Entity" parent="." instance=ExtResource( 6 )]
-position = Vector2( 103, 1 )
+position = Vector2( 101, 131 )
+
+[node name="Entity3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 101, 189 )
+type = "generator"
 
 [node name="Entity2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 101, 74 )
+type = "turret"
+
+[node name="Entity4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 101, 74 )
+type = "turret"
+
+[node name="Entity5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 101, 74 )
+type = "turret"
+
+[node name="Entity6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 101, 74 )
+type = "turret"
+
+[node name="Entity7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 101, 74 )
+type = "turret"
+
+[node name="Entity8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 101, 74 )
+type = "turret"
+
+[node name="Entity9" parent="." instance=ExtResource( 6 )]
 position = Vector2( 101, 74 )
 type = "turret"

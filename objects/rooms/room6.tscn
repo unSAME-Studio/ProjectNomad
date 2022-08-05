@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
+[ext_resource path="res://objects/rooms/walls/Door_edge.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/rooms/walls/Wall.tscn" type="PackedScene" id=4]
+
+[node name="room" type="Area2D"]
+collision_layer = 34
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color( 0.584314, 0.639216, 0.74902, 1 )
+polygon = PoolVector2Array( -152, -288, -240, -160, -240, 32, -152, 160, 152, 160, 240, 32, 240, -160, 152, -288 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="structures" type="Node2D" parent="."]
+
+[node name="Wall2" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 0, 168 )
+rotation = 3.14159
+
+[node name="buildpoint5" parent="structures/Wall2" instance=ExtResource( 3 )]
+position = Vector2( -9.53674e-07, 0 )
+
+[node name="Wall3" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -232, -64 )
+rotation = -1.5708
+scale = Vector2( 0.51993, 1.16259 )
+
+[node name="Wall4" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 232, -64 )
+rotation = -1.5708
+scale = Vector2( 0.51993, 1.16259 )
+
+[node name="points" type="Node2D" parent="structures"]
+
+[node name="buildpoint3" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( 216, -248 )
+type = "utility"
+
+[node name="buildpoint4" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( -216, -248 )
+type = "utility"
+
+[node name="buildpoint6" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( 216, 104 )
+rotation = 3.14159
+type = "utility"
+
+[node name="buildpoint7" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( -216, 104 )
+rotation = 3.14159
+type = "utility"
+
+[node name="buildpoint5" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( -136, -64 )
+type = "utility"
+
+[node name="buildpoint8" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( 136, -64 )
+type = "utility"
+
+[node name="Door" parent="structures" instance=ExtResource( 2 )]
+position = Vector2( 0, 160 )
+
+[node name="Door2" parent="structures" instance=ExtResource( 2 )]
+position = Vector2( 0, -288 )
+rotation = 3.14159
+
+[node name="objects" type="Node2D" parent="."]
