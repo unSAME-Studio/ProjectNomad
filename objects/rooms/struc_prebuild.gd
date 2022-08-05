@@ -28,7 +28,8 @@ var roomindex = '2'
 var structure
 
 func _ready():
-	$Sprite.set_texture(load("res://arts/VFX/Circle.png"))
+	$Sprite.set_texture(load("res://arts/structures/S_%s.png" % type))
+	
 	if 'room' in type:
 		roomindex = type.substr(4)
 		type = 'room'
