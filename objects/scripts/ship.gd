@@ -14,7 +14,13 @@ var steerforce = 1
 var forwardforce = 1
 var brakeforce = 1
 
+var buffs = []
+var buff_flag = false
+
 var controlled = []
+
+var speed_boost = 0
+var recharge_boost = 1
 
 func _ready():
 	#$RigidBody2D/PinJoint2D.connect_bodies(self,$RigidBody2D)
@@ -25,7 +31,7 @@ func _ready():
 
 func handle_movement(direction):
 		set_applied_torque(direction.x * 20000)		
-		set_applied_force(Vector2(direction.x*50,direction.y * 300).rotated(get_rotation()))
+		set_applied_force(Vector2(direction.x*50,direction.y * (300+speed_boost)).rotated(get_rotation()))
 		var currvelocity = get_linear_velocity()
 		var currrangular = get_angular_velocity()
 		if currvelocity.length() > 300:
@@ -79,8 +85,24 @@ func _integrate_forces(state):
 	pass
 			
 
+func add_buff(buff):
+	buffs.append(buff)
+	apply_buff()
 
-
+func apply_buff():
+	var speed_temp = 0
+	var cd_temp = 1
+	for i in buffs:
+		if 'speed_boost' in i:
+			speed_temp += i.speed_boost
+		if 'recharge_boost' in i:
+			cd_temp *= i.recharge_boost
+	speed_boost = speed_temp
+	recharge_boost = cd_temp
+	for i in get_tree().get_nodes_in_group(name + "culpits"):
+		if i.has_method('apply_buff'):
+			i.apply_buff(self)
+	
 func get_build_points():
 	var points = []
 	if not rooms.empty():

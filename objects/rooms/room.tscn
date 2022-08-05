@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/Wall.gd" type="Script" id=2]
@@ -8,7 +8,8 @@
 [ext_resource path="res://arts/structures/pattern2.png" type="Texture" id=6]
 [ext_resource path="res://arts/structures/pattern1.png" type="Texture" id=7]
 [ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=8]
-[ext_resource path="res://objects/structure/storage_struc.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/structure/base_struc.tscn" type="PackedScene" id=9]
+[ext_resource path="res://objects/structure/base_fix_struc.tscn" type="PackedScene" id=10]
 
 [sub_resource type="OccluderPolygon2D" id=4]
 
@@ -113,5 +114,11 @@ scale = Vector2( 2, 2 )
 damage_buff = 2.5
 speed_buff = 2.0
 cd_multiplyer = 2.0
+
+[node name="base_fix_struct" parent="objects" instance=ExtResource( 10 )]
+position = Vector2( -1, -341 )
+scale = Vector2( 1.68879, 1.68879 )
+damage_buff = 20.0
+speed_buff = 5.0
 
 [editable path="objects/Culpit2"]

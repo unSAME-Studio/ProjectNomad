@@ -82,6 +82,15 @@
     "locker": {
       "type": 1
     },
+    "base": {
+      "type": 0
+    },
+    "base_fix": {
+      "type": 0
+    },
+    "power": {
+      "type": 3
+    },
     "wall": {
       "type": 0
     },
