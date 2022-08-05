@@ -252,7 +252,7 @@ func _physics_process(_delta):
 func _on_ControllableDetection_body_entered(body):
 	controllables[body.name] = body
 	
-	print(controllables.values())
+	#print(controllables.values())
 
 
 func _on_ControllableDetection_body_exited(body):

@@ -14,9 +14,9 @@ func _physics_process(delta):
 		
 		$Enemy.look_at(Global.player.get_global_position())
 		
-		var temp_base = get_world_2d().get_direct_space_state().intersect_point($Position2D.get_global_position(), 3 ,[],2,true,false)
+		var temp_base = get_world_2d().get_direct_space_state().intersect_point($Position2D.get_global_position(), 1 ,[],2,true,true)
 		if temp_base.empty():
-			speed = 50
+			speed = 25
 		else:
 			speed = 100
 		
