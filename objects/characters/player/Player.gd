@@ -252,7 +252,7 @@ func _physics_process(_delta):
 func _on_ControllableDetection_body_entered(body):
 	controllables[body.name] = body
 	
-	print(controllables.values())
+	#print(controllables.values())
 
 
 func _on_ControllableDetection_body_exited(body):
@@ -318,12 +318,13 @@ func is_in_air():
 # -----------------
 func damage(dealer, amount):
 	# ignore if self damage
-	print(dealer.name, self.name)
-	if dealer == self:
-		return false
-	if controlling:
-		if dealer == base:
+	if is_instance_valid(dealer):
+		print(dealer.name, self.name)
+		if dealer == self:
 			return false
+		if controlling:
+			if dealer == base:
+				return false
 	health = clamp(health - amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	

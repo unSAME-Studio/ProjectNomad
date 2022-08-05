@@ -7,12 +7,11 @@ var using = false
 
 var speed_boost = 200
 
-onready var slot_build_point = get_node('buildpoint')
-
 func ready():
 	self.connect("tree_exiting", self, "destroy")
+	slot_build_point.bind_point(get_parent().get_parent())
 	#base.add_buff(self)
-	slot_build_point.bind_point(base)
+	#slot_build_point.bind_point(base)
 
 func destroy():
 	if base.has_method('add_buff'):

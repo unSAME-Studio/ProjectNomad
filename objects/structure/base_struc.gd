@@ -10,13 +10,12 @@ export var damage_buff = 1.0
 export var speed_buff = 1.0
 export var cd_multiplyer = 1.0
 
-onready var slot_build_point = get_node('buildpoint')
-
 
 func ready():
 	base.controlled.append(self)
 	self.connect("tree_exiting", self, "destroy")
 	#slot_build_point.bind_point(base)
+	slot_build_point.bind_point(get_parent().get_parent())
 
 func destroy():
 	base.controlled.erase(self)

@@ -24,7 +24,6 @@
 [ext_resource path="res://objects/ui/BuildCard.tscn" type="PackedScene" id=22]
 [ext_resource path="res://objects/characters/player/PlayerDamageComponent.gd" type="Script" id=23]
 
-
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 6 ) ],
@@ -614,6 +613,7 @@ mouse_filter = 2
 alignment = 2
 
 [node name="BuildMenu" type="ScrollContainer" parent="CanvasLayer/Control/VBoxContainer2"]
+visible = false
 margin_top = 50.0
 margin_right = 1446.0
 margin_bottom = 195.0
@@ -622,10 +622,8 @@ follow_focus = true
 scroll_vertical_enabled = false
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer2/BuildMenu"]
-
-margin_left = 193.0
-margin_right = 1253.0
-margin_bottom = 145.0
+margin_left = 723.0
+margin_right = 723.0
 size_flags_horizontal = 6
 theme = ExtResource( 5 )
 

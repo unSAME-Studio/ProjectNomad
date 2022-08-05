@@ -12,7 +12,6 @@ export var speed_buff = 2.5
 export var cd_multiplyer = 10.0
 var reset_angle = false
 
-onready var slot_build_point = get_node('buildpoint')
 
 
 func ready():

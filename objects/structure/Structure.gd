@@ -20,7 +20,7 @@ var delay_active = false
 #onready var action = Global.culpits_data[type]["action"]
 
 onready var controllable = false
-
+onready var slot_build_point = get_node('buildpoint')
 
 func _ready():
 	#$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))

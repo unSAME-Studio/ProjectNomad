@@ -4,7 +4,7 @@ var explosion = preload("res://objects/VFX/Explosion.tscn")
 
 var parent
 onready var user = parent.user
-var speed = 10
+var speed = 15
 var damage = 6
 var collided = null
 
