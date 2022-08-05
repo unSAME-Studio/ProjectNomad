@@ -35,7 +35,7 @@ func connect_culpit(object):
 		if object.has_method('get_buff'):
 			object.get_buff()
 		add_buff(object)
-		
+
 #		object.get_parent().remove_child(object)
 #		add_child(object)
 
@@ -52,6 +52,7 @@ func disconnect_culpit(clear = false):
 	connected = null
 	recharge_boost = 1
 	base.apply_buff()
+
 
 
 func _on_Timer_timeout():

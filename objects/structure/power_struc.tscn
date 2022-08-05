@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://arts/culpits/locker.png" type="Texture" id=1]
@@ -5,7 +6,6 @@
 [ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://arts/culpits/light.png" type="Texture" id=4]
 [ext_resource path="res://arts/light.png" type="Texture" id=5]
-
 [sub_resource type="Animation" id=2]
 resource_name = "build"
 length = 0.4
@@ -82,5 +82,4 @@ one_shot = true
 scale = Vector2( 0.707916, 0.707916 )
 texture = ExtResource( 5 )
 color = Color( 0.980392, 0.847059, 0.843137, 0.501961 )
-
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

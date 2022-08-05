@@ -51,7 +51,7 @@
     "recycler": {
       "type": 2,
       "action": 1,
-      "hint": "Recycle",
+      "hint": "Recycle Hold Item",
       "cost": 3
     },
     "box": {
@@ -59,6 +59,12 @@
       "action": 1,
       "hint": "Collect",
       "cost": 1
+    },
+    "auto_wheel": {
+      "type": 0,
+      "action": 1,
+      "hint": "Turn On / Off",
+      "cost": 18
     }
   },
   "entity": {
