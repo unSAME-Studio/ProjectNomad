@@ -65,6 +65,12 @@
       "action": 1,
       "hint": "Turn On / Off",
       "cost": 18
+    },
+    "compass": {
+      "type": 0,
+      "action": 1,
+      "hint": "Pray",
+      "cost": 2
     }
   },
   "entity": {
