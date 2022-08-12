@@ -38,7 +38,7 @@ func damage(dealer, amount):
 	# start the autoheal timer
 	if autoheal == true:
 		$Autoheal.start()
-		
+	
 	health = clamp(health - amount, 0, health_max)
 	$CanvasLayer/Control/ProgressBar.set_value(health)
 	
@@ -46,8 +46,10 @@ func damage(dealer, amount):
 	var dmg_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	dmg_tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 0.5), 0.08)
 	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(1.1, 1.1), 0.08)
+	dmg_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color("952b2b"), 0.08)
 	dmg_tween.tween_property(get_parent(), "modulate", Color.white, 0.08)
 	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(1, 1), 0.08)
+	dmg_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color.white, 0.08)
 	
 	if get_parent().has_method("_on_damage"):
 		get_parent()._on_damage()
@@ -58,6 +60,7 @@ func damage(dealer, amount):
 		else:
 			_on_destroy()
 	return true
+
 
 func reset():
 	health = health_max
@@ -78,6 +81,15 @@ func heal(dealer, amount):
 		$Autoheal.stop()
 	else:
 		$CanvasLayer/Control/ProgressBar.set_value(health)
+	
+	# create healing effect
+	var heal_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	heal_tween.tween_property(get_parent(), "modulate", Color("619962"), 0.08)
+	heal_tween.parallel().tween_property(get_parent(), "scale", Vector2(1.1, 1.1), 0.08)
+	heal_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color("619962"), 0.08)
+	heal_tween.tween_property(get_parent(), "modulate", Color.white, 0.08)
+	heal_tween.parallel().tween_property(get_parent(), "scale", Vector2(1, 1), 0.08)
+	heal_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color.white, 0.08)
 
 
 func _process(delta):
