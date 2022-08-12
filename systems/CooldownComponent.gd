@@ -13,7 +13,7 @@ func _process(delta):
 		$CanvasLayer/Control.hide()
 	
 	if $CanvasLayer/Control.is_visible():
-		$CanvasLayer/Control.set_position(get_parent().get_global_transform_with_canvas().get_origin())
+		$CanvasLayer/Control.set_position(get_parent().get_global_transform_with_canvas().get_origin() - Vector2(0, 50))
 	
 		$CanvasLayer/Control/ProgressBar.set_value(cooldown)
 

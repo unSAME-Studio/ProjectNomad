@@ -38,9 +38,18 @@ func damage(dealer, amount):
 	# start the autoheal timer
 	if autoheal == true:
 		$Autoheal.start()
-		
+	
 	health = clamp(health - amount, 0, health_max)
 	$CanvasLayer/Control/ProgressBar.set_value(health)
+	
+	# create damage effect
+	var dmg_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	dmg_tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 0.5), 0.08)
+	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(0.9, 0.9), 0.08)
+	dmg_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color("952b2b"), 0.08)
+	dmg_tween.tween_property(get_parent(), "modulate", Color.white, 0.08)
+	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(1, 1), 0.08)
+	dmg_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color.white, 0.08)
 	
 	if get_parent().has_method("_on_damage"):
 		get_parent()._on_damage()
@@ -51,6 +60,7 @@ func damage(dealer, amount):
 		else:
 			_on_destroy()
 	return true
+
 
 func reset():
 	health = health_max
@@ -71,11 +81,20 @@ func heal(dealer, amount):
 		$Autoheal.stop()
 	else:
 		$CanvasLayer/Control/ProgressBar.set_value(health)
+	
+	# create healing effect
+	var heal_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	heal_tween.tween_property(get_parent(), "modulate", Color("c6ffce"), 0.08)
+	heal_tween.parallel().tween_property(get_parent(), "scale", Vector2(1.1, 1.1), 0.08)
+	heal_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color("c6ffce"), 0.08)
+	heal_tween.tween_property(get_parent(), "modulate", Color.white, 0.08)
+	heal_tween.parallel().tween_property(get_parent(), "scale", Vector2(1, 1), 0.08)
+	heal_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color.white, 0.08)
 
 
 func _process(delta):
 	if $CanvasLayer/Control.is_visible():
-		$CanvasLayer/Control.set_position(get_parent().get_global_transform_with_canvas().get_origin())
+		$CanvasLayer/Control.set_position(get_parent().get_global_transform_with_canvas().get_origin() + Vector2(0, -70))
 
 # this on destory only work if parent doesn't have a _on_destory function
 func _on_destroy():

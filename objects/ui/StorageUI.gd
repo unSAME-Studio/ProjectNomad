@@ -31,6 +31,10 @@ func add_object(new_type):
 	
 	set_pressed(true)
 	emit_signal("pressed")
+	
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "rect_scale", Vector2(1.1, 1.1), 0.05)
+	tween.tween_property(self, "rect_scale", Vector2(1, 1), 0.05)
 
 
 func remove_object():
@@ -40,6 +44,10 @@ func remove_object():
 	box_storing = null
 	$Additional/Icon.set_texture(Image.new())
 	$Additional/Count.set_text("")
+	
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "rect_scale", Vector2(0.9, 0.9), 0.05)
+	tween.tween_property(self, "rect_scale", Vector2(1, 1), 0.05)
 
 
 func update_box_info(storing, count):

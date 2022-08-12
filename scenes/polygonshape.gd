@@ -50,7 +50,7 @@ func generate(polygon):
 	set_position(center)
 	
 	$Polygon2D.polygon = new_polygon
-	$Polygon2D.color = Color(randf(), randf(), randf(), 0.6)
+	#$Polygon2D.color = Color(randf(), randf(), randf(), 0.6)
 	$Shadow.polygon = new_polygon
 	
 	$CollisionPolygon2D.polygon = new_polygon

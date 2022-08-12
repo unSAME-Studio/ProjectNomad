@@ -328,6 +328,15 @@ func damage(dealer, amount):
 	health = clamp(health - amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
+	# create damage effect
+	var dmg_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	dmg_tween.tween_property($AnimatedSprite, "modulate", Color(0, 0, 0, 0.5), 0.08)
+	dmg_tween.parallel().tween_property($AnimatedSprite, "scale", Vector2(0.9, 0.9), 0.08)
+	dmg_tween.parallel().tween_property($CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar, "modulate", Color("952b2b"), 0.08)
+	dmg_tween.tween_property($AnimatedSprite, "modulate", Color.white, 0.08)
+	dmg_tween.parallel().tween_property($AnimatedSprite, "scale", Vector2(1, 1), 0.08)
+	dmg_tween.parallel().tween_property($CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar, "modulate", Color.white, 0.08)
+	
 	if health <= 0:
 		print("GAME OVER")
 		kill()
@@ -336,7 +345,16 @@ func damage(dealer, amount):
 func heal(dealer, amount):
 	health = clamp(health + amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
-
+	
+	# create healing effect
+	var heal_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	heal_tween.tween_property($AnimatedSprite, "modulate", Color("c6ffce"), 0.08)
+	heal_tween.parallel().tween_property($AnimatedSprite, "scale", Vector2(1.1, 1.1), 0.08)
+	heal_tween.parallel().tween_property($CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar, "modulate", Color("c6ffce"), 0.08)
+	heal_tween.tween_property($AnimatedSprite, "modulate", Color.white, 0.08)
+	heal_tween.parallel().tween_property($AnimatedSprite, "scale", Vector2(1, 1), 0.08)
+	heal_tween.parallel().tween_property($CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar, "modulate", Color.white, 0.08)
+	
 func kill():
 	var error = get_tree().reload_current_scene()
 

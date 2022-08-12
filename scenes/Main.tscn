@@ -57,7 +57,7 @@ color = Color( 0.231373, 0.231373, 0.231373, 1 )
 [node name="TestFog" type="Sprite" parent="Node2D"]
 modulate = Color( 1, 1, 1, 0.501961 )
 material = SubResource( 3 )
-scale = Vector2( 100, 100 )
+scale = Vector2( 500, 500 )
 z_index = -200
 texture = ExtResource( 5 )
 
