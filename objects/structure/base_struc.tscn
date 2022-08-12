@@ -57,4 +57,6 @@ physics_process_parent = true
 wait_time = 0.3
 one_shot = true
 
+[node name="Line2D" type="Line2D" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

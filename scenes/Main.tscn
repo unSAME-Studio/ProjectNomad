@@ -269,6 +269,7 @@ target_node_path = NodePath("../Player")
 script = ExtResource( 7 )
 
 [editable path="Node2D/Base"]
+[editable path="Node2D/Base/rooms/room"]
 [editable path="Node2D/Base2"]
 [editable path="Node2D/Base3"]
 [editable path="Node2D/Base4"]

@@ -31,6 +31,8 @@ func operate(player):
 			connected.operate(player)
 			using = true
 			$Timer.start(rate)
+			if player.has_method('get_targets'):
+				player.get_targets()
 
 func connect_culpit(object):
 	if object:

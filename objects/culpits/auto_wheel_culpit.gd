@@ -1,7 +1,12 @@
 extends Culpit
 
 
-var running = true
+var running = false
+var targeting = false
+var on_cd = false
+func _ready():
+	if base:
+		operate(null)
 
 
 func _process(delta):
@@ -9,6 +14,14 @@ func _process(delta):
 		
 		if base.has_method("handle_movement"):
 			var heading = base.to_local(Global.player.get_global_position())
+			
+			if heading.length() < 1000:
+				base.operate()
+			
+			if not targeting:
+				if base.has_method('add_target'):
+					targeting = base.add_target(Global.player)
+			
 			heading.x = clamp(heading.x, -1, 1)
 			heading.y = clamp(heading.y, -1, 1)
 			
@@ -23,6 +36,19 @@ func _process(delta):
 
 func operate(player):
 	running = !running
+	if running:
+		if base.has_method('add_target'):
+			targeting = base.add_target(Global.player)
+			
+func destroy():
+	if base.has_method('add_target'):
+		base.remove_target(Global.player)
+		targeting = false
 
 
 
+
+
+func _on_Timer_timeout():
+	on_cd = false
+	

@@ -139,6 +139,7 @@ func canceled_build():
 
 
 func _on_destroy():
+	destroy()
 	print(type + "have been destroyed")
 	if build_point:
 		build_point.activate_build()
@@ -146,7 +147,9 @@ func _on_destroy():
 	throw(Global.player)
 	call_deferred("queue_free")
 
-
+func destroy():
+	pass
+	
 func on_select():
 	return
 
