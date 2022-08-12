@@ -45,7 +45,7 @@ func damage(dealer, amount):
 	# create damage effect
 	var dmg_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	dmg_tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 0.5), 0.08)
-	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(1.1, 1.1), 0.08)
+	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(0.9, 0.9), 0.08)
 	dmg_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color("952b2b"), 0.08)
 	dmg_tween.tween_property(get_parent(), "modulate", Color.white, 0.08)
 	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(1, 1), 0.08)
@@ -84,9 +84,9 @@ func heal(dealer, amount):
 	
 	# create healing effect
 	var heal_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-	heal_tween.tween_property(get_parent(), "modulate", Color("619962"), 0.08)
+	heal_tween.tween_property(get_parent(), "modulate", Color("c6ffce"), 0.08)
 	heal_tween.parallel().tween_property(get_parent(), "scale", Vector2(1.1, 1.1), 0.08)
-	heal_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color("619962"), 0.08)
+	heal_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color("c6ffce"), 0.08)
 	heal_tween.tween_property(get_parent(), "modulate", Color.white, 0.08)
 	heal_tween.parallel().tween_property(get_parent(), "scale", Vector2(1, 1), 0.08)
 	heal_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color.white, 0.08)
