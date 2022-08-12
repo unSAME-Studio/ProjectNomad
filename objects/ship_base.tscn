@@ -21,3 +21,5 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="Basecollision2" type="CollisionPolygon2D" parent="baseshape"]
+
+[node name="Line2D" type="Line2D" parent="."]

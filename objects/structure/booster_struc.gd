@@ -6,6 +6,7 @@ var controlling = false
 var using = false
 
 var speed_boost = 200
+var rotate_boost = 0
 
 func ready():
 	self.connect("tree_exiting", self, "destroy")
@@ -39,6 +40,8 @@ func connect_culpit(object):
 func add_buff(buff):
 	if buff.type == 'generator':
 		speed_boost = 2
+	if buff.type == 'gyro':
+		rotate_boost = 100
 	if base.has_method('add_buff'):
 		base.add_buff(self)
 		

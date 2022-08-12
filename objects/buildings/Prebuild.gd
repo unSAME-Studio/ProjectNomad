@@ -168,13 +168,14 @@ func _process(delta):
 			# snapping by checking nearby edges
 			var x_edge = []
 			var y_edge = []
-			if parent.get_node("objects"):
-				for i in parent.get_node("objects").get_children():
-					if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
-						x_edge.append(i.get_position().x)
-						y_edge.append(i.get_position().y)
-		
-			target_snap = parent.get_local_mouse_position()
+			if parent:
+				if parent.get_node("objects"):
+					for i in parent.get_node("objects").get_children():
+						if i.get_global_position().distance_to(get_global_mouse_position()) < SNAP_RANGE:
+							x_edge.append(i.get_position().x)
+							y_edge.append(i.get_position().y)
+			
+				target_snap = parent.get_local_mouse_position()
 				
 			var target_x = find_closest(target_snap.x, x_edge)
 			var target_y = find_closest(target_snap.y, y_edge)

@@ -68,3 +68,8 @@ physics_process_parent = true
 
 [node name="DamageComponent" parent="." instance=ExtResource( 3 )]
 autoheal = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
