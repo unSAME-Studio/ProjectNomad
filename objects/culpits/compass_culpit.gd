@@ -1,5 +1,7 @@
 extends Culpit
 
+
+var points_to = Vector2(200, 200)
 var light2d
 
 
@@ -16,7 +18,9 @@ func _ready():
 
 
 func _process(delta):
-	pass
+	if points_to:
+		#$Sprite.look_at(points_to.get_global_position())
+		$Sprite.look_at(points_to)
 
 
 func operate(player):
