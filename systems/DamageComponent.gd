@@ -42,6 +42,13 @@ func damage(dealer, amount):
 	health = clamp(health - amount, 0, health_max)
 	$CanvasLayer/Control/ProgressBar.set_value(health)
 	
+	# create damage effect
+	var dmg_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	dmg_tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 0.5), 0.08)
+	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(1.1, 1.1), 0.08)
+	dmg_tween.tween_property(get_parent(), "modulate", Color.white, 0.08)
+	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(1, 1), 0.08)
+	
 	if get_parent().has_method("_on_damage"):
 		get_parent()._on_damage()
 	
