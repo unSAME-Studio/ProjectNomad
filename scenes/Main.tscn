@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enviorments/Island.tscn" type="PackedScene" id=2]
@@ -19,6 +19,13 @@
 [ext_resource path="res://objects/rooms/roomex.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/culpits/light_culpit.gd" type="Script" id=18]
 [ext_resource path="res://objects/rooms/roomex2.tscn" type="PackedScene" id=19]
+[ext_resource path="res://objects/culpits/turret_culpit.gd" type="Script" id=20]
+[ext_resource path="res://objects/rooms/roomexboss.tscn" type="PackedScene" id=21]
+[ext_resource path="res://objects/characters/enemy/Spider.tscn" type="PackedScene" id=22]
+[ext_resource path="res://objects/rooms/room6.tscn" type="PackedScene" id=23]
+[ext_resource path="res://objects/scripts/ship.gd" type="Script" id=24]
+[ext_resource path="res://objects/rooms/room3.tscn" type="PackedScene" id=25]
+[ext_resource path="res://objects/small.tscn" type="PackedScene" id=26]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -55,8 +62,10 @@ mouse_filter = 2
 color = Color( 0.231373, 0.231373, 0.231373, 1 )
 
 [node name="TestFog" type="Sprite" parent="Node2D"]
+visible = false
 modulate = Color( 1, 1, 1, 0.501961 )
 material = SubResource( 3 )
+position = Vector2( -524, 539 )
 scale = Vector2( 500, 500 )
 z_index = -200
 texture = ExtResource( 5 )
@@ -66,32 +75,161 @@ position = Vector2( 951, 126 )
 collision_mask = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
-speed = 400
 
 [node name="Base" parent="Node2D" instance=ExtResource( 11 )]
-position = Vector2( 2732, -1498 )
+position = Vector2( 268, -1213 )
 rotation = 0.42513
 collision_mask = 2
 
 [node name="room" parent="Node2D/Base/rooms" index="0" instance=ExtResource( 17 )]
+
+[node name="Base_struct" parent="Node2D/Base/rooms/room/objects" index="0"]
+rate = 0.2
+damage_buff = 1.0
+speed_buff = 3.0
+node = NodePath("../Culpit")
+
+[node name="Culpit" parent="Node2D/Base/rooms/room/objects" index="1" instance=ExtResource( 14 )]
+position = Vector2( 0.81543, -102.457 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Base_struct2" parent="Node2D/Base/rooms/room/objects" index="2"]
+rate = 0.2
+damage_buff = 1.0
+speed_buff = 3.0
+node = NodePath("../Culpit2")
+
+[node name="Culpit2" parent="Node2D/Base/rooms/room/objects" index="3" instance=ExtResource( 14 )]
+position = Vector2( -2.22508, 104.192 )
+script = ExtResource( 20 )
+type = "turret"
 
 [node name="Auto_Wheel_Culpit" parent="Node2D/Base/objects" index="0" instance=ExtResource( 16 )]
 position = Vector2( -0.910904, 0.412529 )
 
 [node name="StupidBoy" parent="Node2D/Base" instance=ExtResource( 15 )]
 position = Vector2( -177.103, -3.24463 )
+baseMode = true
 immobile = true
 
 [node name="StupidBoy2" parent="Node2D/Base" instance=ExtResource( 15 )]
 position = Vector2( 200.29, -6.15527 )
+baseMode = true
 immobile = true
 
 [node name="StupidBoy3" parent="Node2D/Base" instance=ExtResource( 15 )]
 position = Vector2( 14.2319, 222.979 )
+baseMode = true
 immobile = true
 
 [node name="StupidBoy4" parent="Node2D/Base" instance=ExtResource( 15 )]
 position = Vector2( 4.29602, -215.999 )
+baseMode = true
+immobile = true
+
+[node name="Base9" parent="Node2D" instance=ExtResource( 11 )]
+position = Vector2( 3313, -7480 )
+rotation = 0.42513
+collision_mask = 2
+
+[node name="room" parent="Node2D/Base9/rooms" index="0" instance=ExtResource( 17 )]
+
+[node name="Base_struct" parent="Node2D/Base9/rooms/room/objects" index="0"]
+rate = 0.2
+damage_buff = 1.0
+speed_buff = 3.0
+node = NodePath("../Culpit")
+
+[node name="Culpit" parent="Node2D/Base9/rooms/room/objects" index="1" instance=ExtResource( 14 )]
+position = Vector2( 0.81543, -102.457 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Base_struct2" parent="Node2D/Base9/rooms/room/objects" index="2"]
+rate = 0.2
+damage_buff = 1.0
+speed_buff = 3.0
+node = NodePath("../Culpit2")
+
+[node name="Culpit2" parent="Node2D/Base9/rooms/room/objects" index="3" instance=ExtResource( 14 )]
+position = Vector2( -2.22508, 104.192 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Auto_Wheel_Culpit" parent="Node2D/Base9/objects" index="0" instance=ExtResource( 16 )]
+position = Vector2( -0.910904, 0.412529 )
+
+[node name="StupidBoy" parent="Node2D/Base9" instance=ExtResource( 15 )]
+position = Vector2( -177.103, -3.24463 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy2" parent="Node2D/Base9" instance=ExtResource( 15 )]
+position = Vector2( 200.29, -6.15527 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy3" parent="Node2D/Base9" instance=ExtResource( 15 )]
+position = Vector2( 14.2319, 222.979 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy4" parent="Node2D/Base9" instance=ExtResource( 15 )]
+position = Vector2( 4.29602, -215.999 )
+baseMode = true
+immobile = true
+
+[node name="Base10" parent="Node2D" instance=ExtResource( 11 )]
+position = Vector2( 7339, -5893 )
+rotation = -0.81407
+collision_mask = 2
+
+[node name="room" parent="Node2D/Base10/rooms" index="0" instance=ExtResource( 17 )]
+
+[node name="Base_struct" parent="Node2D/Base10/rooms/room/objects" index="0"]
+rate = 0.2
+damage_buff = 1.0
+speed_buff = 3.0
+node = NodePath("../Culpit")
+
+[node name="Culpit" parent="Node2D/Base10/rooms/room/objects" index="1" instance=ExtResource( 14 )]
+position = Vector2( 0.81543, -102.457 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Base_struct2" parent="Node2D/Base10/rooms/room/objects" index="2"]
+rate = 0.2
+damage_buff = 1.0
+speed_buff = 3.0
+node = NodePath("../Culpit2")
+
+[node name="Culpit2" parent="Node2D/Base10/rooms/room/objects" index="3" instance=ExtResource( 14 )]
+position = Vector2( -2.22508, 104.192 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Auto_Wheel_Culpit" parent="Node2D/Base10/objects" index="0" instance=ExtResource( 16 )]
+position = Vector2( -0.910904, 0.412529 )
+
+[node name="StupidBoy" parent="Node2D/Base10" instance=ExtResource( 15 )]
+position = Vector2( -177.103, -3.24463 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy2" parent="Node2D/Base10" instance=ExtResource( 15 )]
+position = Vector2( 200.29, -6.15527 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy3" parent="Node2D/Base10" instance=ExtResource( 15 )]
+position = Vector2( 14.2319, 222.979 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy4" parent="Node2D/Base10" instance=ExtResource( 15 )]
+position = Vector2( 4.29602, -215.999 )
+baseMode = true
 immobile = true
 
 [node name="Base2" parent="Node2D" instance=ExtResource( 11 )]
@@ -119,6 +257,198 @@ immobile = true
 [node name="StupidBoy4" parent="Node2D/Base2" instance=ExtResource( 15 )]
 position = Vector2( 4.29602, -215.999 )
 immobile = true
+
+[node name="Base8" parent="Node2D" instance=ExtResource( 11 )]
+position = Vector2( 5493, -5994 )
+rotation = 3.18788
+collision_mask = 2
+
+[node name="room" parent="Node2D/Base8/rooms" index="0" instance=ExtResource( 23 )]
+
+[node name="room3" parent="Node2D/Base8/rooms" index="1" instance=ExtResource( 25 )]
+position = Vector2( 4.57129, -455.426 )
+
+[node name="Base_struct" parent="Node2D/Base8/rooms/room3/objects" index="0"]
+node = NodePath("../Culpit3")
+
+[node name="Culpit3" parent="Node2D/Base8/rooms/room3/objects" index="1" instance=ExtResource( 14 )]
+position = Vector2( 0.643555, -97.9883 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Base_struct2" parent="Node2D/Base8/rooms/room3/objects" index="2"]
+node = NodePath("../Culpit4")
+
+[node name="Culpit4" parent="Node2D/Base8/rooms/room3/objects" index="3" instance=ExtResource( 14 )]
+position = Vector2( -184.333, -94.376 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Base_struct3" parent="Node2D/Base8/rooms/room3/objects" index="4"]
+node = NodePath("../Culpit5")
+
+[node name="Culpit5" parent="Node2D/Base8/rooms/room3/objects" index="5" instance=ExtResource( 14 )]
+position = Vector2( 183.625, -96.3066 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Auto_Wheel_Culpit" parent="Node2D/Base8/objects" index="0" instance=ExtResource( 16 )]
+position = Vector2( 13.401, -382.583 )
+
+[node name="StupidBoy" parent="Node2D/Base8" instance=ExtResource( 15 )]
+position = Vector2( -153.632, -147.793 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy2" parent="Node2D/Base8" instance=ExtResource( 15 )]
+position = Vector2( 142.671, -160.094 )
+immobile = true
+
+[node name="StupidBoy3" parent="Node2D/Base8" instance=ExtResource( 15 )]
+position = Vector2( 111.252, -401.636 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy4" parent="Node2D/Base8" instance=ExtResource( 15 )]
+position = Vector2( -78.038, -390.582 )
+baseMode = true
+immobile = true
+
+[node name="Spider13" parent="Node2D/Base8" instance=ExtResource( 22 )]
+position = Vector2( -2.15381, -164.78 )
+rotation = -0.42513
+scale = Vector2( 1, 1 )
+
+[node name="Base11" parent="Node2D" instance=ExtResource( 11 )]
+position = Vector2( 2185, -9524 )
+rotation = 0.42513
+collision_mask = 2
+
+[node name="room" parent="Node2D/Base11/rooms" index="0" instance=ExtResource( 23 )]
+
+[node name="room3" parent="Node2D/Base11/rooms" index="1" instance=ExtResource( 25 )]
+position = Vector2( 4.57129, -455.426 )
+
+[node name="Base_struct" parent="Node2D/Base11/rooms/room3/objects" index="0"]
+node = NodePath("../Culpit3")
+
+[node name="Culpit3" parent="Node2D/Base11/rooms/room3/objects" index="1" instance=ExtResource( 14 )]
+position = Vector2( 0.643555, -97.9883 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Base_struct2" parent="Node2D/Base11/rooms/room3/objects" index="2"]
+node = NodePath("../Culpit4")
+
+[node name="Culpit4" parent="Node2D/Base11/rooms/room3/objects" index="3" instance=ExtResource( 14 )]
+position = Vector2( -184.333, -94.376 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Base_struct3" parent="Node2D/Base11/rooms/room3/objects" index="4"]
+node = NodePath("../Culpit5")
+
+[node name="Culpit5" parent="Node2D/Base11/rooms/room3/objects" index="5" instance=ExtResource( 14 )]
+position = Vector2( 183.625, -96.3066 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Auto_Wheel_Culpit" parent="Node2D/Base11/objects" index="0" instance=ExtResource( 16 )]
+position = Vector2( 13.401, -382.583 )
+
+[node name="StupidBoy" parent="Node2D/Base11" instance=ExtResource( 15 )]
+position = Vector2( -153.632, -147.793 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy2" parent="Node2D/Base11" instance=ExtResource( 15 )]
+position = Vector2( 142.671, -160.094 )
+immobile = true
+
+[node name="StupidBoy3" parent="Node2D/Base11" instance=ExtResource( 15 )]
+position = Vector2( 111.252, -401.636 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy4" parent="Node2D/Base11" instance=ExtResource( 15 )]
+position = Vector2( -78.038, -390.582 )
+baseMode = true
+immobile = true
+
+[node name="Spider13" parent="Node2D/Base11" instance=ExtResource( 22 )]
+position = Vector2( -2.15381, -164.78 )
+rotation = -0.42513
+scale = Vector2( 1, 1 )
+
+[node name="Base12" parent="Node2D" instance=ExtResource( 11 )]
+position = Vector2( -4840, 863 )
+rotation = 0.42513
+collision_mask = 2
+
+[node name="room" parent="Node2D/Base12/rooms" index="0" instance=ExtResource( 23 )]
+
+[node name="room3" parent="Node2D/Base12/rooms" index="1" instance=ExtResource( 25 )]
+position = Vector2( 4.57129, -455.426 )
+
+[node name="Base_struct" parent="Node2D/Base12/rooms/room3/objects" index="0"]
+node = NodePath("../Culpit3")
+
+[node name="Culpit3" parent="Node2D/Base12/rooms/room3/objects" index="1" instance=ExtResource( 14 )]
+position = Vector2( 0.643555, -97.9883 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Base_struct2" parent="Node2D/Base12/rooms/room3/objects" index="2"]
+node = NodePath("../Culpit4")
+
+[node name="Culpit4" parent="Node2D/Base12/rooms/room3/objects" index="3" instance=ExtResource( 14 )]
+position = Vector2( -184.333, -94.376 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Base_struct3" parent="Node2D/Base12/rooms/room3/objects" index="4"]
+node = NodePath("../Culpit5")
+
+[node name="Culpit5" parent="Node2D/Base12/rooms/room3/objects" index="5" instance=ExtResource( 14 )]
+position = Vector2( 183.625, -96.3066 )
+scale = Vector2( 1, 1 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Auto_Wheel_Culpit" parent="Node2D/Base12/objects" index="0" instance=ExtResource( 16 )]
+position = Vector2( 13.401, -382.583 )
+
+[node name="StupidBoy" parent="Node2D/Base12" instance=ExtResource( 15 )]
+position = Vector2( -153.632, -147.793 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy2" parent="Node2D/Base12" instance=ExtResource( 15 )]
+position = Vector2( 142.671, -160.094 )
+immobile = true
+
+[node name="StupidBoy3" parent="Node2D/Base12" instance=ExtResource( 15 )]
+position = Vector2( 111.252, -401.636 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy4" parent="Node2D/Base12" instance=ExtResource( 15 )]
+position = Vector2( -78.038, -390.582 )
+baseMode = true
+immobile = true
+
+[node name="Spider13" parent="Node2D/Base12" instance=ExtResource( 22 )]
+position = Vector2( -2.15381, -164.78 )
+rotation = -0.42513
+scale = Vector2( 1, 1 )
 
 [node name="Base3" parent="Node2D" instance=ExtResource( 11 )]
 position = Vector2( -808, -2148 )
@@ -182,6 +512,8 @@ mass = 0.8
 position = Vector2( 0.915344, -58.5932 )
 rotation = -3.13911
 z_index = 1
+
+[node name="Base7" parent="Node2D" instance=ExtResource( 26 )]
 
 [node name="Island" parent="Node2D" instance=ExtResource( 2 )]
 position = Vector2( 1497, 970 )
@@ -259,6 +591,168 @@ rotation = 2.63467
 [node name="StupidBoy2" parent="Node2D/Island2" instance=ExtResource( 15 )]
 position = Vector2( 468.559, 433.287 )
 
+[node name="Island3" parent="Node2D" instance=ExtResource( 2 )]
+position = Vector2( 5580, -7500 )
+
+[node name="Polygon2D" parent="Node2D/Island3" index="1"]
+polygon = PoolVector2Array( -611, 165, -1183, 57, -1111, -819, -1307, -1435, -755, -1615, -719, -2271, 341, -2383, 1017, -2235, 665, -2023, 997, -1951, 613, -1535, 553, -727, 1213, 217, 1021, 1005, 453, 1325, 465, 837, 137, 817, 197, 313, 13, -119, -211, -107, -119, 317, -479, 773 )
+
+[node name="Rock" parent="Node2D/Island3/objects" index="0" instance=ExtResource( 8 )]
+position = Vector2( 70.5459, -319.3 )
+
+[node name="Tree" parent="Node2D/Island3/objects" index="1" instance=ExtResource( 10 )]
+position = Vector2( -196.558, -547.293 )
+
+[node name="Culpit" parent="Node2D/Island3/objects" index="2" instance=ExtResource( 14 )]
+position = Vector2( 467.436, 225.143 )
+script = ExtResource( 18 )
+preopen = true
+
+[node name="Entity2" parent="Node2D/Island3/entity" index="0" instance=ExtResource( 9 )]
+position = Vector2( -595.714, -460.355 )
+
+[node name="StupidBoy" parent="Node2D/Island3" index="6"]
+position = Vector2( -294.61, -724.622 )
+
+[node name="Base" type="RigidBody2D" parent="Node2D/Island3/structure" index="0"]
+position = Vector2( 420.327, 373.473 )
+collision_layer = 2
+collision_mask = 0
+mode = 1
+script = ExtResource( 24 )
+
+[node name="Basecollision" type="CollisionPolygon2D" parent="Node2D/Island3/structure/Base"]
+
+[node name="rooms" type="Node2D" parent="Node2D/Island3/structure/Base"]
+
+[node name="room" parent="Node2D/Island3/structure/Base/rooms" instance=ExtResource( 21 )]
+position = Vector2( -502.609, -163.274 )
+
+[node name="Base2" type="RigidBody2D" parent="Node2D/Island3/structure" index="1"]
+position = Vector2( 420.327, 373.473 )
+collision_layer = 2
+collision_mask = 0
+mode = 1
+script = ExtResource( 24 )
+
+[node name="Basecollision" type="CollisionPolygon2D" parent="Node2D/Island3/structure/Base2"]
+
+[node name="rooms" type="Node2D" parent="Node2D/Island3/structure/Base2"]
+
+[node name="room" parent="Node2D/Island3/structure/Base2/rooms" instance=ExtResource( 13 )]
+position = Vector2( 134.673, -2591.47 )
+rotation = 0.448113
+
+[node name="room2" parent="Node2D/Island3/structure/Base2/rooms" instance=ExtResource( 13 )]
+position = Vector2( -1621.33, -1759.47 )
+rotation = -1.22808
+
+[node name="room3" parent="Node2D/Island3/structure/Base2/rooms" instance=ExtResource( 23 )]
+position = Vector2( -1105.33, -2354.47 )
+rotation = -2.46959
+
+[node name="room4" parent="Node2D/Island3/structure/Base2/rooms" instance=ExtResource( 23 )]
+position = Vector2( -513.327, -2634.47 )
+rotation = -1.69128
+
+[node name="Culpit" parent="Node2D/Island3/structure/Base2/rooms" instance=ExtResource( 14 )]
+position = Vector2( 0.81543, -102.457 )
+script = ExtResource( 20 )
+type = "turret"
+
+[node name="Spider" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( 57, -387 )
+
+[node name="StupidBoy2" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( 1041, -288 )
+baseMode = true
+
+[node name="StupidBoy3" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( -828, -520 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy4" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( -1017, -53.0001 )
+
+[node name="StupidBoy5" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( 547, 1193 )
+
+[node name="StupidBoy6" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( -941, -1339 )
+
+[node name="StupidBoy12" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( -505, -2174 )
+
+[node name="StupidBoy7" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( 723.208, 232.525 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy8" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( 844, -722 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy9" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( -161, -1595 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy10" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( -383, -1473 )
+baseMode = true
+immobile = true
+
+[node name="StupidBoy11" parent="Node2D/Island3" instance=ExtResource( 15 )]
+position = Vector2( 208, -1407 )
+baseMode = true
+immobile = true
+
+[node name="Spider2" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( 246.717, -252.719 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider3" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( 434, 677 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider4" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( 104, -1242 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider5" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( 72.9995, -1570 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider6" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( -392, -1211 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider7" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( -262.902, -386.192 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider8" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( -783, 628 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider9" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( -643.493, -186.551 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider10" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( 421, -524 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider11" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( 590.891, -16.0557 )
+scale = Vector2( 1, 1 )
+
+[node name="Spider12" parent="Node2D/Island3" instance=ExtResource( 22 )]
+position = Vector2( 772.462, 724.265 )
+scale = Vector2( 1, 1 )
+
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 947, 623 )
 
@@ -268,12 +762,24 @@ target_node_path = NodePath("../Player")
 [node name="IslandGenerator" type="Node2D" parent="Node2D"]
 script = ExtResource( 7 )
 
+[editable path="Node2D/Base_ship"]
 [editable path="Node2D/Base"]
 [editable path="Node2D/Base/rooms/room"]
+[editable path="Node2D/Base9"]
+[editable path="Node2D/Base9/rooms/room"]
+[editable path="Node2D/Base10"]
+[editable path="Node2D/Base10/rooms/room"]
 [editable path="Node2D/Base2"]
+[editable path="Node2D/Base8"]
+[editable path="Node2D/Base8/rooms/room3"]
+[editable path="Node2D/Base11"]
+[editable path="Node2D/Base11/rooms/room3"]
+[editable path="Node2D/Base12"]
+[editable path="Node2D/Base12/rooms/room3"]
 [editable path="Node2D/Base3"]
 [editable path="Node2D/Base4"]
 [editable path="Node2D/Base5"]
 [editable path="Node2D/Base6"]
 [editable path="Node2D/Island"]
 [editable path="Node2D/Island2"]
+[editable path="Node2D/Island3"]

@@ -9,11 +9,15 @@ export var autoheal_speed = 1
 export(Array) var drop_types = []
 export(int) var drop_amount = 1
 
+var saved_scale
+
 var entity = preload("res://objects/entities/Entity.tscn")
 
 
 func _ready():
 	$CanvasLayer/Control/ProgressBar.set_max(health_max)
+	saved_scale = get_global_scale()
+	
 
 
 func damage(dealer, amount):
@@ -45,10 +49,10 @@ func damage(dealer, amount):
 	# create damage effect
 	var dmg_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	dmg_tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 0.5), 0.08)
-	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(0.9, 0.9), 0.08)
+	dmg_tween.parallel().tween_property(get_parent(), "scale", saved_scale * 0.9, 0.08)
 	dmg_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color("952b2b"), 0.08)
 	dmg_tween.tween_property(get_parent(), "modulate", Color.white, 0.08)
-	dmg_tween.parallel().tween_property(get_parent(), "scale", Vector2(1, 1), 0.08)
+	dmg_tween.parallel().tween_property(get_parent(), "scale", saved_scale * 1, 0.08)
 	dmg_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color.white, 0.08)
 	
 	if get_parent().has_method("_on_damage"):
@@ -85,10 +89,10 @@ func heal(dealer, amount):
 	# create healing effect
 	var heal_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	heal_tween.tween_property(get_parent(), "modulate", Color("c6ffce"), 0.08)
-	heal_tween.parallel().tween_property(get_parent(), "scale", Vector2(1.1, 1.1), 0.08)
+	heal_tween.parallel().tween_property(get_parent(), "scale", saved_scale * 1.1, 0.08)
 	heal_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color("c6ffce"), 0.08)
 	heal_tween.tween_property(get_parent(), "modulate", Color.white, 0.08)
-	heal_tween.parallel().tween_property(get_parent(), "scale", Vector2(1, 1), 0.08)
+	heal_tween.parallel().tween_property(get_parent(), "scale", saved_scale * 1, 0.08)
 	heal_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color.white, 0.08)
 
 

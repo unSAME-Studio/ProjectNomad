@@ -8,6 +8,7 @@ var base = null
 var selected_object = null
 var culpit = null
 
+var armour = null
 # An enum allows us to keep track of valid states.
 # With a variable that keeps track of the current state, we don't need to add more booleans.
 class_name PersistentState
@@ -26,7 +27,7 @@ var throw_hold = true
 
 var input_moving = false
 
-var health = 100.0
+var health = 200.0
 var storage = {
 	0: null,
 	1: null,
@@ -324,6 +325,8 @@ func damage(dealer, amount):
 			return false
 		if controlling:
 			if dealer == base:
+				return false
+			if dealer == armour:
 				return false
 	health = clamp(health - amount, 0, 100)
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)

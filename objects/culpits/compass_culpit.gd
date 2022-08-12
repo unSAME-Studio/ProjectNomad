@@ -1,7 +1,7 @@
 extends Culpit
 
 
-var points_to = Vector2(200, 200)
+export var points_to = Vector2(5580, -7500)
 var light2d
 
 

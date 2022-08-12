@@ -37,7 +37,7 @@ func _ready():
 	
 	# don't allow player to control if not controllable
 	if not controllable:
-		set_collision_layer_bit(0, true)
+		#set_collision_layer_bit(0, true)
 		set_collision_layer_bit(3, false)
 
 func active():

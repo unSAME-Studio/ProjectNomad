@@ -9,16 +9,24 @@ export var rate = 0.25
 export var damage_buff = 1.0
 export var speed_buff = 1.0
 export var cd_multiplyer = 1.0
-export(NodePath) onready var node = get_node(node)
+export(NodePath) var node
 
 var LockTarget
-
+var lockBase
+var prenode
 
 func ready():
+	if node:
+		prenode = get_node(node)
+		node = null
+	
 	base.controlled.append(self)
-	self.connect("tree_exiting", self, "destroy")
+	#self.connect("tree_exiting", self, "destroy")
 	#slot_build_point.bind_point(base)
-	slot_build_point.bind_point(get_parent().get_parent())
+	#slot_build_point.bind_point(get_parent().get_parent())
+	if prenode:
+		yield(get_tree(),"idle_frame")
+		$buildpoint.finish_build(prenode)
 
 func destroy():
 	base.controlled.erase(self)
@@ -29,11 +37,15 @@ func destroy():
 func operate(player):
 	if connected:
 		if not using:
-			connected.operate(player)
-			using = true
-			$Timer.start(rate)
 			if player.has_method('get_targets'):
 				LockTarget = player.get_targets(self)
+				lockBase = player
+				$Timer.start(1)
+			if not LockTarget:
+				connected.operate(player)
+				using = true
+				$Timer.start(rate)
+
 
 func connect_culpit(object):
 	if object:
@@ -61,17 +73,14 @@ func disconnect_culpit(clear = false):
 
 
 func _process(_delta):
-	var targetLoc = get_global_mouse_position()
-	if LockTarget:
-		if LockTarget.is_instance_valid():
-			targetLoc = LockTarget.get_global_position()
-		else:
-			LockTarget = null
-		var p = PoolVector2Array([Vector2.ZERO, to_local(targetLoc)])
-		$Line2D.set_points(p)
-
-	
 	if connected and base.controlling:
+		var targetLoc = get_global_mouse_position()
+		if LockTarget:
+			targetLoc = LockTarget.get_global_position()
+			if not using:
+				connected.operate(lockBase)
+				using = true
+				$Timer.start(rate)
 		connected.look_at(targetLoc)
 
 

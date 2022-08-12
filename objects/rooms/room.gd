@@ -19,8 +19,9 @@ func active(_base):
 	active = true
 	set_modulate(Color('ffffffff'))
 	base = _base
-	base.rooms.append(self)
-	base.update_polygon($Polygon2D)
+	if base:
+		base.rooms.append(self)
+		base.update_polygon($Polygon2D)
 	for i in $structures.get_children():
 		if i.has_method('active'):
 			i.active()
