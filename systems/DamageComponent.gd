@@ -75,7 +75,7 @@ func heal(dealer, amount):
 
 func _process(delta):
 	if $CanvasLayer/Control.is_visible():
-		$CanvasLayer/Control.set_position(get_parent().get_global_transform_with_canvas().get_origin())
+		$CanvasLayer/Control.set_position(get_parent().get_global_transform_with_canvas().get_origin() + Vector2(0, -70))
 
 # this on destory only work if parent doesn't have a _on_destory function
 func _on_destroy():
