@@ -77,8 +77,6 @@ func _process(delta):
 			onboard[0].camera.align_camera()
 	if not targetsList.empty():
 		pass
-#		var p = PoolVector2Array([Vector2.ZERO, to_local(targetsList[0].get_global_position())])
-#		$Line2D.set_points(p)
 		
 
 func operate(player = self):
@@ -107,12 +105,15 @@ func add_target(target):
 
 func remove_target(target):
 	if target in targetsList:
+		#print('removing')
 		targetsList.erase(target)
 		target.disconnect("tree_exiting", self, "remove_target")
 	
 func get_targets(object):
 	if not targetsList.empty():
-		return targetsList[0]
+
+		if targetsList[0]:
+			return targetsList[0]
 	return null
 			
 

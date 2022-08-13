@@ -3,12 +3,18 @@ extends KinematicBody2D
 var bullet = preload("res://objects/weapons/bullet.tscn")
 var speed = 100
 var user = self
+var base = null
 
+export var baseMode = false
 export var immobile = false
 
 func _ready():
-	pass
-
+	if baseMode:
+		var tempbase = get_world_2d().get_direct_space_state().intersect_point($Position2D.get_global_position(), 1 ,[],2,true,false)
+		if not tempbase.empty():
+			base = tempbase[0].collider
+		else:
+			base=get_parent()
 
 func _physics_process(delta):
 	if Global.player.get_global_position().distance_to(get_global_position()) <= 3000:
@@ -32,8 +38,17 @@ func _on_Timer_timeout():
 	if Global.player.get_global_position().distance_to(get_global_position()) <= 3000:
 		$AnimationPlayer.play("shoot")
 		
+		
 		var b = bullet.instance()
 		b.parent = self
+		if baseMode:
+			var tempbase = get_world_2d().get_direct_space_state().intersect_point($Position2D.get_global_position(), 1 ,[],2,true,false)
+			if not tempbase.empty():
+				user = tempbase[0].collider
+				base = user
+			else:
+				user = self
+		
 		b.set_global_position($Enemy/Position2D.get_global_position())
 		b.set_global_rotation($Enemy/Position2D.get_global_rotation())
 		get_tree().get_current_scene().get_node("Node2D").add_child(b)

@@ -4,7 +4,7 @@ var bullet = preload("res://objects/weapons/bullet.tscn")
 var speed = 100
 var user = self
 var cd = 20
-
+var curr_ar
 export var immobile = true
 
 
@@ -33,10 +33,15 @@ func _physics_process(delta):
 func _on_Timer_timeout():
 	if $CooldownComponent.can_fire(cd):
 		if Global.player.get_global_position().distance_to(get_global_position()) <= 1000:
+			if Global.player.armour != null:
+				if Global.player.armour != curr_ar:
+					curr_ar = Global.player.armour 
+					for i in Global.player.armour.get_node('rooms/room/structures').get_children():
+						$Enemy/RayCast2D.add_exception(i)
 			if $Enemy/RayCast2D.is_colliding():
-				
+
 				#print($Enemy/RayCast2D.get_collider().name)
-				if "Player" == $Enemy/RayCast2D.get_collider().name:
+				if "Player" == $Enemy/RayCast2D.get_collider().name or $Enemy/RayCast2D.get_collider() == curr_ar:
 					$AnimationPlayer.play("shoot")
 					
 					var b = bullet.instance()

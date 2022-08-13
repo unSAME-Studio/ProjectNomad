@@ -1,0 +1,233 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
+[ext_resource path="res://objects/structure/base_struc.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/rooms/walls/Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/rooms/walls/Wall.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/rooms/walls/Wall_strike.tscn" type="PackedScene" id=6]
+[ext_resource path="res://arts/structures/pattern1.png" type="Texture" id=7]
+
+[node name="room" type="Area2D"]
+collision_layer = 34
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( 32, 24 )
+color = Color( 0.584314, 0.639216, 0.74902, 1 )
+texture = ExtResource( 7 )
+texture_scale = Vector2( 3, 3 )
+polygon = PoolVector2Array( -72, -256, -192, -120, -360, 224, -216, 480, -216, 784, -832, 760, -880, -184, -752, -520, -1248, -512, -1256, -912, -304, -904, -272, -1216, -496, -1392, -528, -1728, -280, -1960, 200, -1984, 424, -1768, 408, -1488, 160, -1248, 152, -872, 744, -880, 760, -1264, 1416, -1288, 1472, -184, 1136, -184, 784, -528, 408, -520, 816, -208, 880, 8, 920, 232, 936, 432, 888, 648, 760, 792, 264, 768, 232, 472, 344, 216, 176, -136, 72, -256 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="structures" type="Node2D" parent="."]
+
+[node name="points" type="Node2D" parent="structures"]
+
+[node name="Wall" parent="structures" instance=ExtResource( 6 )]
+position = Vector2( -32, -1944 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Polygon2D" parent="structures/Wall" index="1"]
+polygon = PoolVector2Array( -316.667, -15.0001, -654.445, 225, -527.778, 262.5, -263.889, 30, 285, 7.49988, 570, 225, 707.222, 157.5, 401.111, -45.0002 )
+
+[node name="Wall3" parent="structures" instance=ExtResource( 6 )]
+position = Vector2( -32, -1944 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Polygon2D" parent="structures/Wall3" index="1"]
+position = Vector2( -540, 730 )
+polygon = PoolVector2Array( -84.4445, -315, -73.8889, 37.5004, 211.111, 180.001, 147.778, 442.501, 327.222, 465.001, 327.222, 157.501, 42.2222, -29.9999, 42.2222, -285 )
+
+[node name="Wall2" parent="structures" instance=ExtResource( 6 )]
+position = Vector2( -16, -1200 )
+rotation = 3.14159
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Wall4" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -960, -472 )
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall5" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -848, -872 )
+scale = Vector2( 2.49072, 1.99946 )
+
+[node name="Wall6" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 464, -864 )
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall7" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 632, -488 )
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall8" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 1128, -1272 )
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall9" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 1312, -144 )
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall10" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 584, 800 )
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall11" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -480, 816 )
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall12" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -816, 512 )
+rotation = 1.47972
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall13" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -808, -152 )
+rotation = 1.80882
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall14" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -1224, -648 )
+rotation = 1.47972
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall15" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 1480, -704 )
+rotation = 1.47972
+scale = Vector2( 3.01631, 1.99384 )
+
+[node name="Wall16" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 808, -1088 )
+rotation = 1.59057
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall17" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 1000, -304 )
+rotation = 0.750899
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall18" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 912, 120 )
+rotation = 1.40154
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall27" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 920, 568 )
+rotation = 1.92122
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall19" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 688, -320 )
+rotation = 0.647757
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall20" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 352, 544 )
+rotation = 1.87046
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall21" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -248, 552 )
+rotation = 1.26342
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall22" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( -232, 56 )
+rotation = 2.04495
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall23" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 312, 40 )
+rotation = 1.07225
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall24" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 200, -1016 )
+rotation = 1.47972
+scale = Vector2( 1.21817, 1.37419 )
+
+[node name="Wall25" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 464, -1552 )
+rotation = 1.47972
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Wall26" parent="structures" instance=ExtResource( 4 )]
+position = Vector2( 344, -1360 )
+rotation = 2.33154
+scale = Vector2( 1.77585, 1.37419 )
+
+[node name="Door" parent="structures" instance=ExtResource( 3 )]
+position = Vector2( -56, -872 )
+
+[node name="Door2" parent="structures" instance=ExtResource( 3 )]
+position = Vector2( -624, -672 )
+rotation = -1.1789
+
+[node name="Door3" parent="structures" instance=ExtResource( 3 )]
+position = Vector2( 720, -648 )
+rotation = -1.1789
+
+[node name="Door4" parent="structures" instance=ExtResource( 3 )]
+position = Vector2( 328, -656 )
+rotation = -2.22727
+
+[node name="Door5" parent="structures" instance=ExtResource( 3 )]
+position = Vector2( 64, -240 )
+rotation = -3.10309
+
+[node name="Door6" parent="structures" instance=ExtResource( 3 )]
+position = Vector2( -592, 272 )
+rotation = -3.10309
+scale = Vector2( 1.26005, 1.04954 )
+
+[node name="Door7" parent="structures" instance=ExtResource( 3 )]
+position = Vector2( 696, 296 )
+rotation = -3.10309
+scale = Vector2( 1.26005, 1.04954 )
+
+[node name="Door8" parent="structures" instance=ExtResource( 3 )]
+position = Vector2( -47.9999, -1136 )
+rotation = -3.10309
+scale = Vector2( 1.26005, 1.04954 )
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="Base_struct" parent="objects" instance=ExtResource( 2 )]
+position = Vector2( -544, 544 )
+scale = Vector2( 2, 2 )
+damage_buff = 5.0
+speed_buff = 5.0
+cd_multiplyer = 5.0
+
+[node name="Base_struct4" parent="objects" instance=ExtResource( 2 )]
+position = Vector2( 1192, -944 )
+scale = Vector2( 4, 4 )
+damage_buff = 5.0
+speed_buff = 10.0
+cd_multiplyer = 5.0
+
+[node name="Base_struct5" parent="objects" instance=ExtResource( 2 )]
+position = Vector2( -1024, -672 )
+scale = Vector2( 4, 4 )
+damage_buff = 5.0
+speed_buff = 5.0
+cd_multiplyer = 5.0
+
+[node name="Base_struct2" parent="objects" instance=ExtResource( 2 )]
+position = Vector2( 632, 552 )
+rotation = 3.14159
+scale = Vector2( 2, 2 )
+damage_buff = 5.0
+speed_buff = 10.0
+cd_multiplyer = 5.0
+
+[node name="Base_struct3" parent="objects" instance=ExtResource( 2 )]
+position = Vector2( -16, -1256 )
+rotation = 3.14159
+damage_buff = 2.0
+speed_buff = 2.0
+cd_multiplyer = 2.0
+
+[editable path="structures/Wall"]
+[editable path="structures/Wall3"]
