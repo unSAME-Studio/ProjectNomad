@@ -11,11 +11,10 @@ func _ready():
 
 func _process(delta):
 	if running and base:
-		
 		if base.has_method("handle_movement"):
 			var heading = base.to_local(Global.player.get_global_position())
 			
-			if heading.length() < 1000:
+			if heading.length() < 3000:
 				base.operate()
 			
 			if not targeting:
@@ -36,9 +35,7 @@ func _process(delta):
 
 func operate(player):
 	running = !running
-	if running:
-		if base.has_method('add_target'):
-			targeting = base.add_target(Global.player)
+	base.controlling = running
 			
 func destroy():
 	if base.has_method('add_target'):

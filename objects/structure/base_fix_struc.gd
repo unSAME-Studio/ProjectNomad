@@ -12,11 +12,26 @@ export var speed_buff = 2.5
 export var cd_multiplyer = 10.0
 var reset_angle = false
 
+export(NodePath) var node
 
+var LockTarget
+var lockBase
+var prenode
 
 func ready():
+	if node:
+		prenode = get_node(node)
+		node = null
+		
 	base.controlled.append(self)
-	self.connect("tree_exiting", self, "destroy")
+	
+	
+	#self.connect("tree_exiting", self, "destroy")
+	#slot_build_point.bind_point(base)
+	#slot_build_point.bind_point(get_parent().get_parent())
+	if prenode:
+		yield(get_tree(),"idle_frame")
+		$buildpoint.finish_build(prenode)
 	#slot_build_point.bind_point(base)
 
 func destroy():
@@ -31,8 +46,7 @@ func operate(player):
 			connected.operate(player)
 			using = true
 			$Timer.start(rate)
-			if player.has_method('get_targets'):
-				player.get_targets()
+
 
 func connect_culpit(object):
 	if object:

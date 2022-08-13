@@ -54,19 +54,17 @@ position = Vector2( 0, -200 )
 position = Vector2( 0, -96 )
 scale = Vector2( 2.72, 2.72 )
 damage_buff = 2.5
-speed_buff = 2.0
+speed_buff = 4.0
 cd_multiplyer = 2.0
 
 [node name="Base_struct2" parent="objects" instance=ExtResource( 2 )]
 position = Vector2( -184, -96 )
 rate = 0.1
 damage_buff = 0.4
-speed_buff = 1.2
-cd_multiplyer = 0.5
+speed_buff = 2.0
 
 [node name="Base_struct3" parent="objects" instance=ExtResource( 2 )]
 position = Vector2( 184, -96 )
 rate = 0.1
 damage_buff = 0.4
-speed_buff = 1.2
-cd_multiplyer = 0.5
+speed_buff = 2.0
