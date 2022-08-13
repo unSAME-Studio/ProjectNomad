@@ -22,7 +22,12 @@ var controlled = []
 var speed_boost = 0
 var recharge_boost = 1
 
+var targetsList = []
+
+var line
+
 func _ready():
+
 	#$RigidBody2D/PinJoint2D.connect_bodies(self,$RigidBody2D)
 	# [TEMP DELETE]
 	#$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon
@@ -70,19 +75,45 @@ func _process(delta):
 	if not onboard.empty():
 		if not captain:
 			onboard[0].camera.align_camera()
+	if not targetsList.empty():
+		pass
+#		var p = PoolVector2Array([Vector2.ZERO, to_local(targetsList[0].get_global_position())])
+#		$Line2D.set_points(p)
+		
 
-
+func operate(player = self):
+	if not controlled.empty():
+		for i in controlled:
+			i.operate(player)
+			
 func _physics_process(delta):
 	if(controlling):
 		var direction = get_input()
 		handle_movement(direction)
+		
 		if Input.is_action_pressed("fire"):
-			if not controlled.empty():
-				for i in controlled:
-					i.operate(self)
+			operate()
 			
 func _integrate_forces(state):
 	pass
+	
+func add_target(target):
+	if target:
+		if not target in targetsList:
+			targetsList.append(target)
+			target.connect("tree_exiting", self, "remove_target",[target])
+			return true
+	return false
+
+func remove_target(target):
+	if target in targetsList:
+		targetsList.erase(target)
+		target.disconnect("tree_exiting", self, "remove_target")
+	
+func get_targets(object):
+	if not targetsList.empty():
+		return targetsList[0]
+	return null
 			
 
 func add_buff(buff):

@@ -35,8 +35,6 @@ func _process(delta):
 func apply_buff(buff):
 		if 'recharge_boost' in buff:
 			cooldown.speed = cd_speed * buff.recharge_boost
-			print("buff recieved!")
-			print(cooldown.speed)
 
 func operate(player):
 	if cooldown.can_fire(cd):

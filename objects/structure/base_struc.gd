@@ -9,6 +9,9 @@ export var rate = 0.25
 export var damage_buff = 1.0
 export var speed_buff = 1.0
 export var cd_multiplyer = 1.0
+export(NodePath) onready var node = get_node(node)
+
+var LockTarget
 
 
 func ready():
@@ -29,6 +32,8 @@ func operate(player):
 			connected.operate(player)
 			using = true
 			$Timer.start(rate)
+			if player.has_method('get_targets'):
+				LockTarget = player.get_targets(self)
 
 func connect_culpit(object):
 	if object:
@@ -56,8 +61,18 @@ func disconnect_culpit(clear = false):
 
 
 func _process(_delta):
+	var targetLoc = get_global_mouse_position()
+	if LockTarget:
+		if LockTarget.is_instance_valid():
+			targetLoc = LockTarget.get_global_position()
+		else:
+			LockTarget = null
+		var p = PoolVector2Array([Vector2.ZERO, to_local(targetLoc)])
+		$Line2D.set_points(p)
+
+	
 	if connected and base.controlling:
-		connected.look_at(get_global_mouse_position())
+		connected.look_at(targetLoc)
 
 
 func _on_Timer_timeout():
