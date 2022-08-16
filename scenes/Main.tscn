@@ -514,12 +514,14 @@ position = Vector2( 565, 70 )
 
 [node name="Entity" parent="Node2D/Island/entity" index="0" instance=ExtResource( 9 )]
 position = Vector2( -177, 47 )
+rotation = 1.06788
 
 [node name="Entity2" parent="Node2D/Island/entity" index="1" instance=ExtResource( 9 )]
 position = Vector2( 107, -125 )
 
 [node name="Entity3" parent="Node2D/Island/entity" index="2" instance=ExtResource( 9 )]
 position = Vector2( 331, -513 )
+rotation = 2.43966
 
 [node name="Entity4" parent="Node2D/Island/entity" index="3" instance=ExtResource( 9 )]
 position = Vector2( 198, 401 )

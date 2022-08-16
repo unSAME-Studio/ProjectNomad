@@ -64,19 +64,26 @@ func _process(delta):
 			
 			# only store if the type is the same
 			if i.type == storing:
-				count += 1
+				
 				#[TEMP] [FIX] so this thingy will store one object multiple time frmae
 				#i.magenet_to_delete(self)
-				i.queue_free()
+				apply_magnet(i)
+				if get_global_position().distance_to(i.get_global_position()) < 10:
+					i.queue_free()
+					count += 1
 				
-				#$Label.set_text("%s [%d]" % [storing.capitalize(), count])
-				$Sprite/Label.set_text(String(count))
-				
-				print("sucking %s at count %d" % [storing, count])
-				
-				# update player ui (kinda sketch
-				user.storage_ui[user.wearing].update_box_info(storing, count)
+					#$Label.set_text("%s [%d]" % [storing.capitalize(), count])
+					$Sprite/Label.set_text(String(count))
+					
+					print("sucking %s at count %d" % [storing, count])
+					
+					# update player ui (kinda sketch
+					user.storage_ui[user.wearing].update_box_info(storing, count)
 
+func apply_magnet(target):
+	target.throwing = true
+	target.velocity += (get_global_position() - target.get_global_position()).normalized()*15#(target.get_parent().to_local(get_global_position()) - target.get_position()).normalized()*10
+	#print((target.get_parent().to_local(get_global_position()) - target.get_position()))
 
 func initial_control(body):
 	user = body
@@ -103,7 +110,7 @@ func use_storing() -> bool:
 		$Sprite/Label.set_text(String(count))
 		
 		# update player ui (kinda sketch
-		user.storage_ui[user.wearing].update_box_info(storing, count)
+		#user.storage_ui[user.wearing].update_box_info(storing, count)
 		
 		# clear graphic if empty
 		if count == 0:

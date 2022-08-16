@@ -18,6 +18,7 @@ var velocity = Vector2.ZERO
 var buildable = false
 
 
+
 func _ready():
 	connect("select", self, "on_select")
 	connect("deselect", self, "on_deselect")
@@ -152,6 +153,8 @@ func magenet_to_delete(actor):
 		Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
+func apply_magenet():
+	pass
 
 func _on_Tween_tween_all_completed():
 	call_deferred("queue_free")
