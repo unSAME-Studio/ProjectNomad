@@ -28,20 +28,28 @@ func _ready():
 func _on_BuildCard_mouse_entered():
 	hovering = true
 	
-	#set_scale(Vector2(1, 1.1))
-	#set_position(Vector2(get_position().x, -20))
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "rect_scale", Vector2(1.1, 1.1), 0.08)
+	tween.parallel().tween_property($TextureRect, "rect_scale", Vector2(1.2, 1.2), 0.08)
 
 
 func _on_BuildCard_mouse_exited():
 	hovering = false
 	
-	#set_scale(Vector2(1, 1))
-	#set_position(Vector2(get_position().x, 0))
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "rect_scale", Vector2(1, 1), 0.08)
+	tween.parallel().tween_property($TextureRect, "rect_scale", Vector2(1, 1), 0.08)
 
 
 func _on_BuildCard_pressed():
 	set_disabled(true)
 	set_modulate(Color("7d737373"))
+	
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "rect_scale", Vector2(0.9, 0.9), 0.08)
+	tween.parallel().tween_property($TextureRect, "rect_scale", Vector2(0.9, 0.9), 0.08)
+	tween.tween_property(self, "rect_scale", Vector2(1, 1), 0.08)
+	tween.parallel().tween_property($TextureRect, "rect_scale", Vector2(1, 1), 0.08)
 	
 	var p
 	if 'room' in build_type or 'wall' in build_type:
