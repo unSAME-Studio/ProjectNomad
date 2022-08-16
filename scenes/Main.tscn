@@ -273,7 +273,6 @@ node = NodePath("../Culpit3")
 
 [node name="Culpit3" parent="Node2D/Base8/rooms/room3/objects" index="1" instance=ExtResource( 14 )]
 position = Vector2( 0.643555, -97.9883 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 20 )
 type = "turret"
 
@@ -282,7 +281,6 @@ node = NodePath("../Culpit4")
 
 [node name="Culpit4" parent="Node2D/Base8/rooms/room3/objects" index="3" instance=ExtResource( 14 )]
 position = Vector2( -184.333, -94.376 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 20 )
 type = "turret"
 
@@ -291,7 +289,6 @@ node = NodePath("../Culpit5")
 
 [node name="Culpit5" parent="Node2D/Base8/rooms/room3/objects" index="5" instance=ExtResource( 14 )]
 position = Vector2( 183.625, -96.3066 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 20 )
 type = "turret"
 
@@ -320,7 +317,6 @@ immobile = true
 [node name="Spider13" parent="Node2D/Base8" instance=ExtResource( 22 )]
 position = Vector2( -2.15381, -164.78 )
 rotation = -0.42513
-scale = Vector2( 1, 1 )
 
 [node name="Base11" parent="Node2D" instance=ExtResource( 11 )]
 position = Vector2( 2185, -9524 )
@@ -337,7 +333,6 @@ node = NodePath("../Culpit3")
 
 [node name="Culpit3" parent="Node2D/Base11/rooms/room3/objects" index="1" instance=ExtResource( 14 )]
 position = Vector2( 0.643555, -97.9883 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 20 )
 type = "turret"
 
@@ -346,7 +341,6 @@ node = NodePath("../Culpit4")
 
 [node name="Culpit4" parent="Node2D/Base11/rooms/room3/objects" index="3" instance=ExtResource( 14 )]
 position = Vector2( -184.333, -94.376 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 20 )
 type = "turret"
 
@@ -355,7 +349,6 @@ node = NodePath("../Culpit5")
 
 [node name="Culpit5" parent="Node2D/Base11/rooms/room3/objects" index="5" instance=ExtResource( 14 )]
 position = Vector2( 183.625, -96.3066 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 20 )
 type = "turret"
 
@@ -384,7 +377,6 @@ immobile = true
 [node name="Spider13" parent="Node2D/Base11" instance=ExtResource( 22 )]
 position = Vector2( -2.15381, -164.78 )
 rotation = -0.42513
-scale = Vector2( 1, 1 )
 
 [node name="Base12" parent="Node2D" instance=ExtResource( 11 )]
 position = Vector2( -4840, 863 )
@@ -401,7 +393,6 @@ node = NodePath("../Culpit3")
 
 [node name="Culpit3" parent="Node2D/Base12/rooms/room3/objects" index="1" instance=ExtResource( 14 )]
 position = Vector2( 0.643555, -97.9883 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 20 )
 type = "turret"
 
@@ -410,7 +401,6 @@ node = NodePath("../Culpit4")
 
 [node name="Culpit4" parent="Node2D/Base12/rooms/room3/objects" index="3" instance=ExtResource( 14 )]
 position = Vector2( -184.333, -94.376 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 20 )
 type = "turret"
 
@@ -419,7 +409,6 @@ node = NodePath("../Culpit5")
 
 [node name="Culpit5" parent="Node2D/Base12/rooms/room3/objects" index="5" instance=ExtResource( 14 )]
 position = Vector2( 183.625, -96.3066 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 20 )
 type = "turret"
 
@@ -448,7 +437,6 @@ immobile = true
 [node name="Spider13" parent="Node2D/Base12" instance=ExtResource( 22 )]
 position = Vector2( -2.15381, -164.78 )
 rotation = -0.42513
-scale = Vector2( 1, 1 )
 
 [node name="Base3" parent="Node2D" instance=ExtResource( 11 )]
 position = Vector2( -808, -2148 )
@@ -513,7 +501,7 @@ position = Vector2( 0.915344, -58.5932 )
 rotation = -3.13911
 z_index = 1
 
-[node name="Base7" parent="Node2D" instance=ExtResource( 26 )]
+[node name="powerBase" parent="Node2D" instance=ExtResource( 26 )]
 
 [node name="Island" parent="Node2D" instance=ExtResource( 2 )]
 position = Vector2( 1497, 970 )
@@ -711,47 +699,36 @@ immobile = true
 
 [node name="Spider2" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( 246.717, -252.719 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider3" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( 434, 677 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider4" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( 104, -1242 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider5" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( 72.9995, -1570 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider6" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( -392, -1211 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider7" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( -262.902, -386.192 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider8" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( -783, 628 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider9" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( -643.493, -186.551 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider10" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( 421, -524 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider11" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( 590.891, -16.0557 )
-scale = Vector2( 1, 1 )
 
 [node name="Spider12" parent="Node2D/Island3" instance=ExtResource( 22 )]
 position = Vector2( 772.462, 724.265 )
-scale = Vector2( 1, 1 )
 
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 947, 623 )

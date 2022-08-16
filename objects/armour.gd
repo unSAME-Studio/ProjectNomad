@@ -5,6 +5,10 @@ var in_range
 var door_open = false
 var pbase
 var poffset
+var pRoffset
+var Roffset
+var base
+
 func _ready():
 	for i in $rooms/room.get_node('objects').get_children():
 		i.set_collision_layer_bit(0, false)
@@ -23,8 +27,8 @@ func _physics_process(delta):
 			operate()
 	else:
 		if pbase:
-			set_global_position(pbase.get_global_position()-poffset.rotated(pbase.get_global_rotation()))
-			set_global_rotation(pbase.get_global_rotation())
+			set_global_position(pbase.get_global_position()-poffset.rotated(pbase.get_global_rotation()-pRoffset))
+			set_global_rotation(pbase.get_global_rotation() - pRoffset + Roffset)
 func get_hint_text():
 	return 'Assult Armour'
 
@@ -53,6 +57,8 @@ func initial_control(body):
 		if not tempbase.empty():
 			pbase = tempbase[0].collider
 			poffset = pbase.get_global_position()-get_global_position()
+			pRoffset = pbase.get_global_rotation()
+			Roffset = get_global_rotation()
 		else:
 			pbase = null
 
