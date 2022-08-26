@@ -37,6 +37,8 @@ func _ready():
 		structure = load("res://objects/rooms/room%s.tscn" % roomindex).instance()
 		structure.active = false
 		add_child(structure)
+	else:
+		type = 'link'
 	update_points()
 
 		
@@ -127,8 +129,12 @@ func _unhandled_input(event):
 					if structure:
 						room = target.room
 						base = room.get_build()
-						target.finish_build()
-						structure.snappoint[snapindex].finish_build(null,true)
+						target.finish_build(null,true)
+						target.room_bind = structure
+						room.linked_rooms.append(weakref(structure))
+						structure.snappoint[snapindex].finish_build(null,false)
+						#structure.snappoint[snapindex].room_bind = structure
+						
 					finish_build(room)
 					
 			
@@ -162,7 +168,9 @@ func finish_build(room):
 		
 	else:
 		if target:
-			if target.wall:
+			if target.room_bind:
+				target.remove_room()
+			elif target.wall:
 				target.wall.switch()
 				if target.wall.type == 'door wall':
 					target.wall.spawn_door()

@@ -49,6 +49,8 @@ func handle_movement(direction):
 		if Input.is_action_pressed("ui_select"):
 			set_linear_velocity(lerp(currvelocity, Vector2.ZERO, 0.05))
 			set_angular_velocity(lerp(currrangular,0, 0.05))
+		if Input.is_action_pressed("fire"):
+			operate()
 		#velocity = move_and_slide(velocity)
 		
 func enable_control(user):
@@ -89,8 +91,6 @@ func _physics_process(delta):
 		var direction = get_input()
 		handle_movement(direction)
 		
-		if Input.is_action_pressed("fire"):
-			operate()
 			
 func _integrate_forces(state):
 	pass

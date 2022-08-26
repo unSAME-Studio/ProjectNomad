@@ -49,8 +49,9 @@ func end_build():
 func remove_room():
 	if room_bind:
 		room_bind.destroy()
-		room_bind = null
-		activate_build()
+		room_bind = null 
+		type = 'room'
+		active = true
 
 func finish_build(object = null, keep_wall = false):
 	active = false
@@ -65,12 +66,13 @@ func finish_build(object = null, keep_wall = false):
 	if wall and not keep_wall:
 		wall.queue_free()
 	elif keep_wall:
+		active = true
 		type = 'link'
-		
+
 	end_build()
 
 func disconnect_point():
 	for i in bind_list:
 		if i.has_method('disconnect_point'):
-			room.disconnect_point(self)
+			i.disconnect_point(self)
 	bind_list = []
