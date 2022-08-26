@@ -1,6 +1,14 @@
 extends Culpit
 
 
+func _ready():
+	var struct_list = Global.structure_data.keys()
+	struct_list.sort()
+	for i in struct_list:
+		var text = "%s" % [i.capitalize()]
+		$CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.add_item(text, load("res://arts/cards/C_%s.png" % i), true)
+
+
 func initial_control(body):
 	print(name + " is being controller")
 	user = body
@@ -15,11 +23,12 @@ func stop_control(body):
 	$CanvasLayer/Control.hide()
 
 
-func operate(player):
-	return 
+func _on_ItemList_item_selected(index):
+	var target_type = $CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.get_item_text(index)
+	target_type = target_type.to_lower()
 	
 	# currently only print when player is holding nano
-	if player.consume_storage_object("nano"):
+	if Global.player.consume_storage_object("nano"):
 		
 		# spawn card
-		player.add_build_card(["wall", "room", "door wall"][randi() % 3])
+		Global.player.add_build_card(target_type)
