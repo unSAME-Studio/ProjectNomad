@@ -155,7 +155,14 @@ func _process(delta):
 #	if base:
 #		if base.has_method('player_entered'):
 #			base.player_entered(self)
-			
+	
+	# update camera zoom from UI
+	if $CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/Zoom.is_pressed():
+		camera.zoom_out(delta)
+	
+	if $CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/Shrink.is_pressed():
+		camera.zoom_in(delta)
+	
 	# update health
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
@@ -367,11 +374,12 @@ func kill():
 # -----------------
 func add_build_card(type):
 	# add a random card to player
-	if $CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer.find_node('emptyHint'):
-		$CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer/emptyHint.hide()
+	if $CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer.has_node('emptyHint'):
+		$CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer/emptyHint.hide()
+	
 	var c = build_card.instance()
 	c.build_type = type
-	$CanvasLayer/Control/VBoxContainer2/BuildMenu/PanelContainer/MarginContainer/HBoxContainer.add_child(c)
+	$CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer.add_child(c)
 
 
 # -----------------
@@ -558,8 +566,3 @@ func _on_BuildBtn_pressed():
 func _on_CameraBtn_pressed():
 	camera.align_camera()
 
-func _on_Zoom_pressed():
-	pass # Replace with function body.
-
-func _on_Shrink_pressed():
-	pass # Replace with function body.

@@ -45,12 +45,10 @@ func _get_rotation():
 func _process(delta):
 	# camera control
 	if Input.is_action_pressed("zoom_in"):
-		var new_zoom = clamp(camera.get_zoom().x * 0.9, MIN_ZOOM, MAX_ZOOM)
-		camera.set_zoom(lerp(camera.get_zoom(), Vector2(new_zoom, new_zoom), 20 * delta))
+		zoom_in(delta)
 		
 	if Input.is_action_pressed("zoom_out"):
-		var new_zoom = clamp(camera.get_zoom().x * 1.1, MIN_ZOOM, MAX_ZOOM)
-		camera.set_zoom(lerp(camera.get_zoom(), Vector2(new_zoom, new_zoom), 20 * delta))
+		zoom_out(delta)
 	
 	if center_camera:
 		for i in range(0,4):
@@ -90,3 +88,13 @@ func _process(delta):
 		i.get_material().set_shader_param("rot_offset", get_global_rotation())
 		i.get_material().set_shader_param("zoom", $Camera2D.get_zoom().x)
 		#print($Camera2D.get_camera_position())
+
+
+func zoom_in(delta):
+	var new_zoom = clamp(camera.get_zoom().x * 0.9, MIN_ZOOM, MAX_ZOOM)
+	camera.set_zoom(lerp(camera.get_zoom(), Vector2(new_zoom, new_zoom), 20 * delta))
+
+
+func zoom_out(delta):
+	var new_zoom = clamp(camera.get_zoom().x * 1.1, MIN_ZOOM, MAX_ZOOM)
+	camera.set_zoom(lerp(camera.get_zoom(), Vector2(new_zoom, new_zoom), 20 * delta))

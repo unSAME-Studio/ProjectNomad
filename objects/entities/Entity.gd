@@ -18,21 +18,20 @@ var velocity = Vector2.ZERO
 var buildable = false
 
 
-
 func _ready():
 	connect("select", self, "on_select")
 	connect("deselect", self, "on_deselect")
-	
-	$Tween.connect("tween_all_completed", self, "_on_Tween_tween_all_completed")
+	connect("input_event", self, "_on_Entity_input_event")
+	connect("mouse_entered", self, "_on_mouse_entered")
+	connect("mouse_exited", self, "_on_mouse_exited")
 	
 	var texture
 	if type in Global.entity_data.keys():
 		texture = load("res://arts/resources/%s.png" % type)
 	else:
 		texture = load("res://arts/culpits/%s.png" % type)
-	if not buildable:
-		$Card.show()
-	else:
+	
+	if buildable:
 		#set_collision_layer_bit(3, true)
 		set_collision_layer_bit(0, true)
 	
@@ -48,17 +47,11 @@ func set_wearing(value):
 		set_collision_mask_bit(3, false)
 		set_collision_mask_bit(6, false)
 		
-		$Card.hide()
-		#$Light2D.hide()
 	else:
 		set_collision_layer_bit(6, true)
 		set_collision_mask_bit(0, true)
 		set_collision_mask_bit(3, true)
 		set_collision_mask_bit(6, true)
-		
-		if not buildable:
-			$Card.show()
-		#$Light2D.show()
 
 
 func get_hint_text():
@@ -84,7 +77,6 @@ func cancel_build_entity():
 	buildable = false
 	set_collision_layer_bit(3, false)
 	set_collision_layer_bit(0, false)
-	$Card.show()
 
 
 func check_base():
@@ -117,6 +109,28 @@ func _process(delta):
 	#	move_and_collide(get_global_position().direction_to(Global.player.get_global_position()), false)
 
 
+# Use mouse to interacte with the item directly
+func _on_Entity_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.get_button_index() == 1 and event.is_pressed():
+			if Global.player.controllables.size() > 0:
+				if self in Global.player.controllables.values():
+					initial_control(Global.player)
+					get_tree().set_input_as_handled()
+				else:
+					var tween = create_tween().set_trans(Tween.TRANS_SINE)
+					tween.tween_property($Resource, "scale", Vector2(0.6, 0.6), 0.05)
+					tween.tween_property($Resource, "scale", Vector2(0.7, 0.7), 0.05)
+
+func _on_mouse_entered():
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Resource, "scale", Vector2(1, 1), 0.1)
+
+func _on_mouse_exited():
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Resource, "scale", Vector2(0.7, 0.7), 0.1)
+
+
 # for entity, interact picks them up
 func initial_control(player):
 	if not wearing:
@@ -147,17 +161,15 @@ func operate(player):
 func magenet_to_delete(actor):
 	$CollisionShape2D.set_deferred("disabled", true)
 	
-	var tween = get_node("Tween")
-	tween.interpolate_property(self, "global_position",
-		get_global_position(), actor.get_global_position(), 0.15,
-		Tween.TRANS_SINE, Tween.EASE_OUT)
-	tween.start()
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "global_position", actor.get_global_position(), 0.1)
+	yield(tween, "finished")
+	
+	queue_free()
+
 
 func apply_magenet():
 	pass
-
-func _on_Tween_tween_all_completed():
-	call_deferred("queue_free")
 
 
 func on_select():
