@@ -100,6 +100,7 @@ func _process(delta):
 			velocity = Vector2.ZERO
 			throwing = false
 			check_base()
+			set_collision_mask_bit(6, true)
 		move_and_slide(velocity)
 	pass
 	
@@ -152,6 +153,8 @@ func throw(player,_throw = false):
 	if _throw:
 		velocity = player.get_facing().normalized() * 1000
 	throwing = true
+	set_collision_mask_bit(6, false)
+	
 
 
 func operate(player):

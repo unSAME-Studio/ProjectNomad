@@ -39,7 +39,7 @@ func operate(player):
 					
 					e.set_global_position(get_global_position())
 					e.set_wearing(false)
-					e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
+					e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 2000
 					e.throwing = true
 					
 					yield(get_tree().create_timer(0.1), "timeout")
