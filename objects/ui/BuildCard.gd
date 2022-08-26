@@ -7,7 +7,6 @@ var structure_prebuild = preload("res://objects/rooms/struc_prebuild.tscn")
 
 var hovering = false
 var current_prebuild = null
-export var test = false
 
 onready var initial_position = get_position()
 
@@ -16,11 +15,8 @@ var type_color = ["647cb5", "cec35b", "7ab266", "c16868"]
 
 
 func _ready():
-	if not test:
-		set_self_modulate(type_color[Global.structure_data[build_type]["type"]])
-	else:
-		set_self_modulate(type_color[Global.structure_data["wall"]["type"]])
-		
+	set_self_modulate(type_color[Global.structure_data[build_type]["type"]])
+	
 	var card = load("res://arts/cards/C_%s.png" % build_type)
 	$TextureRect.set_texture(card)
 		

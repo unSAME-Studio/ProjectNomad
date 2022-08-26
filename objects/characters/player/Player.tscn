@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -21,7 +21,6 @@
 [ext_resource path="res://arts/cards/Base.png" type="Texture" id=19]
 [ext_resource path="res://arts/font/BarlowCondensed-SemiBoldItalic.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://objects/ui/StorageUI.gd" type="Script" id=21]
-[ext_resource path="res://objects/ui/BuildCard.tscn" type="PackedScene" id=22]
 [ext_resource path="res://objects/characters/player/PlayerDamageComponent.gd" type="Script" id=23]
 [ext_resource path="res://arts/ui/Build.png" type="Texture" id=24]
 [ext_resource path="res://arts/ui/Reset Camera.png" type="Texture" id=25]
@@ -688,45 +687,6 @@ align = 1
 valign = 1
 autowrap = true
 uppercase = true
-
-[node name="BuildCard" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
-margin_left = 108.0
-margin_right = 212.0
-build_type = "room2"
-test = true
-
-[node name="BuildCard5" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
-margin_left = 216.0
-margin_right = 320.0
-build_type = "room3"
-test = true
-
-[node name="BuildCard6" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
-margin_left = 324.0
-margin_right = 428.0
-build_type = "room4"
-test = true
-
-[node name="BuildCard7" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
-margin_left = 432.0
-margin_right = 536.0
-build_type = "room5"
-test = true
-
-[node name="BuildCard2" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
-margin_left = 540.0
-margin_right = 644.0
-build_type = "wall"
-
-[node name="BuildCard3" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
-margin_left = 648.0
-margin_right = 752.0
-build_type = "power"
-
-[node name="BuildCard4" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource( 22 )]
-margin_left = 756.0
-margin_right = 860.0
-build_type = "booster"
 
 [node name="BuildBtn" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer"]
 margin_left = 1154.0
