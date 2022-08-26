@@ -1,6 +1,11 @@
 extends Culpit
 
 
+var card_list = []
+
+func _ready():
+	pass
+
 func initial_control(body):
 	print(name + " is being controller")
 	user = body

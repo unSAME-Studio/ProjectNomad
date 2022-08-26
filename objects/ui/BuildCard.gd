@@ -17,10 +17,12 @@ var type_color = ["647cb5", "cec35b", "7ab266", "c16868"]
 
 func _ready():
 	if not test:
-		var card = load("res://arts/cards/C_%s.png" % build_type)
-		$TextureRect.set_texture(card)
-		
 		set_self_modulate(type_color[Global.structure_data[build_type]["type"]])
+	else:
+		set_self_modulate(type_color[Global.structure_data["wall"]["type"]])
+		
+	var card = load("res://arts/cards/C_%s.png" % build_type)
+	$TextureRect.set_texture(card)
 		
 	$Label.set_text(build_type)
 
