@@ -155,7 +155,14 @@ func _process(delta):
 #	if base:
 #		if base.has_method('player_entered'):
 #			base.player_entered(self)
-			
+	
+	# update camera zoom from UI
+	if $CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/Zoom.is_pressed():
+		camera.zoom_out(delta)
+	
+	if $CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/Shrink.is_pressed():
+		camera.zoom_in(delta)
+	
 	# update health
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
@@ -558,8 +565,3 @@ func _on_BuildBtn_pressed():
 func _on_CameraBtn_pressed():
 	camera.align_camera()
 
-func _on_Zoom_pressed():
-	pass # Replace with function body.
-
-func _on_Shrink_pressed():
-	pass # Replace with function body.

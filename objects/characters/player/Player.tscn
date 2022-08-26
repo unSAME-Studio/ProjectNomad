@@ -128,6 +128,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -166,7 +167,7 @@ grow_vertical = 0
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.415686 )
 margin_right = 426.0
-margin_bottom = 561.0
+margin_bottom = 396.0
 grow_horizontal = 0
 grow_vertical = 0
 bbcode_enabled = true
@@ -180,11 +181,6 @@ Num 1 to 5 - Quick Select
 Q - Throw Item
 Click - Use Holding Item
 
-[u]Camera[/u]
-Left and Right Arrow - Zoom
-Tab - Align
-
-
 
 [center]Backpack Slots[/center]"
 text = "Player
@@ -197,19 +193,14 @@ Num 1 to 5 - Quick Select
 Q - Throw Item
 Click - Use Holding Item
 
-Camera
-Left and Right Arrow - Zoom
-Tab - Align
-
-
 
 Backpack Slots"
 fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 565.0
+margin_top = 400.0
 margin_right = 426.0
-margin_bottom = 646.0
+margin_bottom = 481.0
 alignment = 1
 
 [node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
@@ -584,9 +575,9 @@ custom_fonts/font = SubResource( 26 )
 text = " "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 650.0
+margin_top = 485.0
 margin_right = 426.0
-margin_bottom = 688.0
+margin_bottom = 523.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
 margin_top = 3.0
@@ -793,6 +784,7 @@ size_flags_vertical = 6
 theme = ExtResource( 5 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
+keep_pressed_outside = true
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
@@ -859,6 +851,7 @@ size_flags_vertical = 6
 theme = ExtResource( 5 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
+keep_pressed_outside = true
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
@@ -1017,9 +1010,7 @@ one_shot = true
 script = ExtResource( 23 )
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildBtn" to="." method="_on_BuildBtn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/Zoom" to="." method="_on_Zoom_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/CameraBtn" to="." method="_on_CameraBtn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/Shrink" to="." method="_on_Shrink_pressed"]
 [connection signal="body_entered" from="ControllableDetection" to="." method="_on_ControllableDetection_body_entered"]
 [connection signal="body_exited" from="ControllableDetection" to="." method="_on_ControllableDetection_body_exited"]
 [connection signal="timeout" from="Basetimer" to="." method="_on_Basetimer_timeout"]
