@@ -566,3 +566,13 @@ func _on_BuildBtn_pressed():
 func _on_CameraBtn_pressed():
 	camera.align_camera()
 
+
+
+# generator also affects player
+func powered():
+	if $WearSlot.get_child_count() > 0:
+		$WearSlot.get_child(0).powered()
+
+func unpowered():
+	if $WearSlot.get_child_count() > 0:
+		$WearSlot.get_child(0).unpowered()
