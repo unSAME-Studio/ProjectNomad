@@ -128,7 +128,7 @@ func _unhandled_input(event):
 						room = target.room
 						base = room.get_build()
 						target.finish_build()
-						structure.snappoint[snapindex].finish_build()
+						structure.snappoint[snapindex].finish_build(null,true)
 					finish_build(room)
 					
 			

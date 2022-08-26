@@ -4,8 +4,8 @@
 [ext_resource path="res://objects/armour.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 142.694
-height = 84.8538
+radius = 63.0
+height = 0.0
 
 [node name="Base7" type="RigidBody2D"]
 position = Vector2( 1169, 612 )
@@ -25,7 +25,6 @@ acceleration = 0.0
 [node name="rooms" type="Node2D" parent="."]
 
 [node name="room" parent="rooms" instance=ExtResource( 1 )]
-position = Vector2( 3.29944, 7.2879 )
 
 [node name="objects" type="Node2D" parent="."]
 
