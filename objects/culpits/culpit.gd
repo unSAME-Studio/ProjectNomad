@@ -81,7 +81,8 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 		if event.get_button_index() == 1:
 			if Global.player.controllables.size() > 0:
 				if self in Global.player.controllables.values():
-					self.initial_control(Global.player)
+					#initial_control(Global.player)
+					print("player clicked on %s" % type)
 					get_tree().set_input_as_handled()
 				else:
 					var tween = create_tween().set_trans(Tween.TRANS_SINE)
