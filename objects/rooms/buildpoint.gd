@@ -67,7 +67,7 @@ func finish_build(object = null, keep_wall = false):
 		wall.queue_free()
 	elif keep_wall:
 		active = true
-		type = 'link'
+		type = 'room remove'
 
 	end_build()
 

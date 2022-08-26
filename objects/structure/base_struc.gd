@@ -24,6 +24,7 @@ func ready():
 	#self.connect("tree_exiting", self, "destroy")
 	#slot_build_point.bind_point(base)
 	#slot_build_point.bind_point(get_parent().get_parent())
+	
 	if prenode:
 		yield(get_tree(),"idle_frame")
 		$buildpoint.finish_build(prenode)
