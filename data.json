@@ -123,7 +123,7 @@
     "base": {
       "type": 0
     },
-    "base_fix": {
+    "base fix": {
       "type": 0
     },
     "power": {
@@ -133,16 +133,25 @@
       "type": 3
     },
     "wall": {
-      "type": 0
+      "type": 1
     },
     "door wall": {
+      "type": 1
+    },
+    "room2": {
       "type": 0
     },
-    "room": {
+    "room3": {
+      "type": 0
+    },
+    "room4": {
+      "type": 0
+    },
+    "room5": {
       "type": 0
     },
     "wall remove": {
-      "type": 0
+      "type": 1
     },
     "room remove": {
       "type": 0

@@ -38,7 +38,7 @@ func apply_buff(buff):
 
 func operate(player):
 	if cooldown.can_fire(cd):
-		print("FIRE!!!")
+		#print("FIRE!!!")
 		var b = bullet.instance()
 		if slotted:
 			b.damage = damage * slotted.damage_buff

@@ -33,6 +33,8 @@ func _ready():
 	connect("input_event", self, "_on_Culpit_input_event")
 	connect("select", self, "on_select")
 	connect("deselect", self, "on_deselect")
+	connect("mouse_entered", self, "_on_mouse_entered")
+	connect("mouse_exited", self, "_on_mouse_exited")
 	
 	# don't allow player to control if not controllable
 	if not controllable:
@@ -64,14 +66,36 @@ func snap_position(body):
 		body.set_global_position($ControlPos.get_global_position())
 
 
+# Use mouse to interacte with the item directly
 func _on_Culpit_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.get_button_index() == 2 and event.is_pressed():
+	if event is InputEventMouseButton and event.is_pressed():
+		# right click
+		if event.get_button_index() == 2:
 			print("player clicked on %s" % type)
 			
 			Global.player.edit_culpit(self)
 			
-			get_viewport().set_input_as_handled()
+			get_tree().set_input_as_handled()
+		
+		# left click
+		if event.get_button_index() == 1:
+			if Global.player.controllables.size() > 0:
+				if self in Global.player.controllables.values():
+					#initial_control(Global.player)
+					print("player clicked on %s" % type)
+					get_tree().set_input_as_handled()
+				else:
+					var tween = create_tween().set_trans(Tween.TRANS_SINE)
+					tween.tween_property($Resource, "scale", Vector2(0.8, 0.8), 0.05)
+					tween.tween_property($Resource, "scale", Vector2(1, 1), 0.05)
+
+func _on_mouse_entered():
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Sprite, "scale", Vector2(1.2, 1.2), 0.1)
+
+func _on_mouse_exited():
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
 
 
 func throw(player,_build = false):

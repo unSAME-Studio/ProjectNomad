@@ -23,3 +23,23 @@ func operate(player):
 					e.set_wearing(false)
 					e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
 					e.throwing = true
+		
+		else:
+			# consume the holding object
+			if player.detach_object():
+				var object = player.get_node("WearSlot").get_child(0)
+				var object_type = object.type
+				object.queue_free()
+				
+				# spawn entity
+				for _i in Global.culpits_data[object_type]["cost"]:
+					var e = entity.instance()
+					e.type = "nano"
+					base.add_child(e)
+					
+					e.set_global_position(get_global_position())
+					e.set_wearing(false)
+					e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
+					e.throwing = true
+					
+					yield(get_tree().create_timer(0.1), "timeout")
