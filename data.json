@@ -14,15 +14,15 @@
     },
     "printer": {
       "type": 1,
-      "action": 1,
-      "hint": "Print Cards",
-      "cost": 3
+      "action": 0,
+      "hint": "Open Tech Tree",
+      "cost": 2
     },
     "crafter": {
       "type": 1,
       "action": 0,
       "hint": "Craft Items",
-      "cost": 3
+      "cost": 1
     },
     "turret": {
       "type": 3,
@@ -71,13 +71,19 @@
       "action": 1,
       "hint": "Pray",
       "cost": 2
+    },
+    "reducer": {
+      "type": 0,
+      "action": 1,
+      "hint": "Turn On / Off",
+      "cost": 5
     }
   },
   "entity": {
     "nano": {
       "type": 0,
       "recyclable": 0,
-      "recycled": 0
+      "recycled": "nano"
     },
     "weed": {
       "type": 0,
@@ -86,7 +92,27 @@
     },
     "booster core": {
       "type": 0,
-      "recyclable": 5,
+      "recyclable": 0,
+      "recycled": "nano"
+    },
+    "seed": {
+      "type": 0,
+      "recyclable": 1,
+      "recycled": "weed"
+    },
+    "scrap": {
+      "type": 0,
+      "recyclable": 1,
+      "recycled": "nano"
+    },
+    "crystal": {
+      "type": 0,
+      "recyclable": 1,
+      "recycled": "nano"
+    },
+    "gasoline": {
+      "type": 0,
+      "recyclable": 0,
       "recycled": "nano"
     }
   },
