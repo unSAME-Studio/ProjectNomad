@@ -178,3 +178,11 @@ func on_select():
 
 func on_deselect():
 	$AnimationPlayer.play_backwards("hover")
+
+
+func powered():
+	pass
+
+
+func unpowered():
+	pass
