@@ -118,7 +118,7 @@ func check_build_point():
 				if dist > temp:
 					dist = temp
 					target = object
-		if target:
+		if target and target.active:
 			return true
 	else:
 		target = null
