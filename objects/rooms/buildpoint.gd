@@ -11,6 +11,9 @@ var wall
 var indi
 var bind_list = []
 
+var connected_room
+var room_bind
+
 func _ready():
 	hide()
 	if "Wall" in get_parent().name:
@@ -42,8 +45,15 @@ func ready_build():
 	
 func end_build():
 	hide()
+	
+func remove_room():
+	if room_bind:
+		room_bind.destroy()
+		room_bind = null 
+		type = 'room'
+		active = true
 
-func finish_build(object = null):
+func finish_build(object = null, keep_wall = false):
 	active = false
 	
 	if object:
@@ -53,13 +63,16 @@ func finish_build(object = null):
 	if get_parent().has_method('connect_culpit'):
 		get_parent().connect_culpit(object)
 		
-	if wall:
+	if wall and not keep_wall:
 		wall.queue_free()
-		
+	elif keep_wall:
+		active = true
+		type = 'room remove'
+
 	end_build()
 
 func disconnect_point():
 	for i in bind_list:
 		if i.has_method('disconnect_point'):
-			room.disconnect_point(self)
+			i.disconnect_point(self)
 	bind_list = []

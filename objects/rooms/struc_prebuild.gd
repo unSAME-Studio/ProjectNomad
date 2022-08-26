@@ -29,14 +29,15 @@ var structure
 
 func _ready():
 	$Sprite.set_texture(load("res://arts/structures/S_%s.png" % type))
-	
-	if 'room' in type:
-		roomindex = type.substr(4)
-		type = 'room'
-		#build_points = Global.player.get_build_points(point_type)
-		structure = load("res://objects/rooms/room%s.tscn" % roomindex).instance()
-		structure.active = false
-		add_child(structure)
+	if not 'remove' in type:
+		if 'room' in type:
+			roomindex = type.substr(4)
+			type = 'room'
+			#build_points = Global.player.get_build_points(point_type)
+			structure = load("res://objects/rooms/room%s.tscn" % roomindex).instance()
+			structure.active = false
+			add_child(structure)
+
 	update_points()
 
 		
@@ -50,10 +51,13 @@ func update_points():
 
 func check_build_condition(target_mode = false) -> bool:
 	if target_mode == false:
+		#if target:
+			#target.set_scale(Vector2(1,1))
 		target = null
 		hovering = true
 		return false
 	if target:
+		#target.set_scale(Vector2(2,2))
 		# overlapping check
 		if structure:
 			for i in structure.get_overlapping_bodies():
@@ -102,6 +106,7 @@ func _process(_delta):
 			set_global_position(get_global_mouse_position())
 			set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 		else:
+			
 			set_global_position(target.get_global_position())
 			set_global_rotation(target.get_parent().get_global_rotation())
 			if structure:
@@ -127,8 +132,12 @@ func _unhandled_input(event):
 					if structure:
 						room = target.room
 						base = room.get_build()
-						target.finish_build()
-						structure.snappoint[snapindex].finish_build()
+						target.finish_build(null,true)
+						target.room_bind = structure
+						room.linked_rooms.append(weakref(structure))
+						structure.snappoint[snapindex].finish_build(null,false)
+						#structure.snappoint[snapindex].room_bind = structure
+						
 					finish_build(room)
 					
 			
@@ -162,7 +171,9 @@ func finish_build(room):
 		
 	else:
 		if target:
-			if target.wall:
+			if target.room_bind:
+				target.remove_room()
+			elif target.wall:
 				target.wall.switch()
 				if target.wall.type == 'door wall':
 					target.wall.spawn_door()
