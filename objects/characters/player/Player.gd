@@ -67,7 +67,7 @@ func change_state(new_state_name):
 
 func _input(event):	
 	if Input.is_action_just_pressed("build_menu"):
-		$CanvasLayer/Control/VBoxContainer2/BuildMenu.set_visible(not $CanvasLayer/Control/VBoxContainer2/BuildMenu.is_visible())
+		$CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.set_visible(not $CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.is_visible())
 	
 	if Input.is_action_just_pressed("control"):
 		state.interact()
@@ -550,3 +550,16 @@ func _on_Basetimer_timeout():
 	pass # Replace with function body.
 
 
+
+# additional UI
+func _on_BuildBtn_pressed():
+	$CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.set_visible(not $CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.is_visible())
+
+func _on_CameraBtn_pressed():
+	camera.align_camera()
+
+func _on_Zoom_pressed():
+	pass # Replace with function body.
+
+func _on_Shrink_pressed():
+	pass # Replace with function body.
