@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/structure/base_struc.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://objects/rooms/walls/Wall_strike.tscn" type="PackedScene" id=6]
 [ext_resource path="res://arts/structures/pattern1.png" type="Texture" id=7]
 [ext_resource path="res://objects/culpits/light_culpit.gd" type="Script" id=8]
+[ext_resource path="res://objects/culpits/turret_culpit.gd" type="Script" id=9]
 
 [node name="room" type="Area2D"]
 collision_layer = 34
@@ -65,9 +66,8 @@ node = NodePath("../Culpit2")
 
 [node name="Culpit2" parent="objects" instance=ExtResource( 4 )]
 position = Vector2( -64, 0 )
-script = ExtResource( 8 )
-type = "light"
-preopen = false
+script = ExtResource( 9 )
+type = "turret"
 
 [node name="Base_struct2" parent="objects" instance=ExtResource( 2 )]
 position = Vector2( 0, -81 )

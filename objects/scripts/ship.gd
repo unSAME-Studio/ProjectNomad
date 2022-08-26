@@ -136,8 +136,8 @@ func apply_buff():
 			cd_temp *= i.recharge_boost
 	speed_boost = speed_temp
 	recharge_boost = cd_temp
-	print('buff applied')
-	print("speed:% ,cd:%",[speed_boost,recharge_boost])
+#	print('buff applied')
+#	print("speed:% ,cd:%",[speed_boost,recharge_boost])
 	for i in get_tree().get_nodes_in_group(name + "culpits"):
 		if i.has_method('apply_buff'):
 			i.apply_buff(self)
