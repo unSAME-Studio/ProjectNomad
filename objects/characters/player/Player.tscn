@@ -125,7 +125,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -164,7 +163,7 @@ grow_vertical = 0
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.415686 )
 margin_right = 426.0
-margin_bottom = 627.0
+margin_bottom = 561.0
 grow_horizontal = 0
 grow_vertical = 0
 bbcode_enabled = true
@@ -177,8 +176,6 @@ Mouse Wheel - Scroll
 Num 1 to 5 - Quick Select
 Q - Throw Item
 Click - Use Holding Item
-
-B - Open Blueprints
 
 [u]Camera[/u]
 Left and Right Arrow - Zoom
@@ -197,8 +194,6 @@ Num 1 to 5 - Quick Select
 Q - Throw Item
 Click - Use Holding Item
 
-B - Open Blueprints
-
 Camera
 Left and Right Arrow - Zoom
 Tab - Align
@@ -209,9 +204,9 @@ Backpack Slots"
 fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 631.0
+margin_top = 565.0
 margin_right = 426.0
-margin_bottom = 712.0
+margin_bottom = 646.0
 alignment = 1
 
 [node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
@@ -586,9 +581,9 @@ custom_fonts/font = SubResource( 26 )
 text = " "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 716.0
+margin_top = 650.0
 margin_right = 426.0
-margin_bottom = 754.0
+margin_bottom = 688.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
 margin_top = 3.0
@@ -729,7 +724,7 @@ margin_top = 199.0
 margin_right = 1446.0
 margin_bottom = 231.0
 theme = ExtResource( 5 )
-text = "Project Nomad 7/23 build"
+text = "Project Nomad 8/27 build"
 align = 2
 
 [node name="ControlHint" type="VBoxContainer" parent="CanvasLayer/Control"]

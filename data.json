@@ -76,7 +76,7 @@
       "type": 0,
       "action": 1,
       "hint": "Turn On / Off",
-      "cost": 5
+      "cost": 3
     }
   },
   "entity": {

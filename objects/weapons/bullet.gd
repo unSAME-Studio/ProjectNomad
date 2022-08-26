@@ -5,6 +5,8 @@ var explosion = preload("res://objects/VFX/Explosion.tscn")
 var parent
 onready var user = parent.user
 var speed = 15
+var original_speed = speed
+
 var damage = 6
 var collided = null
 
@@ -50,3 +52,8 @@ func _on_fuse_body_entered(body):
 				else:
 					body.get_node("DamageComponent").damage(user, damage)
 					collided = true
+
+
+func change_speed(new_speed_percentage):
+	speed = original_speed * new_speed_percentage
+
