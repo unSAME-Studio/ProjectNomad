@@ -30,7 +30,7 @@ func operate(player):
 
 func powered():
 	light2d.set_texture_scale(4)
-	rotate_speed = 2
+	rotate_speed = 3
 
 
 func unpowered():
