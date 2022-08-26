@@ -54,6 +54,12 @@
       "hint": "Recycle Hold Item",
       "cost": 3
     },
+    "decomposer": {
+      "type": 2,
+      "action": 1,
+      "hint": "Recycle items",
+      "cost": 2
+    },
     "box": {
       "type": 1,
       "action": 1,

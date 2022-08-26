@@ -1,33 +1,20 @@
 extends Culpit
 
-const MAX_COUNT = 10
+const MAX_COUNT = 30
 
 var storing = null
 var count = 0
 var enabled = false
 
+var in_cd = false
 
 func _ready():
-	if data != null:
-		print("Hey it contains data")
-		
-		storing = data["storing"]
-		count = data["count"]
-		
-		# update label
-		$Sprite/Label.set_text(String(count))
-		
-		# update texture
-		var texture
-		if Global.entity_data.keys().has(storing):
-			print("res://arts/resources/%s.png" % storing)
-			texture = load("res://arts/resources/%s.png" % storing)
-		else:
-			texture = load("res://arts/culpits/%s.png" % storing)
-		$Sprite/Icon.set_texture(texture)
+	var texture = load("res://arts/resources/nano.png" )
+	$Sprite/Icon.set_texture(texture)
 
 
 func operate(player):
+	print('using decomposer')
 	enabled = !enabled
 	
 	if enabled:
@@ -50,37 +37,42 @@ func _process(delta):
 				operate(self)
 				return
 			
-			# if currently not storing, then set the type to current
-			if storing == null:
-				storing = i.type
-				
-				var texture
-				print("res://arts/resources/%s.png" % storing)
-				if Global.entity_data.keys().has(storing):
-					texture = load("res://arts/resources/%s.png" % storing)
-				else:
-					texture = load("res://arts/culpits/%s.png" % storing)
-				$Sprite/Icon.set_texture(texture)
-			
 			# only store if the type is the same
-			if i.type == storing:
+			if i.type != 'nano':
 				
 				#[TEMP] [FIX] so this thingy will store one object multiple time frmae
 				#i.magenet_to_delete(self)
 				apply_magnet(i)
-				if get_global_position().distance_to(i.get_global_position()) < 45:
+				if get_global_position().distance_to(i.get_global_position()) < 60:
+					var object_type = i.type
 					i.queue_free()
-					count += 1
-				
-					#$Label.set_text("%s [%d]" % [storing.capitalize(), count])
-					$Sprite/Label.set_text(String(count))
 					
-					print("sucking %s at count %d" % [storing, count])
-					
-					# update player ui (kinda sketch
-					user.storage_ui[user.wearing].update_box_info(storing, count)
+					# spawn entity
+					if object_type in Global.culpits_data:
+						for _i in Global.culpits_data[object_type]["cost"]:
+							count += 1
+					else:
+						count += 1
+						
+	if count >= 1 and not in_cd:
+		var e = entity.instance()
+		e.type = "nano"
+		if base.has_method('get_base'):
+			base.get_base().add_child(e)
+		else:
+			base.get_parent().add_child(e)
+		e.set_global_position(get_global_position())
+		e.set_wearing(false)
+		e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1200
+		e.throwing = true
+		count -= 1
+		$Timer.start()
+		in_cd = true
+						
+						
 
 func apply_magnet(target):
+	
 	target.throwing = true
 	target.velocity += (get_global_position() - target.get_global_position()).normalized()*15#(target.get_parent().to_local(get_global_position()) - target.get_position()).normalized()*10
 	#return get_global_position().distance_to(target.get_global_position())
@@ -88,21 +80,6 @@ func apply_magnet(target):
 
 func initial_control(body):
 	user = body
-	
-	if not wearing:
-		var temp_type = storing
-		
-		if use_storing():
-			# spawn entity
-			var e = entity.instance()
-
-			e.type = temp_type
-			base.add_child(e)
-			
-			e.set_global_position(get_global_position())
-			e.set_wearing(false)
-			e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
-			e.throwing = true
 
 
 func use_storing() -> bool:
@@ -143,3 +120,7 @@ func _on_VisibilityEnabler2D_screen_entered():
 func _on_VisibilityEnabler2D_screen_exited():
 	$Particles2D.set_emitting(false)
 	$Particles2D2.set_emitting(false)
+
+
+func _on_Timer_timeout():
+	in_cd = false # Replace with function body.
