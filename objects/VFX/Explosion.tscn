@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/VFX/Explosion.gd" type="Script" id=1]
 [ext_resource path="res://arts/ui/panel.png" type="Texture" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=6]
+light_mode = 1
 
 [sub_resource type="Curve" id=4]
 max_value = 100.0
@@ -33,8 +36,9 @@ scale_curve = SubResource( 2 )
 color = Color( 0.866667, 0.290196, 0.290196, 1 )
 
 [node name="Explosion" type="Particles2D"]
+material = SubResource( 6 )
 emitting = false
-amount = 6
+amount = 3
 one_shot = true
 speed_scale = 1.59
 explosiveness = 1.0
