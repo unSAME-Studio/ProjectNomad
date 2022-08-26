@@ -75,7 +75,7 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 			
 			Global.player.edit_culpit(self)
 			
-			get_viewport().set_input_as_handled()
+			get_tree().set_input_as_handled()
 		
 		# left click
 		if event.get_button_index() == 1:
