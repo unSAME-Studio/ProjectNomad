@@ -83,6 +83,7 @@ func _process(delta):
 func apply_magnet(target):
 	target.throwing = true
 	target.velocity += (get_global_position() - target.get_global_position()).normalized()*15#(target.get_parent().to_local(get_global_position()) - target.get_position()).normalized()*10
+	#return get_global_position().distance_to(target.get_global_position())
 	#print((target.get_parent().to_local(get_global_position()) - target.get_position()))
 
 func initial_control(body):

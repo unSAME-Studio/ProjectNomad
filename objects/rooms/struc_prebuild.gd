@@ -29,16 +29,15 @@ var structure
 
 func _ready():
 	$Sprite.set_texture(load("res://arts/structures/S_%s.png" % type))
-	
-	if 'room' in type:
-		roomindex = type.substr(4)
-		type = 'room'
-		#build_points = Global.player.get_build_points(point_type)
-		structure = load("res://objects/rooms/room%s.tscn" % roomindex).instance()
-		structure.active = false
-		add_child(structure)
-	else:
-		type = 'link'
+	if not 'remove' in type:
+		if 'room' in type:
+			roomindex = type.substr(4)
+			type = 'room'
+			#build_points = Global.player.get_build_points(point_type)
+			structure = load("res://objects/rooms/room%s.tscn" % roomindex).instance()
+			structure.active = false
+			add_child(structure)
+
 	update_points()
 
 		
@@ -52,10 +51,13 @@ func update_points():
 
 func check_build_condition(target_mode = false) -> bool:
 	if target_mode == false:
+		#if target:
+			#target.set_scale(Vector2(1,1))
 		target = null
 		hovering = true
 		return false
 	if target:
+		#target.set_scale(Vector2(2,2))
 		# overlapping check
 		if structure:
 			for i in structure.get_overlapping_bodies():
@@ -104,6 +106,7 @@ func _process(_delta):
 			set_global_position(get_global_mouse_position())
 			set_rotation(Global.player.camera.get_rotation() + PI / 2 * direction)
 		else:
+			
 			set_global_position(target.get_global_position())
 			set_global_rotation(target.get_parent().get_global_rotation())
 			if structure:
