@@ -68,7 +68,7 @@ func _process(delta):
 				#[TEMP] [FIX] so this thingy will store one object multiple time frmae
 				#i.magenet_to_delete(self)
 				apply_magnet(i)
-				if get_global_position().distance_to(i.get_global_position()) < 45:
+				if get_global_position().distance_to(i.get_global_position()) < 60:
 					i.queue_free()
 					count += 1
 				
