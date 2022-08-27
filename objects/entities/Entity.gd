@@ -168,6 +168,7 @@ func magenet_to_delete(actor):
 	tween.tween_property(self, "global_position", actor.get_global_position(), 0.1)
 	yield(tween, "finished")
 	
+	actor.get_node("Sounds/Entity").play()
 	queue_free()
 
 

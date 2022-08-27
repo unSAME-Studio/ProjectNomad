@@ -9,6 +9,8 @@ var enabled = false
 var in_cd = false
 
 func _ready():
+	return 
+	
 	var texture = load("res://arts/resources/nano.png" )
 	$Sprite/Icon.set_texture(texture)
 
