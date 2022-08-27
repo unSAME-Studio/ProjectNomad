@@ -23,11 +23,15 @@ func _ready():
 	p.set_position(Vector2(10, 0))
 	
 	var s = AudioStreamPlayer2D.new()
+	s.set_script(load("res://scripts/AudioRandomizer.gd"))
 	add_child(s)
 	s.set_name("AudioStreamPlayer2D")
 	s.set_stream(load("res://sounds/shoot.wav"))
 	s.set_bus("Sounds")
 	s.set_volume_db(-15)
+	s.base_volume = -15
+	s.volume_low = -5
+	s.volume_high = 0
 	
 	cooldown = cooldown_comp.instance()
 	add_child(cooldown)
