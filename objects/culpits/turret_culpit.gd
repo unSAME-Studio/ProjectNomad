@@ -22,6 +22,13 @@ func _ready():
 	p.set_name("Position2D")
 	p.set_position(Vector2(10, 0))
 	
+	var s = AudioStreamPlayer2D.new()
+	add_child(s)
+	s.set_name("AudioStreamPlayer2D")
+	s.set_stream(load("res://sounds/shoot.wav"))
+	s.set_bus("Sounds")
+	s.set_volume_db(-15)
+	
 	cooldown = cooldown_comp.instance()
 	add_child(cooldown)
 	cooldown.set_name("CooldownComponent")
@@ -35,6 +42,7 @@ func _process(delta):
 func apply_buff(buff):
 		if 'recharge_boost' in buff:
 			cooldown.speed = cd_speed * buff.recharge_boost
+
 
 func operate(player):
 	if cooldown.can_fire(cd):
@@ -52,7 +60,8 @@ func operate(player):
 		cooldown.increase_cooldown(cd)
 		
 		$Anim.play("fire")
-
+		
+		$AudioStreamPlayer2D.play()
 
 
 func initial_control(body):
