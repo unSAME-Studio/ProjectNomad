@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -21,10 +21,13 @@
 [ext_resource path="res://arts/cards/Base.png" type="Texture" id=19]
 [ext_resource path="res://arts/font/BarlowCondensed-SemiBoldItalic.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://objects/ui/StorageUI.gd" type="Script" id=21]
+[ext_resource path="res://scripts/AudioRandomizer.gd" type="Script" id=22]
 [ext_resource path="res://objects/characters/player/PlayerDamageComponent.gd" type="Script" id=23]
 [ext_resource path="res://arts/ui/Build.png" type="Texture" id=24]
 [ext_resource path="res://arts/ui/Reset Camera.png" type="Texture" id=25]
 [ext_resource path="res://arts/ui/build_arrow.png" type="Texture" id=26]
+[ext_resource path="res://sounds/entity.wav" type="AudioStream" id=27]
+[ext_resource path="res://sounds/machine.wav" type="AudioStream" id=28]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -968,6 +971,24 @@ one_shot = true
 
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource( 23 )
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Entity" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 27 )
+bus = "Sounds"
+script = ExtResource( 22 )
+pitch_low = 0.872
+ptch_high = 1.126
+volume_low = -6
+
+[node name="Culpit" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 28 )
+bus = "Sounds"
+script = ExtResource( 22 )
+pitch_low = 0.872
+ptch_high = 1.126
+volume_low = -6
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildBtn" to="." method="_on_BuildBtn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/CameraBtn" to="." method="_on_CameraBtn_pressed"]

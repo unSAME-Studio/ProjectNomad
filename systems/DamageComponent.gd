@@ -55,6 +55,8 @@ func damage(dealer, amount):
 	dmg_tween.parallel().tween_property(get_parent(), "scale", saved_scale * 1, 0.08)
 	dmg_tween.parallel().tween_property($CanvasLayer/Control/ProgressBar, "modulate", Color.white, 0.08)
 	
+	$Hit.play()
+	
 	if get_parent().has_method("_on_damage"):
 		get_parent()._on_damage()
 	
