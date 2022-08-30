@@ -175,6 +175,8 @@ func _process(delta):
 	# find the cloest 
 	# if mouse already selected one, use that one instead
 	if mouse_select_culpit and mouse_select_culpit in controllables.values():
+		if selected_object:
+			selected_object.emit_signal("deselect")
 		selected_object = mouse_select_culpit
 		
 		$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("Click")
@@ -182,22 +184,27 @@ func _process(delta):
 		mouse_select_culpit = null
 		
 		if controllables.size() > 0:
-			selected_object = controllables.values()[0]
+			var temp_selected_object = controllables.values()[0]
 			for i in controllables.values():
-				if i.get_global_position().distance_to(get_global_position()) < selected_object.get_global_position().distance_to(get_global_position()):
-					selected_object = i
-					
-					$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("E")
+				if i.get_global_position().distance_to(get_global_position()) < temp_selected_object.get_global_position().distance_to(get_global_position()):
+					temp_selected_object = i
+			
+			if temp_selected_object != selected_object:
+				if selected_object:
+					selected_object.emit_signal("deselect")
+				selected_object = temp_selected_object
+			
+			$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("E")
 			
 		else:
 			if selected_object != null:
-				#selected_object.emit_signal("deselect")
+				selected_object.emit_signal("deselect")
 				selected_object = null
 	
 	if last_state != "ControlState":
 		# set hint text 
 		if selected_object:
-			#selected_object.emit_signal("select")
+			selected_object.emit_signal("select")
 			
 			var target_pos = selected_object.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/ControlHint.get_size() / 2
 			target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/ControlHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/ControlHint.get_size().y))

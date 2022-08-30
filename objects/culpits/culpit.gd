@@ -84,13 +84,6 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 
 func _on_mouse_entered():
 	Global.player.mouse_select_culpit = self
-	
-	var tween = create_tween().set_trans(Tween.TRANS_SINE)
-	tween.tween_property($Sprite, "scale", Vector2(1.2, 1.2), 0.1)
-
-func _on_mouse_exited():
-	var tween = create_tween().set_trans(Tween.TRANS_SINE)
-	tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
 
 
 func throw(player,_build = false):
@@ -168,13 +161,16 @@ func _on_destroy():
 
 func destroy():
 	pass
-	
+
+
 func on_select():
-	return
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Sprite, "scale", Vector2(1.2, 1.2), 0.1)
 
 
 func on_deselect():
-	return
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
 
 
 func powered():

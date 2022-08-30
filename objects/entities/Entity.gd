@@ -23,7 +23,7 @@ func _ready():
 	connect("deselect", self, "on_deselect")
 	connect("input_event", self, "_on_Entity_input_event")
 	connect("mouse_entered", self, "_on_mouse_entered")
-	connect("mouse_exited", self, "_on_mouse_exited")
+	#connect("mouse_exited", self, "_on_mouse_exited")
 	
 	var texture
 	if type in Global.entity_data.keys():
@@ -121,14 +121,6 @@ func _on_Entity_input_event(viewport, event, shape_idx):
 
 func _on_mouse_entered():
 	Global.player.mouse_select_culpit = self
-			
-	var tween = create_tween().set_trans(Tween.TRANS_SINE)
-	tween.tween_property($Resource, "scale", Vector2(1, 1), 0.1)
-
-
-func _on_mouse_exited():
-	var tween = create_tween().set_trans(Tween.TRANS_SINE)
-	tween.tween_property($Resource, "scale", Vector2(0.7, 0.7), 0.1)
 
 
 # for entity, interact picks them up
@@ -176,12 +168,17 @@ func apply_magenet():
 
 
 func on_select():
-	$AnimationPlayer.play("hover")
+	#$AnimationPlayer.play("hover")
+	
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Resource, "scale", Vector2(1, 1), 0.1)
 
 
 func on_deselect():
-	$AnimationPlayer.play_backwards("hover")
-
+	#$AnimationPlayer.play_backwards("hover")
+	
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Resource, "scale", Vector2(0.7, 0.7), 0.1)
 
 func powered():
 	pass
