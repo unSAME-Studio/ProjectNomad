@@ -38,6 +38,7 @@ func _on_Timer_timeout():
 					curr_ar = Global.player.armour 
 					for i in Global.player.armour.get_node('rooms/room/structures').get_children():
 						$Enemy/RayCast2D.add_exception(i)
+			
 			if $Enemy/RayCast2D.is_colliding():
 
 				#print($Enemy/RayCast2D.get_collider().name)
@@ -49,6 +50,8 @@ func _on_Timer_timeout():
 					b.set_global_position($Enemy/Position2D.get_global_position())
 					b.set_global_rotation($Enemy/Position2D.get_global_rotation())
 					get_tree().get_current_scene().get_node("Node2D").add_child(b)
+					
+					$Fire.play()
 					
 					$CooldownComponent.increase_cooldown(cd)
 
