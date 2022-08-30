@@ -980,7 +980,8 @@ bus = "Sounds"
 script = ExtResource( 22 )
 pitch_low = 0.872
 ptch_high = 1.126
-volume_low = -6
+volume_low = -20
+volume_high = -10
 
 [node name="Culpit" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 28 )
@@ -996,7 +997,8 @@ bus = "Sounds"
 script = ExtResource( 22 )
 pitch_low = 0.853
 ptch_high = 1.126
-volume_low = -6
+volume_low = -20
+volume_high = -10
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildBtn" to="." method="_on_BuildBtn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/CameraBtn" to="." method="_on_CameraBtn_pressed"]

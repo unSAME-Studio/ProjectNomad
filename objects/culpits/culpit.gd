@@ -78,18 +78,13 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 			get_tree().set_input_as_handled()
 		
 		# left click
-		if event.get_button_index() == 1:
-			if Global.player.controllables.size() > 0:
-				if self in Global.player.controllables.values():
-					#initial_control(Global.player)
-					print("player clicked on %s" % type)
-					get_tree().set_input_as_handled()
-				else:
-					var tween = create_tween().set_trans(Tween.TRANS_SINE)
-					tween.tween_property($Resource, "scale", Vector2(0.8, 0.8), 0.05)
-					tween.tween_property($Resource, "scale", Vector2(1, 1), 0.05)
+		if Global.player.mouse_select_culpit == self:
+			if event.get_button_index() == 1:
+				Global.player.state.interact()
 
 func _on_mouse_entered():
+	Global.player.mouse_select_culpit = self
+	
 	var tween = create_tween().set_trans(Tween.TRANS_SINE)
 	tween.tween_property($Sprite, "scale", Vector2(1.2, 1.2), 0.1)
 
