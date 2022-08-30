@@ -197,7 +197,7 @@ func _process(delta):
 			$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("E")
 			
 		else:
-			if selected_object != null:
+			if selected_object:
 				selected_object.emit_signal("deselect")
 				selected_object = null
 	

@@ -19,6 +19,9 @@ func _ready():
 	# if culpit is action type, disconnect immediately
 	if bool(persistent_state.selected_object.action) == true:
 		interact()
+	
+	# play a machine sound
+	persistent_state.get_node("Sounds/Culpit").play()
 
 
 func move_up():
