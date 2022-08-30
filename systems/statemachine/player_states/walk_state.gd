@@ -17,6 +17,8 @@ var direction = Vector2.ZERO
 var controlling = false
 var last_input = Vector2.ZERO
 
+
+
 func get_class(): 
 	return "WalkState"
 
@@ -41,7 +43,7 @@ func _physics_process(delta):
 	
 	# change eyes position
 	#animated_sprite.get_node("Eyes").set_position(lerp(animated_sprite.get_node("Eyes").get_position(), direction * 15, 10 * delta))
-	animated_sprite.get_node("Eyes").set_rotation(lerp_angle(animated_sprite.get_node("Eyes").get_rotation(), direction.angle() - PI/2, 10 * delta))
+	animated_sprite.get_node("Eyes").set_rotation(lerp_angle(animated_sprite.get_node("Eyes").get_rotation(), last_input.angle() - PI/2, 10 * delta))
 	
 	# else deal with the velocity in air
 	#eizi: using acceleration simulation
