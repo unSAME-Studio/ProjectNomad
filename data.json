@@ -83,6 +83,12 @@
       "action": 1,
       "hint": "Turn On / Off",
       "cost": 3
+    },
+    "relay": {
+      "type": 0,
+      "action": 1,
+      "hint": "Operate",
+      "cost": 1
     }
   },
   "entity": {
