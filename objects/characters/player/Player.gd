@@ -78,6 +78,8 @@ func _input(event):
 				var object = $WearSlot.get_child(0)
 				reparent(object,base)
 				object.throw(self,true)
+				
+				$Sounds/Throw.play()
 		
 	if Input.is_action_just_pressed("throw"):
 		pass

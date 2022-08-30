@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://arts/ui/build_arrow.png" type="Texture" id=26]
 [ext_resource path="res://sounds/entity.wav" type="AudioStream" id=27]
 [ext_resource path="res://sounds/machine.wav" type="AudioStream" id=28]
+[ext_resource path="res://sounds/throw.wav" type="AudioStream" id=29]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -130,7 +131,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -987,6 +987,14 @@ stream = ExtResource( 28 )
 bus = "Sounds"
 script = ExtResource( 22 )
 pitch_low = 0.872
+ptch_high = 1.126
+volume_low = -6
+
+[node name="Throw" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 29 )
+bus = "Sounds"
+script = ExtResource( 22 )
+pitch_low = 0.853
 ptch_high = 1.126
 volume_low = -6
 
