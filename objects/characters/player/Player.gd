@@ -3,6 +3,7 @@
 extends KinematicBody2D
 
 var controllables = {}
+var mouse_select_culpit = null
 var controlling = true
 var base = null
 var selected_object = null
@@ -171,17 +172,27 @@ func _process(delta):
 	# update health
 	$CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar.set_value(health)
 	
-	# find the cloest controllables
-	if controllables.size() > 0:
-		selected_object = controllables.values()[0]
-		for i in controllables.values():
-			if i.get_global_position().distance_to(get_global_position()) < selected_object.get_global_position().distance_to(get_global_position()):
-				selected_object = i
+	# find the cloest 
+	# if mouse already selected one, use that one instead
+	if mouse_select_culpit and mouse_select_culpit in controllables.values():
+		selected_object = mouse_select_culpit
 		
+		$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("Click")
 	else:
-		if selected_object != null:
-			#selected_object.emit_signal("deselect")
-			selected_object = null
+		mouse_select_culpit = null
+		
+		if controllables.size() > 0:
+			selected_object = controllables.values()[0]
+			for i in controllables.values():
+				if i.get_global_position().distance_to(get_global_position()) < selected_object.get_global_position().distance_to(get_global_position()):
+					selected_object = i
+					
+					$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("E")
+			
+		else:
+			if selected_object != null:
+				#selected_object.emit_signal("deselect")
+				selected_object = null
 	
 	if last_state != "ControlState":
 		# set hint text 
@@ -264,6 +275,8 @@ func _physics_process(_delta):
 # add and remove culpit body in the dictionary
 func _on_ControllableDetection_body_entered(body):
 	controllables[body.name] = body
+	
+	# added more hints
 	
 	#print(controllables.values())
 

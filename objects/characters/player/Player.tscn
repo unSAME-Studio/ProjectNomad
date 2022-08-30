@@ -972,7 +972,7 @@ one_shot = true
 [node name="DamageComponent" type="Node2D" parent="."]
 script = ExtResource( 23 )
 
-[node name="Sounds" type="Node" parent="."]
+[node name="Sounds" type="Node2D" parent="."]
 
 [node name="Entity" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource( 27 )

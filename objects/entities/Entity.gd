@@ -112,20 +112,19 @@ func _process(delta):
 
 # Use mouse to interacte with the item directly
 func _on_Entity_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
-		if event.get_button_index() == 1 and event.is_pressed():
-			if Global.player.controllables.size() > 0:
-				if self in Global.player.controllables.values():
-					initial_control(Global.player)
-					get_tree().set_input_as_handled()
-				else:
-					var tween = create_tween().set_trans(Tween.TRANS_SINE)
-					tween.tween_property($Resource, "scale", Vector2(0.6, 0.6), 0.05)
-					tween.tween_property($Resource, "scale", Vector2(0.7, 0.7), 0.05)
+	if Global.player.mouse_select_culpit == self:
+		if event is InputEventMouseButton:
+			if event.get_button_index() == 1 and event.is_pressed():
+				
+				Global.player.state.interact()
+
 
 func _on_mouse_entered():
+	Global.player.mouse_select_culpit = self
+			
 	var tween = create_tween().set_trans(Tween.TRANS_SINE)
 	tween.tween_property($Resource, "scale", Vector2(1, 1), 0.1)
+
 
 func _on_mouse_exited():
 	var tween = create_tween().set_trans(Tween.TRANS_SINE)
