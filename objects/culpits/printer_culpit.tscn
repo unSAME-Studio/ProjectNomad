@@ -46,7 +46,6 @@ physics_process_parent = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -55,20 +54,20 @@ theme = ExtResource( 3 )
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
 material = SubResource( 5 )
 margin_left = 1376.0
-margin_top = 223.0
+margin_top = 135.0
 margin_right = 1723.0
-margin_bottom = 889.0
+margin_bottom = 782.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/PanelContainer"]
 margin_right = 347.0
-margin_bottom = 666.0
+margin_bottom = 647.0
 theme = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/ScrollContainer"]
 margin_right = 347.0
-margin_bottom = 666.0
+margin_bottom = 647.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -80,7 +79,7 @@ text = "Printer Tech Tree (unlock with 1 nano)"
 [node name="ItemList" type="ItemList" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
 margin_top = 36.0
 margin_right = 347.0
-margin_bottom = 586.0
+margin_bottom = 567.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
@@ -88,21 +87,21 @@ allow_reselect = true
 fixed_icon_size = Vector2( 50, 50 )
 
 [node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 590.0
+margin_top = 571.0
 margin_right = 347.0
-margin_bottom = 590.0
+margin_bottom = 571.0
 custom_constants/separation = 10
 
 [node name="Level" type="Label" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 594.0
+margin_top = 575.0
 margin_right = 347.0
-margin_bottom = 626.0
+margin_bottom = 607.0
 text = "Current Level - 1"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 630.0
+margin_top = 611.0
 margin_right = 347.0
-margin_bottom = 662.0
+margin_bottom = 643.0
 
 [node name="Progress" type="Label" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 margin_right = 98.0
@@ -124,9 +123,9 @@ value = 50.0
 percent_visible = false
 
 [node name="LevelPreview" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 666.0
+margin_top = 647.0
 margin_right = 347.0
-margin_bottom = 666.0
+margin_bottom = 647.0
 
 [node name="DamageComponent" parent="." instance=ExtResource( 4 )]
 health_max = 50

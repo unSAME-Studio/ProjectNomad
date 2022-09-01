@@ -21,6 +21,10 @@ func _ready():
 	$TextureRect.set_texture(card)
 		
 	$Label.set_text(build_type)
+	
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween.tween_property(self, "rect_scale", Vector2(1, 1), 0.08)
+	tween.parallel().tween_property($TextureRect, "rect_scale", Vector2(1, 1), 0.08)
 
 
 func _on_BuildCard_mouse_entered():
