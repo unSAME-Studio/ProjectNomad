@@ -3,6 +3,7 @@ extends Culpit
 
 var enabled = true
 var current_bodies
+var cd = false
 
 func _process(delta):
 	pass
@@ -22,15 +23,20 @@ func _process(delta):
 
 func operate(player):
 	#enabled = !enabled
-	
-	$Particles2D.set_emitting(enabled)
-	
-	# unpowered all the current powered items
-	if $DetectionArea.get_overlapping_bodies().size() > 1:
-		for i in $DetectionArea.get_overlapping_bodies():
-			if i != self:
+	if not cd:
+		cd = true
+		$Particles2D.set_emitting(enabled)
+		$DetectionArea.set_position(Vector2.ZERO)
+		if $DetectionArea.get_overlapping_bodies().size() > 1:
+			for i in $DetectionArea.get_overlapping_bodies():
 				if i.has_method('operate'):
+#					if 'cd' in i:
+#						if i.cd == false:
+#							i.operate(player)
+#					else:
 					i.operate(player)
+		yield(get_tree(), "idle_frame")
+		cd = false
 
 
 

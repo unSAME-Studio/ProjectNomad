@@ -24,6 +24,8 @@ var recharge_boost = 1
 
 var targetsList = []
 
+var faction = 'ship'
+
 var line
 
 func _ready():

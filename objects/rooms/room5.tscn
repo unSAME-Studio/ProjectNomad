@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/walls/Door_edge.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/rooms/walls/Wall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://arts/structures/pattern2.png" type="Texture" id=5]
+[ext_resource path="res://objects/structure/hardpoint_struc.tscn" type="PackedScene" id=6]
 
 [node name="room" type="Area2D"]
 collision_layer = 34
@@ -76,3 +77,5 @@ position = Vector2( 0, -224 )
 rotation = 3.14159
 
 [node name="objects" type="Node2D" parent="."]
+
+[node name="hardpoint_struct" parent="objects" instance=ExtResource( 6 )]

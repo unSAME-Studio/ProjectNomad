@@ -52,7 +52,7 @@ func operate(player):
 	if cooldown.can_fire(cd):
 		#print("FIRE!!!")
 		var b = bullet.instance()
-		if slotted:
+		if slotted and 'base' in slotted.type:
 			b.damage = damage * slotted.damage_buff
 			b.speed = projectile_speed*slotted.speed_buff
 			b.scale = scale

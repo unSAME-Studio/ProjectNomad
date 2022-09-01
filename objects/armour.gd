@@ -9,6 +9,8 @@ var pRoffset
 var Roffset
 var base
 
+var roomset = false
+
 func _ready():
 	for i in $rooms/room.get_node('objects').get_children():
 		i.set_collision_layer_bit(0, false)
@@ -53,9 +55,20 @@ func initial_control(body):
 		for i in $rooms/room.get_node('structures').get_children():
 			if "Door" in i.name:
 				i.destroy()
+		
 		var tempbase = get_world_2d().get_direct_space_state().intersect_point(get_global_position(), 1 ,[],2,true,false)
 		if not tempbase.empty():
 			pbase = tempbase[0].collider
+			
+			#buildpoint reset
+			if 'rooms' in pbase:
+
+				pbase.rooms.append($rooms/room)
+				roomset = true
+				for i in $rooms/room.get_node('objects').get_children():
+					i.set_collision_layer_bit(0, true)
+					i.set_collision_layer_bit(3, true)
+			
 			poffset = pbase.get_global_position()-get_global_position()
 			pRoffset = pbase.get_global_rotation()
 			Roffset = get_global_rotation()
@@ -64,6 +77,15 @@ func initial_control(body):
 
 	else:
 		controlling = true
+		
+		#buildpoint reset
+		if pbase and roomset:
+			pbase.rooms.erase($rooms/room)
+			roomset = false
+			for i in $rooms/room.get_node('objects').get_children():
+				i.set_collision_layer_bit(0, false)
+				i.set_collision_layer_bit(3, false)
+				
 		Global.player.armour = self
 		for i in $rooms/room.get_node('structures').get_children():
 			if "Door" in i.name:

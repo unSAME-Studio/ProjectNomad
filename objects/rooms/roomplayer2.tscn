@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/structure/base_struc.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://objects/culpits/turret_culpit.gd" type="Script" id=5]
 [ext_resource path="res://objects/rooms/walls/Wall_strike.tscn" type="PackedScene" id=6]
 [ext_resource path="res://arts/structures/pattern1.png" type="Texture" id=7]
-[ext_resource path="res://objects/culpits/light_culpit.gd" type="Script" id=8]
 
 [node name="room" type="Area2D"]
 collision_layer = 34
@@ -80,19 +79,5 @@ node = NodePath("../Culpit3")
 position = Vector2( 64, 0 )
 script = ExtResource( 5 )
 type = "turret"
-
-[node name="Culpit" parent="objects" instance=ExtResource( 4 )]
-position = Vector2( -34, -44 )
-scale = Vector2( 0.525285, 0.525285 )
-script = ExtResource( 8 )
-type = "light"
-preopen = true
-
-[node name="Culpit4" parent="objects" instance=ExtResource( 4 )]
-position = Vector2( 35, -45 )
-scale = Vector2( 0.525285, 0.525285 )
-script = ExtResource( 8 )
-type = "light"
-preopen = true
 
 [editable path="structures/Door2"]

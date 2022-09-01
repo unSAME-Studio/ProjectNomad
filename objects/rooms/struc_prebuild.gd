@@ -32,17 +32,19 @@ func _ready():
 	if not 'remove' in type:
 		if 'room' in type:
 			roomindex = type.substr(4)
+			point_type = 'room'
 			type = 'room'
 			#build_points = Global.player.get_build_points(point_type)
 			structure = load("res://objects/rooms/room%s.tscn" % roomindex).instance()
 			structure.active = false
 			add_child(structure)
-
+	if 'wall' in type:
+		point_type = 'wall'
 	update_points()
 
 		
 func update_points():
-	var new_build_points = Global.player.get_build_points(type)
+	var new_build_points = Global.player.get_build_points(point_type)
 	for i in build_points:
 		i.end_build()
 	build_points = new_build_points
@@ -174,9 +176,12 @@ func finish_build(room):
 			if target.room_bind:
 				target.remove_room()
 			elif target.wall:
-				target.wall.switch()
-				if target.wall.type == 'door wall':
-					target.wall.spawn_door()
+				if type == 'wall remove':
+					target.wall.upgrade()
+				else:
+					target.wall.switch()
+					if target.wall.type == 'door wall':
+						target.wall.spawn_door()
 	for i in build_points:
 		i.end_build()
 	build_points = []
