@@ -3,11 +3,13 @@
 [ext_resource path="res://arts/structures/S_booster.png" type="Texture" id=1]
 
 [node name="indi" type="Node2D"]
+light_mask = 2
 scale = Vector2( 0.283821, 0.283821 )
 z_index = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 2, 3, 3, 1 )
+light_mask = 2
 position = Vector2( 179.187, 0 )
 rotation = 1.56074
 scale = Vector2( 0.651749, 0.427051 )

@@ -61,7 +61,7 @@ mouse_filter = 2
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
-color = Color( 0.129412, 0.129412, 0.129412, 1 )
+color = Color( 0.423529, 0.423529, 0.423529, 1 )
 
 [node name="TestFog" type="Sprite" parent="Node2D"]
 modulate = Color( 1, 1, 1, 0.501961 )

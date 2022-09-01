@@ -25,7 +25,7 @@ func active():
 func ready():
 	polygon = $Polygon2D
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
-	#$LightOccluder2D.occluder.set_polygon($Polygon2D.polygon)
+	$LightOccluder2D.occluder.set_polygon($Polygon2D.polygon)
 	
 func get_base():
 	return get_parent().get_parent().get_base()
@@ -55,7 +55,7 @@ func upgrade():
 	if find_node("DamageComponent"):
 		if level == 0:
 			level += 1
-			$Polygon2D.color = '8c8c64'
+			$Polygon2D.color = '8c8c54'
 			get_node("DamageComponent").health_max += 100
 			get_node("DamageComponent").reset()
 		
