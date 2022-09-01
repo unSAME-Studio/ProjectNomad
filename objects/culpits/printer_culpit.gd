@@ -14,6 +14,9 @@ func initial_control(body):
 	user = body
 	
 	$CanvasLayer/Control.show()
+	
+	# default open the build menu
+	body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").set_visible(true)
 
 
 func stop_control(body):
@@ -21,6 +24,9 @@ func stop_control(body):
 	user = null
 	
 	$CanvasLayer/Control.hide()
+	
+	# default close the build menu
+	body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").set_visible(false)
 
 
 func _on_ItemList_item_selected(index):
