@@ -62,7 +62,7 @@ func stop_control(body):
 
 # snap body to predefined point
 func snap_position(body):
-	if not wearing:
+	if not wearing and body:
 		body.set_global_position($ControlPos.get_global_position())
 
 

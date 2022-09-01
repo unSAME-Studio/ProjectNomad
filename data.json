@@ -89,6 +89,18 @@
       "action": 1,
       "hint": "Operate",
       "cost": 1
+    },
+    "coil": {
+      "type": 0,
+      "action": 1,
+      "hint": "Operate",
+      "cost": 1
+    },
+    "radar": {
+      "type": 0,
+      "action": 1,
+      "hint": "Scan",
+      "cost": 1
     }
   },
   "entity": {

@@ -7,6 +7,8 @@ var polygon_id
 var polygon
 var actived = true
 var base = null
+
+var level = 0
 export var sp = false
 
 func _ready():
@@ -23,7 +25,7 @@ func active():
 func ready():
 	polygon = $Polygon2D
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
-	$LightOccluder2D.occluder.set_polygon($Polygon2D.polygon)
+	#$LightOccluder2D.occluder.set_polygon($Polygon2D.polygon)
 	
 func get_base():
 	return get_parent().get_parent().get_base()
@@ -48,7 +50,15 @@ func change_type(type_to):
 			$LightOccluder2D.occluder.set_polygon(polygon.polygon)
 		_:
 			print(type_to)
-			
+
+func upgrade():
+	if find_node("DamageComponent"):
+		if level == 0:
+			level += 1
+			$Polygon2D.color = '8c8c64'
+			get_node("DamageComponent").health_max += 100
+			get_node("DamageComponent").reset()
+		
 
 func switch():
 	if actived:

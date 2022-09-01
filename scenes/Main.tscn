@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enviorments/Island.tscn" type="PackedScene" id=2]
@@ -25,16 +25,17 @@
 [ext_resource path="res://objects/rooms/room6.tscn" type="PackedScene" id=23]
 [ext_resource path="res://objects/scripts/ship.gd" type="Script" id=24]
 [ext_resource path="res://objects/rooms/room3.tscn" type="PackedScene" id=25]
-[ext_resource path="res://objects/small.tscn" type="PackedScene" id=26]
+[ext_resource path="res://objects/armour.tscn" type="PackedScene" id=26]
 [ext_resource path="res://objects/powerBase.tscn" type="PackedScene" id=27]
+[ext_resource path="res://objects/culpits/radar_culpit.tscn" type="PackedScene" id=28]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
 ambient_light_color = Color( 1, 1, 1, 1 )
 glow_enabled = true
-glow_intensity = 0.69
-glow_strength = 0.69
-glow_bloom = 0.21
+glow_intensity = 0.7
+glow_strength = 0.7
+glow_bloom = 0.7
 adjustment_brightness = 0.01
 adjustment_contrast = 0.01
 
@@ -63,7 +64,6 @@ mouse_filter = 2
 color = Color( 0.129412, 0.129412, 0.129412, 1 )
 
 [node name="TestFog" type="Sprite" parent="Node2D"]
-visible = false
 modulate = Color( 1, 1, 1, 0.501961 )
 material = SubResource( 3 )
 position = Vector2( -524, 539 )
@@ -76,6 +76,9 @@ position = Vector2( 951, 126 )
 collision_mask = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
+
+[node name="radar_Culpit" parent="Node2D/Base_ship/objects" index="5" instance=ExtResource( 28 )]
+position = Vector2( 5, 72 )
 
 [node name="Base" parent="Node2D" instance=ExtResource( 11 )]
 position = Vector2( 268, -1213 )
@@ -742,7 +745,7 @@ target_node_path = NodePath("../Player")
 [node name="IslandGenerator" type="Node2D" parent="Node2D"]
 script = ExtResource( 7 )
 
-[node name="Base7" parent="." instance=ExtResource( 27 )]
+[node name="Base7" parent="Node2D" instance=ExtResource( 27 )]
 position = Vector2( 1495, 179 )
 
 [editable path="Node2D/Base_ship"]

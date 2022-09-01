@@ -41,7 +41,8 @@ func move_right():
 
 
 func interact():
-	persistent_state.culpit.stop_control(persistent_state)
+	if is_instance_valid(persistent_state.culpit):
+		persistent_state.culpit.stop_control(persistent_state)
 	persistent_state.culpit = null
 	
 	change_state.call_func("idle")

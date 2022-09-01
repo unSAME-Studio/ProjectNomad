@@ -45,4 +45,4 @@ position = Vector2( -148, 209 )
 [node name="structure" type="Node2D" parent="."]
 
 [node name="Spider" parent="." instance=ExtResource( 3 )]
-position = Vector2( -11, 9 )
+position = Vector2( 997, 353 )

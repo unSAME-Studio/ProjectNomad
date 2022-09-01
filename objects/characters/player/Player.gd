@@ -191,19 +191,20 @@ func _process(delta):
 			
 			if temp_selected_object != selected_object:
 				if selected_object:
-					selected_object.emit_signal("deselect")
+					if is_instance_valid(selected_object):
+						selected_object.emit_signal("deselect")
 				selected_object = temp_selected_object
 			
 			$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("E")
 			
 		else:
-			if selected_object:
+			if selected_object and is_instance_valid(selected_object):
 				selected_object.emit_signal("deselect")
 				selected_object = null
 	
 	if last_state != "ControlState":
 		# set hint text 
-		if selected_object:
+		if is_instance_valid(selected_object):
 			selected_object.emit_signal("select")
 			
 			var target_pos = selected_object.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/ControlHint.get_size() / 2

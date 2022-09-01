@@ -69,6 +69,7 @@ func damage(dealer, amount):
 
 
 func reset():
+	$CanvasLayer/Control/ProgressBar.set_max(health_max)
 	health = health_max
 	$CanvasLayer/Control.hide()
 
