@@ -7,6 +7,10 @@ var culpits_data = []
 var entity_data = []
 var structure_data = []
 
+var tech_level = 0
+var tech_level_count = 0
+var tech_level_total = 1
+
 
 func load_database(file_name: String):
 	var data_file = File.new()

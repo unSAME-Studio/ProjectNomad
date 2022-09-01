@@ -131,55 +131,68 @@
   "structure": {
     "locker": {
       "type": 1,
-      "level": 0
+      "level": 4,
+      "unlocked": 0
     },
     "base": {
       "type": 0,
-      "level": 0
+      "level": 1,
+      "unlocked": 0
     },
     "base fix": {
       "type": 0,
-      "level": 0
+      "level": 2,
+      "unlocked": 0
     },
     "power": {
       "type": 3,
-      "level": 0
+      "level": 3,
+      "unlocked": 0
     },
     "booster": {
       "type": 3,
-      "level": 0
+      "level": 3,
+      "unlocked": 0
     },
     "wall": {
       "type": 1,
-      "level": 0
+      "level": 0,
+      "unlocked": 0
     },
     "door wall": {
       "type": 1,
-      "level": 0
+      "level": 1,
+      "unlocked": 0
     },
     "room2": {
       "type": 0,
-      "level": 0
+      "level": 1,
+      "unlocked": 0
     },
     "room3": {
       "type": 0,
-      "level": 0
+      "level": 2,
+      "unlocked": 0
     },
     "room4": {
       "type": 0,
-      "level": 0
+      "level": 2,
+      "unlocked": 0
     },
     "room5": {
       "type": 0,
-      "level": 0
+      "level": 2,
+      "unlocked": 0
     },
     "wall remove": {
       "type": 1,
-      "level": 0
+      "level": 1,
+      "unlocked": 0
     },
     "room remove": {
       "type": 0,
-      "level": 0
+      "level": 3,
+      "unlocked": 0
     }
   }
 }
