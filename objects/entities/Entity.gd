@@ -180,6 +180,19 @@ func on_deselect():
 	var tween = create_tween().set_trans(Tween.TRANS_SINE)
 	tween.tween_property($Resource, "scale", Vector2(0.7, 0.7), 0.1)
 
+
+func on_in_range():
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Resource, "scale", Vector2(0.76, 0.76), 0.1)
+	tween.parallel().tween_property($Resource, "modulate", Color("ffffff"), 0.1)
+
+
+func on_out_range():
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Resource, "scale", Vector2(0.7, 0.7), 0.1)
+	tween.parallel().tween_property($Resource, "modulate", Color("a9a9a9"), 0.1)
+
+
 func powered():
 	pass
 

@@ -28,6 +28,9 @@ onready var controllable = true
 func _ready():
 	$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
 	
+	# reset the hint graphics
+	$Sprite.set_modulate(Color("d0d0d0"))
+	
 	base = get_parent().get_parent()
 	if base.has_method('get_base'):
 		base = base.get_base()
@@ -173,6 +176,18 @@ func on_select():
 func on_deselect():
 	var tween = create_tween().set_trans(Tween.TRANS_SINE)
 	tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
+
+
+func on_in_range():
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Sprite, "scale", Vector2(1.06, 1.06), 0.1)
+	tween.parallel().tween_property($Sprite, "modulate", Color("ffffff"), 0.1)
+
+
+func on_out_range():
+	var tween = create_tween().set_trans(Tween.TRANS_SINE)
+	tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
+	tween.parallel().tween_property($Sprite, "modulate", Color("a9a9a9"), 0.1)
 
 
 func powered():
