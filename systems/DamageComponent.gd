@@ -18,8 +18,9 @@ func _ready():
 	$CanvasLayer/Control/ProgressBar.set_max(health_max)
 	saved_scale = get_global_scale()
 	
-
-
+func _enter_tree():
+	saved_scale = get_global_scale()
+	
 func damage(dealer, amount):
 	#print("%s hit by %s | %d - %d" % [get_parent().get_name(), dealer.get_name(), health, amount])
 	
@@ -45,7 +46,6 @@ func damage(dealer, amount):
 	
 	health = clamp(health - amount, 0, health_max)
 	$CanvasLayer/Control/ProgressBar.set_value(health)
-	
 	# create damage effect
 	var dmg_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	dmg_tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 0.5), 0.08)

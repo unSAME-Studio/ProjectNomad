@@ -101,6 +101,12 @@
       "action": 1,
       "hint": "Scan",
       "cost": 1
+    },
+    "gravturret": {
+      "type": 0,
+      "action": 0,
+      "hint": "Activate",
+      "cost": 1
     }
   },
   "entity": {

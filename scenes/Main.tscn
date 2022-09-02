@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enviorments/Island.tscn" type="PackedScene" id=2]
@@ -28,6 +28,8 @@
 [ext_resource path="res://objects/armour.tscn" type="PackedScene" id=26]
 [ext_resource path="res://objects/powerBase.tscn" type="PackedScene" id=27]
 [ext_resource path="res://objects/culpits/radar_culpit.tscn" type="PackedScene" id=28]
+[ext_resource path="res://objects/enviorments/rocks.tscn" type="PackedScene" id=29]
+[ext_resource path="res://objects/culpits/gravturret_culpit.tscn" type="PackedScene" id=30]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -61,7 +63,7 @@ mouse_filter = 2
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Node2D"]
-color = Color( 0.423529, 0.423529, 0.423529, 1 )
+color = Color( 0.133333, 0.133333, 0.133333, 1 )
 
 [node name="TestFog" type="Sprite" parent="Node2D"]
 modulate = Color( 1, 1, 1, 0.501961 )
@@ -79,6 +81,9 @@ gravity_scale = 0.0
 
 [node name="radar_Culpit" parent="Node2D/Base_ship/objects" index="5" instance=ExtResource( 28 )]
 position = Vector2( 5, 72 )
+
+[node name="decomposer_Culpit" parent="Node2D/Base_ship/objects" index="6" instance=ExtResource( 30 )]
+position = Vector2( 3, 154 )
 
 [node name="Base" parent="Node2D" instance=ExtResource( 11 )]
 position = Vector2( 268, -1213 )
@@ -747,6 +752,9 @@ script = ExtResource( 7 )
 
 [node name="Base7" parent="Node2D" instance=ExtResource( 27 )]
 position = Vector2( 1495, 179 )
+
+[node name="rocks" parent="Node2D" instance=ExtResource( 29 )]
+position = Vector2( 355, 463 )
 
 [editable path="Node2D/Base_ship"]
 [editable path="Node2D/Base"]

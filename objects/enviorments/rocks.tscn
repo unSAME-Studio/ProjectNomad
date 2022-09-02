@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/enviorments/rocks.gd" type="Script" id=2]
+[ext_resource path="res://scripts/parallax_offset.gd" type="Script" id=4]
+
+[node name="rocks" type="RigidBody2D"]
+collision_layer = 34
+collision_mask = 2
+mass = 0.1
+linear_damp = 0.5
+script = ExtResource( 2 )
+
+[node name="Shadow" type="Polygon2D" parent="."]
+visible = false
+light_mask = 2
+z_index = -50
+color = Color( 0.376471, 0.396078, 0.188235, 1 )
+antialiased = true
+script = ExtResource( 4 )
+offset_amount = -0.2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="entity" type="Node2D" parent="."]
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+scale = Vector2( 0.181811, 0.181811 )
+rect = Rect2( -1500, -1500, 3000, 3000 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2( 1.0453, 1.12683 )
+color = Color( 0.309804, 0.309804, 0.309804, 1 )
+polygon = PoolVector2Array( -57, -100, -133.933, 21.2987, 4.78333, 73.658, 61.2264, 15.0866, 20.09, -65.671 )
+vertex_colors = PoolColorArray( 0.654902, 0.145098, 0.145098, 1, 1, 0.447059, 0.447059, 1 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Polygon2D"]
+scale = Vector2( 0.956663, 0.887445 )
+color = Color( 0.45098, 0.45098, 0.45098, 1 )
+polygon = PoolVector2Array( -65, -81, -94, 20, -14, 67, 38, 2, 1, -69 )
+vertex_colors = PoolColorArray( 0.654902, 0.145098, 0.145098, 1, 1, 0.447059, 0.447059, 1 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="Polygon2D"]
+scale = Vector2( 0.956663, 0.887445 )
+color = Color( 0.623529, 0.623529, 0.623529, 1 )
+polygon = PoolVector2Array( -36, -70, -66, -12, -14, 20, 0, -35 )
+
+[node name="DamageComponent" parent="." instance=ExtResource( 1 )]
+position = Vector2( 776, 662 )
+drop_types = [ "crystal", "scrap", "gasoline" ]
+drop_amount = 6
