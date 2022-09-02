@@ -38,6 +38,8 @@ func operate(player):
 	
 	$Particles2D.set_emitting(enabled)
 	$Particles2D2.set_emitting(enabled)
+	$Particles2D.set_visible(enabled)
+	$Particles2D2.set_visible(enabled)
 	$Light2D.set_visible(enabled)
 
 
