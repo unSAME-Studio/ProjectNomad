@@ -6,7 +6,7 @@ export var speed = 200
 export var friction = 0.1
 export var acceleration = 0.3
 
-export var air_speed = 200
+export var air_speed = 5
 export var air_friction = 0.001
 export var air_acceleration = 0.25
 
@@ -17,7 +17,8 @@ var direction = Vector2.ZERO
 var controlling = false
 var last_input = Vector2.ZERO
 
-
+var last_position = Vector2.ZERO
+var collided_temp = false
 
 func get_class(): 
 	return "WalkState"
@@ -50,7 +51,7 @@ func _physics_process(delta):
 	if persistent_state.is_in_air():
 		persistent_state.get_node('testParticle').set_emitting(true)
 		if direction.length() > 0:
-			persistent_state.velocity += direction.rotated(persistent_state.camera._get_rotation()).normalized() * 5
+			persistent_state.velocity += direction.rotated(persistent_state.camera._get_rotation()).normalized() * air_speed
 			 #lerp(persistent_state.move_velocity, direction.rotated(persistent_state.camera.get_rotation()).normalized() * air_speed, air_acceleration)
 
 		#else:
@@ -93,7 +94,27 @@ func _physics_process(delta):
 	#persistent_state.velocity = persistent_state.slide_velocity + persistent_state.move_velocity
 	#print(persistent_state.move_velocity)
 	persistent_state.move_and_slide(persistent_state.velocity)
-	
+	if persistent_state.get_slide_count() != 0:
+		if collided_temp:
+			var moved_length = persistent_state.get_global_position() - last_position
+			#print(moved_length/10)
+			persistent_state.velocity.x = lerp(persistent_state.velocity.x, 0, clamp(1-abs(moved_length.x),0,1))
+			persistent_state.velocity.y = lerp(persistent_state.velocity.y, 0, clamp(1-abs(moved_length.y),0,1))
+#			persistent_state.velocity.x = persistent_state.velocity.x * (int(floor(moved_length.x))%1)
+#			persistent_state.velocity.y = persistent_state.velocity.y * (int(floor(moved_length.y))%1)
+			#print(persistent_state.velocity)
+			#air_speed = 200
+			last_position = persistent_state.get_global_position()
+			collided_temp = false
+		else:
+			collided_temp = true
+
+	else:
+		last_position = persistent_state.get_global_position()
+		collided_temp = false
+		air_speed = 5
+	#print(last_position)
+	#print(persistent_state.get_slide_count ())
 	check_state_change()
 
 

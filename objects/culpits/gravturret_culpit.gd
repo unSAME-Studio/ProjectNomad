@@ -37,21 +37,13 @@ func _process(delta):
 
 	if enabled and $DetectionArea.get_overlapping_bodies().size() > 0:
 		for i in $DetectionArea.get_overlapping_bodies():
-			# do nothing if box is full
-			if count >= MAX_COUNT:
-				# operate to turn it off
-				operate(self)
-				return
-			
 			# only store if the type is the same
-			if i.type == 'nano':
+			if 'throwing' in i:
 				#print('find nano')
 				#[TEMP] [FIX] so this thingy will store one object multiple time frmae
 				#i.magenet_to_delete(self)
 				apply_magnet(i)
-				if get_global_position().distance_to(i.get_global_position()) < 60:
-					var object_type = i.type
-					i.queue_free()
+
 					
 #					# spawn entity
 #					if object_type in Global.culpits_data:

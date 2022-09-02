@@ -78,7 +78,8 @@ func _process(delta):
 					print("sucking %s at count %d" % [storing, count])
 					
 					# update player ui (kinda sketch
-					user.storage_ui[user.wearing].update_box_info(storing, count)
+					if wearing:
+						user.storage_ui[user.wearing].update_box_info(storing, count)
 
 func apply_magnet(target):
 	target.throwing = true

@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 export var size = 3
-
+var entity = preload("res://objects/entities/Entity.tscn")
 
 var faction = 'environment'
 
@@ -33,6 +33,16 @@ func _on_destroy():
 			
 			get_parent().add_child(p)
 			p.apply_impulse(-pos_rand, pos_rand)
+			
+		for i in range(size + 1 + randi() % 2):
+			var e = entity.instance()
+			e.type = "nano"
+			get_parent().add_child(e)
+			e.set_global_position(get_global_position())
+			e.velocity = Vector2(100-randi() % 200,100 -randi() % 200).rotated(deg2rad(180 - randi()%360)).normalized() * 100
+			e.throwing = true
+
+
 	queue_free()
 			
 func destory():
