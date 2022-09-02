@@ -285,12 +285,15 @@ func _on_ControllableDetection_body_entered(body):
 	controllables[body.name] = body
 	
 	# added more hints
+	body.on_in_range()
 	
 	#print(controllables.values())
 
 
 func _on_ControllableDetection_body_exited(body):
 	controllables.erase(body.name)
+	
+	body.on_out_range()
 
 
 # entering building mode
