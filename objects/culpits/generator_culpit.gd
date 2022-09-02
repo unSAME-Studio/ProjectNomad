@@ -23,6 +23,7 @@ func operate(player):
 	enabled = !enabled
 	
 	$Particles2D.set_emitting(enabled)
+	$Particles2D.set_visible(enabled)
 	$Light2D.set_visible(enabled)
 	
 	# unpowered all the current powered items

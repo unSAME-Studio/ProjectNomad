@@ -16,6 +16,8 @@ var build_point
 
 var slotted = null
 
+var powered = false
+
 export(String) var type = "wheel"
 var data setget ,get_data
 
@@ -174,11 +176,13 @@ func on_deselect():
 
 
 func powered():
-	pass
+	if not powered:
+		powered = true
 
 
 func unpowered():
-	pass
+	if powered:
+		powered = false
 
 
 func get_data():

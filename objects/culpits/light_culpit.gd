@@ -29,10 +29,22 @@ func operate(player):
 
 
 func powered():
-	light2d.set_texture_scale(4)
-	rotate_speed = 3
+	if not powered:
+		powered = true
+		
+		light2d.set_texture_scale(4)
+		rotate_speed = 3
+		
+		#var tween = create_tween().set_trans(Tween.TRANS_BOUNCE)
+		#tween.tween_property(light2d, "texture_scale", 4, 0.2)
 
 
 func unpowered():
-	light2d.set_texture_scale(2)
-	rotate_speed = 1
+	if powered:
+		powered = false
+		
+		light2d.set_texture_scale(2)
+		rotate_speed = 1
+		
+		#var tween = create_tween().set_trans(Tween.TRANS_BOUNCE)
+		#tween.tween_property(light2d, "texture_scale", 2, 0.2)
