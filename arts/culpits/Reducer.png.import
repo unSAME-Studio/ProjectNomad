@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Reducer.png-b4f7eb6a7babf7f5fe1d019d67553eb4.stex"
+path="res://.import/reducer.png-bdf9d91f67c51f1a5680e56ccf630d13.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/culpits/Reducer.png"
-dest_files=[ "res://.import/Reducer.png-b4f7eb6a7babf7f5fe1d019d67553eb4.stex" ]
+source_file="res://arts/culpits/reducer.png"
+dest_files=[ "res://.import/reducer.png-bdf9d91f67c51f1a5680e56ccf630d13.stex" ]
 
 [params]
 
