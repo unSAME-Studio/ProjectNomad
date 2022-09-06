@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/structure/base_struc.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://objects/culpits/turret_culpit.gd" type="Script" id=5]
 [ext_resource path="res://objects/rooms/walls/Wall_strike.tscn" type="PackedScene" id=6]
 [ext_resource path="res://arts/structures/pattern1.png" type="Texture" id=7]
+[ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=8]
 
 [node name="room" type="Area2D"]
 collision_layer = 34
@@ -32,6 +33,12 @@ polygon = PoolVector2Array( -56, -16, -56, 16, -24, 32, -16, 48, 16, 48, 24, 32,
 [node name="structures" type="Node2D" parent="."]
 
 [node name="points" type="Node2D" parent="structures"]
+position = Vector2( -15, -40 )
+scale = Vector2( 0.905661, 0.905661 )
+
+[node name="buildpoint" parent="structures/points" instance=ExtResource( 8 )]
+position = Vector2( 16, -30 )
+type = "utility"
 
 [node name="Wall" parent="structures" instance=ExtResource( 6 )]
 position = Vector2( -56, 9.53674e-07 )

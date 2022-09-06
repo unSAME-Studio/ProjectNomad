@@ -59,11 +59,13 @@ flags = 4
 load_path = "res://.import/Circle.png-97076a15d3b51a30b532a5b6baa16132.stex"
 
 [node name="radar_Culpit" type="StaticBody2D" groups=["culpit"]]
+z_index = 1
 collision_layer = 8
 collision_mask = 0
 input_pickable = true
 script = ExtResource( 5 )
 type = "radar"
+points_to = Vector2( -3398, -2220 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CollisionShape2D")
@@ -84,19 +86,21 @@ texture = ExtResource( 1 )
 [node name="radar" type="Sprite" parent="."]
 modulate = Color( 2, 2, 2, 1 )
 scale = Vector2( 1e-05, 1e-05 )
-z_index = 1
+z_index = 2
 texture = ExtResource( 2 )
 
 [node name="arrow" type="Node2D" parent="radar"]
+visible = false
+light_mask = 2
 
 [node name="sprite3" type="Sprite" parent="radar/arrow"]
 modulate = Color( 0.764706, 0.968627, 1, 0.196078 )
 position = Vector2( -0.283672, 0 )
 rotation = -1.5708
-scale = Vector2( 0.34711, 0.732535 )
+scale = Vector2( 0.34711, 0.892535 )
 z_index = 1
 texture = ExtResource( 6 )
-offset = Vector2( 0, 45 )
+offset = Vector2( 0, 32 )
 
 [node name="Light2D" type="Light2D" parent="radar"]
 scale = Vector2( 0.259829, 0.259829 )
@@ -104,6 +108,7 @@ texture = ExtResource( 3 )
 texture_scale = 1.41
 energy = 0.7
 shadow_enabled = true
+shadow_item_cull_mask = 2
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 position = Vector2( 0.499998, 0.499999 )
@@ -117,7 +122,6 @@ collision_layer = 0
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-visible = false
 shape = SubResource( 13 )
 
 [node name="Particles2D" type="Particles2D" parent="."]

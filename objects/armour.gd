@@ -12,6 +12,7 @@ var base
 var roomset = false
 
 func _ready():
+	faction = 'armour'
 	for i in $rooms/room.get_node('objects').get_children():
 		i.set_collision_layer_bit(0, false)
 		i.set_collision_layer_bit(3, false)

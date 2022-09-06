@@ -19,13 +19,19 @@ func _ready():
 		active()
 
 func active():
-	base = get_parent().get_parent().get_base()
+	if get_parent().get_parent().has_method('get_base'):
+		base = get_parent().get_parent().get_base()
+	else:
+		if 'base' in get_parent():
+			base = get_parent().base
+		else:
+			base = get_parent()
 	ready()
 	
 func ready():
 	polygon = $Polygon2D
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
-	#$LightOccluder2D.occluder.set_polygon($Polygon2D.polygon)
+	$LightOccluder2D.occluder.set_polygon($Polygon2D.polygon)
 	
 func get_base():
 	return get_parent().get_parent().get_base()
@@ -55,7 +61,7 @@ func upgrade():
 	if find_node("DamageComponent"):
 		if level == 0:
 			level += 1
-			$Polygon2D.color = '8c8c64'
+			$Polygon2D.color = '8c8c54'
 			get_node("DamageComponent").health_max += 100
 			get_node("DamageComponent").reset()
 		

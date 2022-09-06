@@ -90,9 +90,21 @@
       "hint": "Operate",
       "cost": 1
     },
+    "reality manipulator": {
+      "type": 0,
+      "action": 1,
+      "hint": "Operate",
+      "cost": 1
+    },
     "coil": {
       "type": 0,
       "action": 1,
+      "hint": "Operate",
+      "cost": 1
+    },
+    "barrier": {
+      "type": 0,
+      "action": 0,
       "hint": "Operate",
       "cost": 1
     },
@@ -100,6 +112,12 @@
       "type": 0,
       "action": 1,
       "hint": "Scan",
+      "cost": 3
+    },
+    "gravturret": {
+      "type": 0,
+      "action": 0,
+      "hint": "Activate",
       "cost": 1
     }
   },
@@ -148,7 +166,7 @@
     },
     "base": {
       "type": 0,
-      "level": 1,
+      "level": 2,
       "unlocked": 0
     },
     "base fix": {
@@ -173,12 +191,12 @@
     },
     "door wall": {
       "type": 1,
-      "level": 1,
+      "level": 3,
       "unlocked": 0
     },
     "room2": {
       "type": 0,
-      "level": 1,
+      "level": 3,
       "unlocked": 0
     },
     "room3": {
@@ -196,14 +214,24 @@
       "level": 2,
       "unlocked": 0
     },
-    "wall remove": {
-      "type": 1,
+    "roomUtility": {
+      "type": 0,
       "level": 1,
+      "unlocked": 0
+    },
+    "wall upgrade": {
+      "type": 1,
+      "level": 2,
       "unlocked": 0
     },
     "room remove": {
       "type": 0,
-      "level": 3,
+      "level": 1,
+      "unlocked": 0
+    },
+    "hardpoint": {
+      "type": 3,
+      "level": 1,
       "unlocked": 0
     }
   }

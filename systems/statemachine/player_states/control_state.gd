@@ -14,14 +14,15 @@ func _ready():
 	
 	# connect the player
 	persistent_state.culpit = persistent_state.selected_object
-	persistent_state.culpit.initial_control(persistent_state)
-	
+	if is_instance_valid(persistent_state.culpit):
+		persistent_state.culpit.initial_control(persistent_state)
 	# if culpit is action type, disconnect immediately
-	if bool(persistent_state.selected_object.action) == true:
-		interact()
-	
+		if bool(persistent_state.selected_object.action) == true:
+			interact()
 	# play a machine sound
-	persistent_state.get_node("Sounds/Culpit").play()
+		persistent_state.get_node("Sounds/Culpit").play()
+	else:
+		persistent_state.culpit = null
 
 
 func move_up():

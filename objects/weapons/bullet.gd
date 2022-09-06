@@ -28,6 +28,7 @@ func _physics_process(delta):
 		# make particles
 		var e = explosion.instance()
 		e.scale = scale
+		e.modulate = modulate
 		e.set_global_position(get_global_position())
 		get_parent().add_child(e)
 		

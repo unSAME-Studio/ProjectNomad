@@ -19,8 +19,8 @@ func ready():
 	if node:
 		prenode = get_node(node)
 		node = null
-	
-	base.controlled.append(self)
+	if 'controlled' in base:
+		base.controlled.append(self)
 	#self.connect("tree_exiting", self, "destroy")
 	#slot_build_point.bind_point(base)
 	#slot_build_point.bind_point(get_parent().get_parent())

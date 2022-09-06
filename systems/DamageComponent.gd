@@ -9,17 +9,19 @@ export var autoheal_speed = 1
 export(Array) var drop_types = []
 export(int) var drop_amount = 1
 
-var saved_scale
+var saved_scale = Vector2(1,1)
 
 var entity = preload("res://objects/entities/Entity.tscn")
 
 
 func _ready():
 	$CanvasLayer/Control/ProgressBar.set_max(health_max)
-	saved_scale = get_global_scale()
+	if get_parent().get_class() != 'RigidBody2D':
+		saved_scale = get_global_scale()
 	
-
-
+func _enter_tree():
+	pass
+	
 func damage(dealer, amount):
 	#print("%s hit by %s | %d - %d" % [get_parent().get_name(), dealer.get_name(), health, amount])
 	
@@ -45,7 +47,6 @@ func damage(dealer, amount):
 	
 	health = clamp(health - amount, 0, health_max)
 	$CanvasLayer/Control/ProgressBar.set_value(health)
-	
 	# create damage effect
 	var dmg_tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	dmg_tween.tween_property(get_parent(), "modulate", Color(0, 0, 0, 0.5), 0.08)

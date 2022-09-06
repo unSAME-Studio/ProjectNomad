@@ -176,7 +176,7 @@ func finish_build(room):
 			if target.room_bind:
 				target.remove_room()
 			elif target.wall:
-				if type == 'wall remove':
+				if type == 'wall upgrade':
 					target.wall.upgrade()
 				else:
 					target.wall.switch()
