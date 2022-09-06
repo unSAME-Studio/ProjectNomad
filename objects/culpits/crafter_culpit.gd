@@ -44,6 +44,7 @@ func _on_ItemList_item_selected(index):
 	$CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/NanoCost.set_text(String(Global.culpits_data[target_type]["cost"]))
 	$CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/Description.set_text(Global.culpits_data[target_type]["description"])
 
+
 func _on_CraftBtn_pressed():
 	var amount = Global.culpits_data[target_type]["cost"]
 	if Global.player.consume_storage_object("nano", amount):
