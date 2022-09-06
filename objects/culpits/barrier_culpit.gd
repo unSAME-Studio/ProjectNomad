@@ -12,6 +12,9 @@ func _ready():
 	set_collision_layer_bit(0, false)
 	set_collision_layer_bit(3, false)
 	$CollisionPolygon2D.polygon = $Polygon2D.polygon
+	$LightOccluder2D.occluder.polygon = $Polygon2D.polygon
+	$CollisionPolygon2D.set_global_transform($Polygon2D.get_global_transform())
+	$LightOccluder2D.set_global_transform($Polygon2D.get_global_transform())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
