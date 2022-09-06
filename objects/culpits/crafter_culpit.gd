@@ -43,7 +43,7 @@ func _on_ItemList_item_selected(index):
 		e.type = target_type
 		base.add_child(e)
 		
-		e.set_global_position(get_global_position())
+		e.set_global_position($ControlPos.get_global_position())
 		e.set_wearing(false)
 		e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
 		e.throwing = true

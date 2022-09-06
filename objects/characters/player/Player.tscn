@@ -151,6 +151,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -629,19 +630,22 @@ alignment = 2
 margin_right = 1446.0
 margin_bottom = 228.0
 rect_min_size = Vector2( 1446, 157 )
+mouse_filter = 2
 alignment = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer"]
 margin_right = 40.0
 margin_bottom = 228.0
+mouse_filter = 2
 custom_constants/margin_right = 40
 
 [node name="BuildMenu" type="ScrollContainer" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer"]
 margin_left = 44.0
-margin_top = 400.0
+margin_top = 41.0
 margin_right = 1150.0
-margin_bottom = 545.0
+margin_bottom = 186.0
 rect_pivot_offset = Vector2( 553, 0 )
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 theme = ExtResource( 5 )
@@ -654,12 +658,14 @@ material = SubResource( 28 )
 margin_left = 401.0
 margin_right = 705.0
 margin_bottom = 145.0
+mouse_filter = 2
 size_flags_horizontal = 6
 theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer"]
 margin_right = 304.0
 margin_bottom = 145.0
+mouse_filter = 2
 custom_constants/margin_right = 100
 custom_constants/margin_left = 100
 
@@ -667,6 +673,7 @@ custom_constants/margin_left = 100
 margin_left = 100.0
 margin_right = 204.0
 margin_bottom = 145.0
+mouse_filter = 2
 theme = ExtResource( 5 )
 alignment = 1
 
