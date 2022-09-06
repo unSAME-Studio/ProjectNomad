@@ -20,7 +20,7 @@ rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0.278431, 0.278431, 1 )
+modulate = Color( 1.2, 0.3, 0.3, 1 )
 material = SubResource( 2 )
 rotation = 1.5708
 texture = ExtResource( 1 )

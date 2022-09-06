@@ -43,6 +43,7 @@ tracks/0/keys = {
 radius = 28.2179
 
 [node name="Culpit" type="StaticBody2D" groups=["culpit"]]
+z_index = 1
 collision_layer = 8
 collision_mask = 0
 input_pickable = true

@@ -82,7 +82,7 @@ func apply_magnet(target):
 
 func initial_control(body):
 	user = body
-
+	operate(body)
 
 func use_storing() -> bool:
 	if count > 0:

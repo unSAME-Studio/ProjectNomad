@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://objects/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enviorments/Island.tscn" type="PackedScene" id=2]
@@ -27,9 +27,16 @@
 [ext_resource path="res://objects/rooms/room3.tscn" type="PackedScene" id=25]
 [ext_resource path="res://objects/armour.tscn" type="PackedScene" id=26]
 [ext_resource path="res://objects/powerBase.tscn" type="PackedScene" id=27]
-[ext_resource path="res://objects/culpits/radar_culpit.tscn" type="PackedScene" id=28]
+[ext_resource path="res://objects/rooms/room.gd" type="Script" id=28]
 [ext_resource path="res://objects/enviorments/rocks.tscn" type="PackedScene" id=29]
-[ext_resource path="res://objects/culpits/gravturret_culpit.tscn" type="PackedScene" id=30]
+[ext_resource path="res://objects/culpits/crafter_culpit.tscn" type="PackedScene" id=30]
+[ext_resource path="res://objects/culpits/compass_culpit.gd" type="Script" id=31]
+[ext_resource path="res://objects/culpits/printer_culpit.tscn" type="PackedScene" id=32]
+[ext_resource path="res://arts/structures/pattern2.png" type="Texture" id=33]
+[ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=34]
+[ext_resource path="res://objects/rooms/walls/Wall.tscn" type="PackedScene" id=35]
+[ext_resource path="res://objects/culpits/decomposer_culpit.tscn" type="PackedScene" id=36]
+[ext_resource path="res://objects/rooms/walls/Door_edge.tscn" type="PackedScene" id=37]
 
 [sub_resource type="Environment" id=2]
 background_mode = 4
@@ -74,19 +81,13 @@ z_index = -200
 texture = ExtResource( 5 )
 
 [node name="Base_ship" parent="Node2D" instance=ExtResource( 3 )]
-position = Vector2( 951, 126 )
+position = Vector2( 975, 329 )
 collision_mask = 2
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 
-[node name="radar_Culpit" parent="Node2D/Base_ship/objects" index="5" instance=ExtResource( 28 )]
-position = Vector2( 5, 72 )
-
-[node name="decomposer_Culpit" parent="Node2D/Base_ship/objects" index="6" instance=ExtResource( 30 )]
-position = Vector2( 3, 154 )
-
 [node name="Base" parent="Node2D" instance=ExtResource( 11 )]
-position = Vector2( 268, -1213 )
+position = Vector2( 1175, -4751 )
 rotation = 0.42513
 collision_mask = 2
 
@@ -508,9 +509,9 @@ mass = 0.8
 [node name="Culpit" parent="Node2D/Base6/objects" index="0" instance=ExtResource( 14 )]
 position = Vector2( 0.915344, -58.5932 )
 rotation = -3.13911
-z_index = 1
 
 [node name="powerBase" parent="Node2D" instance=ExtResource( 26 )]
+position = Vector2( -3085, -2349 )
 
 [node name="Island" parent="Node2D" instance=ExtResource( 2 )]
 position = Vector2( 1497, 970 )
@@ -521,22 +522,156 @@ position = Vector2( -116, 445 )
 [node name="Tree" parent="Node2D/Island/objects" index="1" instance=ExtResource( 10 )]
 position = Vector2( 565, 70 )
 
+[node name="decomposer_Culpit" parent="Node2D/Island/objects" index="2" instance=ExtResource( 36 )]
+position = Vector2( 2, 579 )
+
 [node name="Entity" parent="Node2D/Island/entity" index="0" instance=ExtResource( 9 )]
 position = Vector2( -177, 47 )
 rotation = 1.06788
 
-[node name="Entity2" parent="Node2D/Island/entity" index="1" instance=ExtResource( 9 )]
+[node name="Entity6" parent="Node2D/Island/entity" index="1" instance=ExtResource( 9 )]
+position = Vector2( 210, -499 )
+rotation = 1.06788
+
+[node name="Entity7" parent="Node2D/Island/entity" index="2" instance=ExtResource( 9 )]
+position = Vector2( 459, -467 )
+rotation = 1.06788
+type = "turret"
+
+[node name="Entity2" parent="Node2D/Island/entity" index="3" instance=ExtResource( 9 )]
 position = Vector2( 107, -125 )
 
-[node name="Entity3" parent="Node2D/Island/entity" index="2" instance=ExtResource( 9 )]
-position = Vector2( 331, -513 )
+[node name="Entity3" parent="Node2D/Island/entity" index="4" instance=ExtResource( 9 )]
+position = Vector2( 118, -189 )
 rotation = 2.43966
 
-[node name="Entity4" parent="Node2D/Island/entity" index="3" instance=ExtResource( 9 )]
+[node name="Entity4" parent="Node2D/Island/entity" index="5" instance=ExtResource( 9 )]
 position = Vector2( 198, 401 )
 
-[node name="Entity5" parent="Node2D/Island/entity" index="4" instance=ExtResource( 9 )]
+[node name="Entity8" parent="Node2D/Island/entity" index="6" instance=ExtResource( 9 )]
+position = Vector2( 60, 641 )
+type = "weed"
+
+[node name="Entity9" parent="Node2D/Island/entity" index="7" instance=ExtResource( 9 )]
+position = Vector2( -32, 651 )
+type = "scrap"
+
+[node name="Entity10" parent="Node2D/Island/entity" index="8" instance=ExtResource( 9 )]
+position = Vector2( -99, 603 )
+type = "scrap"
+
+[node name="Entity11" parent="Node2D/Island/entity" index="9" instance=ExtResource( 9 )]
+position = Vector2( 90, 589 )
+type = "seed"
+
+[node name="Entity5" parent="Node2D/Island/entity" index="10" instance=ExtResource( 9 )]
 position = Vector2( 547, -247 )
+
+[node name="structure" parent="Node2D/Island" index="7"]
+position = Vector2( -85, 51 )
+
+[node name="Base" type="RigidBody2D" parent="Node2D/Island/structure" index="0"]
+position = Vector2( 430, -650 )
+collision_layer = 2
+collision_mask = 0
+mode = 1
+script = ExtResource( 12 )
+
+[node name="rooms" type="Node2D" parent="Node2D/Island/structure/Base"]
+
+[node name="room2" type="Area2D" parent="Node2D/Island/structure/Base/rooms"]
+collision_layer = 34
+collision_mask = 0
+script = ExtResource( 28 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Node2D/Island/structure/Base/rooms/room2"]
+position = Vector2( 0, 64 )
+color = Color( 0.584314, 0.639216, 0.74902, 1 )
+texture = ExtResource( 33 )
+texture_scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -152, -304, -240, -160, -240, 32, -152, 176, 152, 176, 240, 32, 240, -160, 152, -304 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Island/structure/Base/rooms/room2"]
+
+[node name="structures" type="Node2D" parent="Node2D/Island/structure/Base/rooms/room2"]
+
+[node name="Wall3" parent="Node2D/Island/structure/Base/rooms/room2/structures" instance=ExtResource( 35 )]
+position = Vector2( -232, 1.52588e-05 )
+rotation = -1.5708
+scale = Vector2( 0.51993, 1.16259 )
+
+[node name="Wall4" parent="Node2D/Island/structure/Base/rooms/room2/structures" instance=ExtResource( 35 )]
+position = Vector2( 232, -1.52588e-05 )
+rotation = -1.5708
+scale = Vector2( 0.51993, 1.16259 )
+
+[node name="points" type="Node2D" parent="Node2D/Island/structure/Base/rooms/room2/structures"]
+position = Vector2( 0, 64 )
+
+[node name="buildpoint3" parent="Node2D/Island/structure/Base/rooms/room2/structures/points" instance=ExtResource( 34 )]
+position = Vector2( 216, -248 )
+type = "utility"
+
+[node name="buildpoint4" parent="Node2D/Island/structure/Base/rooms/room2/structures/points" instance=ExtResource( 34 )]
+position = Vector2( -216, -248 )
+type = "utility"
+
+[node name="buildpoint6" parent="Node2D/Island/structure/Base/rooms/room2/structures/points" instance=ExtResource( 34 )]
+position = Vector2( 216, 104 )
+rotation = 3.14159
+type = "utility"
+
+[node name="buildpoint7" parent="Node2D/Island/structure/Base/rooms/room2/structures/points" instance=ExtResource( 34 )]
+position = Vector2( -216, 104 )
+rotation = 3.14159
+type = "utility"
+
+[node name="buildpoint5" parent="Node2D/Island/structure/Base/rooms/room2/structures/points" instance=ExtResource( 34 )]
+position = Vector2( -136, -64 )
+type = "utility"
+
+[node name="buildpoint8" parent="Node2D/Island/structure/Base/rooms/room2/structures/points" instance=ExtResource( 34 )]
+position = Vector2( 136, -64 )
+type = "utility"
+
+[node name="Door" parent="Node2D/Island/structure/Base/rooms/room2/structures" instance=ExtResource( 37 )]
+position = Vector2( 0, 224 )
+
+[node name="Door2" parent="Node2D/Island/structure/Base/rooms/room2/structures" instance=ExtResource( 37 )]
+position = Vector2( 0, -224 )
+rotation = 3.14159
+
+[node name="objects" type="Node2D" parent="Node2D/Island/structure/Base/rooms/room2"]
+
+[node name="Basecollision" type="CollisionPolygon2D" parent="Node2D/Island/structure/Base"]
+
+[node name="objects2" type="Node2D" parent="Node2D/Island/structure/Base"]
+
+[node name="Culpit2" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 14 )]
+position = Vector2( 0, 1 )
+script = ExtResource( 18 )
+type = "light"
+preopen = false
+
+[node name="Culpit3" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 14 )]
+position = Vector2( -466, -241 )
+script = ExtResource( 18 )
+type = "light"
+preopen = false
+
+[node name="Culpit4" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 14 )]
+position = Vector2( -868, -203 )
+script = ExtResource( 18 )
+type = "light"
+preopen = false
+
+[node name="Crafter_Culpit" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 30 )]
+position = Vector2( -136, -2 )
+type = "crafter"
+
+[node name="Printer_Culpit" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 32 )]
+position = Vector2( 138, -3 )
+type = "printer"
 
 [node name="Island2" parent="Node2D" instance=ExtResource( 2 )]
 position = Vector2( -2874, -1908 )
@@ -554,6 +689,12 @@ position = Vector2( -196.558, -547.293 )
 [node name="Culpit" parent="Node2D/Island2/objects" index="2" instance=ExtResource( 14 )]
 position = Vector2( 467.436, 225.143 )
 type = "light"
+
+[node name="Culpit2" parent="Node2D/Island2/objects" index="3" instance=ExtResource( 14 )]
+position = Vector2( 444.352, 417.697 )
+script = ExtResource( 31 )
+type = "compass"
+points_to = Vector2( 5580, -7500 )
 
 [node name="Entity" parent="Node2D/Island2/entity" index="0" instance=ExtResource( 9 )]
 position = Vector2( -177, 47 )
@@ -588,7 +729,10 @@ rotation = 2.63467
 [node name="Basecollision" type="CollisionPolygon2D" parent="Node2D/Island2/structure/Base"]
 
 [node name="StupidBoy2" parent="Node2D/Island2" instance=ExtResource( 15 )]
-position = Vector2( 468.559, 433.287 )
+position = Vector2( 384.926, 74.8026 )
+
+[node name="StupidBoy3" parent="Node2D/Island2" instance=ExtResource( 15 )]
+position = Vector2( 203.181, 197.483 )
 
 [node name="Island3" parent="Node2D" instance=ExtResource( 2 )]
 position = Vector2( 5580, -7500 )
@@ -742,7 +886,7 @@ position = Vector2( 590.891, -16.0557 )
 position = Vector2( 772.462, 724.265 )
 
 [node name="Player" parent="Node2D" instance=ExtResource( 1 )]
-position = Vector2( 947, 623 )
+position = Vector2( 1841, 247 )
 
 [node name="CameraManager" parent="Node2D" instance=ExtResource( 4 )]
 target_node_path = NodePath("../Player")
@@ -751,10 +895,47 @@ target_node_path = NodePath("../Player")
 script = ExtResource( 7 )
 
 [node name="Base7" parent="Node2D" instance=ExtResource( 27 )]
-position = Vector2( 1495, 179 )
+position = Vector2( 6775, -7918 )
 
 [node name="rocks" parent="Node2D" instance=ExtResource( 29 )]
-position = Vector2( 355, 463 )
+position = Vector2( 1753, -995 )
+scale = Vector2( 0.872704, 0.872704 )
+
+[node name="rocks2" parent="Node2D" instance=ExtResource( 29 )]
+position = Vector2( 2423, -2062 )
+rotation = -0.730179
+scale = Vector2( 1.26114, 1.43414 )
+
+[node name="rocks3" parent="Node2D" instance=ExtResource( 29 )]
+position = Vector2( -7178, -1518 )
+rotation = -0.730179
+
+[node name="rocks4" parent="Node2D" instance=ExtResource( 29 )]
+position = Vector2( -671, -6825 )
+rotation = -0.730179
+
+[node name="rocks5" parent="Node2D" instance=ExtResource( 29 )]
+position = Vector2( 8218, -2099 )
+rotation = -0.730179
+scale = Vector2( 4.70724, 4.70724 )
+
+[node name="rocks6" parent="Node2D" instance=ExtResource( 29 )]
+position = Vector2( 2306, -5756 )
+rotation = -0.730179
+
+[node name="rocks7" parent="Node2D" instance=ExtResource( 29 )]
+position = Vector2( -4084, -5306 )
+rotation = -0.730179
+scale = Vector2( 1.48929, 1.48929 )
+
+[node name="rocks8" parent="Node2D" instance=ExtResource( 29 )]
+position = Vector2( 1654, -2568 )
+rotation = 2.0667
+
+[node name="rocks9" parent="Node2D" instance=ExtResource( 29 )]
+position = Vector2( 435, 3283 )
+rotation = -0.730179
+scale = Vector2( 1.38848, 1.64249 )
 
 [editable path="Node2D/Base_ship"]
 [editable path="Node2D/Base"]

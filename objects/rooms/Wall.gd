@@ -19,7 +19,13 @@ func _ready():
 		active()
 
 func active():
-	base = get_parent().get_parent().get_base()
+	if get_parent().get_parent().has_method('get_base'):
+		base = get_parent().get_parent().get_base()
+	else:
+		if 'base' in get_parent():
+			base = get_parent().base
+		else:
+			base = get_parent()
 	ready()
 	
 func ready():

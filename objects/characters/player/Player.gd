@@ -68,7 +68,8 @@ func change_state(new_state_name):
 
 func _input(event):	
 	if Input.is_action_just_pressed("build_menu"):
-		$CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.set_visible(not $CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.is_visible())
+		
+		$CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.active()#not $CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.is_visible())
 	
 	if Input.is_action_just_pressed("control"):
 		state.interact()
@@ -175,7 +176,7 @@ func _process(delta):
 	# find the cloest 
 	# if mouse already selected one, use that one instead
 	if mouse_select_culpit and mouse_select_culpit in controllables.values():
-		if selected_object:
+		if is_instance_valid(selected_object):
 			selected_object.emit_signal("deselect")
 		selected_object = mouse_select_culpit
 		
@@ -205,7 +206,8 @@ func _process(delta):
 	if last_state != "ControlState":
 		# set hint text 
 		if is_instance_valid(selected_object):
-			selected_object.emit_signal("select")
+			if selected_object.has_signal('select'):
+				selected_object.emit_signal("select")
 			
 			var target_pos = selected_object.get_global_transform_with_canvas().get_origin() - $CanvasLayer/Control/ControlHint.get_size() / 2
 			target_pos = Vector2(clamp(target_pos.x, 0, get_viewport_rect().size.x - $CanvasLayer/Control/ControlHint.get_size().x), clamp(target_pos.y, 0, get_viewport_rect().size.y - $CanvasLayer/Control/ControlHint.get_size().y))
@@ -285,15 +287,16 @@ func _on_ControllableDetection_body_entered(body):
 	controllables[body.name] = body
 	
 	# added more hints
-	body.on_in_range()
+	if body.has_method('on_in_range'):
+		body.on_in_range()
 	
 	#print(controllables.values())
 
 
 func _on_ControllableDetection_body_exited(body):
 	controllables.erase(body.name)
-	
-	body.on_out_range()
+	if body.has_method('on_out_range'):
+		body.on_out_range()
 
 
 # entering building mode
@@ -590,7 +593,7 @@ func _on_Basetimer_timeout():
 
 # additional UI
 func _on_BuildBtn_pressed():
-	$CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.set_visible(not $CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.is_visible())
+	$CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.active()
 
 func _on_CameraBtn_pressed():
 	camera.align_camera()

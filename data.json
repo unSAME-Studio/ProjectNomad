@@ -90,9 +90,21 @@
       "hint": "Operate",
       "cost": 1
     },
+    "reality manipulator": {
+      "type": 0,
+      "action": 1,
+      "hint": "Operate",
+      "cost": 1
+    },
     "coil": {
       "type": 0,
       "action": 1,
+      "hint": "Operate",
+      "cost": 1
+    },
+    "barrier": {
+      "type": 0,
+      "action": 0,
       "hint": "Operate",
       "cost": 1
     },
@@ -100,7 +112,7 @@
       "type": 0,
       "action": 1,
       "hint": "Scan",
-      "cost": 1
+      "cost": 3
     },
     "gravturret": {
       "type": 0,
@@ -184,7 +196,7 @@
     },
     "room2": {
       "type": 0,
-      "level": 1,
+      "level": 3,
       "unlocked": 0
     },
     "room3": {
@@ -199,7 +211,7 @@
     },
     "room5": {
       "type": 0,
-      "level": 3,
+      "level": 2,
       "unlocked": 0
     },
     "roomUtility": {

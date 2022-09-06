@@ -42,6 +42,13 @@ func operate(player):
 	enabled = !enabled
 	if enabled:
 		$Particles2D.set_emitting(true)
+		$DetectionArea.set_position(Vector2.ZERO)
+		if not $DetectionArea.get_overlapping_bodies().empty():
+			for i in $DetectionArea.get_overlapping_bodies():
+				if 'type' in i:
+					if i.type == 'compass':
+						points_to = i.points_to
+						$radar/arrow.show()
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 		#tween.tween_property($Sprite2, "modulate", Color("c6ffce"), 0.3)
 		tween.tween_property($radar, "scale", Vector2(3.5,3.5), 0.3)
@@ -49,15 +56,22 @@ func operate(player):
 			#if i.get_class():
 			#	target_list = []
 			if i.get_class() == 'RigidBody2D':
-				if not i in target_list:
+				if not i in target_list and i != base:
 					target_list.append(i)
 					var indi = indicator.instance()
 					indi_list[i] = indi
 					$radar.add_child(indi)
 					if not 'faction' in i:
 						indi.modulate = Color('cc2104')
+					else:
+						if i.faction == 'environment':
+							indi.modulate = Color('494893')
+							indi.get_node("Sprite").scale = Vector2(0.3,0.3)
+						if i.faction == 'armour':
+							indi.modulate = Color('60e370')
 					indi.hide()
 	else:
+		$radar/arrow.show()
 		$Particles2D.set_emitting(false)
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 		#tween.tween_property($Sprite2, "modulate", Color("c6ffce"), 0.3)

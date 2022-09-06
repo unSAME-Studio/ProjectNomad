@@ -3,8 +3,9 @@
 [ext_resource path="res://arts/structures/S_booster.png" type="Texture" id=1]
 
 [node name="indi" type="Node2D"]
+modulate = Color( 1, 0.411765, 0.411765, 1 )
 light_mask = 2
-scale = Vector2( 0.283821, 0.283821 )
+scale = Vector2( 0.291392, 0.290295 )
 z_index = 1
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -13,4 +14,5 @@ light_mask = 2
 position = Vector2( 179.187, 0 )
 rotation = 1.56074
 scale = Vector2( 0.651749, 0.427051 )
+z_index = 1
 texture = ExtResource( 1 )

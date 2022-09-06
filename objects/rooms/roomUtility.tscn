@@ -49,6 +49,10 @@ type = "utility"
 position = Vector2( 184, -40 )
 type = "utility"
 
+[node name="buildpoint6" parent="structures/points" instance=ExtResource( 3 )]
+position = Vector2( 0, -168 )
+type = "utility"
+
 [node name="Wall" parent="structures" instance=ExtResource( 6 )]
 position = Vector2( 0, -152 )
 

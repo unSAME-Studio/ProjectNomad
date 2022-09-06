@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://objects/culpits/crafter_culpit.gd" type="Script" id=1]
+[ext_resource path="res://objects/culpits/light_culpit.gd" type="Script" id=2]
+[ext_resource path="res://objects/culpits/zapper_culpit.gd" type="Script" id=3]
+[ext_resource path="res://objects/culpits/wheel_culpit.gd" type="Script" id=4]
+[ext_resource path="res://objects/culpits/printer_culpit.gd" type="Script" id=5]
+[ext_resource path="res://objects/culpits/Culpit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/culpits/zapper_culpit.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/culpits/printer_culpit.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/culpits/crafter_culpit.tscn" type="PackedScene" id=9]
+
+[node name="objects" type="Node2D"]
+
+[node name="Culpit" type="StaticBody2D" parent="." groups=["culpit"] instance=ExtResource( 6 )]
+collision_layer = 8
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 4 )
+
+[node name="Culpit2" type="StaticBody2D" parent="." groups=["culpit"] instance=ExtResource( 6 )]
+position = Vector2( 0, -66 )
+collision_layer = 8
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 2 )
+type = "light"
+
+[node name="Crafter_Culpit" type="StaticBody2D" parent="." groups=["culpit"] instance=ExtResource( 9 )]
+position = Vector2( -99, 153 )
+collision_layer = 8
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 1 )
+type = "crafter"
+
+[node name="Zapper_Culpit" type="StaticBody2D" parent="." groups=["culpit"] instance=ExtResource( 7 )]
+position = Vector2( -98, -70 )
+collision_layer = 8
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 3 )
+type = "zapper"
+
+[node name="Printer_Culpit" type="StaticBody2D" parent="." groups=["culpit"] instance=ExtResource( 8 )]
+position = Vector2( -102, 34 )
+collision_layer = 8
+collision_mask = 0
+input_pickable = true
+script = ExtResource( 5 )
+type = "printer"
