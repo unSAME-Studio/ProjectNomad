@@ -4,121 +4,141 @@
       "type": 0,
       "action": 0,
       "hint": "Steer",
-      "cost": 1
+      "cost": 1,
+      "description": "A basic steering wheel. You can use it to control the ship when placed on it."
     },
     "light": {
       "type": 2,
       "action": 1,
       "hint": "Turn On / Off",
-      "cost": 1
+      "cost": 1,
+      "description": "Let there be light! Its range can be extended by the Generator."
     },
     "printer": {
       "type": 1,
       "action": 0,
       "hint": "Open Tech Tree",
-      "cost": 2
+      "cost": 2,
+      "description": "Use printer to upgrade your Tech Tree, unlock more blueprints for your ship."
     },
     "crafter": {
       "type": 1,
       "action": 0,
       "hint": "Craft Items",
-      "cost": 1
+      "cost": 1,
+      "description": "Use crafter to craft more machines (like what you're doing right now)."
     },
     "turret": {
       "type": 3,
       "action": 0,
       "hint": "Control",
-      "cost": 5
+      "cost": 5,
+      "description": "A powerful weapon. You can use it portably or placed on the ground."
     },
     "zapper": {
       "type": 3,
       "action": 0,
       "hint": "Control",
-      "cost": 5
+      "cost": 5,
+      "description": "A lazer type weapon."
     },
     "healer": {
       "type": 3,
       "action": 0,
       "hint": "Control",
-      "cost": 5
+      "cost": 5,
+      "description": "A healing beam. You can use it to heal or fix structures."
     },
     "generator": {
       "type": 2,
       "action": 1,
       "hint": "Turn On / Off",
-      "cost": 9
+      "cost": 9,
+      "description": "Provides additional powers to machines. Can boost their functions."
     },
     "recycler": {
       "type": 2,
       "action": 1,
       "hint": "Recycle Hold Item",
-      "cost": 3
+      "cost": 3,
+      "description": "Recycle random resources and turn them into useful ones."
     },
     "decomposer": {
       "type": 2,
       "action": 1,
       "hint": "Recycle items",
-      "cost": 2
+      "cost": 2,
+      "description": "A portable recycler, vaccum in resouces and recycle them."
     },
     "box": {
       "type": 1,
       "action": 1,
       "hint": "Collect",
-      "cost": 1
+      "cost": 1,
+      "description": "Resource vaccum. Use this to store and stack resources."
     },
-    "auto_wheel": {
+    "auto wheel": {
       "type": 0,
       "action": 1,
       "hint": "Turn On / Off",
-      "cost": 18
+      "cost": 18,
+      "description": "Hey isn't this a alien technologies?? :/"
     },
     "compass": {
       "type": 0,
       "action": 1,
       "hint": "Pray",
-      "cost": 2
+      "cost": 2,
+      "description": "Provide simple direction guiding."
     },
     "reducer": {
       "type": 0,
       "action": 1,
       "hint": "Turn On / Off",
-      "cost": 3
+      "cost": 3,
+      "description": "Slow down any projectile when in zone."
     },
     "relay": {
       "type": 0,
       "action": 1,
       "hint": "Operate",
-      "cost": 1
+      "cost": 1,
+      "description": "Activates all the machines in the zone."
     },
     "reality manipulator": {
       "type": 0,
       "action": 1,
       "hint": "Operate",
-      "cost": 1
+      "cost": 1,
+      "description": "Change the day night cycle."
     },
     "coil": {
       "type": 0,
       "action": 1,
       "hint": "Operate",
-      "cost": 1
+      "cost": 1,
+      "description": "Connect machines and provide powers."
     },
     "barrier": {
       "type": 0,
       "action": 0,
       "hint": "Operate",
-      "cost": 1
+      "cost": 1,
+      "description": "A portable substitude for walls."
     },
     "radar": {
       "type": 0,
       "action": 1,
       "hint": "Scan",
-      "cost": 3
+      "cost": 3,
+      "description": "Scan the nearby enviorments and provide useful directions."
     },
     "gravturret": {
       "type": 0,
       "action": 0,
       "hint": "Activate",
-      "cost": 1
+      "cost": 1,
+      "description": "Gravitate the resources toward you."
     }
   },
   "entity": {
