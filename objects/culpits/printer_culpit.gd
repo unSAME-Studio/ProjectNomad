@@ -32,7 +32,7 @@ func initial_control(body):
 	$CanvasLayer/Control.show()
 	
 	# default open the build menu
-	body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").set_visible(true)
+	body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").active(true)
 
 
 func stop_control(body):
@@ -42,7 +42,7 @@ func stop_control(body):
 	$CanvasLayer/Control.hide()
 	
 	# default close the build menu
-	body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").set_visible(false)
+	body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").active(false)
 
 
 func _on_ItemList_item_selected(index):
