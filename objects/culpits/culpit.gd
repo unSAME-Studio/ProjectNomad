@@ -41,7 +41,7 @@ func _ready():
 	connect("mouse_entered", self, "_on_mouse_entered")
 	connect("mouse_exited", self, "_on_mouse_exited")
 	
-	if Global.player:
+	if Global.player and is_instance_valid(Global.player):
 		Global.player.play_sound("Build", get_global_position())
 	
 	# don't allow player to control if not controllable
@@ -165,7 +165,8 @@ func _on_destroy():
 	if build_point:
 		build_point.activate_build()
 	
-	Global.player.play_sound("Destroy", get_global_position())
+	if Global.player and is_instance_valid(Global.player):
+		Global.player.play_sound("Destroy", get_global_position())
 	
 	stop_control(Global.player)
 	throw(Global.player)
