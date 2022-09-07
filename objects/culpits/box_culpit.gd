@@ -41,6 +41,8 @@ func operate(player):
 	$Particles2D.set_visible(enabled)
 	$Particles2D2.set_visible(enabled)
 	$Light2D.set_visible(enabled)
+	
+	$Sounds/Enable.play()
 
 
 func _process(delta):
@@ -72,6 +74,7 @@ func _process(delta):
 				apply_magnet(i)
 				if get_global_position().distance_to(i.get_global_position()) < 60:
 					i.queue_free()
+					$Sounds/Entity.play()
 					count += 1
 				
 					#$Label.set_text("%s [%d]" % [storing.capitalize(), count])

@@ -27,7 +27,11 @@ func operate(player):
 	
 	$Particles2D.set_emitting(enabled)
 	$Particles2D2.set_emitting(enabled)
+	$Particles2D.set_visible(enabled)
+	$Particles2D2.set_visible(enabled)
 	$Light2D.set_visible(enabled)
+	
+	$Sounds/Enable.play()
 
 
 func _process(delta):
@@ -48,6 +52,7 @@ func _process(delta):
 				if get_global_position().distance_to(i.get_global_position()) < 60:
 					var object_type = i.type
 					i.queue_free()
+					$Sounds/Entity.play()
 					
 					# spawn entity
 					if object_type in Global.culpits_data:
