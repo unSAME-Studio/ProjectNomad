@@ -38,6 +38,8 @@ func _ready():
 			structure = load("res://objects/rooms/room%s.tscn" % roomindex).instance()
 			structure.active = false
 			add_child(structure)
+	else:
+		point_type = 'room remove'
 	if 'wall' in type:
 		point_type = 'wall'
 	update_points()

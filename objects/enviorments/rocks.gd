@@ -37,7 +37,7 @@ func _on_destroy():
 			get_parent().add_child(p)
 			p.apply_impulse(-pos_rand, pos_rand)
 			
-		for i in range(size + 1 + randi() % 2):
+		for i in range(size + 1 + randi() % 4):
 			var e = entity.instance()
 			e.type = "nano"
 			get_parent().add_child(e)
@@ -50,3 +50,6 @@ func _on_destroy():
 			
 func destory():
 	pass
+
+func get_build():
+	return self

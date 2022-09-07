@@ -535,7 +535,6 @@ rotation = 1.06788
 
 [node name="Entity7" parent="Node2D/Island/entity" index="2" instance=ExtResource( 9 )]
 position = Vector2( 459, -467 )
-rotation = 1.06788
 type = "turret"
 
 [node name="Entity2" parent="Node2D/Island/entity" index="3" instance=ExtResource( 9 )]
@@ -660,7 +659,7 @@ type = "light"
 preopen = false
 
 [node name="Culpit4" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 14 )]
-position = Vector2( -868, -203 )
+position = Vector2( -164, 1279 )
 script = ExtResource( 18 )
 type = "light"
 preopen = false

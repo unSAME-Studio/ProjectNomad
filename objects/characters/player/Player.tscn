@@ -636,12 +636,14 @@ mouse_filter = 2
 alignment = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer"]
-margin_right = 40.0
+margin_left = 1110.0
+margin_right = 1150.0
 margin_bottom = 228.0
 mouse_filter = 2
 custom_constants/margin_right = 40
 
 [node name="BuildMenu" type="ScrollContainer" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer"]
+visible = false
 margin_left = 44.0
 margin_top = 41.0
 margin_right = 1150.0
@@ -657,9 +659,8 @@ script = ExtResource( 30 )
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu"]
 material = SubResource( 28 )
-margin_left = 401.0
-margin_right = 705.0
-margin_bottom = 145.0
+margin_left = 553.0
+margin_right = 553.0
 mouse_filter = 2
 size_flags_horizontal = 6
 theme = ExtResource( 5 )
