@@ -27,7 +27,11 @@ func operate(player):
 	
 	$Particles2D.set_emitting(enabled)
 	$Particles2D2.set_emitting(enabled)
+	$Particles2D.set_visible(enabled)
+	$Particles2D2.set_visible(enabled)
 	$Light2D.set_visible(enabled)
+	
+	$Sounds/Enable.play()
 
 
 func _process(delta):
@@ -48,6 +52,7 @@ func _process(delta):
 				if get_global_position().distance_to(i.get_global_position()) < 60:
 					var object_type = i.type
 					i.queue_free()
+					$Sounds/Entity.play()
 					
 					# spawn entity
 					if object_type in Global.culpits_data:
@@ -63,9 +68,9 @@ func _process(delta):
 			base.get_base().add_child(e)
 		else:
 			base.get_parent().add_child(e)
-		e.set_global_position(get_global_position())
+		e.set_global_position($ControlPos.get_global_position())
 		e.set_wearing(false)
-		e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1200
+		e.velocity = Vector2.RIGHT.rotated(get_rotation()).normalized() * 1200
 		e.throwing = true
 		count -= 1
 		$Timer.start()

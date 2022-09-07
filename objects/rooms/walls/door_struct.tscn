@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://objects/rooms/walls/interact_struct.gd" type="Script" id=1]
-[ext_resource path="res://objects/rooms/walls/Auto_get_polygon.gd" type="Script" id=2]
+[ext_resource path="res://arts/structures/pattern3.png" type="Texture" id=2]
 [ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=3]
 
 [sub_resource type="CapsuleShape2D" id=4]
@@ -59,10 +59,8 @@ polygon = PoolVector2Array( 128, -16, 144, 0, 128, 16, 0, 16, 0, -0.321579, 0, -
 position = Vector2( 128, 0 )
 rotation = 0.00362432
 color = Color( 0.698039, 0.796078, 0.94902, 1 )
+texture = ExtResource( 2 )
 polygon = PoolVector2Array( -128, -16, -128, 16, 0, 16, 0, -16 )
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorColli/Polygon2D"]
-script = ExtResource( 2 )
 
 [node name="DoorColli2" type="CollisionPolygon2D" parent="."]
 position = Vector2( 128, 0 )
@@ -73,10 +71,8 @@ polygon = PoolVector2Array( 128, -16, 144, 0, 128, 16, 0, 16, 0, -0.321579, 0, -
 position = Vector2( 128, 0 )
 rotation = 0.00362432
 color = Color( 0.698039, 0.796078, 0.94902, 1 )
+texture = ExtResource( 2 )
 polygon = PoolVector2Array( -128, -16, -128, 16, 0, 16, 0, -16 )
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="DoorColli2/Polygon2D"]
-script = ExtResource( 2 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/door_interact = SubResource( 5 )

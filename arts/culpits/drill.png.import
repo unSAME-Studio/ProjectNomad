@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/reducer.png-bdf9d91f67c51f1a5680e56ccf630d13.stex"
+path="res://.import/drill.png-605515e6c7bc30fb457e50398f19390b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/culpits/reducer.png"
-dest_files=[ "res://.import/reducer.png-bdf9d91f67c51f1a5680e56ccf630d13.stex" ]
+source_file="res://arts/culpits/drill.png"
+dest_files=[ "res://.import/drill.png-605515e6c7bc30fb457e50398f19390b.stex" ]
 
 [params]
 

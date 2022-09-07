@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/auto_wheel.png-407921d546e630ee69575ba9e848665d.stex"
+path="res://.import/auto wheel.png-7bbadadab72022e7d31cdd9e96908c5b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://arts/culpits/auto_wheel.png"
-dest_files=[ "res://.import/auto_wheel.png-407921d546e630ee69575ba9e848665d.stex" ]
+source_file="res://arts/culpits/auto wheel.png"
+dest_files=[ "res://.import/auto wheel.png-7bbadadab72022e7d31cdd9e96908c5b.stex" ]
 
 [params]
 

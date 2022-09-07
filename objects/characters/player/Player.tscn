@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -30,6 +30,9 @@
 [ext_resource path="res://sounds/machine.wav" type="AudioStream" id=28]
 [ext_resource path="res://sounds/throw.wav" type="AudioStream" id=29]
 [ext_resource path="res://objects/characters/player/BuildMenu.gd" type="Script" id=30]
+[ext_resource path="res://sounds/clip.wav" type="AudioStream" id=31]
+[ext_resource path="res://sounds/equip.wav" type="AudioStream" id=32]
+[ext_resource path="res://sounds/pray.wav" type="AudioStream" id=33]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -629,19 +632,22 @@ alignment = 2
 margin_right = 1446.0
 margin_bottom = 228.0
 rect_min_size = Vector2( 1446, 157 )
+mouse_filter = 2
 alignment = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer"]
 margin_right = 40.0
 margin_bottom = 228.0
+mouse_filter = 2
 custom_constants/margin_right = 40
 
 [node name="BuildMenu" type="ScrollContainer" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer"]
 margin_left = 44.0
-margin_top = 400.0
+margin_top = 41.0
 margin_right = 1150.0
-margin_bottom = 545.0
+margin_bottom = 186.0
 rect_pivot_offset = Vector2( 553, 0 )
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 theme = ExtResource( 5 )
@@ -654,12 +660,14 @@ material = SubResource( 28 )
 margin_left = 401.0
 margin_right = 705.0
 margin_bottom = 145.0
+mouse_filter = 2
 size_flags_horizontal = 6
 theme = ExtResource( 5 )
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu/PanelContainer"]
 margin_right = 304.0
 margin_bottom = 145.0
+mouse_filter = 2
 custom_constants/margin_right = 100
 custom_constants/margin_left = 100
 
@@ -667,6 +675,7 @@ custom_constants/margin_left = 100
 margin_left = 100.0
 margin_right = 204.0
 margin_bottom = 145.0
+mouse_filter = 2
 theme = ExtResource( 5 )
 alignment = 1
 
@@ -1020,6 +1029,33 @@ bus = "Sounds"
 script = ExtResource( 22 )
 pitch_low = 0.853
 ptch_high = 1.126
+volume_low = -20
+volume_high = -10
+
+[node name="Build" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 32 )
+bus = "Sounds"
+script = ExtResource( 22 )
+pitch_low = 0.796
+ptch_high = 1.106
+volume_low = -20
+volume_high = -10
+
+[node name="Destroy" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 31 )
+bus = "Sounds"
+script = ExtResource( 22 )
+pitch_low = 0.796
+ptch_high = 1.106
+volume_low = -10
+volume_high = -5
+
+[node name="Pray" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 33 )
+bus = "Sounds"
+script = ExtResource( 22 )
+pitch_low = 0.925
+ptch_high = 1.106
 volume_low = -20
 volume_high = -10
 

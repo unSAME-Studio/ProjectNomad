@@ -1,12 +1,21 @@
 extends Culpit
 
+var target_type
+
 
 func _ready():
 	var culpit_list = Global.culpits_data.keys()
 	culpit_list.sort()
 	for i in culpit_list:
-		var text = "%s-%d-" % [i.capitalize(), Global.culpits_data[i]["cost"]]
-		$CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.add_item(text, load("res://arts/culpits/%s.png" % i), true)
+		var text = "%s" % [i.capitalize()]
+		$CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/ItemList.add_item(text, load("res://arts/culpits/%s.png" % i), true)
+
+
+func _process(delta):
+	if $CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/CraftBtn.is_visible_in_tree():
+		if target_type:
+			var amount = Global.culpits_data[target_type]["cost"]
+			$CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/CraftBtn.set_disabled(amount > Global.player.count_by_type("nano"))
 
 
 func initial_control(body):
@@ -28,13 +37,16 @@ func operate(player):
 
 
 func _on_ItemList_item_selected(index):
-	var target_type = $CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.get_item_text(index)
+	target_type = $CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/ItemList.get_item_text(index)
 	#$CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList.unselect(index)
-	target_type = target_type.split("-", false)
-	var amount = int(target_type[1])
-	target_type = target_type[0].to_lower()
-	print("CRAFTER %s %d" % [target_type, amount])
+	target_type = target_type.to_lower()
 	
+	$CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer/NanoCost.set_text(String(Global.culpits_data[target_type]["cost"]))
+	$CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer/Description.set_text(Global.culpits_data[target_type]["description"])
+
+
+func _on_CraftBtn_pressed():
+	var amount = Global.culpits_data[target_type]["cost"]
 	if Global.player.consume_storage_object("nano", amount):
 		
 		# spawn entity
@@ -43,7 +55,7 @@ func _on_ItemList_item_selected(index):
 		e.type = target_type
 		base.add_child(e)
 		
-		e.set_global_position(get_global_position())
+		e.set_global_position($ControlPos.get_global_position())
 		e.set_wearing(false)
 		e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
 		e.throwing = true
