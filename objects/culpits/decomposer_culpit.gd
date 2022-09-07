@@ -63,9 +63,9 @@ func _process(delta):
 			base.get_base().add_child(e)
 		else:
 			base.get_parent().add_child(e)
-		e.set_global_position(get_global_position())
+		e.set_global_position($ControlPos.get_global_position())
 		e.set_wearing(false)
-		e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1200
+		e.velocity = Vector2.RIGHT.rotated(get_rotation()).normalized() * 1200
 		e.throwing = true
 		count -= 1
 		$Timer.start()
