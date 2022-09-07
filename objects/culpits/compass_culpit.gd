@@ -4,6 +4,7 @@ extends Culpit
 export var points_to = Vector2(5580, -7500)
 var light2d
 
+var sound
 
 func _ready():
 	light2d = Light2D.new()
@@ -24,4 +25,4 @@ func _process(delta):
 
 
 func operate(player):
-	pass
+	player.play_sound("Pray", get_global_position())
