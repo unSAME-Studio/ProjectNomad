@@ -274,7 +274,8 @@ func finish_build(room):
 	c.type = type
 	c.data = data
 	
-	room.get_node("objects").add_child(c)
+	if room.find_node("objects"):
+		room.get_node("objects").add_child(c)
 	c.set_global_position(get_global_position())
 	if target:
 		target.finish_build(c)
