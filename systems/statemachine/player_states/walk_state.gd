@@ -75,8 +75,8 @@ func _physics_process(delta):
 			persistent_state.velocity = lerp(persistent_state.velocity, Vector2.ZERO, friction)
 			
 	#camera movement inheritence
-	
-	persistent_state.camera.rotation_changed_flag = persistent_state.input_moving
+	if is_instance_valid(persistent_state):
+		persistent_state.camera.rotation_changed_flag = persistent_state.input_moving
 	if direction.length() > 0:
 		direction.x = clamp(direction.x,-1,1)
 		direction.y = clamp(direction.y,-1,1)

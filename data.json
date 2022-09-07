@@ -47,7 +47,7 @@
       "action": 0,
       "hint": "Control",
       "cost": 1,
-      "description": "A katana type lazer. Powerful melee weapon. Swing it to deal damage, damage variated from swing speed."
+      "description": "A katana type lazer. Powerful melee weapon. Swing it to deal damage, the faster you swing the more powerful it is. Can deflect bullets."
     },
     "healer": {
       "type": 3,
