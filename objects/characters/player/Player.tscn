@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -30,6 +30,8 @@
 [ext_resource path="res://sounds/machine.wav" type="AudioStream" id=28]
 [ext_resource path="res://sounds/throw.wav" type="AudioStream" id=29]
 [ext_resource path="res://objects/characters/player/BuildMenu.gd" type="Script" id=30]
+[ext_resource path="res://sounds/clip.wav" type="AudioStream" id=31]
+[ext_resource path="res://sounds/equip.wav" type="AudioStream" id=32]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -151,7 +153,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -1029,6 +1030,24 @@ pitch_low = 0.853
 ptch_high = 1.126
 volume_low = -20
 volume_high = -10
+
+[node name="Build" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 32 )
+bus = "Sounds"
+script = ExtResource( 22 )
+pitch_low = 0.796
+ptch_high = 1.106
+volume_low = -20
+volume_high = -10
+
+[node name="Destroy" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 31 )
+bus = "Sounds"
+script = ExtResource( 22 )
+pitch_low = 0.796
+ptch_high = 1.106
+volume_low = -10
+volume_high = -5
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildBtn" to="." method="_on_BuildBtn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/CameraBtn" to="." method="_on_CameraBtn_pressed"]

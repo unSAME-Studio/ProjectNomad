@@ -608,3 +608,10 @@ func powered():
 func unpowered():
 	if $WearSlot.get_child_count() > 0:
 		$WearSlot.get_child(0).unpowered()
+
+
+# sound service
+func play_sound(sound, pos):
+	var s = $Sounds.get_node(sound)
+	s.set_global_position(pos)
+	s.play()

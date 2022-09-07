@@ -41,6 +41,9 @@ func _ready():
 	connect("mouse_entered", self, "_on_mouse_entered")
 	connect("mouse_exited", self, "_on_mouse_exited")
 	
+	if Global.player:
+		Global.player.play_sound("Build", get_global_position())
+	
 	# don't allow player to control if not controllable
 	if not controllable:
 		set_collision_layer_bit(0, true)
@@ -158,11 +161,16 @@ func canceled_build():
 func _on_destroy():
 	destroy()
 	print(type + "have been destroyed")
+	
 	if build_point:
 		build_point.activate_build()
+	
+	Global.player.play_sound("Destroy", get_global_position())
+	
 	stop_control(Global.player)
 	throw(Global.player)
 	call_deferred("queue_free")
+
 
 func destroy():
 	pass
