@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://arts/culpits/decomposer.png" type="Texture" id=1]
 [ext_resource path="res://objects/culpits/decomposer_culpit.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=8]
 [ext_resource path="res://arts/Shader/white_icon.tres" type="Shader" id=9]
 [ext_resource path="res://arts/cards/C_base.png" type="Texture" id=10]
+[ext_resource path="res://scripts/AudioRandomizer.gd" type="Script" id=11]
+[ext_resource path="res://sounds/entity.wav" type="AudioStream" id=12]
+[ext_resource path="res://sounds/machine.wav" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=4]
 resource_name = "active"
@@ -214,6 +217,26 @@ health_max = 50
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Entity" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 12 )
+bus = "Sounds"
+script = ExtResource( 11 )
+pitch_low = 0.872
+ptch_high = 1.126
+volume_low = -20
+volume_high = -10
+
+[node name="Enable" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 13 )
+bus = "Sounds"
+script = ExtResource( 11 )
+pitch_low = 0.872
+ptch_high = 1.126
+volume_low = -20
+volume_high = -10
 
 [connection signal="screen_entered" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]
