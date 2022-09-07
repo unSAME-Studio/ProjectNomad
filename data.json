@@ -42,6 +42,13 @@
       "cost": 5,
       "description": "A lazer type weapon."
     },
+    "drill": {
+      "type": 3,
+      "action": 0,
+      "hint": "Control",
+      "cost": 1,
+      "description": "A katana type lazer. Powerful melee weapon. Swing it to deal damage, damage variated from swing speed."
+    },
     "healer": {
       "type": 3,
       "action": 0,
