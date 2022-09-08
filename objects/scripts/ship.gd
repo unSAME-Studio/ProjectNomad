@@ -18,6 +18,7 @@ var buffs = []
 var buff_flag = false
 
 var controlled = []
+var controlled_sub = []
 
 var speed_boost = 0
 var recharge_boost = 1

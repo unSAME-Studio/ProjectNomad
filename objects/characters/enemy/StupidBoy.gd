@@ -54,8 +54,25 @@ func _on_Timer_timeout():
 		get_tree().get_current_scene().get_node("Node2D").add_child(b)
 		
 		$Fire.play()
+		
+func reparent(child: Node, new_parent: Node):
+	if new_parent == null:
+		new_parent = get_tree().get_current_scene().get_node("Node2D")
+	var old_parent = child.get_parent()
+	var old_position = child.get_global_position()
+	old_parent.remove_child(child)
+	new_parent.add_child(child)
+	
+	child.set_global_position(old_position)
 
 
+func magnet_to(target):
+	move_and_collide((target - get_global_position()).normalized() * 2, false)
+	var temp_base = get_world_2d().get_direct_space_state().intersect_point($Position2D.get_global_position(), 1 ,[],2,true,true)
+	if temp_base.empty():
+		reparent(self, null)
+	else:
+		reparent(self,temp_base[0].collider)
 func _on_VisibilityEnabler2D_screen_entered():
 	$Timer.start()
 
