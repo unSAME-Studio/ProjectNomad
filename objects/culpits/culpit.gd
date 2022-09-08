@@ -86,7 +86,7 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 			get_tree().set_input_as_handled()
 		
 		# left click
-		if Global.player.mouse_select_culpit == self:
+		if Global.player.mouse_select_culpit == self and not Global.player.building_mode:
 			if event.get_button_index() == 1:
 				Global.player.state.interact()
 

@@ -193,7 +193,8 @@ func _process(delta):
 	# if mouse already selected one, use that one instead
 	if mouse_select_culpit and mouse_select_culpit in controllables.values():
 		if is_instance_valid(selected_object):
-			selected_object.emit_signal("deselect")
+			if selected_object.has_signal("deselect"):
+				selected_object.emit_signal("deselect")
 		selected_object = mouse_select_culpit
 		
 		$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("Click")
@@ -327,8 +328,11 @@ func enter_building_mode() -> bool:
 	return false
 
 
+
 func end_building_mode() -> bool:
 	if building_mode:
+		yield(get_tree().create_timer(0.5),"timeout")
+		#yield(get_tree(), "physics_frame")
 		building_mode = false
 		return true
 	

@@ -28,6 +28,7 @@ var roomindex = '2'
 var structure
 
 func _ready():
+	Global.building = self
 	$Sprite.set_texture(load("res://arts/structures/S_%s.png" % type))
 	if not 'remove' in type:
 		if 'room' in type:
@@ -160,7 +161,8 @@ func _unhandled_input(event):
 
 
 func finish_build(room):
-	
+	if Global.building == self:
+		Global.building = null
 	if structure:
 		print("add room")
 		var temp_pos = structure.get_global_position()
