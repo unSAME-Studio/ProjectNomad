@@ -167,6 +167,10 @@ func apply_magenet():
 	pass
 
 
+func get_data():
+	return data
+
+
 func on_select():
 	#$AnimationPlayer.play("hover")
 	

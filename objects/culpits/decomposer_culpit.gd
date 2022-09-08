@@ -51,13 +51,27 @@ func _process(delta):
 				apply_magnet(i)
 				if get_global_position().distance_to(i.get_global_position()) < 60:
 					var object_type = i.type
+					var object_data = i.get_data()
 					i.queue_free()
 					$Sounds/Entity.play()
 					
 					# spawn entity
 					if object_type in Global.culpits_data:
-						for _i in Global.culpits_data[object_type]["cost"]:
-							count += 1
+						
+						# check for additional resources from box
+						var additional_nanos = 0
+						if object_type == "box" and object_data != null:
+							var box_type = object_data["storing"]
+							var box_count = object_data["count"]
+							
+							# check for if additional box contain is a culpit, if so calculate according nanos
+							if box_type in Global.culpits_data.keys():
+								additional_nanos = Global.culpits_data[box_type]["cost"] * box_count
+							else:
+								additional_nanos = box_count
+						
+						count += Global.culpits_data[object_type]["cost"] + additional_nanos
+					
 					else:
 						count += 1
 						
