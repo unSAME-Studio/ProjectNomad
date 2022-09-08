@@ -43,7 +43,6 @@ func operate(player):
 						additional_nanos = Global.culpits_data[box_type]["cost"] * box_count
 					else:
 						additional_nanos = box_count
-					
 				
 				# spawn entity
 				for _i in range(Global.culpits_data[object_type]["cost"] + additional_nanos):
