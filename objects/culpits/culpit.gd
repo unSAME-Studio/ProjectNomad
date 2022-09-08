@@ -94,7 +94,7 @@ func _on_mouse_entered():
 	Global.player.mouse_select_culpit = self
 
 
-func throw(player,_build = false):
+func throw(player,_build = false, force = 1000):
 	
 	var e = entity.instance()
 	e.type = type
@@ -109,7 +109,7 @@ func throw(player,_build = false):
 	
 	e.set_global_position(get_global_position())
 	
-	e.throw(player,_build)
+	e.throw(player,_build, force)
 #	e.velocity = player.get_facing().normalized() * 1000
 #	e.throwing = true
 #	e.set_wearing(false)

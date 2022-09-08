@@ -154,6 +154,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -1061,6 +1062,17 @@ pitch_low = 0.925
 ptch_high = 1.106
 volume_low = -20
 volume_high = -10
+
+[node name="ThrowHint" type="Line2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.47451 )
+z_index = -1
+points = PoolVector2Array( 0, 0, 380, 0 )
+width = 20.0
+default_color = Color( 1, 1, 1, 1 )
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildBtn" to="." method="_on_BuildBtn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/VBoxContainer2/HBoxContainer/VBoxContainer/CameraBtn" to="." method="_on_CameraBtn_pressed"]
