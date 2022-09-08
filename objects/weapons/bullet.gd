@@ -12,6 +12,11 @@ var collided = null
 
 export var mounted = true
 
+var powered = false
+
+var powerNum = 0
+var damageNum = 0
+var speedNum = 0
 
 func _physics_process(delta):
 	move_and_collide(speed * Vector2.RIGHT.rotated(get_rotation()))
@@ -24,7 +29,12 @@ func _physics_process(delta):
 #		# send message to the damage component
 #		if collided.get_collider().has_node("DamageComponent"):
 #			collided.get_collider().get_node("DamageComponent").damage(user, damage)
-
+		if powered:
+			var b = load("res://objects/weapons/explode.tscn").instance()
+			b.scale = scale * (powerNum + 1)
+			b.user = user
+			b.set_global_position(get_global_position())
+			get_parent().add_child(b)
 		# make particles
 		var e = explosion.instance()
 		e.scale = scale

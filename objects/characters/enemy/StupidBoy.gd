@@ -73,6 +73,7 @@ func magnet_to(target):
 		reparent(self, null)
 	else:
 		reparent(self,temp_base[0].collider)
+	
 func _on_VisibilityEnabler2D_screen_entered():
 	$Timer.start()
 

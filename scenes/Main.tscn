@@ -644,31 +644,31 @@ rotation = 3.14159
 
 [node name="Basecollision" type="CollisionPolygon2D" parent="Node2D/Island/structure/Base"]
 
-[node name="objects2" type="Node2D" parent="Node2D/Island/structure/Base"]
+[node name="objects" type="Node2D" parent="Node2D/Island/structure/Base"]
 
-[node name="Culpit2" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 14 )]
+[node name="Culpit2" parent="Node2D/Island/structure/Base/objects" instance=ExtResource( 14 )]
 position = Vector2( 0, 1 )
 script = ExtResource( 18 )
 type = "light"
 preopen = false
 
-[node name="Culpit3" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 14 )]
+[node name="Culpit3" parent="Node2D/Island/structure/Base/objects" instance=ExtResource( 14 )]
 position = Vector2( -466, -241 )
 script = ExtResource( 18 )
 type = "light"
 preopen = false
 
-[node name="Culpit4" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 14 )]
+[node name="Culpit4" parent="Node2D/Island/structure/Base/objects" instance=ExtResource( 14 )]
 position = Vector2( -164, 1279 )
 script = ExtResource( 18 )
 type = "light"
 preopen = false
 
-[node name="Crafter_Culpit" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 30 )]
+[node name="Crafter_Culpit" parent="Node2D/Island/structure/Base/objects" instance=ExtResource( 30 )]
 position = Vector2( -136, -2 )
 type = "crafter"
 
-[node name="Printer_Culpit" parent="Node2D/Island/structure/Base/objects2" instance=ExtResource( 32 )]
+[node name="Printer_Culpit" parent="Node2D/Island/structure/Base/objects" instance=ExtResource( 32 )]
 position = Vector2( 138, -3 )
 type = "printer"
 
