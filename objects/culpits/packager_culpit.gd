@@ -1,12 +1,14 @@
 extends Culpit
 
 const MAX_COUNT = 30
+const BUNDLE_SIZE = 6
 
 var storing = null
 var count = 0
 var enabled = false
 
 var in_cd = false
+
 
 func _ready():
 	return 
@@ -44,53 +46,44 @@ func _process(delta):
 				return
 			
 			# only store if the type is the same
-			if i.type != 'nano':
+			if i.type == 'nano':
 				
 				#[TEMP] [FIX] so this thingy will store one object multiple time frmae
 				#i.magenet_to_delete(self)
 				apply_magnet(i)
+				
 				if get_global_position().distance_to(i.get_global_position()) < 60:
 					var object_type = i.type
-					var object_data = i.get_data()
 					i.queue_free()
 					$Sounds/Entity.play()
 					
-					# spawn entity
-					if object_type in Global.culpits_data:
-						
-						# check for additional resources from box
-						var additional_nanos = 0
-						if object_type == "box" and object_data != null:
-							var box_type = object_data["storing"]
-							var box_count = object_data["count"]
-							
-							# check for if additional box contain is a culpit, if so calculate according nanos
-							if box_type in Global.culpits_data.keys():
-								additional_nanos = Global.culpits_data[box_type]["cost"] * box_count
-							else:
-								additional_nanos = box_count
-						
-						count += Global.culpits_data[object_type]["cost"] + additional_nanos
-					
-					else:
-						count += 1
-						
-	if count >= 1 and not in_cd:
+					count += 1
+					$Sprite/Label.set_text(String(count))
+	
+	if count == BUNDLE_SIZE and not in_cd:
 		var e = entity.instance()
-		e.type = "nano"
+		e.type = "box"
+		e.data = {
+			"storing": "nano",
+			"count": BUNDLE_SIZE,
+		}
+		
 		if base.has_method('get_base'):
 			base.get_base().add_child(e)
 		else:
 			base.get_parent().add_child(e)
+		
 		e.set_global_position($ControlPos.get_global_position())
 		e.set_wearing(false)
 		e.velocity = Vector2.RIGHT.rotated(get_rotation()).normalized() * 1200
 		e.throwing = true
-		count -= 1
+		
+		count -= BUNDLE_SIZE
+		$Sprite/Label.set_text(String(count))
+		
 		$Timer.start()
 		in_cd = true
-						
-						
+
 
 func apply_magnet(target):
 	

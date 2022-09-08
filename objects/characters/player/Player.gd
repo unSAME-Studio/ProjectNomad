@@ -24,7 +24,8 @@ var velocity = Vector2.ZERO
 var onboard = false
 
 var base_cooldown = false
-var throw_hold = true
+var throw_hold = false
+var throw_hold_time = 0.0
 
 var input_moving = false
 
@@ -75,16 +76,22 @@ func _input(event):
 		state.interact()
 		
 	if Input.is_action_just_released('throw'):
-		if throw_hold:
-			if detach_object():
-				var object = $WearSlot.get_child(0)
-				reparent(object,base)
-				object.throw(self,true)
-				
-				$Sounds/Throw.play()
+		throw_hold = false
+		if detach_object():
+			var object = $WearSlot.get_child(0)
+			reparent(object,base)
+			object.throw(self, true, lerp(500, 3000, clamp(throw_hold_time, 0.0, 1.0)))
+			
+			$Sounds/Throw.play()
+		
+		throw_hold_time = 0.0
+		$ThrowHint.hide()
 		
 	if Input.is_action_just_pressed("throw"):
-		pass
+		throw_hold = true
+		
+		$ThrowHint.show()
+		
 #		if wearing:
 #			var object = $WearSlot.get_child(0)
 #			if object.has_method('_on_moved'):
@@ -152,7 +159,16 @@ func _process(delta):
 	if last_state != state.get_class():
 		last_state = state.get_class()
 		#print(last_state)
-
+	
+	# update throwing hold time
+	if throw_hold:
+		throw_hold_time += delta
+		
+		var p = PoolVector2Array([Vector2.ZERO, Vector2(lerp(50, 380, clamp(throw_hold_time, 0.0, 1.0)), 0)])
+		$ThrowHint.set_points(p)
+		
+		$ThrowHint.look_at(get_global_mouse_position())
+	
 #	if camera:
 #		$AnimatedSprite.set_global_rotation(camera.get_global_rotation())
 #	if build_point_flag:

@@ -146,6 +146,20 @@
       "hint": "Activate",
       "cost": 1,
       "description": "Gravitate the resources toward you."
+    },
+    "bundle": {
+      "type": 0,
+      "action": 1,
+      "hint": "Unpack",
+      "cost": 5,
+      "description": "A bundle of 5 nanos."
+    },
+    "packager": {
+      "type": 0,
+      "action": 1,
+      "hint": "Activate",
+      "cost": 2,
+      "description": "Use for packaging nanos into bundles."
     }
   },
   "entity": {

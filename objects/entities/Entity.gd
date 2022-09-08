@@ -137,12 +137,12 @@ func stop_control(player):
 	pass
 
 
-func throw(player,_throw = false):
+func throw(player,_throw = false, force = 1000):
 	#check_base()
 	set_wearing(false)
 	stop_control(player)
 	if _throw:
-		velocity = player.get_facing().normalized() * 1000
+		velocity = player.get_facing().normalized() * force
 	throwing = true
 	set_collision_mask_bit(6, false)
 	
@@ -165,6 +165,10 @@ func magenet_to_delete(actor):
 
 func apply_magenet():
 	pass
+
+
+func get_data():
+	return data
 
 
 func on_select():
