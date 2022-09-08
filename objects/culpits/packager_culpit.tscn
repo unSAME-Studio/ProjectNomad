@@ -87,7 +87,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 2.77321, 0, 0, Vector2( 1, 0.595455 ), -2.32727,
 [sub_resource type="CurveTexture" id=6]
 curve = SubResource( 15 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=21]
 emission_shape = 1
 emission_sphere_radius = 150.0
 flag_disable_z = true
@@ -102,7 +102,7 @@ radial_accel = -300.0
 radial_accel_random = 0.23
 scale = 0.1
 scale_curve = SubResource( 6 )
-color = Color( 0.607843, 0.835294, 0.6, 1 )
+color = Color( 0.756863, 0.678431, 0.356863, 1 )
 color_ramp = SubResource( 9 )
 
 [sub_resource type="Gradient" id=11]
@@ -118,7 +118,7 @@ _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.07697, 0.0, 0, 0 
 [sub_resource type="CurveTexture" id=17]
 curve = SubResource( 13 )
 
-[sub_resource type="ParticlesMaterial" id=10]
+[sub_resource type="ParticlesMaterial" id=22]
 flag_disable_z = true
 direction = Vector3( 0, 0, 0 )
 spread = 180.0
@@ -192,14 +192,15 @@ valign = 1
 [node name="Particles2D" type="Particles2D" parent="."]
 emitting = false
 amount = 10
-process_material = SubResource( 7 )
+process_material = SubResource( 21 )
 texture = ExtResource( 4 )
 
 [node name="Particles2D2" type="Particles2D" parent="."]
+modulate = Color( 0.756863, 0.678431, 0.356863, 1 )
 scale = Vector2( 1.14142, 1.14142 )
 emitting = false
 amount = 2
-process_material = SubResource( 10 )
+process_material = SubResource( 22 )
 texture = ExtResource( 5 )
 
 [node name="Light2D" type="Light2D" parent="."]

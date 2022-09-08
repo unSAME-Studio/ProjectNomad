@@ -1,7 +1,7 @@
 extends Culpit
 
 const MAX_COUNT = 30
-const BUNDLE_SIZE = 10
+const BUNDLE_SIZE = 6
 
 var storing = null
 var count = 0

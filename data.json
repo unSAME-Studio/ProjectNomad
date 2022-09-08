@@ -158,7 +158,7 @@
       "type": 0,
       "action": 1,
       "hint": "Activate",
-      "cost": 1,
+      "cost": 2,
       "description": "Use for packaging nanos into bundles."
     }
   },
