@@ -96,6 +96,6 @@ func initial_control(body):
 func stop_control(body):
 	user = null
 	#body.camera.camera.set_zoom(Vector2(1,1))
-	$RayCast2D.clear_exceptions()
+	#$RayCast2D.clear_exceptions()
 	controlling = false
 	print("stopping " + name + " from controlling")

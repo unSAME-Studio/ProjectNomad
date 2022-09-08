@@ -164,7 +164,7 @@ func _process(delta):
 			result = get_world_2d().get_direct_space_state().intersect_point(position, 3 ,[],2,true,false)
 		if not result.empty():
 			parent = result[0].collider.get_build()
-			print(parent)
+			#print(parent)
 			# snapping by checking nearby edges
 			var x_edge = []
 			var y_edge = []

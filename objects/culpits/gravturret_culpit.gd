@@ -17,12 +17,15 @@ func _ready():
 
 
 func operate(player):
-	print('using decomposer')
 	enabled = !enabled
 	
 	if enabled:
+		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property($Polygon2D, "scale", Vector2(1,1), 0.1)
 		$Anim.play("active")
 	else:
+		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property($Polygon2D, "scale", Vector2(1,0), 0.1)
 		$Anim.stop()
 		$Anim.play("finished")
 	
@@ -43,6 +46,8 @@ func _process(delta):
 				#[TEMP] [FIX] so this thingy will store one object multiple time frmae
 				#i.magenet_to_delete(self)
 				apply_magnet(i)
+			elif i.has_method('magnet_to'):
+				i.magnet_to(get_global_position())
 
 					
 #					# spawn entity

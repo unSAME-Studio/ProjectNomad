@@ -58,7 +58,7 @@ func connect_culpit(object):
 		
 
 		connected.scale = scale
-		connected.connect("tree_exiting", self, "disconnect_culpit")
+		#connected.connect("tree_exiting", self, "disconnect_culpit")
 #		object.get_parent().remove_child(object)
 #		add_child(object)
 	.connect_culpit(object)

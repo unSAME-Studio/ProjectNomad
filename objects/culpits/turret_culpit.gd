@@ -15,6 +15,9 @@ var cooldown_comp = preload("res://systems/CooldownComponent.tscn")
 var cooldown
 var cd_speed = 20
 
+var powerNum = 1
+var damageNum = 0
+var speedNum = 0
 
 func _ready():
 	var p = Position2D.new()
@@ -71,6 +74,7 @@ func operate(player):
 		b.parent = self
 		if powered:
 			b.modulate = Color(2.5, 2.5, 2.5)
+			b.powered = true
 		b.set_global_position($Sprite/Position2D.get_global_position())
 		b.set_global_rotation($Sprite.get_global_rotation())
 		get_tree().get_current_scene().get_node("Node2D").add_child(b)

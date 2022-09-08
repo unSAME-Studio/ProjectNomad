@@ -278,7 +278,7 @@ func _physics_process(_delta):
 		state.move_right()
 	
 	if wearing != null:
-		$WearSlot.set_position(get_facing().normalized() * 32)
+		$WearSlot.set_global_position(get_global_position() + get_facing().normalized() * 32)
 		$WearSlot.get_child(0).look_at(get_global_mouse_position())
 
 
