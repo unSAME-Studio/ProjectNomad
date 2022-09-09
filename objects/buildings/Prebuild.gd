@@ -191,8 +191,8 @@ func _process(delta):
 				target_snap.y = target_y
 				$GuideLineH.show()
 				#$GuideLineH.set_rotation(parent.get_global_rotation())
-			
-			target_snap = parent.get_global_position() + target_snap.rotated(parent.get_global_rotation())
+			if parent:
+				target_snap = parent.get_global_position() + target_snap.rotated(parent.get_global_rotation())
 		
 		set_global_position(get_global_position().linear_interpolate(target_snap, 20 * delta))
 		

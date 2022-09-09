@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objects/rooms/struc_prebuild.gd" type="Script" id=1]
 [ext_resource path="res://arts/structures/S_base.png" type="Texture" id=2]
+[ext_resource path="res://arts/VFX/Circle.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 28.0179
@@ -18,3 +19,9 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+light_mask = 0
+scale = Vector2( 0.846147, 0.846147 )
+z_index = 2
+texture = ExtResource( 3 )
