@@ -47,6 +47,7 @@ physics_process_parent = true
 layer = 2
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
