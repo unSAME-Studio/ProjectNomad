@@ -29,6 +29,8 @@ var faction = 'ship'
 
 var line
 
+var operating = false
+
 func _ready():
 
 	#$RigidBody2D/PinJoint2D.connect_bodies(self,$RigidBody2D)
@@ -47,15 +49,20 @@ func handle_movement(direction):
 			Global.player.camera.center_camera = true
 		else:
 			Global.player.camera.center_camera = false
-		set_angular_velocity(lerp(currrangular,0.0, 0.01))
-			
-		if Input.is_action_pressed("ui_select"):
-			set_linear_velocity(lerp(currvelocity, Vector2.ZERO, 0.05))
-			set_angular_velocity(lerp(currrangular,0, 0.05))
-		if Input.is_action_pressed("fire"):
-			operate()
+			set_angular_velocity(lerp(currrangular,0.0, 0.01))
+			if operating:
+				operating = false
+			if Input.is_action_pressed("ui_select"):
+				set_linear_velocity(lerp(currvelocity, Vector2.ZERO, 0.05))
+				set_angular_velocity(lerp(currrangular,0, 0.05))
+			if Input.is_action_pressed("fire"):
+				operate()
+			if Input.is_action_pressed("utility"):
+				operate(self,1)
 		#velocity = move_and_slide(velocity)
-		
+func brake():
+	set_linear_velocity(lerp(get_linear_velocity(), Vector2.ZERO, 0.02))
+	set_angular_velocity(lerp(get_angular_velocity(),0, 0.02))
 func enable_control(user):
 	#sleeping = false
 	controlling = true
@@ -82,13 +89,20 @@ func _process(delta):
 			onboard[0].camera.align_camera()
 	if not targetsList.empty():
 		pass
-		
+#	if operating:
+#		operating = false
 
-func operate(player = self):
-	if not controlled.empty():
-		for i in controlled:
-			i.operate(player)
-			
+func operate(player = self,group = 0):
+	var targetGroup = group
+	operating = true
+	if targetGroup == 0:
+		if not controlled.empty():
+			for i in controlled:
+				i.operate(player)
+	else:
+		if not controlled_sub.empty():
+			for i in controlled_sub:
+				i.operate(player)
 func _physics_process(delta):
 	if(controlling):
 		var direction = get_input()
@@ -114,7 +128,6 @@ func remove_target(target):
 	
 func get_targets(object):
 	if not targetsList.empty():
-
 		if targetsList[0]:
 			return targetsList[0]
 	return null

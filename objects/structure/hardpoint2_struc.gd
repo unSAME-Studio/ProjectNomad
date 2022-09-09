@@ -19,8 +19,8 @@ func ready():
 	if node:
 		prenode = get_node(node)
 		node = null
-	if 'controlled' in base:
-		base.controlled.append(self)
+	if 'controlled_sub' in base:
+		base.controlled_sub.append(self)
 	#self.connect("tree_exiting", self, "destroy")
 	#slot_build_point.bind_point(base)
 	#slot_build_point.bind_point(get_parent().get_parent())
@@ -30,7 +30,7 @@ func ready():
 		$buildpoint.finish_build(prenode)
 
 func destroy():
-	base.controlled.erase(self)
+	base.controlled_sub.erase(self)
 	if connected:
 		connected.destroy()
 	disconnect_culpit(true)
@@ -41,7 +41,6 @@ func operate(player):
 			if not LockTarget:
 				connected.operate(player)
 				using = true
-				
 				$Timer.start(rate)
 
 
@@ -73,9 +72,6 @@ func _process(_delta):
 	if using:
 		if base.operating == false:
 			using = false
-#		else:
-#			print('reset')
-#			using = false
 #	if connected and base.controlling:
 #		var targetLoc = get_global_mouse_position()
 #		if LockTarget:

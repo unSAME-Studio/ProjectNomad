@@ -1,24 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/enviorments/rocks.gd" type="Script" id=2]
-[ext_resource path="res://scripts/parallax_offset.gd" type="Script" id=4]
 
 [node name="rocks" type="RigidBody2D"]
-collision_layer = 2
+collision_layer = 3
 collision_mask = 2
 mass = 0.1
 linear_damp = 0.5
 script = ExtResource( 2 )
-
-[node name="Shadow" type="Polygon2D" parent="."]
-visible = false
-light_mask = 2
-z_index = -50
-color = Color( 0.376471, 0.396078, 0.188235, 1 )
-antialiased = true
-script = ExtResource( 4 )
-offset_amount = -0.2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

@@ -91,6 +91,8 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 				Global.player.state.interact()
 
 func _on_mouse_entered():
+	print('selected')
+	print(self)
 	Global.player.mouse_select_culpit = self
 
 

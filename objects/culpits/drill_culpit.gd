@@ -30,7 +30,7 @@ func _physics_process(delta):
 			damage = lerp(1, 10, (clamp(difference, 10, 60)) / 60.0)
 			$DetectionArea.scale.y = lerp($DetectionArea.scale.y,1.5,0.05)
 			$DetectionArea.scale.x = lerp($DetectionArea.scale.x,1.3,0.05)
-			$DetectionArea.set_position(Vector2.ZERO)
+			#$DetectionArea.set_position(Vector2.ZERO)
 			if $DetectionArea.get_overlapping_bodies().size() > 0:
 				for i in $DetectionArea.get_overlapping_bodies():
 					if i.has_node("DamageComponent"):

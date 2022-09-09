@@ -564,8 +564,13 @@ func attach_object(slot):
 		else:
 			p = load("res://objects/culpits/Culpit.tscn").instance()
 			p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot]["type"])
-	
-	p.set_wearing(true)
+	if p.has_method('set_wearing'):
+		p.set_wearing(true)
+	else:
+		p.queue_free()
+		p = load("res://objects/entities/Entity.tscn").instance()
+		p.set_wearing(true)
+		
 	p.type = storage[slot]["type"]
 	p.data = storage[slot]["data"]
 	$WearSlot.add_child(p)

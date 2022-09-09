@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://arts/ui/btn_move.png" type="Texture" id=1]
 [ext_resource path="res://arts/VFX/Circle.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/culpits/radar_culpit.gd" type="Script" id=5]
 [ext_resource path="res://arts/ui/build_arrow.png" type="Texture" id=6]
+[ext_resource path="res://arts/light.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=2]
 resource_name = "build"
@@ -90,7 +91,6 @@ z_index = 2
 texture = ExtResource( 2 )
 
 [node name="arrow" type="Node2D" parent="radar"]
-visible = false
 light_mask = 2
 
 [node name="sprite3" type="Sprite" parent="radar/arrow"]
@@ -133,6 +133,11 @@ texture = SubResource( 17 )
 
 [node name="DamageComponent" parent="." instance=ExtResource( 4 )]
 health_max = 50
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.434948, 0.434948 )
+texture = ExtResource( 7 )
+energy = 0.5
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_DetectionArea_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_DetectionArea_body_exited"]
