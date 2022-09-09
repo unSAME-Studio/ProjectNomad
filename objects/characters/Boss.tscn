@@ -1,0 +1,215 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://objects/object_base.gd" type="Script" id=1]
+[ext_resource path="res://objects/rooms/Wall.gd" type="Script" id=2]
+[ext_resource path="res://objects/characters/enemy/StupidBoy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/DamageComponent.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/characters/enemy/Spider.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/culpits/light_culpit.gd" type="Script" id=6]
+[ext_resource path="res://arts/characters/player.png" type="Texture" id=7]
+[ext_resource path="res://arts/enviroment/island.png" type="Texture" id=8]
+[ext_resource path="res://objects/rooms/room.gd" type="Script" id=9]
+[ext_resource path="res://objects/culpits/Culpit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/characters/enemy/FatBoy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://arts/structures/pattern2.png" type="Texture" id=12]
+[ext_resource path="res://objects/characters/Boss.gd" type="Script" id=13]
+
+[sub_resource type="OccluderPolygon2D" id=3]
+
+[node name="Boss" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+mass = 5.0
+script = ExtResource( 13 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.145098, 0.466667, 0, 1 )
+scale = Vector2( 10.7297, 10.7297 )
+z_index = -1
+texture = ExtResource( 7 )
+
+[node name="objects" type="Node2D" parent="."]
+
+[node name="entity" type="Node2D" parent="."]
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+rect = Rect2( -1500, -1500, 3000, 3000 )
+
+[node name="structure" type="Node2D" parent="."]
+
+[node name="Base" type="RigidBody2D" parent="structure"]
+collision_layer = 2
+collision_mask = 0
+mode = 1
+script = ExtResource( 1 )
+
+[node name="rooms" type="Node2D" parent="structure/Base"]
+
+[node name="room2" type="Area2D" parent="structure/Base/rooms"]
+collision_layer = 34
+collision_mask = 0
+script = ExtResource( 9 )
+
+[node name="Polygon2D" type="Polygon2D" parent="structure/Base/rooms/room2"]
+modulate = Color( 0.423529, 0.8, 0.270588, 1 )
+position = Vector2( 0, 64 )
+color = Color( 0.584314, 0.639216, 0.74902, 1 )
+texture = ExtResource( 8 )
+texture_scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -128, -320, -256, -192, -256, 64, -128, 192, 128, 192, 256, 64, 256, -192, 128, -320 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="structure/Base/rooms/room2"]
+
+[node name="structures" type="Node2D" parent="structure/Base/rooms/room2"]
+
+[node name="Wall2" type="StaticBody2D" parent="structure/Base/rooms/room2/structures"]
+rotation = 3.14159
+z_index = 1
+collision_mask = 29
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="structure/Base/rooms/room2/structures/Wall2"]
+
+[node name="Polygon2D" type="Polygon2D" parent="structure/Base/rooms/room2/structures/Wall2"]
+position = Vector2( 2.84217e-14, -3.8147e-06 )
+scale = Vector2( 0.947368, 1.33333 )
+color = Color( 0.121569, 0.247059, 0.027451, 1 )
+antialiased = true
+texture = ExtResource( 12 )
+polygon = PoolVector2Array( 270.222, -1.39242e-05, 244.889, -1.23506e-05, 236.445, 96.0002, 135.111, 168, 2.14089e-05, 174, 2.36236e-05, 192, 135.111, 192, 270.222, 96.0002 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="structure/Base/rooms/room2/structures/Wall2"]
+occluder = SubResource( 3 )
+
+[node name="Anim" type="AnimationPlayer" parent="structure/Base/rooms/room2/structures/Wall2"]
+
+[node name="FramePolygon" type="Polygon2D" parent="structure/Base/rooms/room2/structures/Wall2"]
+visible = false
+color = Color( 0.392157, 0.431373, 0.54902, 1 )
+polygon = PoolVector2Array( -192, -16, -128, -16, 128, -16, 192, -16, 192, 16, 128, 16, -128, 16, -192, 16 )
+polygons = [ PoolIntArray( 0, 1, 6, 7 ), PoolIntArray( 2, 3, 4, 5 ), null ]
+
+[node name="DamageComponent" parent="structure/Base/rooms/room2/structures/Wall2" instance=ExtResource( 4 )]
+health_max = 125
+autoheal = true
+drop_amount = 0
+
+[node name="Wall3" type="StaticBody2D" parent="structure/Base/rooms/room2/structures"]
+rotation = -1.5708
+z_index = 1
+collision_mask = 29
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="structure/Base/rooms/room2/structures/Wall3"]
+
+[node name="Polygon2D" type="Polygon2D" parent="structure/Base/rooms/room2/structures/Wall3"]
+position = Vector2( 2.84217e-14, -3.8147e-06 )
+scale = Vector2( 0.947368, 1.33333 )
+color = Color( 0.121569, 0.247059, 0.027451, 1 )
+antialiased = true
+texture = ExtResource( 12 )
+polygon = PoolVector2Array( 270.222, -1.39242e-05, 244.889, -1.23506e-05, 236.445, 96.0002, 135.111, 168, 2.14089e-05, 174, 2.36236e-05, 192, 135.111, 192, 270.222, 96.0002 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="structure/Base/rooms/room2/structures/Wall3"]
+occluder = SubResource( 3 )
+
+[node name="Anim" type="AnimationPlayer" parent="structure/Base/rooms/room2/structures/Wall3"]
+
+[node name="FramePolygon" type="Polygon2D" parent="structure/Base/rooms/room2/structures/Wall3"]
+visible = false
+color = Color( 0.392157, 0.431373, 0.54902, 1 )
+polygon = PoolVector2Array( -192, -16, -128, -16, 128, -16, 192, -16, 192, 16, 128, 16, -128, 16, -192, 16 )
+polygons = [ PoolIntArray( 0, 1, 6, 7 ), PoolIntArray( 2, 3, 4, 5 ), null ]
+
+[node name="DamageComponent" parent="structure/Base/rooms/room2/structures/Wall3" instance=ExtResource( 4 )]
+health_max = 125
+autoheal = true
+drop_amount = 0
+
+[node name="Wall4" type="StaticBody2D" parent="structure/Base/rooms/room2/structures"]
+rotation = 1.5708
+z_index = 1
+collision_mask = 29
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="structure/Base/rooms/room2/structures/Wall4"]
+
+[node name="Polygon2D" type="Polygon2D" parent="structure/Base/rooms/room2/structures/Wall4"]
+position = Vector2( 2.84217e-14, -3.8147e-06 )
+scale = Vector2( 0.947368, 1.33333 )
+color = Color( 0.121569, 0.247059, 0.027451, 1 )
+antialiased = true
+texture = ExtResource( 12 )
+polygon = PoolVector2Array( 270.222, -1.39242e-05, 244.889, -1.23506e-05, 236.445, 96.0002, 135.111, 168, 2.14089e-05, 174, 2.36236e-05, 192, 135.111, 192, 270.222, 96.0002 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="structure/Base/rooms/room2/structures/Wall4"]
+occluder = SubResource( 3 )
+
+[node name="Anim" type="AnimationPlayer" parent="structure/Base/rooms/room2/structures/Wall4"]
+
+[node name="FramePolygon" type="Polygon2D" parent="structure/Base/rooms/room2/structures/Wall4"]
+visible = false
+color = Color( 0.392157, 0.431373, 0.54902, 1 )
+polygon = PoolVector2Array( -192, -16, -128, -16, 128, -16, 192, -16, 192, 16, 128, 16, -128, 16, -192, 16 )
+polygons = [ PoolIntArray( 0, 1, 6, 7 ), PoolIntArray( 2, 3, 4, 5 ), null ]
+
+[node name="DamageComponent" parent="structure/Base/rooms/room2/structures/Wall4" instance=ExtResource( 4 )]
+health_max = 125
+autoheal = true
+drop_amount = 0
+
+[node name="Wall5" type="StaticBody2D" parent="structure/Base/rooms/room2/structures"]
+z_index = 1
+collision_mask = 29
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="structure/Base/rooms/room2/structures/Wall5"]
+
+[node name="Polygon2D" type="Polygon2D" parent="structure/Base/rooms/room2/structures/Wall5"]
+position = Vector2( 2.84217e-14, -3.8147e-06 )
+scale = Vector2( 0.947368, 1.33333 )
+color = Color( 0.121569, 0.247059, 0.027451, 1 )
+antialiased = true
+texture = ExtResource( 12 )
+polygon = PoolVector2Array( 270.222, -1.39242e-05, 244.889, -1.23506e-05, 236.445, 96.0002, 135.111, 168, 2.14089e-05, 174, 2.36236e-05, 192, 135.111, 192, 270.222, 96.0002 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="structure/Base/rooms/room2/structures/Wall5"]
+occluder = SubResource( 3 )
+
+[node name="Anim" type="AnimationPlayer" parent="structure/Base/rooms/room2/structures/Wall5"]
+
+[node name="FramePolygon" type="Polygon2D" parent="structure/Base/rooms/room2/structures/Wall5"]
+visible = false
+color = Color( 0.392157, 0.431373, 0.54902, 1 )
+polygon = PoolVector2Array( -192, -16, -128, -16, 128, -16, 192, -16, 192, 16, 128, 16, -128, 16, -192, 16 )
+polygons = [ PoolIntArray( 0, 1, 6, 7 ), PoolIntArray( 2, 3, 4, 5 ), null ]
+
+[node name="DamageComponent" parent="structure/Base/rooms/room2/structures/Wall5" instance=ExtResource( 4 )]
+health_max = 125
+autoheal = true
+drop_amount = 0
+
+[node name="objects" type="Node2D" parent="structure/Base/rooms/room2"]
+
+[node name="Basecollision" type="CollisionPolygon2D" parent="structure/Base"]
+
+[node name="objects" type="Node2D" parent="structure/Base"]
+
+[node name="Culpit2" parent="structure/Base/objects" instance=ExtResource( 10 )]
+position = Vector2( 0, 1 )
+script = ExtResource( 6 )
+type = "light"
+preopen = false
+
+[node name="FatBoy" parent="." instance=ExtResource( 11 )]
+position = Vector2( 0, -8 )
+baseMode = true
+immobile = true
+
+[node name="Spider" parent="." instance=ExtResource( 5 )]
+position = Vector2( 280, -232 )
+
+[node name="StupidBoy" parent="." instance=ExtResource( 3 )]
+position = Vector2( -352, 120 )
+baseMode = true
+immobile = true

@@ -34,6 +34,7 @@ func _physics_process(delta):
 			b.scale = scale * (powerNum + 1)
 			b.user = user
 			b.set_global_position(get_global_position())
+			b.speed = 30
 			get_parent().add_child(b)
 		# make particles
 		var e = explosion.instance()

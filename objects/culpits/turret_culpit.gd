@@ -17,7 +17,7 @@ var cd_speed = 20
 
 var powerNum = 1
 var damageNum = 0
-var speedNum = 0
+var speedBuffs = []
 
 func _ready():
 	var p = Position2D.new()
@@ -50,6 +50,14 @@ func apply_buff(buff):
 		if 'recharge_boost' in buff:
 			cooldown.speed = cd_speed * buff.recharge_boost
 
+func buff(buff_type,target):
+	if buff_type == 'speed':
+		if not target in speedBuffs:
+			speedBuffs.append(target)
+		
+func reset_buff():
+	speedBuffs = []
+		
 func powered():
 	if not powered:
 		powered = true
@@ -71,6 +79,8 @@ func operate(player):
 			b.damage = damage * slotted.damage_buff
 			b.speed = projectile_speed*slotted.speed_buff
 			b.scale = scale
+		b.speed += speedBuffs.size() * 2
+		b.get_node('Sprite').scale.y += speedBuffs.size() * 0.5
 		b.parent = self
 		if powered:
 			b.modulate = Color(2.5, 2.5, 2.5)
@@ -84,7 +94,8 @@ func operate(player):
 		$Anim.play("fire")
 		
 		$AudioStreamPlayer2D.play()
-
+		reset_buff()
+	#reset_buff()
 
 func initial_control(body):
 	controlling = true
