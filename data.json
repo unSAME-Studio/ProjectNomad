@@ -231,82 +231,98 @@
     "locker": {
       "type": 1,
       "level": 4,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "base": {
       "type": 0,
       "level": 2,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "base fix": {
       "type": 0,
       "level": 2,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "power": {
       "type": 3,
       "level": 3,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "booster": {
       "type": 3,
       "level": 3,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "wall": {
       "type": 1,
       "level": 0,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": "Just a wall."
     },
     "door wall": {
       "type": 1,
       "level": 3,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": "A wall with a door. Can be opened."
     },
     "room2": {
       "type": 0,
       "level": 3,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "room3": {
       "type": 0,
       "level": 2,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "room4": {
       "type": 0,
       "level": 2,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "room5": {
       "type": 0,
       "level": 2,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "roomUtility": {
       "type": 0,
       "level": 1,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "wall upgrade": {
       "type": 1,
       "level": 2,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "room remove": {
       "type": 0,
       "level": 1,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "hardpoint": {
       "type": 3,
       "level": 1,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     },
     "hardpoint(Right Click)": {
       "type": 3,
       "level": 2,
-      "unlocked": 0
+      "unlocked": 0,
+      "description": ""
     }
 
   }

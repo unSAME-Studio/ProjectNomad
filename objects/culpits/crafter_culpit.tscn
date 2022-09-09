@@ -50,9 +50,9 @@ theme = ExtResource( 3 )
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
 material = SubResource( 5 )
 margin_left = 1049.0
-margin_top = 225.0
+margin_top = 150.0
 margin_right = 1756.0
-margin_bottom = 778.0
+margin_bottom = 703.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 
