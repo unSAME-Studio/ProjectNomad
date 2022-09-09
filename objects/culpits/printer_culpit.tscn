@@ -47,7 +47,6 @@ physics_process_parent = true
 layer = 2
 
 [node name="Control" type="Control" parent="CanvasLayer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -55,64 +54,94 @@ theme = ExtResource( 3 )
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
 material = SubResource( 5 )
-margin_left = 1376.0
-margin_top = 135.0
-margin_right = 1723.0
-margin_bottom = 782.0
+margin_left = 1049.0
+margin_top = 150.0
+margin_right = 1787.0
+margin_bottom = 797.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/PanelContainer"]
-margin_right = 347.0
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer"]
+margin_right = 738.0
 margin_bottom = 647.0
-theme = ExtResource( 3 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/ScrollContainer"]
-margin_right = 347.0
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer"]
+margin_right = 334.0
+margin_bottom = 647.0
+rect_min_size = Vector2( 300, 647 )
+theme = ExtResource( 3 )
+scroll_horizontal_enabled = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer"]
+margin_right = 334.0
 margin_bottom = 647.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
-margin_right = 347.0
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+margin_right = 334.0
 margin_bottom = 32.0
 text = "Printer Tech Tree (unlock with 1 nano)"
 
-[node name="ItemList" type="ItemList" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="ItemList" type="ItemList" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 36.0
-margin_right = 347.0
-margin_bottom = 567.0
+margin_right = 334.0
+margin_bottom = 505.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 allow_reselect = true
 fixed_icon_size = Vector2( 50, 50 )
 
-[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 571.0
-margin_right = 347.0
-margin_bottom = 571.0
-custom_constants/separation = 10
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 509.0
+margin_right = 334.0
+margin_bottom = 529.0
+custom_constants/margin_top = 20
 
-[node name="Level" type="Label" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
-margin_top = 575.0
-margin_right = 347.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 533.0
+margin_right = 334.0
+margin_bottom = 583.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_top = 9.0
+margin_right = 130.0
+margin_bottom = 41.0
+text = "Current Level: "
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 134.0
+margin_right = 193.032
+margin_bottom = 50.0
+rect_min_size = Vector2( 59.032, 50 )
+
+[node name="Level" type="Label" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2/PanelContainer"]
+margin_top = 9.0
+margin_right = 59.032
+margin_bottom = 41.0
+text = "0"
+align = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 587.0
+margin_right = 334.0
 margin_bottom = 607.0
-text = "Current Level - 1"
+custom_constants/margin_top = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 611.0
-margin_right = 347.0
+margin_right = 334.0
 margin_bottom = 643.0
 
-[node name="Progress" type="Label" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="Progress" type="Label" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 margin_right = 98.0
 margin_bottom = 32.0
 text = "Next Level "
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
 margin_left = 102.0
-margin_right = 347.0
+margin_right = 334.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 150, 26 )
 mouse_filter = 2
@@ -124,12 +153,93 @@ step = 1.0
 value = 50.0
 percent_visible = false
 
-[node name="LevelPreview" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer"]
+[node name="LevelPreview" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 647.0
-margin_right = 347.0
+margin_right = 334.0
 margin_bottom = 647.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer"]
+margin_left = 338.0
+margin_right = 738.0
+margin_bottom = 647.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 400.0
+margin_bottom = 593.0
+rect_min_size = Vector2( 400, 300 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+margin_right = 400.0
+margin_bottom = 593.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+margin_right = 400.0
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer"]
+margin_top = 282.0
+margin_right = 400.0
+margin_bottom = 315.0
+size_flags_vertical = 6
+text = "      < Select a blueprint"
+fit_content_height = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer"]
+margin_top = 597.0
+margin_right = 400.0
+margin_bottom = 647.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 4.0
+margin_top = 9.0
+margin_right = 105.0
+margin_bottom = 41.0
+text = "Nano Cost: "
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 56.0
+margin_right = 115.032
+margin_bottom = 50.0
+rect_min_size = Vector2( 59.032, 50 )
+
+[node name="NanoCost" type="Label" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer"]
+margin_top = 9.0
+margin_right = 59.032
+margin_bottom = 41.0
+text = "0"
+align = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+visible = false
+margin_left = 88.0
+margin_right = 108.0
+margin_bottom = 50.0
+custom_constants/margin_right = 10
+custom_constants/margin_left = 10
+
+[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 100.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 59.032, 50 )
+
+[node name="UnlockBtn" type="Button" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2"]
+margin_right = 200.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 200, 0 )
+focus_mode = 0
+theme = ExtResource( 3 )
+disabled = true
+enabled_focus_mode = 0
+text = "Unlock"
 
 [node name="DamageComponent" parent="." instance=ExtResource( 4 )]
 health_max = 50
 
-[connection signal="item_selected" from="CanvasLayer/Control/PanelContainer/ScrollContainer/VBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="item_selected" from="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
+[connection signal="pressed" from="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/UnlockBtn" to="." method="_on_UnlockBtn_pressed"]
