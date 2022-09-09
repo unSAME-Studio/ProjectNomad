@@ -88,7 +88,7 @@
       "type": 0,
       "action": 1,
       "hint": "Turn On / Off",
-      "cost": 18,
+      "cost": 1,
       "description": "Hey isn't this a alien technologies?? :/"
     },
     "compass": {
@@ -160,6 +160,13 @@
       "hint": "Activate",
       "cost": 2,
       "description": "Use for packaging nanos into bundles."
+    },
+    "anchor": {
+      "type": 0,
+      "action": 1,
+      "hint": "Anchor",
+      "cost": 1,
+      "description": "Anchor the ship."
     }
   },
   "entity": {
@@ -289,6 +296,13 @@
       "level": 1,
       "unlocked": 0,
       "description": ""
+    },
+    "hardpoint(Right Click)": {
+      "type": 3,
+      "level": 2,
+      "unlocked": 0,
+      "description": ""
     }
+
   }
 }

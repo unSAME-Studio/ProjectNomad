@@ -82,7 +82,8 @@ func _process(_delta):
 				connected.operate(lockBase)
 				using = true
 				$Timer.start(rate)
-		connected.look_at(targetLoc)
+		if is_instance_valid(connected):
+			connected.look_at(targetLoc)
 
 
 func _on_Timer_timeout():

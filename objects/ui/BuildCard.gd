@@ -52,19 +52,21 @@ func _on_BuildCard_pressed():
 	tween.parallel().tween_property($TextureRect, "rect_scale", Vector2(0.9, 0.9), 0.08)
 	tween.tween_property(self, "rect_scale", Vector2(1, 1), 0.08)
 	tween.parallel().tween_property($TextureRect, "rect_scale", Vector2(1, 1), 0.08)
-	
-	var p
-	if 'room' in build_type or 'wall' in build_type:
-		p = structure_prebuild.instance()
+	if Global.player.building_mode == false:
+		var p
+		if 'room' in build_type or 'wall' in build_type:
+			p = structure_prebuild.instance()
+		else:
+			p = prebuild.instance()
+			p.is_structure = true
+		
+		p.card = self
+		p.type = build_type
+		get_tree().get_current_scene().get_node("Node2D").add_child(p)
+		
+		current_prebuild = p
 	else:
-		p = prebuild.instance()
-		p.is_structure = true
-	
-	p.card = self
-	p.type = build_type
-	get_tree().get_current_scene().get_node("Node2D").add_child(p)
-	
-	current_prebuild = p
+		canceled_build()
 
 
 func _process(delta):
