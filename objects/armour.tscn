@@ -9,6 +9,7 @@ height = 0.0
 
 [node name="Base7" type="RigidBody2D"]
 position = Vector2( 1169, 612 )
+z_index = 2
 collision_layer = 4
 collision_mask = 0
 input_pickable = true

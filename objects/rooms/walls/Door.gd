@@ -20,7 +20,8 @@ func spawn_door():
 	else:
 		for i in $structure.get_children():
 			i.queue_free()
-			
+# Use mouse to interacte with the item directl
+
 func destroy():
 	hide()
 	$CollisionPolygon2D2.polygon = []

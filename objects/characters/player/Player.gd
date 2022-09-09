@@ -193,7 +193,8 @@ func _process(delta):
 	# if mouse already selected one, use that one instead
 	if mouse_select_culpit and mouse_select_culpit in controllables.values():
 		if is_instance_valid(selected_object):
-			selected_object.emit_signal("deselect")
+			if selected_object.has_signal("deselect"):
+				selected_object.emit_signal("deselect")
 		selected_object = mouse_select_culpit
 		
 		$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("Click")
@@ -327,8 +328,11 @@ func enter_building_mode() -> bool:
 	return false
 
 
+
 func end_building_mode() -> bool:
 	if building_mode:
+		yield(get_tree().create_timer(0.5),"timeout")
+		#yield(get_tree(), "physics_frame")
 		building_mode = false
 		return true
 	
@@ -560,8 +564,13 @@ func attach_object(slot):
 		else:
 			p = load("res://objects/culpits/Culpit.tscn").instance()
 			p.script = load("res://objects/culpits/%s_culpit.gd" % storage[slot]["type"])
-	
-	p.set_wearing(true)
+	if p.has_method('set_wearing'):
+		p.set_wearing(true)
+	else:
+		p.queue_free()
+		p = load("res://objects/entities/Entity.tscn").instance()
+		p.set_wearing(true)
+		
 	p.type = storage[slot]["type"]
 	p.data = storage[slot]["data"]
 	$WearSlot.add_child(p)

@@ -32,6 +32,7 @@ var point_mode = false
 var build_points = []
 
 func _ready():
+	Global.building = self
 	if not is_structure:
 		$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
 	else: 
@@ -289,5 +290,6 @@ func finish_build(room):
 		card.canceled_build()
 	else:
 		card.queue_free()
-
+	if Global.building == self:
+		Global.building = null
 	queue_free()

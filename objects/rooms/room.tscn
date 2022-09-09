@@ -23,7 +23,7 @@ z_index = -5
 color = Color( 0.584314, 0.639216, 0.74902, 1 )
 texture = ExtResource( 7 )
 texture_scale = Vector2( 3, 3 )
-polygon = PoolVector2Array( -168, -248, 168, -248, 168, 240, -168, 240 )
+polygon = PoolVector2Array( -168, -256, 168, -256, 168, 248, -168, 248 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 

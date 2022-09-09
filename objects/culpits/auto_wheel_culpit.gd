@@ -44,8 +44,6 @@ func destroy():
 
 
 
-
-
 func _on_Timer_timeout():
 	on_cd = false
 	
