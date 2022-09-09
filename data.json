@@ -103,7 +103,7 @@
       "action": 1,
       "hint": "Turn On / Off",
       "cost": 3,
-      "description": "Slow down any projectile when in zone."
+      "description": "A sheild, Slow down any projectile inside zone."
     },
     "relay": {
       "type": 0,
@@ -117,14 +117,14 @@
       "action": 1,
       "hint": "Operate",
       "cost": 1,
-      "description": "Change the day night cycle."
+      "description": "Change the movement of the star."
     },
     "coil": {
       "type": 0,
       "action": 1,
       "hint": "Operate",
       "cost": 1,
-      "description": "Connect machines and provide powers."
+      "description": "[unfinished] Connect machines and provide powers."
     },
     "barrier": {
       "type": 0,
@@ -138,14 +138,14 @@
       "action": 1,
       "hint": "Scan",
       "cost": 3,
-      "description": "Scan the nearby enviorments and provide useful directions."
+      "description": "Scan the nearby enviorments and provide useful directions. Place it near a Compass to update directions."
     },
     "gravturret": {
       "type": 0,
       "action": 0,
       "hint": "Activate",
       "cost": 1,
-      "description": "Gravitate the resources toward you."
+      "description": "Gravitate stuff towards you."
     },
     "bundle": {
       "type": 0,
@@ -159,7 +159,7 @@
       "action": 1,
       "hint": "Activate",
       "cost": 2,
-      "description": "Use for packaging nanos into bundles."
+      "description": "Useful machine for packaging nanos into bundles."
     },
     "anchor": {
       "type": 0,
@@ -167,6 +167,27 @@
       "hint": "Anchor",
       "cost": 1,
       "description": "Anchor the ship."
+    },
+    "turret_buffer_speed": {
+      "type": 0,
+      "action": 1,
+      "hint": "Aactivate",
+      "cost": 3,
+      "description": "Buff projectile speed of nearby turrets."
+    },
+    "turret_buffer_damage": {
+      "type": 0,
+      "action": 1,
+      "hint": "Aactivate",
+      "cost": 3,
+      "description": "Buff projectile damage of nearby turrets."
+    },
+    "turret_buffer_shots": {
+      "type": 0,
+      "action": 1,
+      "hint": "Aactivate",
+      "cost": 5,
+      "description": "Buff projectile number per shot of nearby turrets."
     }
   },
   "entity": {
