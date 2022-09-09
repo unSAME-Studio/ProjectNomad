@@ -46,6 +46,9 @@ var move_velocity = Vector2(0,0)
 var slide_velocity = Vector2(0,0)
 var camera
 
+# cheats
+var endless_nanos = false
+
 var build_card = preload("res://objects/ui/BuildCard.tscn")
 
 
@@ -134,6 +137,10 @@ func _unhandled_input(event):
 			storage_ui[0].set_pressed(true)
 			storage_ui[0].emit_signal("pressed")
 	
+	
+	if Input.is_action_just_pressed("debug"):
+		endless_nanos = !endless_nanos
+		$Sounds/Pray.play()
 	
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
@@ -471,6 +478,10 @@ func find_slot_by_type(type):
 	return null
 
 func count_by_type(type):
+	# cheats mode for nanos
+	if endless_nanos and type == "nano":
+		return 99
+	
 	var count = 0
 	for i in range(0, 5):
 		if storage[i] != null:
@@ -507,6 +518,10 @@ func remove_storage_object(slot) -> bool:
 	return false
 
 func consume_storage_object(type, amount = 1) -> bool:
+	# cheats mode
+	if endless_nanos:
+		return true
+	
 	var owns_amount = count_by_type(type)
 	print("trying to use %d nanos have %d" % [amount, owns_amount])
 	
