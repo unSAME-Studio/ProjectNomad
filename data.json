@@ -103,7 +103,7 @@
       "action": 1,
       "hint": "Turn On / Off",
       "cost": 3,
-      "description": "Slow down any projectile when in zone."
+      "description": "A sheild, Slow down any projectile inside zone."
     },
     "relay": {
       "type": 0,
@@ -117,14 +117,14 @@
       "action": 1,
       "hint": "Operate",
       "cost": 1,
-      "description": "Change the day night cycle."
+      "description": "Change the movement of the star."
     },
     "coil": {
       "type": 0,
       "action": 1,
       "hint": "Operate",
       "cost": 1,
-      "description": "Connect machines and provide powers."
+      "description": "[unfinished] Connect machines and provide powers."
     },
     "barrier": {
       "type": 0,
@@ -138,14 +138,14 @@
       "action": 1,
       "hint": "Scan",
       "cost": 3,
-      "description": "Scan the nearby enviorments and provide useful directions."
+      "description": "Scan the nearby enviorments and provide useful directions. Place it near a Compass to update directions."
     },
     "gravturret": {
       "type": 0,
       "action": 0,
       "hint": "Activate",
       "cost": 1,
-      "description": "Gravitate the resources toward you."
+      "description": "Gravitate stuff towards you."
     },
     "bundle": {
       "type": 0,
@@ -159,7 +159,7 @@
       "action": 1,
       "hint": "Activate",
       "cost": 2,
-      "description": "Use for packaging nanos into bundles."
+      "description": "Useful machine for packaging nanos into bundles."
     },
     "anchor": {
       "type": 0,
@@ -167,6 +167,27 @@
       "hint": "Anchor",
       "cost": 1,
       "description": "Anchor the ship."
+    },
+    "turret speed buffer": {
+      "type": 0,
+      "action": 1,
+      "hint": "Aactivate",
+      "cost": 3,
+      "description": "Buff projectile speed of nearby turrets."
+    },
+    "turret damage buffer": {
+      "type": 0,
+      "action": 1,
+      "hint": "Aactivate",
+      "cost": 3,
+      "description": "Buff projectile damage of nearby turrets."
+    },
+    "turret shots buffer": {
+      "type": 0,
+      "action": 1,
+      "hint": "Aactivate",
+      "cost": 5,
+      "description": "Buff projectile number per shot of nearby turrets."
     }
   },
   "entity": {
@@ -211,97 +232,97 @@
       "type": 1,
       "level": 4,
       "unlocked": 0,
-      "description": ""
+      "description": "[unfinished]DO NOT USE"
     },
     "base": {
       "type": 0,
       "level": 2,
       "unlocked": 0,
-      "description": ""
+      "description": "A weapon base for connecting weapon to the ship. Weapon placed on it can be controlled by mouse."
     },
     "base fix": {
       "type": 0,
       "level": 2,
       "unlocked": 0,
-      "description": ""
+      "description": "A fixed weapon base for connecting weapon to the ship. Weapon placed on it can be controlled by mouse, but the rotation is limited."
     },
     "power": {
       "type": 3,
       "level": 3,
       "unlocked": 0,
-      "description": ""
+      "description": "Provides extra cool down recharge rate to all weapon bases on the ship. Must be connected to a Generator to work."
     },
     "booster": {
       "type": 3,
       "level": 3,
       "unlocked": 0,
-      "description": ""
+      "description": "Provides extra speed the ship. Must be connected to a Generator to work."
     },
     "wall": {
       "type": 1,
       "level": 0,
       "unlocked": 0,
-      "description": "Just a wall."
+      "description": "Removing/Restoring walls on a ship."
     },
     "door wall": {
       "type": 1,
       "level": 3,
       "unlocked": 0,
-      "description": "A wall with a door. Can be opened."
+      "description": "[unfinished]upgrade the door to armoured door."
     },
     "room2": {
       "type": 0,
       "level": 3,
       "unlocked": 0,
-      "description": ""
+      "description": "[TEST]The special all-round room for testing purpose."
     },
     "room3": {
       "type": 0,
       "level": 2,
       "unlocked": 0,
-      "description": ""
+      "description": "The Vanguard model room. Comes With a main turret base and two small turret base."
     },
     "room4": {
       "type": 0,
       "level": 2,
       "unlocked": 0,
-      "description": ""
+      "description": "The Striker model room. Comes With a main axied turret base and a power utility slot."
     },
     "room5": {
       "type": 0,
       "level": 2,
       "unlocked": 0,
-      "description": ""
+      "description": "The Cargo model room. With plenty of space and two utility slot."
     },
     "roomUtility": {
       "type": 0,
       "level": 1,
       "unlocked": 0,
-      "description": ""
+      "description": "The Utility model room. With basic defense turret base and a utility slot."
     },
     "wall upgrade": {
       "type": 1,
       "level": 2,
       "unlocked": 0,
-      "description": ""
+      "description": "Upgrade a wall to the armoured wall."
     },
     "room remove": {
       "type": 0,
       "level": 1,
       "unlocked": 0,
-      "description": ""
+      "description": "Remove a connectted room."
     },
     "hardpoint": {
       "type": 3,
       "level": 1,
       "unlocked": 0,
-      "description": ""
+      "description": "A hard point that can be placed on ships. Allows you to operate the machine built on it with LEFT CLICK while driving the ship."
     },
     "hardpoint(Right Click)": {
       "type": 3,
       "level": 2,
       "unlocked": 0,
-      "description": ""
+      "description": "A hard point that can be placed on ships. Allows you to operate the machine built on it with RIGHT CLICK while driving the ship."
     }
 
   }

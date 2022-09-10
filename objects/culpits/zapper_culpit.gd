@@ -6,18 +6,25 @@ var shooting = false
 var damage = 2
 var cd = 5
 var explosion = preload("res://objects/VFX/Explosion.tscn")
-
+var speedBuffs =[]
 
 func _process(delta):
 	if controlling and not wearing:
 		look_at(get_global_mouse_position())
 
+func buff(buff_type,target):
+	if buff_type == 'speed':
+		if not target in speedBuffs:
+			speedBuffs.append(target)
+		
+func reset_buff():
+	speedBuffs = []
+	
 
 func operate(player):
 	shooting = !shooting
 	$RayCast2D.set_enabled(shooting)
 	$Line2D.set_visible(shooting)
-	
 	if shooting:
 		$Timer.start()
 	else:
@@ -46,6 +53,8 @@ func stop_control(body):
 func _on_Timer_timeout():
 	if $CooldownComponent.can_fire(cd):
 		
+		$RayCast2D.cast_to = Vector2(500 + speedBuffs.size()*150,0)
+		reset_buff()
 		# consume cooldown
 		$CooldownComponent.increase_cooldown(cd)
 		
@@ -70,5 +79,5 @@ func _on_Timer_timeout():
 					$RayCast2D.add_exception($RayCast2D.get_collider())
 		else:
 			# reset line2d
-			var p = PoolVector2Array([Vector2.ZERO, Vector2(500, 0)])
+			var p = PoolVector2Array([Vector2.ZERO, $RayCast2D.cast_to])
 			$Line2D.set_points(p)

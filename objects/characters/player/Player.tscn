@@ -154,6 +154,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -981,7 +982,6 @@ icon = ExtResource( 10 )
 expand_icon = true
 
 [node name="PrebuildHint" type="Label" parent="CanvasLayer/Control"]
-visible = false
 margin_left = -100.0
 margin_top = -100.0
 margin_right = 100.0
@@ -992,6 +992,17 @@ text = "Too Far"
 align = 1
 valign = 1
 script = ExtResource( 12 )
+
+[node name="Label2" type="Label" parent="CanvasLayer/Control"]
+visible = false
+modulate = Color( 1, 0.235294, 0.235294, 0.427451 )
+margin_left = 808.0
+margin_top = 1024.0
+margin_right = 1320.0
+margin_bottom = 1056.0
+theme = ExtResource( 5 )
+text = "Not on ship!"
+align = 1
 
 [node name="ControllableDetection" type="Area2D" parent="."]
 collision_layer = 0

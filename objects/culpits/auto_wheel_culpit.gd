@@ -38,7 +38,10 @@ func operate(player):
 	base.controlling = running
 			
 func destroy():
+	running = false
+	base.controlling = false
 	if base.has_method('add_target'):
+		base.handle_movement(Vector2.ZERO)
 		base.remove_target(Global.player)
 		targeting = false
 

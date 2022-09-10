@@ -8,6 +8,7 @@ var count = 0
 var enabled = false
 
 var in_cd = false
+var speedBuffs = []
 
 func _ready():
 	return 
@@ -15,20 +16,32 @@ func _ready():
 	var texture = load("res://arts/resources/nano.png" )
 	$Sprite/Icon.set_texture(texture)
 
-
+func buff(buff_type,target):
+	if buff_type == 'speed':
+		if not target in speedBuffs:
+			speedBuffs.append(target)
+		
+func reset_buff():
+	speedBuffs = []
+	
 func operate(player):
 	enabled = !enabled
 	
+	var target_scale = Vector2(1 + 0.3*speedBuffs.size(),1 + 0.3*speedBuffs.size())
+	
 	if enabled:
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property($Polygon2D, "scale", Vector2(1,1), 0.1)
+		tween.tween_property($Polygon2D, "scale", target_scale, 0.1)
+		$DetectionArea.scale = target_scale
 		$Anim.play("active")
 	else:
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property($Polygon2D, "scale", Vector2(1,0), 0.1)
+		$DetectionArea.scale = Vector2(1,1)
 		$Anim.stop()
 		$Anim.play("finished")
-	
+		
+	reset_buff()
 	$Particles2D.set_emitting(enabled)
 #	$Particles2D2.set_emitting(enabled)
 	$Light2D.set_visible(enabled)

@@ -123,6 +123,7 @@ func _process(_delta):
 		
 	else:
 		Global.player.set_prebuild_hint("Not avaliable", self)
+		set_global_position(Global.player.get_global_position())
 	
 	point_mode = false
 
