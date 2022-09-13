@@ -16,7 +16,7 @@ var cooldown
 var cd_speed = 20
 
 var powerNum = 1
-var damageNum = 0
+var damageNum = []
 var speedBuffs = []
 
 func _ready():
