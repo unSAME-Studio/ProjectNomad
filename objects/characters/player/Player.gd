@@ -50,7 +50,7 @@ var camera
 var endless_nanos = false
 
 var build_card = preload("res://objects/ui/BuildCard.tscn")
-
+var click_holding = false
 
 func _ready():
 	Global.player = self
@@ -162,7 +162,12 @@ func _unhandled_input(event):
 		
 		# right clikc to interact
 		if event.get_button_index() == 2 and not event.is_pressed():
-			state.interact()
+			
+			#if is holding, disable interaction input
+			if not click_holding:
+				state.interact()
+				
+			click_holding = false
 
 
 func _process(delta):

@@ -60,9 +60,11 @@ func _process(delta):
 	if click_hold:
 		# hold to destroy
 		click_hold_time += delta
-		
 		$Sprite.set_self_modulate(Color("ffffff").linear_interpolate(Color("600000"), click_hold_time))
-		
+
+		#if is holding, negate interact input
+		if click_hold_time > 0.5:
+			Global.player.click_holding = true
 		if click_hold_time >= 1.0:
 			_on_destroy()
 		
@@ -119,6 +121,7 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 		
 		# right click
 		if event.get_button_index() == 2 and event.is_pressed():
+			
 			click_hold = true
 			click_initial_point = get_global_mouse_position()
 
@@ -128,6 +131,10 @@ func _unhandled_input(event):
 		if event is InputEventMouseButton:
 			if event.get_button_index() == 2 and not event.is_pressed():
 				click_hold = false
+				
+				#reset holding failsafe
+				Global.player.click_holding = false
+				
 				click_hold_time = 0.0
 				click_initial_point = Vector2.ZERO
 				
