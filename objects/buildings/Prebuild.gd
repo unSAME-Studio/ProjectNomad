@@ -211,7 +211,7 @@ func _process(delta):
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		if event.get_button_index() == 2 and event.is_pressed():
+		if event.get_button_index() == 1 and event.is_pressed():
 			# [TEMP] Repeated function please delete
 					
 			if target:
@@ -238,7 +238,7 @@ func _unhandled_input(event):
 						finish_build(base)
 			
 		# left click cancel
-		elif event.get_button_index() == 1 and event.is_pressed():
+		elif event.get_button_index() == 2 and event.is_pressed():
 			Global.player.end_building_mode()
 			card.canceled_build()
 			for i in build_points:

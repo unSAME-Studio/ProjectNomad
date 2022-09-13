@@ -68,13 +68,18 @@ func _process(delta):
 		
 		# drag to move
 		var dis = click_initial_point.distance_to(get_global_mouse_position())
-		$Sprite.set_scale(lerp(Vector2(1, 1), Vector2(1, 3), dis / 56.0))
+		$Sprite.set_scale(lerp(Vector2(1, 1), Vector2(3, 1), dis / 56.0))
+		$Sprite.look_at(get_global_mouse_position())
 		
 		if dis >= 56.0:
 			_on_moved()
 			click_hold = false
 			click_hold_time = 0.0
-			on_deselect()
+			
+			var tween = create_tween().set_trans(Tween.TRANS_SINE)
+			tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
+			tween.parallel().tween_property($Sprite, "self_modulate", Color("ffffff"), 0.1)
+			tween.parallel().tween_property($Sprite, "rotation", 0.0, 0.1)
 
 
 func get_hint_text():
@@ -129,6 +134,7 @@ func _unhandled_input(event):
 				var tween = create_tween().set_trans(Tween.TRANS_SINE)
 				tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
 				tween.parallel().tween_property($Sprite, "self_modulate", Color("ffffff"), 0.1)
+				tween.parallel().tween_property($Sprite, "rotation", 0.0, 0.1)
 
 
 func _on_mouse_entered():
