@@ -24,6 +24,11 @@ var data setget ,get_data
 onready var action = Global.culpits_data[type]["action"]
 onready var controllable = true
 
+var click_initial_point = Vector2.ZERO
+var click_drag_distance = 0.0
+var click_hold = false
+var click_hold_time = 0.0
+
 
 func _ready():
 	$Sprite.set_texture(load("res://arts/culpits/%s.png" % type))
@@ -48,6 +53,28 @@ func _ready():
 	if not controllable:
 		set_collision_layer_bit(0, true)
 		set_collision_layer_bit(3, false)
+
+
+func _process(delta):
+	# check for mouse dragging and holding
+	if click_hold:
+		# hold to destroy
+		click_hold_time += delta
+		
+		$Sprite.set_self_modulate(Color("ffffff").linear_interpolate(Color("600000"), click_hold_time))
+		
+		if click_hold_time >= 1.0:
+			_on_destroy()
+		
+		# drag to move
+		var dis = click_initial_point.distance_to(get_global_mouse_position())
+		$Sprite.set_scale(lerp(Vector2(1, 1), Vector2(1, 3), dis / 56.0))
+		
+		if dis >= 56.0:
+			_on_moved()
+			click_hold = false
+			click_hold_time = 0.0
+			on_deselect()
 
 
 func get_hint_text():
@@ -76,19 +103,33 @@ func snap_position(body):
 
 # Use mouse to interacte with the item directly
 func _on_Culpit_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton:
 		# right click
-		if event.get_button_index() == 2:
+		if event.get_button_index() == 3 and event.is_pressed():
 			print("player clicked on %s" % type)
 			
 			Global.player.edit_culpit(self)
 			
 			get_tree().set_input_as_handled()
 		
-		# left click
-		if Global.player.mouse_select_culpit == self and not Global.player.building_mode:
-			if event.get_button_index() == 1:
-				Global.player.state.interact()
+		# right click
+		if event.get_button_index() == 2 and event.is_pressed():
+			click_hold = true
+			click_initial_point = get_global_mouse_position()
+
+
+func _unhandled_input(event):
+	if click_hold == true:
+		if event is InputEventMouseButton:
+			if event.get_button_index() == 2 and not event.is_pressed():
+				click_hold = false
+				click_hold_time = 0.0
+				click_initial_point = Vector2.ZERO
+				
+				var tween = create_tween().set_trans(Tween.TRANS_SINE)
+				tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
+				tween.parallel().tween_property($Sprite, "self_modulate", Color("ffffff"), 0.1)
+
 
 func _on_mouse_entered():
 	print('selected')

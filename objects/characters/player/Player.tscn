@@ -154,7 +154,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -193,20 +192,21 @@ grow_vertical = 0
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.415686 )
 margin_right = 426.0
-margin_bottom = 495.0
+margin_bottom = 528.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 bbcode_enabled = true
 bbcode_text = "[u]Player[/u]
 WASD - Move
-E - Interact
-Left Click- Use Holding Item
+Left Click - Use Holding Item
+Right Click - Interact
 
 [u]Backpack[/u]
 Mouse Wheel - Scroll
 Num 1 to 5 - Quick Select
 Q - Throw Item
+E - Build Item
 
 [u]Cheats[/u]
 Endless Nanos- Alt + D
@@ -215,13 +215,14 @@ Endless Nanos- Alt + D
 [center]Backpack Slots[/center]"
 text = "Player
 WASD - Move
-E - Interact
-Left Click- Use Holding Item
+Left Click - Use Holding Item
+Right Click - Interact
 
 Backpack
 Mouse Wheel - Scroll
 Num 1 to 5 - Quick Select
 Q - Throw Item
+E - Build Item
 
 Cheats
 Endless Nanos- Alt + D
@@ -231,9 +232,9 @@ Backpack Slots"
 fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 499.0
+margin_top = 532.0
 margin_right = 426.0
-margin_bottom = 580.0
+margin_bottom = 613.0
 alignment = 1
 
 [node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
@@ -608,9 +609,9 @@ custom_fonts/font = SubResource( 26 )
 text = " "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 584.0
+margin_top = 617.0
 margin_right = 426.0
-margin_bottom = 622.0
+margin_bottom = 655.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
 margin_top = 3.0
@@ -918,7 +919,7 @@ margin_top = 6.0
 margin_right = 52.89
 margin_bottom = 38.0
 theme = ExtResource( 5 )
-text = "E"
+text = "RMB"
 align = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control/ControlHint/HBoxContainer"]

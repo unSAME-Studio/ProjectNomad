@@ -110,15 +110,6 @@ func _process(delta):
 	#	move_and_collide(get_global_position().direction_to(Global.player.get_global_position()), false)
 
 
-# Use mouse to interacte with the item directly
-func _on_Entity_input_event(viewport, event, shape_idx):
-	if Global.player.mouse_select_culpit == self:
-		if event is InputEventMouseButton:
-			if event.get_button_index() == 1 and event.is_pressed():
-				
-				Global.player.state.interact()
-
-
 func _on_mouse_entered():
 	Global.player.mouse_select_culpit = self
 
