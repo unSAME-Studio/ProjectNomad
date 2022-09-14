@@ -89,28 +89,20 @@ func _input(event):
 		if detach_object():
 			var object = $WearSlot.get_child(0)
 			reparent(object,base)
-			object.throw(self, true, lerp(500, 3000, clamp(throw_hold_time, 0.0, 1.0)))
+			var dis = clamp(get_global_position().distance_to(get_global_mouse_position()), 50, 380)
+			object.throw(self, true, lerp(0, 3000, dis / 380))
 			
 			$Sounds/Throw.play()
 		
-		throw_hold_time = 0.0
+		#throw_hold_time = 0.0
 		$ThrowHint.hide()
 		
 	if Input.is_action_just_pressed("throw"):
 		throw_hold = true
 		
 		$ThrowHint.show()
-		
-#		if wearing:
-#			var object = $WearSlot.get_child(0)
-#			if object.has_method('_on_moved'):
-#				var pre_object = object._on_moved()
-#			wearing = null
-			#pre_object.connect("tree_exiting", self, "reset_throw")
 
-#func reset_throw():
-#	wearing = 0
-	
+
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
 
@@ -180,9 +172,9 @@ func _process(delta):
 	
 	# update throwing hold time
 	if throw_hold:
-		throw_hold_time += delta
+		#throw_hold_time += delta
 		
-		var p = PoolVector2Array([Vector2.ZERO, Vector2(lerp(50, 380, clamp(throw_hold_time, 0.0, 1.0)), 0)])
+		var p = PoolVector2Array([Vector2.ZERO, Vector2(clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 380), 0)])
 		$ThrowHint.set_points(p)
 		
 		$ThrowHint.look_at(get_global_mouse_position())
