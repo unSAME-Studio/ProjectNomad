@@ -12,6 +12,8 @@ func _ready():
 	
 	persistent_state.velocity = Vector2.ZERO
 	
+	persistent_state.get_node("CanvasLayer/Control/ControlMode").show()
+	
 	# connect the player
 	persistent_state.culpit = persistent_state.selected_object
 	if is_instance_valid(persistent_state.culpit):
@@ -45,5 +47,7 @@ func interact():
 	if is_instance_valid(persistent_state.culpit):
 		persistent_state.culpit.stop_control(persistent_state)
 	persistent_state.culpit = null
+	
+	persistent_state.get_node("CanvasLayer/Control/ControlMode").hide()
 	
 	change_state.call_func("idle")

@@ -115,7 +115,7 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 		if event.get_button_index() == 3 and event.is_pressed():
 			print("player clicked on %s" % type)
 			
-			Global.player.edit_culpit(self)
+			#Global.player.edit_culpit(self)
 			
 			get_tree().set_input_as_handled()
 		
@@ -193,7 +193,7 @@ func _on_moved():
 	print(type + "is being moved")
 	
 	modulate.a = 0.3
-	Global.player.edit_culpit(self)
+	#Global.player.edit_culpit(self)
 	
 	$CollisionShape2D.set_deferred("disabled", true)
 	
@@ -207,7 +207,7 @@ func _on_moved():
 
 func canceled_build():
 	modulate.a = 1
-	Global.player.edit_culpit(self)
+	#Global.player.edit_culpit(self)
 	
 	if build_point:
 		build_point.end_build()

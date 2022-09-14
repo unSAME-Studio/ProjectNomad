@@ -3,7 +3,7 @@ extends Culpit
 const MAX_COUNT = 30
 const BUNDLE_SIZE = 6
 
-var storing = null
+var storing = "nano"
 var count = 0
 var enabled = false
 
@@ -11,10 +11,17 @@ var in_cd = false
 
 
 func _ready():
-	return 
+	if data != null:
+		print("Hey it contains data")
+		
+		storing = data["storing"]
+		count = data["count"]
+		
+		# update label
+		$Sprite/Label.set_text(String(count))
 	
-	var texture = load("res://arts/resources/nano.png" )
-	$Sprite/Icon.set_texture(texture)
+	#var texture = load("res://arts/resources/nano.png" )
+	#$Sprite/Icon.set_texture(texture)
 
 
 func operate(player):
@@ -59,6 +66,10 @@ func _process(delta):
 					
 					count += 1
 					$Sprite/Label.set_text(String(count))
+					
+					# update player ui (kinda sketch
+					if wearing:
+						user.storage_ui[user.wearing].update_box_info(storing, count)
 	
 	if count == BUNDLE_SIZE and not in_cd:
 		var e = entity.instance()

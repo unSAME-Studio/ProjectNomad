@@ -23,7 +23,7 @@ func add_object(new_type):
 	$TextureRect.set_texture(texture)
 	
 	# special set box icons
-	if type == "box":
+	if type in ["box", "packager"]:
 		if player.storage[slot]["data"] != null:
 			update_box_info(player.storage[slot]["data"]["storing"], player.storage[slot]["data"]["count"])
 	

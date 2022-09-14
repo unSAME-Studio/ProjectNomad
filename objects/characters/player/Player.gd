@@ -77,11 +77,11 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("control"):
 		if wearing != null and storage[wearing]["type"] in Global.culpits_data.keys():
-			if detach_object():
-				var object = $WearSlot.get_child(0)
-				object.set_wearing(false)
-				reparent(object,base)
-				object._on_moved()
+			var object = $WearSlot.get_child(0)
+			object._on_moved()
+			#if detach_object():
+				#object.set_wearing(false)
+				#reparent(object,base)
 				#object.throw(self,true)
 	
 	if Input.is_action_just_released('throw'):
@@ -121,7 +121,7 @@ func get_base():
 		return get_tree().get_current_scene().get_node("Node2D")
 
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("storage_left"):
+	if Input.is_action_just_pressed("storage_left") and not building_mode:
 		if storage_ui_group.get_pressed_button() != null:
 			var target = wrapi(storage_ui_group.get_pressed_button().slot - 1, 0, 5)
 			storage_ui[target].set_pressed(true)
@@ -132,7 +132,7 @@ func _unhandled_input(event):
 			storage_ui[0].set_pressed(true)
 			storage_ui[0].emit_signal("pressed")
 		
-	if Input.is_action_just_pressed("storage_right"):
+	if Input.is_action_just_pressed("storage_right") and not building_mode:
 		if storage_ui_group.get_pressed_button() != null:
 			var target = wrapi(storage_ui_group.get_pressed_button().slot + 1, 0, 5)
 			storage_ui[target].set_pressed(true)
@@ -155,17 +155,20 @@ func _unhandled_input(event):
 			# if wearing stuff, operate it
 			if wearing != null:
 				$WearSlot.get_child(0).operate(self)
+				get_tree().set_input_as_handled()
 			
 			# else if using culpit, operate it
 			elif culpit != null:
 				culpit.operate(self)
+				get_tree().set_input_as_handled()
 		
 		# right clikc to interact
-		if event.get_button_index() == 2 and not event.is_pressed():
+		if event.get_button_index() == 2 and not event.is_pressed() and not building_mode:
 			
 			#if is holding, disable interaction input
 			if not click_holding:
 				state.interact()
+				get_tree().set_input_as_handled()
 				
 			click_holding = false
 
@@ -335,6 +338,13 @@ func enter_building_mode() -> bool:
 	if not building_mode and state.get_class() != "ControlState":
 		building_mode = true
 		build_point_flag = true
+		
+		# disable ui while building
+		for i in storage_ui:
+			i.set_disabled(true)
+		
+		$CanvasLayer/Control/BuildingMode.show()
+		
 		return true
 	
 	return false
@@ -343,9 +353,16 @@ func enter_building_mode() -> bool:
 
 func end_building_mode() -> bool:
 	if building_mode:
-		yield(get_tree().create_timer(0.5),"timeout")
+		yield(get_tree().create_timer(0.1),"timeout")
 		#yield(get_tree(), "physics_frame")
 		building_mode = false
+		
+		# enable ui
+		for i in storage_ui:
+			i.set_disabled(false)
+		
+		$CanvasLayer/Control/BuildingMode.hide()
+		
 		return true
 	
 	return false
