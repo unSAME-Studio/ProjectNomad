@@ -36,7 +36,7 @@ func destroy():
 	disconnect_culpit(true)
 
 func operate(player):
-	if connected:
+	if connected and is_instance_valid(connected):
 		if not using:
 			if player.has_method('get_targets'):
 				LockTarget = player.get_targets(self)
@@ -74,7 +74,7 @@ func disconnect_culpit(clear = false):
 
 
 func _process(_delta):
-	if connected and base.controlling:
+	if connected and base.controlling and is_instance_valid(connected):
 		var targetLoc = get_global_mouse_position()
 		if LockTarget:
 			targetLoc = LockTarget.get_global_position()

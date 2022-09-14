@@ -24,7 +24,14 @@ func ready():
 	#self.connect("tree_exiting", self, "destroy")
 	#slot_build_point.bind_point(base)
 	#slot_build_point.bind_point(get_parent().get_parent())
-	
+	var room
+	var result = get_world_2d().get_direct_space_state().intersect_point(position, 6 ,[],32,false,true)
+	if (not result.empty()):
+		room = result[0].collider
+		slot_build_point.bind_point(room)
+	else:
+		if 'build_points' in get_parent().get_parent():
+			slot_build_point.bind_point(get_parent().get_parent())
 	if prenode:
 		yield(get_tree(),"idle_frame")
 		$buildpoint.finish_build(prenode)
