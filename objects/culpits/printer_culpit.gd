@@ -34,8 +34,13 @@ func initial_control(body):
 	
 	$CanvasLayer/Control.show()
 	
-	# default open the build menu
-	body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").active(true)
+	# default hide when wearing
+	if wearing:
+		$CanvasLayer/Control/PanelContainer.hide()
+	
+	else:
+		# default open the build menu
+		body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").active(true)
 
 
 func stop_control(body):
@@ -44,8 +49,9 @@ func stop_control(body):
 	
 	$CanvasLayer/Control.hide()
 	
-	# default close the build menu
-	body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").active(false)
+	if not wearing:
+		# default close the build menu
+		body.get_node("CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu").active(false)
 
 
 func _on_ItemList_item_selected(index):
@@ -112,3 +118,7 @@ func _on_UnlockBtn_pressed():
 			$CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer2/PanelContainer/Level.set_text("%s" % Global.tech_level)
 			$CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/ProgressBar.set_max(Global.tech_level_total)
 			$CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/HBoxContainer/ProgressBar.set_value(0)
+
+
+func _on_Toggle_pressed():
+	$CanvasLayer/Control/PanelContainer.set_visible(!$CanvasLayer/Control/PanelContainer.is_visible())

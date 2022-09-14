@@ -22,6 +22,10 @@ func initial_control(body):
 	print(name + " is being controller")
 	user = body
 	
+	# default hide when wearing
+	if wearing:
+		$CanvasLayer/Control/PanelContainer.hide()
+	
 	$CanvasLayer/Control.show()
 
 
@@ -59,3 +63,7 @@ func _on_CraftBtn_pressed():
 		e.set_wearing(false)
 		e.velocity = Vector2.DOWN.rotated(get_rotation()).normalized() * 1000
 		e.throwing = true
+
+
+func _on_Toggle_pressed():
+	$CanvasLayer/Control/PanelContainer.set_visible(!$CanvasLayer/Control/PanelContainer.is_visible())
