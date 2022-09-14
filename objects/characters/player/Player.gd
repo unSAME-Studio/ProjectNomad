@@ -343,6 +343,8 @@ func enter_building_mode() -> bool:
 		for i in storage_ui:
 			i.set_disabled(true)
 		
+		$CanvasLayer/Control/BuildingMode.show()
+		
 		return true
 	
 	return false
@@ -358,6 +360,8 @@ func end_building_mode() -> bool:
 		# enable ui
 		for i in storage_ui:
 			i.set_disabled(false)
+		
+		$CanvasLayer/Control/BuildingMode.hide()
 		
 		return true
 	
