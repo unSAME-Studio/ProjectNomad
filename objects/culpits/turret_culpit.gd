@@ -16,8 +16,9 @@ var cooldown
 var cd_speed = 20
 
 var powerNum = 1
-var damageNum = 0
+var damageBuffs = []
 var speedBuffs = []
+var rateBuffs = []
 
 func _ready():
 	var p = Position2D.new()
@@ -54,9 +55,17 @@ func buff(buff_type,target):
 	if buff_type == 'speed':
 		if not target in speedBuffs:
 			speedBuffs.append(target)
+	elif buff_type == 'damage':
+		if not target in damageBuffs:
+			damageBuffs.append(target)
+	elif buff_type == 'rate':
+		if not target in rateBuffs:
+			rateBuffs.append(target)
 		
 func reset_buff():
 	speedBuffs = []
+	damageBuffs =  []
+	rateBuffs = []
 		
 func powered():
 	if not powered:
@@ -80,6 +89,7 @@ func operate(player):
 			b.speed = projectile_speed*slotted.speed_buff
 			b.scale = scale
 		b.speed += speedBuffs.size() * 2
+		b.damage += damageBuffs.size() * 2
 		b.get_node('Sprite').scale.y += speedBuffs.size() * 0.5
 		b.parent = self
 		if powered:
@@ -89,7 +99,7 @@ func operate(player):
 		b.set_global_rotation($Sprite.get_global_rotation())
 		get_tree().get_current_scene().get_node("Node2D").add_child(b)
 		
-		cooldown.increase_cooldown(cd)
+		cooldown.increase_cooldown(clamp(cd - rateBuffs.size()*1,1,100))
 		
 		$Anim.play("fire")
 		
