@@ -128,11 +128,11 @@ func stop_control(player):
 	pass
 
 
-func throw(player,_throw = false, force = 1000):
+func throw(player, throw = false, force = 1000, wtf = false):
 	#check_base()
 	set_wearing(false)
 	stop_control(player)
-	if _throw:
+	if throw:
 		velocity = player.get_facing().normalized() * force
 	throwing = true
 	set_collision_mask_bit(6, false)
