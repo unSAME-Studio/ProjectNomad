@@ -159,6 +159,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -1042,6 +1043,18 @@ custom_colors/font_color = Color( 1, 1, 1, 0.478431 )
 custom_fonts/font = SubResource( 29 )
 text = "[ CONTROL MODE ]"
 align = 1
+
+[node name="ThrowBuild" type="TextureProgress" parent="CanvasLayer/Control"]
+margin_left = -4.5
+margin_top = -6.5
+margin_right = 85.5
+margin_bottom = 71.5
+rect_scale = Vector2( 0.7, 0.7 )
+rect_pivot_offset = Vector2( 45, 35 )
+max_value = 1.0
+step = 0.01
+texture_progress = ExtResource( 9 )
+fill_mode = 4
 
 [node name="ControllableDetection" type="Area2D" parent="."]
 collision_layer = 0

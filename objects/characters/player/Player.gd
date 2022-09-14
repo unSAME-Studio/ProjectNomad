@@ -90,18 +90,19 @@ func _input(event):
 			var object = $WearSlot.get_child(0)
 			reparent(object,base)
 			var dis = clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 190)
-			object.throw(self, true, lerp(0, 1500, dis / 190))
+			object.throw(self, true, lerp(0, 1500, dis / 190), throw_hold_time >= 0.5)
 			
 			$Sounds/Throw.play()
 		
-		#throw_hold_time = 0.0
+		throw_hold_time = 0.0
 		$ThrowHint.hide()
+		$CanvasLayer/Control/ThrowBuild.hide()
 		
 	if Input.is_action_just_pressed("throw"):
 		throw_hold = true
 		
 		$ThrowHint.show()
-
+		$CanvasLayer/Control/ThrowBuild.show()
 
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
@@ -172,11 +173,15 @@ func _process(delta):
 	
 	# update throwing hold time
 	if throw_hold:
-		#throw_hold_time += delta
+		throw_hold_time += delta
 		
-		var p = PoolVector2Array([Vector2.ZERO, Vector2(clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 190), 0)])
+		$CanvasLayer/Control/ThrowBuild.set_value(throw_hold_time / 0.5)
+		$CanvasLayer/Control/ThrowBuild.set_position($AnimatedSprite.get_global_transform_with_canvas().get_origin())
+		
+		var dis = clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 190)
+		var p = PoolVector2Array([Vector2.ZERO, Vector2(dis, 0)])
+		
 		$ThrowHint.set_points(p)
-		
 		$ThrowHint.look_at(get_global_mouse_position())
 	
 #	if camera:
