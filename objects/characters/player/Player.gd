@@ -50,7 +50,7 @@ var camera
 var endless_nanos = false
 
 var build_card = preload("res://objects/ui/BuildCard.tscn")
-
+var click_holding = false
 
 func _ready():
 	Global.player = self
@@ -76,8 +76,14 @@ func _input(event):
 		$CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.active()#not $CanvasLayer/Control/VBoxContainer2/HBoxContainer/BuildMenu.is_visible())
 	
 	if Input.is_action_just_pressed("control"):
-		state.interact()
-		
+		if wearing != null and storage[wearing]["type"] in Global.culpits_data.keys():
+			if detach_object():
+				var object = $WearSlot.get_child(0)
+				object.set_wearing(false)
+				reparent(object,base)
+				object._on_moved()
+				#object.throw(self,true)
+	
 	if Input.is_action_just_released('throw'):
 		throw_hold = false
 		if detach_object():
@@ -138,9 +144,11 @@ func _unhandled_input(event):
 			storage_ui[0].emit_signal("pressed")
 	
 	
+	# cheating mode turnning on
 	if Input.is_action_just_pressed("debug"):
 		endless_nanos = !endless_nanos
 		$Sounds/Pray.play()
+	
 	
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
@@ -152,14 +160,14 @@ func _unhandled_input(event):
 			elif culpit != null:
 				culpit.operate(self)
 		
-		elif event.get_button_index() == 2 and event.is_pressed():
-			if wearing != null and storage[wearing]["type"] in Global.culpits_data.keys():
-				if detach_object():
-					var object = $WearSlot.get_child(0)
-					object.set_wearing(false)
-					reparent(object,base)
-					object._on_moved()
-					#object.throw(self,true)
+		# right clikc to interact
+		if event.get_button_index() == 2 and not event.is_pressed():
+			
+			#if is holding, disable interaction input
+			if not click_holding:
+				state.interact()
+				
+			click_holding = false
 
 
 func _process(delta):
@@ -204,7 +212,6 @@ func _process(delta):
 				selected_object.emit_signal("deselect")
 		selected_object = mouse_select_culpit
 		
-		$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("Click")
 	else:
 		mouse_select_culpit = null
 		
@@ -219,8 +226,6 @@ func _process(delta):
 					if is_instance_valid(selected_object):
 						selected_object.emit_signal("deselect")
 				selected_object = temp_selected_object
-			
-			$CanvasLayer/Control/ControlHint/HBoxContainer/PanelContainer/Key.set_text("E")
 			
 		else:
 			if selected_object and is_instance_valid(selected_object):
