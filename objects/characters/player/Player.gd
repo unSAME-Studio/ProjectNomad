@@ -89,8 +89,8 @@ func _input(event):
 		if detach_object():
 			var object = $WearSlot.get_child(0)
 			reparent(object,base)
-			var dis = clamp(get_global_position().distance_to(get_global_mouse_position()), 50, 380)
-			object.throw(self, true, lerp(0, 3000, dis / 380))
+			var dis = clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 190)
+			object.throw(self, true, lerp(0, 1500, dis / 190))
 			
 			$Sounds/Throw.play()
 		
@@ -174,7 +174,7 @@ func _process(delta):
 	if throw_hold:
 		#throw_hold_time += delta
 		
-		var p = PoolVector2Array([Vector2.ZERO, Vector2(clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 380), 0)])
+		var p = PoolVector2Array([Vector2.ZERO, Vector2(clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 190), 0)])
 		$ThrowHint.set_points(p)
 		
 		$ThrowHint.look_at(get_global_mouse_position())
