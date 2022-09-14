@@ -49,28 +49,29 @@ theme = ExtResource( 3 )
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control"]
 material = SubResource( 5 )
-margin_left = 1049.0
-margin_top = 150.0
-margin_right = 1756.0
-margin_bottom = 703.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -707.0
+margin_top = 50.0
+margin_bottom = 750.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer"]
 margin_right = 707.0
-margin_bottom = 553.0
+margin_bottom = 700.0
 alignment = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer"]
 margin_left = 3.0
 margin_right = 303.0
-margin_bottom = 553.0
+margin_bottom = 700.0
 rect_min_size = Vector2( 300, 0 )
 theme = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer"]
 margin_right = 300.0
-margin_bottom = 553.0
+margin_bottom = 700.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -82,7 +83,7 @@ text = "Crafter Menu"
 [node name="ItemList" type="ItemList" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 36.0
 margin_right = 300.0
-margin_bottom = 553.0
+margin_bottom = 700.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 3 )
@@ -92,35 +93,35 @@ fixed_icon_size = Vector2( 50, 50 )
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer"]
 margin_left = 307.0
 margin_right = 707.0
-margin_bottom = 553.0
+margin_bottom = 700.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 400.0
-margin_bottom = 499.0
+margin_bottom = 646.0
 rect_min_size = Vector2( 400, 300 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer"]
 margin_right = 400.0
-margin_bottom = 499.0
+margin_bottom = 646.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer"]
 margin_right = 400.0
 
 [node name="Description" type="RichTextLabel" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/PanelContainer/VBoxContainer"]
-margin_top = 235.0
+margin_top = 308.0
 margin_right = 400.0
-margin_bottom = 268.0
+margin_bottom = 341.0
 size_flags_vertical = 6
 text = "      < Select a machine"
 fit_content_height = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer"]
-margin_top = 503.0
+margin_top = 650.0
 margin_right = 400.0
-margin_bottom = 553.0
+margin_bottom = 700.0
 alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
@@ -166,8 +167,26 @@ disabled = true
 enabled_focus_mode = 0
 text = "Craft"
 
+[node name="PanelContainer3" type="PanelContainer" parent="CanvasLayer/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -214.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 59.032, 50 )
+theme = ExtResource( 3 )
+
+[node name="Toggle" type="Button" parent="CanvasLayer/Control/PanelContainer3"]
+margin_right = 214.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 200, 0 )
+focus_mode = 0
+theme = ExtResource( 3 )
+enabled_focus_mode = 0
+text = "Toggle Menu"
+
 [node name="DamageComponent" parent="." instance=ExtResource( 4 )]
 health_max = 50
 
 [connection signal="item_selected" from="CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/ItemList" to="." method="_on_ItemList_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Control/PanelContainer/HBoxContainer/VBoxContainer/HBoxContainer/PanelContainer2/CraftBtn" to="." method="_on_CraftBtn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/PanelContainer3/Toggle" to="." method="_on_Toggle_pressed"]
