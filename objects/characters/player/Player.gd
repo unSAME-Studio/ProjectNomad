@@ -161,7 +161,7 @@ func _unhandled_input(event):
 			#if is holding, disable interaction input
 			if not click_holding:
 				state.interact()
-				get_tree().set_input_as_handled()
+				
 				
 			click_holding = false
 
