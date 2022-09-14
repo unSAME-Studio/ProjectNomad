@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://sounds/clip.wav" type="AudioStream" id=31]
 [ext_resource path="res://sounds/equip.wav" type="AudioStream" id=32]
 [ext_resource path="res://sounds/pray.wav" type="AudioStream" id=33]
+[ext_resource path="res://arts/ui/quick_access_disabled.png" type="Texture" id=34]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -154,7 +155,6 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -193,7 +193,7 @@ grow_vertical = 0
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.415686 )
 margin_right = 426.0
-margin_bottom = 528.0
+margin_bottom = 561.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -208,6 +208,7 @@ Mouse Wheel - Scroll
 Num 1 to 5 - Quick Select
 Q - Throw Item
 E - Build Item
+R - Rotate Building Item
 
 [u]Cheats[/u]
 Endless Nanos- Alt + D
@@ -224,6 +225,7 @@ Mouse Wheel - Scroll
 Num 1 to 5 - Quick Select
 Q - Throw Item
 E - Build Item
+R - Rotate Building Item
 
 Cheats
 Endless Nanos- Alt + D
@@ -233,9 +235,9 @@ Backpack Slots"
 fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 532.0
+margin_top = 565.0
 margin_right = 426.0
-margin_bottom = 613.0
+margin_bottom = 646.0
 alignment = 1
 
 [node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
@@ -251,6 +253,7 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 34 )
 script = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage"]
@@ -335,6 +338,7 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 34 )
 script = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage2"]
@@ -407,6 +411,7 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 34 )
 script = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage3"]
@@ -479,6 +484,7 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 34 )
 script = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage4"]
@@ -551,6 +557,7 @@ group = ExtResource( 16 )
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 13 )
+texture_disabled = ExtResource( 34 )
 script = ExtResource( 21 )
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/StorageBox/Storage5"]
@@ -610,9 +617,9 @@ custom_fonts/font = SubResource( 26 )
 text = " "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 617.0
+margin_top = 650.0
 margin_right = 426.0
-margin_bottom = 655.0
+margin_bottom = 688.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
 margin_top = 3.0

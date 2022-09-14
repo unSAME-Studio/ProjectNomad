@@ -121,7 +121,7 @@ func get_base():
 		return get_tree().get_current_scene().get_node("Node2D")
 
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("storage_left"):
+	if Input.is_action_just_pressed("storage_left") and not building_mode:
 		if storage_ui_group.get_pressed_button() != null:
 			var target = wrapi(storage_ui_group.get_pressed_button().slot - 1, 0, 5)
 			storage_ui[target].set_pressed(true)
@@ -132,7 +132,7 @@ func _unhandled_input(event):
 			storage_ui[0].set_pressed(true)
 			storage_ui[0].emit_signal("pressed")
 		
-	if Input.is_action_just_pressed("storage_right"):
+	if Input.is_action_just_pressed("storage_right") and not building_mode:
 		if storage_ui_group.get_pressed_button() != null:
 			var target = wrapi(storage_ui_group.get_pressed_button().slot + 1, 0, 5)
 			storage_ui[target].set_pressed(true)
@@ -338,6 +338,11 @@ func enter_building_mode() -> bool:
 	if not building_mode and state.get_class() != "ControlState":
 		building_mode = true
 		build_point_flag = true
+		
+		# disable ui while building
+		for i in storage_ui:
+			i.set_disabled(true)
+		
 		return true
 	
 	return false
@@ -346,9 +351,14 @@ func enter_building_mode() -> bool:
 
 func end_building_mode() -> bool:
 	if building_mode:
-		yield(get_tree().create_timer(0.5),"timeout")
+		yield(get_tree().create_timer(0.1),"timeout")
 		#yield(get_tree(), "physics_frame")
 		building_mode = false
+		
+		# enable ui
+		for i in storage_ui:
+			i.set_disabled(false)
+		
 		return true
 	
 	return false

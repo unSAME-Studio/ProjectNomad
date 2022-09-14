@@ -290,8 +290,13 @@ func finish_build(room):
 	# check for type, if it's card then don't destroy but restore
 	if "Card" in card.name:
 		card.canceled_build()
+	elif "Culpit" in card.name and card.wearing == true:
+		if Global.player.detach_object():
+			var object = Global.player.get_node("WearSlot").get_child(0).queue_free()
 	else:
 		card.queue_free()
+	
 	if Global.building == self:
 		Global.building = null
+	
 	queue_free()
