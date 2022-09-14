@@ -213,7 +213,9 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.get_button_index() == 1 and event.is_pressed():
 			# [TEMP] Repeated function please delete
-					
+			
+			get_tree().set_input_as_handled()
+			
 			if target:
 				if can_build:
 					room = target.room

@@ -77,11 +77,11 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("control"):
 		if wearing != null and storage[wearing]["type"] in Global.culpits_data.keys():
-			if detach_object():
-				var object = $WearSlot.get_child(0)
-				object.set_wearing(false)
-				reparent(object,base)
-				object._on_moved()
+			var object = $WearSlot.get_child(0)
+			object._on_moved()
+			#if detach_object():
+				#object.set_wearing(false)
+				#reparent(object,base)
 				#object.throw(self,true)
 	
 	if Input.is_action_just_released('throw'):
@@ -155,17 +155,20 @@ func _unhandled_input(event):
 			# if wearing stuff, operate it
 			if wearing != null:
 				$WearSlot.get_child(0).operate(self)
+				get_tree().set_input_as_handled()
 			
 			# else if using culpit, operate it
 			elif culpit != null:
 				culpit.operate(self)
+				get_tree().set_input_as_handled()
 		
 		# right clikc to interact
-		if event.get_button_index() == 2 and not event.is_pressed():
+		if event.get_button_index() == 2 and not event.is_pressed() and not building_mode:
 			
 			#if is holding, disable interaction input
 			if not click_holding:
 				state.interact()
+				get_tree().set_input_as_handled()
 				
 			click_holding = false
 
