@@ -30,17 +30,24 @@ var faction = 'ship'
 var line
 
 var operating = false
-
+var heartNum = 0
 func _ready():
-
+	for i in get_children():
+		if 'Fat' in i.name:
+			heartNum += 1
+			i.connect("tree_exiting", self, "heart_killed")
 	#$RigidBody2D/PinJoint2D.connect_bodies(self,$RigidBody2D)
 	# [TEMP DELETE]
 	#$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon
 	#$objects/Wall/LightOccluder2D.occluder.set_polygon($objects/Wall/Polygon2D.polygon)
-	pass
 
 func update_polygon(input,clip = false):
 	pass
+	
+func heart_killed():
+	heartNum -= 1
+	if heartNum <=0:
+		queue_free()
 func handle_movement(direction):
 		set_applied_torque(direction.x * 20000)		
 		set_applied_force(Vector2(direction.x*50,direction.y * (300+speed_boost)).rotated(get_rotation()))

@@ -182,12 +182,12 @@
       "cost": 3,
       "description": "Buff projectile damage of nearby turrets."
     },
-    "turret shots buffer": {
+    "turret rate buffer": {
       "type": 0,
       "action": 1,
       "hint": "Aactivate",
-      "cost": 5,
-      "description": "Buff projectile number per shot of nearby turrets."
+      "cost": 3,
+      "description": "Buff turret cooldown of nearby turrets."
     }
   },
   "entity": {
