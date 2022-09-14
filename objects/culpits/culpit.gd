@@ -63,26 +63,27 @@ func _process(delta):
 		$Sprite.set_self_modulate(Color("ffffff").linear_interpolate(Color("600000"), click_hold_time))
 
 		#if is holding, negate interact input
-		if click_hold_time > 0.5:
+		if click_hold_time > 0.3:
 			Global.player.click_holding = true
+			
+					# drag to move
+			var dis = click_initial_point.distance_to(get_global_mouse_position())
+			$Sprite.set_scale(lerp(Vector2(1, 1), Vector2(3, 1), dis / 56.0))
+			$Sprite.look_at(get_global_mouse_position())
+			if dis >= 56.0:
+				_on_moved()
+				click_hold = false
+				click_hold_time = 0.0
+				
+				var tween = create_tween().set_trans(Tween.TRANS_SINE)
+				tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
+				tween.parallel().tween_property($Sprite, "self_modulate", Color("ffffff"), 0.1)
+				tween.parallel().tween_property($Sprite, "rotation", 0.0, 0.1)
+
+			
 		if click_hold_time >= 1.0:
 			_on_destroy()
 		
-		# drag to move
-		var dis = click_initial_point.distance_to(get_global_mouse_position())
-		$Sprite.set_scale(lerp(Vector2(1, 1), Vector2(3, 1), dis / 56.0))
-		$Sprite.look_at(get_global_mouse_position())
-		
-		if dis >= 56.0:
-			_on_moved()
-			click_hold = false
-			click_hold_time = 0.0
-			
-			var tween = create_tween().set_trans(Tween.TRANS_SINE)
-			tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
-			tween.parallel().tween_property($Sprite, "self_modulate", Color("ffffff"), 0.1)
-			tween.parallel().tween_property($Sprite, "rotation", 0.0, 0.1)
-
 
 func get_hint_text():
 	return Global.culpits_data[type]["hint"]
@@ -121,7 +122,7 @@ func _on_Culpit_input_event(viewport, event, shape_idx):
 		
 		# right click
 		if event.get_button_index() == 2 and event.is_pressed():
-			
+
 			click_hold = true
 			click_initial_point = get_global_mouse_position()
 
@@ -131,7 +132,7 @@ func _unhandled_input(event):
 		if event is InputEventMouseButton:
 			if event.get_button_index() == 2 and not event.is_pressed():
 				click_hold = false
-				
+				print('reset')
 				#reset holding failsafe
 				Global.player.click_holding = false
 				
@@ -142,7 +143,7 @@ func _unhandled_input(event):
 				tween.tween_property($Sprite, "scale", Vector2(1, 1), 0.1)
 				tween.parallel().tween_property($Sprite, "self_modulate", Color("ffffff"), 0.1)
 				tween.parallel().tween_property($Sprite, "rotation", 0.0, 0.1)
-
+				get_tree().set_input_as_handled()
 
 func _on_mouse_entered():
 	print('selected')
