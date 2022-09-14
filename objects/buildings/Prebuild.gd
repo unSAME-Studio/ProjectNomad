@@ -237,7 +237,7 @@ func _unhandled_input(event):
 						hovering = false
 						finish_build(base)
 			
-		# right click cancel
+		# left click cancel
 		elif event.get_button_index() == 2 and event.is_pressed():
 			Global.player.end_building_mode()
 			card.canceled_build()
