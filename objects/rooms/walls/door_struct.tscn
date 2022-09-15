@@ -37,6 +37,7 @@ tracks/1/keys = {
 }
 
 [node name="door" type="StaticBody2D"]
+z_index = 1
 input_pickable = true
 script = ExtResource( 1 )
 
@@ -44,6 +45,7 @@ script = ExtResource( 1 )
 modulate = Color( 0.568627, 0.568627, 0.568627, 1 )
 position = Vector2( 127.999, 0.463912 )
 rotation = 0.00724864
+z_as_relative = false
 color = Color( 0.698039, 0.796078, 0.94902, 1 )
 texture = ExtResource( 2 )
 texture_rotation_degrees = 90.0
