@@ -26,6 +26,7 @@ var onboard = false
 var base_cooldown = false
 var throw_hold = false
 var throw_hold_time = 0.0
+const THROW_HOLD_NEEDED = 0.5
 
 var input_moving = false
 
@@ -84,13 +85,13 @@ func _input(event):
 				#reparent(object,base)
 				#object.throw(self,true)
 	
-	if Input.is_action_just_released('throw'):
+	if Input.is_action_just_released('throw') and throw_hold:
 		throw_hold = false
 		if detach_object():
 			var object = $WearSlot.get_child(0)
 			reparent(object,base)
 			var dis = clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 190)
-			object.throw(self, true, lerp(0, 1500, dis / 190), throw_hold_time >= 0.5)
+			object.throw(self, true, lerp(0, 1500, dis / 190), throw_hold_time >= THROW_HOLD_NEEDED)
 			
 			$Sounds/Throw.play()
 		
@@ -99,10 +100,15 @@ func _input(event):
 		$CanvasLayer/Control/ThrowBuild.hide()
 		
 	if Input.is_action_just_pressed("throw"):
-		throw_hold = true
-		
-		$ThrowHint.show()
-		$CanvasLayer/Control/ThrowBuild.show()
+		# check if holding objectsd
+		if is_holding_object():
+			throw_hold = true
+			
+			$ThrowHint.show()
+			
+			# hide the UI for none build items
+			if storage[wearing]["type"] in Global.culpits_data.keys():
+				$CanvasLayer/Control/ThrowBuild.show()
 
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
@@ -175,15 +181,20 @@ func _process(delta):
 	if throw_hold:
 		throw_hold_time += delta
 		
-		$CanvasLayer/Control/ThrowBuild.set_value(throw_hold_time / 0.5)
-		$CanvasLayer/Control/ThrowBuild.set_position($AnimatedSprite.get_global_transform_with_canvas().get_origin())
+		$CanvasLayer/Control/ThrowBuild.set_value(throw_hold_time / THROW_HOLD_NEEDED)
+		$CanvasLayer/Control/ThrowBuild.set_position(get_viewport().get_mouse_position())
 		
 		var dis = clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 190)
 		var p = PoolVector2Array([Vector2.ZERO, Vector2(dis, 0)])
 		
 		$ThrowHint.set_points(p)
 		$ThrowHint.look_at(get_global_mouse_position())
-	
+		
+		if throw_hold_time >= THROW_HOLD_NEEDED:
+			$CanvasLayer/Control/ThrowBuild/Label.set_text("> BUILD <")
+		else:
+			$CanvasLayer/Control/ThrowBuild/Label.set_text("> THROW <")
+		
 #	if camera:
 #		$AnimatedSprite.set_global_rotation(camera.get_global_rotation())
 #	if build_point_flag:
@@ -630,6 +641,10 @@ func detach_object(check = false) -> bool:
 		return true
 	
 	return false
+
+func is_holding_object() -> bool:
+	return $WearSlot.get_child_count() > 0
+
 
 # https://godotengine.org/qa/9806/reparent-node-at-runtime
 # function for reparenting at realtime
