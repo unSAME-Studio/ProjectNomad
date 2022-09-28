@@ -13,8 +13,10 @@ var indicator = preload("res://objects/VFX/indi.tscn")
 export var points_to = Vector2(5580, -7500)
 
 func _process(delta):
-		#$Sprite.look_at(points_to.get_global_position())
-	$Sprite.rotate(-5 * delta)
+	$radar/Sprite.set_global_rotation(0)
+	$radar/Scan.rotate(-4 * delta)
+	
+	$Sprite.rotate(-4 * delta)
 	if enabled:
 		if points_to:
 			$radar/arrow.look_at(points_to)
@@ -51,7 +53,7 @@ func operate(player):
 						$radar/arrow.show()
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 		#tween.tween_property($Sprite2, "modulate", Color("c6ffce"), 0.3)
-		tween.tween_property($radar, "scale", Vector2(3.5,3.5), 0.3)
+		tween.tween_property($radar, "scale", Vector2(1, 1), 0.3)
 		for i in get_tree().get_current_scene().get_node("Node2D").get_children():
 			#if i.get_class():
 			#	target_list = []
