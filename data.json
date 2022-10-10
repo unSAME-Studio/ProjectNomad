@@ -8,84 +8,91 @@
       "description": "A basic steering wheel. You can use it to control the ship when placed on it."
     },
     "light": {
-      "type": 2,
+      "type": 0,
       "action": 1,
       "hint": "Turn On / Off",
       "cost": 1,
       "description": "Let there be light! Its range can be extended by the Generator."
     },
     "printer": {
-      "type": 1,
+      "type": 0,
       "action": 0,
       "hint": "Open Tech Tree",
       "cost": 2,
       "description": "Use printer to upgrade your Tech Tree, unlock more blueprints for your ship."
     },
     "crafter": {
-      "type": 1,
+      "type": 0,
       "action": 0,
       "hint": "Craft Items",
       "cost": 1,
-      "description": "Use crafter to craft more machines (like what you're doing right now)."
+      "description": "Use basic crafter to craft more machines (like what you're doing right now)."
+    },
+    "crafter advanced": {
+      "type": 0,
+      "action": 0,
+      "hint": "Craft Items",
+      "cost": 1,
+      "description": "Use advanced crafter to craft crazy machines."
     },
     "turret": {
-      "type": 3,
+      "type": 0,
       "action": 0,
       "hint": "Control",
       "cost": 5,
       "description": "A powerful weapon. You can use it portably or placed on the ground."
     },
     "zapper": {
-      "type": 3,
+      "type": 0,
       "action": 0,
       "hint": "Control",
       "cost": 5,
       "description": "A lazer type weapon."
     },
     "drill": {
-      "type": 3,
+      "type": 0,
       "action": 0,
       "hint": "Control",
       "cost": 1,
       "description": "A katana type lazer. Powerful melee weapon. Swing it to deal damage, the faster you swing the more powerful it is. Can deflect bullets."
     },
     "healer": {
-      "type": 3,
+      "type": 0,
       "action": 0,
       "hint": "Control",
       "cost": 5,
       "description": "A healing beam. You can use it to heal or fix structures."
     },
     "generator": {
-      "type": 2,
+      "type": 1,
       "action": 1,
       "hint": "Turn On / Off",
       "cost": 9,
       "description": "Provides additional powers to machines. Can boost their functions."
     },
     "recycler": {
-      "type": 2,
+      "type": 1,
       "action": 1,
       "hint": "Recycle Hold Item",
       "cost": 3,
       "description": "Recycle random resources and turn them into useful ones."
     },
     "decomposer": {
-      "type": 2,
+      "type": 0,
       "action": 1,
       "hint": "Recycle items",
       "cost": 2,
       "description": "A portable recycler, vaccum in resouces and recycle them."
     },
     "box": {
-      "type": 1,
+      "type": 0,
       "action": 1,
       "hint": "Collect",
       "cost": 1,
       "description": "Resource vaccum. Use this to store and stack resources."
     },
     "auto wheel": {
-      "type": 0,
+      "type": 1,
       "action": 1,
       "hint": "Turn On / Off",
       "cost": 1,
@@ -99,35 +106,35 @@
       "description": "Provide simple direction guiding."
     },
     "reducer": {
-      "type": 0,
+      "type": 1,
       "action": 1,
       "hint": "Turn On / Off",
       "cost": 3,
       "description": "A sheild, Slow down any projectile inside zone."
     },
     "relay": {
-      "type": 0,
+      "type": 1,
       "action": 1,
       "hint": "Operate",
       "cost": 1,
       "description": "Activates all the machines in the zone."
     },
     "reality manipulator": {
-      "type": 0,
+      "type": 1,
       "action": 1,
       "hint": "Operate",
       "cost": 1,
       "description": "Change the movement of the star."
     },
     "barrier": {
-      "type": 0,
+      "type": 1,
       "action": 0,
       "hint": "Operate",
       "cost": 1,
       "description": "A portable substitude for walls."
     },
     "radar": {
-      "type": 0,
+      "type": 1,
       "action": 1,
       "hint": "Scan",
       "cost": 3,
@@ -148,28 +155,28 @@
       "description": "Useful machine for packaging nanos into bundles."
     },
     "anchor": {
-      "type": 0,
+      "type": 1,
       "action": 1,
       "hint": "Anchor",
       "cost": 1,
       "description": "Anchor the ship."
     },
     "turret speed buffer": {
-      "type": 0,
+      "type": 1,
       "action": 1,
       "hint": "Activate",
       "cost": 3,
       "description": "Buff projectile speed of nearby turrets."
     },
     "turret damage buffer": {
-      "type": 0,
+      "type": 1,
       "action": 1,
       "hint": "Activate",
       "cost": 3,
       "description": "Buff projectile damage of nearby turrets."
     },
     "turret rate buffer": {
-      "type": 0,
+      "type": 1,
       "action": 1,
       "hint": "Activate",
       "cost": 3,
@@ -222,11 +229,11 @@
     },
     "base": {
       "type": 0,
-      "level": 2,
+      "level": 1,
       "unlocked": 0,
       "description": "A weapon base for connecting weapon to the ship. Weapon placed on it can be controlled by mouse."
     },
-    "base fix": {
+    "base fixed": {
       "type": 0,
       "level": 2,
       "unlocked": 0,
@@ -252,7 +259,7 @@
     },
     "door wall": {
       "type": 1,
-      "level": 3,
+      "level": 4,
       "unlocked": 0,
       "description": "[unfinished]upgrade the door to armoured door."
     },
