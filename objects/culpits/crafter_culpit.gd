@@ -2,6 +2,7 @@ extends Culpit
 
 var target_type
 
+export var crafter_type = 0
 
 func _ready():
 	var culpit_list = Global.culpits_data.keys()
