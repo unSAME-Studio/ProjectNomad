@@ -119,13 +119,6 @@
       "cost": 1,
       "description": "Change the movement of the star."
     },
-    "coil": {
-      "type": 0,
-      "action": 1,
-      "hint": "Operate",
-      "cost": 1,
-      "description": "[unfinished] Connect machines and provide powers."
-    },
     "barrier": {
       "type": 0,
       "action": 0,
@@ -147,13 +140,6 @@
       "cost": 1,
       "description": "Gravitate stuff towards you."
     },
-    "bundle": {
-      "type": 0,
-      "action": 1,
-      "hint": "Unpack",
-      "cost": 5,
-      "description": "A bundle of 5 nanos."
-    },
     "packager": {
       "type": 0,
       "action": 1,
@@ -171,21 +157,21 @@
     "turret speed buffer": {
       "type": 0,
       "action": 1,
-      "hint": "Aactivate",
+      "hint": "Activate",
       "cost": 3,
       "description": "Buff projectile speed of nearby turrets."
     },
     "turret damage buffer": {
       "type": 0,
       "action": 1,
-      "hint": "Aactivate",
+      "hint": "Activate",
       "cost": 3,
       "description": "Buff projectile damage of nearby turrets."
     },
     "turret rate buffer": {
       "type": 0,
       "action": 1,
-      "hint": "Aactivate",
+      "hint": "Activate",
       "cost": 3,
       "description": "Buff turret cooldown of nearby turrets."
     }
