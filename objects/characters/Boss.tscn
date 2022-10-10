@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://objects/object_base.gd" type="Script" id=1]
 [ext_resource path="res://objects/rooms/Wall.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://objects/characters/enemy/FatBoy.tscn" type="PackedScene" id=11]
 [ext_resource path="res://arts/structures/pattern2.png" type="Texture" id=12]
 [ext_resource path="res://objects/characters/Boss.gd" type="Script" id=13]
+[ext_resource path="res://objects/characters/rotate.gd" type="Script" id=14]
 
 [sub_resource type="OccluderPolygon2D" id=3]
 
@@ -51,6 +52,14 @@ collision_mask = 0
 script = ExtResource( 9 )
 
 [node name="Polygon2D" type="Polygon2D" parent="structure/Base/rooms/room2"]
+modulate = Color( 0.423529, 0.8, 0.270588, 0 )
+position = Vector2( 0, 64 )
+color = Color( 0.584314, 0.639216, 0.74902, 1 )
+texture = ExtResource( 8 )
+texture_scale = Vector2( 2, 2 )
+polygon = PoolVector2Array( -128, -512, -448, -232, -448, 80, -128, 384, 128, 384, 464, 64, 464, -184, 128, -512 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="structure/Base/rooms/room2"]
 modulate = Color( 0.423529, 0.8, 0.270588, 1 )
 position = Vector2( 0, 64 )
 color = Color( 0.584314, 0.639216, 0.74902, 1 )
@@ -211,5 +220,20 @@ position = Vector2( 280, -232 )
 
 [node name="StupidBoy" parent="." instance=ExtResource( 3 )]
 position = Vector2( -352, 120 )
+baseMode = true
+immobile = true
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
+[node name="FatBoy2" parent="Node2D" instance=ExtResource( 11 )]
+position = Vector2( -280, -280 )
+scale = Vector2( 0.750795, 0.750795 )
+baseMode = true
+immobile = true
+
+[node name="FatBoy3" parent="Node2D" instance=ExtResource( 11 )]
+position = Vector2( 248, 304 )
+scale = Vector2( 0.750795, 0.750795 )
 baseMode = true
 immobile = true

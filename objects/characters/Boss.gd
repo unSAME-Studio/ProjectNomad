@@ -30,12 +30,15 @@ var faction = 'ship'
 var line
 
 var operating = false
-var heartNum = 0
+var heartNum = 2
+
 func _ready():
 	for i in get_children():
 		if 'Fat' in i.name:
 			heartNum += 1
 			i.connect("tree_exiting", self, "heart_killed")
+	$Node2D/FatBoy2.connect("tree_exiting", self, "heart_killed")
+	$Node2D/FatBoy3.connect("tree_exiting", self, "heart_killed")
 	#$RigidBody2D/PinJoint2D.connect_bodies(self,$RigidBody2D)
 	# [TEMP DELETE]
 	#$objects/Wall/CollisionPolygon2D.polygon = $objects/Wall/Polygon2D.polygon

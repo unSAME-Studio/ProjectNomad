@@ -40,6 +40,8 @@ func check_state_change():
 
 func _physics_process(delta):
 	# change animation sprite speed
+	if not is_instance_valid(persistent_state):
+		return
 	animated_sprite.set_speed_scale(persistent_state.velocity.length() / speed)
 	
 	# change eyes position

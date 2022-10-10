@@ -938,7 +938,7 @@ rotation = -0.730179
 scale = Vector2( 1.38848, 1.64249 )
 
 [node name="Boss" parent="Node2D" instance=ExtResource( 38 )]
-position = Vector2( 5022, 285 )
+position = Vector2( 6247, -4416 )
 
 [editable path="Node2D/Base_ship"]
 [editable path="Node2D/Base"]
