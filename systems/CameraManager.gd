@@ -1,6 +1,6 @@
 extends Node2D
 
-const MAX_ZOOM = 100
+const MAX_ZOOM = 10
 const MIN_ZOOM = 0.5
 
 onready var camera = get_node("Camera2D")

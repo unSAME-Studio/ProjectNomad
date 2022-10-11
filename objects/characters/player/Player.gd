@@ -91,7 +91,7 @@ func _input(event):
 			var object = $WearSlot.get_child(0)
 			reparent(object,base)
 			var dis = clamp(get_global_position().distance_to(get_global_mouse_position()), 0, 190)
-			object.throw(self, true, lerp(0, 1500, dis / 190), throw_hold_time >= THROW_HOLD_NEEDED)
+			object.throw(self, true, lerp(0, 700, dis / 190), throw_hold_time >= THROW_HOLD_NEEDED)
 			
 			$Sounds/Throw.play()
 		
@@ -455,7 +455,7 @@ func heal(dealer, amount):
 	heal_tween.parallel().tween_property($CanvasLayer/Control/VBoxContainer/HBoxContainer2/HealthBar, "modulate", Color.white, 0.08)
 	
 func kill():
-	var error = get_tree().reload_current_scene()
+	var error = get_tree().change_scene("res://scenes/Gameover.tscn")
 
 
 # -----------------

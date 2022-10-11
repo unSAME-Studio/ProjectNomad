@@ -8,8 +8,9 @@ func _ready():
 	var culpit_list = Global.culpits_data.keys()
 	culpit_list.sort()
 	for i in culpit_list:
-		var text = "%s" % [i.capitalize()]
-		$CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/ItemList.add_item(text, load("res://arts/culpits/%s.png" % i), true)
+		if crafter_type in Global.culpits_data[i]["type"]:
+			var text = "%s" % [i.capitalize()]
+			$CanvasLayer/Control/PanelContainer/HBoxContainer/ScrollContainer/VBoxContainer/ItemList.add_item(text, load("res://arts/culpits/%s.png" % i), true)
 
 
 func _process(delta):

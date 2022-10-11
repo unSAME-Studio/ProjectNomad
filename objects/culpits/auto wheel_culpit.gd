@@ -4,6 +4,8 @@ extends Culpit
 var running = false
 var targeting = false
 var on_cd = false
+
+
 func _ready():
 	if base:
 		operate(null)
@@ -35,8 +37,10 @@ func _process(delta):
 
 func operate(player):
 	running = !running
-	base.controlling = running
-			
+	if player != null and player.get("controlling"):
+		base.controlling = running
+
+
 func destroy():
 	running = false
 	base.controlling = false

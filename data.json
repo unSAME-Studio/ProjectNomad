@@ -92,7 +92,7 @@
       "description": "Resource vaccum. Use this to store and stack resources."
     },
     "auto wheel": {
-      "type": [1],
+      "type": [9],
       "action": 1,
       "hint": "Turn On / Off",
       "cost": 1,
