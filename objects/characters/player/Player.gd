@@ -107,8 +107,9 @@ func _input(event):
 			$ThrowHint.show()
 			
 			# hide the UI for none build items
-			if storage[wearing]["type"] in Global.culpits_data.keys():
-				$CanvasLayer/Control/ThrowBuild.show()
+			if wearing != null:
+				if storage[wearing]["type"] in Global.culpits_data.keys():
+					$CanvasLayer/Control/ThrowBuild.show()
 
 func get_facing() -> Vector2:
 	return get_global_mouse_position() - get_global_position()
