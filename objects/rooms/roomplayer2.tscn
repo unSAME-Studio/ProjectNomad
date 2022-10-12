@@ -41,7 +41,7 @@ position = Vector2( 16, -30 )
 type = "utility"
 
 [node name="Wall" parent="structures" instance=ExtResource( 6 )]
-position = Vector2( -56, 9.53674e-07 )
+position = Vector2( -60, -1.42109e-11 )
 rotation = -1.5708
 scale = Vector2( 0.209964, 0.209964 )
 
@@ -55,7 +55,7 @@ scale = Vector2( 6.08664, 4.32472 )
 texture = ExtResource( 3 )
 
 [node name="Wall2" parent="structures" instance=ExtResource( 6 )]
-position = Vector2( 56, 0 )
+position = Vector2( 58, 2.27374e-12 )
 rotation = 1.5708
 scale = Vector2( 0.227018, 0.227018 )
 

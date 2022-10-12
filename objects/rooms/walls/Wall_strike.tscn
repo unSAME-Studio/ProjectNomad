@@ -19,7 +19,7 @@ scale = Vector2( 0.947368, 1.33333 )
 color = Color( 0.392157, 0.431373, 0.54902, 1 )
 antialiased = true
 texture = ExtResource( 2 )
-polygon = PoolVector2Array( -202.667, 96.0002, -101.333, -12, 101.333, -12, 202.667, 96.0002, 160.445, 96.0002, 84.4445, 12, -84.4445, 12, -160.445, 96.0002 )
+polygon = PoolVector2Array( -211.111, 84.0002, -101.333, -12, 101.333, -12, 211.111, 84.0002, 168.889, 84.0002, 84.4445, 12, -84.4445, 12, -168.889, 84.0002 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource( 3 )
