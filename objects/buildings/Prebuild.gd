@@ -254,7 +254,7 @@ func _unhandled_input(event):
 
 
 func finish_build(room):
-	print(room)
+	#print(room)
 	var c
 	if build_points:
 		for i in build_points:

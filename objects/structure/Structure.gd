@@ -88,7 +88,7 @@ func connect_culpit(object):
 	base.apply_buff()
 	connect_failsafe = true
 	yield(get_tree(), "physics_frame")
-	print('delayed')
+	#print('delayed')
 	connect_failsafe = false
 
 

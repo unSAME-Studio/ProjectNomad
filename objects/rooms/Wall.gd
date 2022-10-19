@@ -56,8 +56,7 @@ func change_type(type_to):
 			polygon.show()
 			$CollisionPolygon2D.polygon = polygon.polygon
 			$LightOccluder2D.occluder.set_polygon(polygon.polygon)
-		_:
-			print(type_to)
+			#print(type_to)
 
 func upgrade():
 	if find_node("DamageComponent"):

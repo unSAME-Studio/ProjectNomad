@@ -10,7 +10,7 @@ func _process(delta):
 		$DetectionArea.set_position(Vector2.ZERO)
 		# check for differences
 		if current_bodies != $DetectionArea.get_overlapping_bodies():
-			print("|||||||     Update bodies generator")
+			#print("|||||||     Update bodies generator")
 			current_bodies = $DetectionArea.get_overlapping_bodies()
 			
 		#print($DetectionArea.get_overlapping_bodies())

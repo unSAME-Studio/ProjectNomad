@@ -12,7 +12,7 @@ var in_cd = false
 
 func _ready():
 	if data != null:
-		print("Hey it contains data")
+		#print("Hey it contains data")
 		
 		storing = data["storing"]
 		count = data["count"]

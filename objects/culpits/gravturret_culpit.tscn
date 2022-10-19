@@ -134,6 +134,7 @@ texture = ExtResource( 1 )
 modulate = Color( 3, 3, 3, 1 )
 light_mask = 4
 position = Vector2( 640, 0 )
+emitting = false
 amount = 10
 visibility_rect = Rect2( -730, -100, 200, 200 )
 process_material = SubResource( 21 )
@@ -147,17 +148,17 @@ energy = 0.7
 mode = 2
 shadow_enabled = true
 
+[node name="Polygon2D" type="Polygon2D" parent="Light2D"]
+modulate = Color( 1, 1, 1, 0.439216 )
+light_mask = 4
+polygon = PoolVector2Array( 72, -16, 72, 16, 640, 64, 640, -64 )
+
 [node name="DamageComponent" parent="." instance=ExtResource( 8 )]
 health_max = 50
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-modulate = Color( 1, 1, 1, 0.439216 )
-light_mask = 4
-polygon = PoolVector2Array( 72, -16, 72, 16, 640, 64, 640, -64 )
 
 [connection signal="screen_entered" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]

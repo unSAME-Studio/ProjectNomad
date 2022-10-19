@@ -27,10 +27,15 @@ func align_camera():
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("zoom_reset"):
 		camera.set_zoom(Vector2(1, 1))
-	
+		for i in range(0,4):
+			camera.set_drag_margin(i,0)
+		center_camera
 	if Input.is_action_just_pressed("camera_align"):
 		align_camera()
-	
+		camera.set_zoom(Vector2(1, 1))
+		for i in range(0,4):
+			camera.set_drag_margin(i,0)
+		center_camera
 	if Input.is_action_just_pressed("camera_left"):
 		pass
 	

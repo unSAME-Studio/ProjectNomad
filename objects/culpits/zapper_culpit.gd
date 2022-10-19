@@ -53,7 +53,7 @@ func stop_control(body):
 func _on_Timer_timeout():
 	if $CooldownComponent.can_fire(cd):
 		
-		$RayCast2D.cast_to = Vector2(500 + speedBuffs.size()*150,0)
+		$RayCast2D.cast_to = Vector2(500 + speedBuffs.size()*250,0)
 		reset_buff()
 		# consume cooldown
 		$CooldownComponent.increase_cooldown(cd)

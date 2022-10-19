@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
-[ext_resource path="res://objects/structure/base_fix_struc.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/structure/base_fixed_struc.tscn" type="PackedScene" id=2]
 [ext_resource path="res://objects/buildings/buildpoint.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/rooms/walls/Wall.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/rooms/walls/Door.tscn" type="PackedScene" id=5]

@@ -38,8 +38,8 @@ func _on_Timer_timeout():
 		for body in $Area2D.get_overlapping_bodies():
 			if not body.get_collision_layer_bit(6):
 				if body.has_node("DamageComponent"):
-					print('boomed')
-					print(body)
+					#print('boomed')
+					#print(body)
 					body.get_node("DamageComponent").damage(user, damage)
 			elif body.get_class() == 'RigidBody2D':
 				body.apply_impulse(Vector2.ZERO,get_global_position().direction_to(body.get_global_position()) * 100)

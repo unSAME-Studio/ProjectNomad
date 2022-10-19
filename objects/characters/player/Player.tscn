@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://arts/characters/player.png" type="Texture" id=1]
 [ext_resource path="res://arts/light.png" type="Texture" id=2]
@@ -34,7 +34,6 @@
 [ext_resource path="res://sounds/equip.wav" type="AudioStream" id=32]
 [ext_resource path="res://sounds/pray.wav" type="AudioStream" id=33]
 [ext_resource path="res://arts/ui/quick_access_disabled.png" type="Texture" id=34]
-[ext_resource path="res://arts/ui/place.png" type="Texture" id=35]
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -160,6 +159,7 @@ script = ExtResource( 4 )
 scale = Vector2( 0.7419, 0.7419 )
 frames = SubResource( 7 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Eyes" type="Sprite" parent="AnimatedSprite"]
@@ -198,7 +198,7 @@ grow_vertical = 0
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/Control/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.415686 )
 margin_right = 426.0
-margin_bottom = 561.0
+margin_bottom = 759.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
@@ -207,6 +207,12 @@ bbcode_text = "[u]Player[/u]
 WASD - Move
 Left Click - Use Holding Item
 Right Click - Interact
+B - Build Menu
+Tab - Reset Camera
+
+Object
+Hold Right Mouse on objects to destroy
+Hold and Drag Right Mouse on objects to move
 
 [u]Backpack[/u]
 Mouse Wheel - Scroll
@@ -224,6 +230,12 @@ text = "Player
 WASD - Move
 Left Click - Use Holding Item
 Right Click - Interact
+B - Build Menu
+Tab - Reset Camera
+
+Object
+Hold Right Mouse on objects to destroy
+Hold and Drag Right Mouse on objects to move
 
 Backpack
 Mouse Wheel - Scroll
@@ -240,9 +252,9 @@ Backpack Slots"
 fit_content_height = true
 
 [node name="StorageBox" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 565.0
+margin_top = 763.0
 margin_right = 426.0
-margin_bottom = 646.0
+margin_bottom = 844.0
 alignment = 1
 
 [node name="Storage" type="TextureButton" parent="CanvasLayer/Control/VBoxContainer/StorageBox"]
@@ -622,9 +634,9 @@ custom_fonts/font = SubResource( 26 )
 text = " "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Control/VBoxContainer"]
-margin_top = 650.0
+margin_top = 848.0
 margin_right = 426.0
-margin_bottom = 688.0
+margin_bottom = 886.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/HBoxContainer2"]
 margin_top = 3.0

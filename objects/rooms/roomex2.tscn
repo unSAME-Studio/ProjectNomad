@@ -2,12 +2,13 @@
 
 [ext_resource path="res://objects/rooms/room.gd" type="Script" id=1]
 [ext_resource path="res://objects/structure/base_struc.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/structure/base_fix_struc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/structure/base_fixed_struc.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/culpits/Culpit.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/structure/booster_struc.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/rooms/walls/Wall_strike.tscn" type="PackedScene" id=6]
 [ext_resource path="res://arts/structures/pattern1.png" type="Texture" id=7]
 [ext_resource path="res://objects/culpits/light_culpit.gd" type="Script" id=8]
+
 
 [node name="room" type="Area2D"]
 collision_layer = 34

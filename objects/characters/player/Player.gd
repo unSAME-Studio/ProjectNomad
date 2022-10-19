@@ -164,13 +164,14 @@ func _unhandled_input(event):
 		
 		# right clikc to interact
 		if event.get_button_index() == 2 and not event.is_pressed() and not building_mode:
-			
-			#if is holding, disable interaction input
+				#if is holding, disable interaction input
 			if not click_holding:
 				state.interact()
 				
 				
 			click_holding = false
+					
+
 
 
 func _process(delta):
@@ -417,7 +418,7 @@ func is_in_air():
 func damage(dealer, amount):
 	# ignore if self damage
 	if is_instance_valid(dealer):
-		print(dealer.name, self.name)
+		#print(dealer.name, self.name)
 		if dealer == self:
 			return false
 		if controlling:

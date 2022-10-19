@@ -132,7 +132,7 @@ func _unhandled_input(event):
 		if event is InputEventMouseButton:
 			if event.get_button_index() == 2 and not event.is_pressed():
 				click_hold = false
-				print('reset')
+				#print('reset')
 				#reset holding failsafe
 				Global.player.click_holding = false
 				
@@ -146,8 +146,8 @@ func _unhandled_input(event):
 				get_tree().set_input_as_handled()
 
 func _on_mouse_entered():
-	print('selected')
-	print(self)
+	#print('selected')
+	#print(self)
 	Global.player.mouse_select_culpit = self
 
 
